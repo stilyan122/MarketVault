@@ -1,14 +1,17 @@
-using MarketVault.Core;
-using Microsoft.AspNetCore.Identity;
-
 namespace MarketVault
 {
-    public class Program
+    using MarketVault.Core;
+
+    /// <summary>
+    /// Start point of the app
+    /// </summary>
+    public class StartUp
     {
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // Setting up services
             builder.Services.AddDbServices(builder.Configuration);
             builder.Services.AddIdentityServices();
             builder.Services.AddCoreServices();
