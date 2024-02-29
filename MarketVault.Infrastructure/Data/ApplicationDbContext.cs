@@ -1,5 +1,6 @@
 ﻿namespace MarketVault.Data
 {
+    using MarketVault.Infrastructure.Data.Models;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,18 @@
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<ProductMeasure>()
+                .HasKey(pm => new
+                {
+                    pm.MeasureId,
+                    pm.ProductId
+                });
+
+            base.OnModelCreating(builder);
         }
     }
 }
