@@ -3,6 +3,8 @@
     using Microsoft.EntityFrameworkCore;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using static MarketVault.Infrastructure.Constants
+       .DataConstants.CounterPartyConstants;
 
     /// <summary>
     /// CounterParty Entity
@@ -17,6 +19,10 @@
         [Key]
         public int Id { get; set; }
 
+        [Required]
+        [MaxLength(NameMaxLength)]
+        public string Name { get; set; } = string.Empty;
+
         /// <summary>
         /// Flag for activity 
         /// </summary>
@@ -27,13 +33,15 @@
         /// CounterParty VAT Number
         /// </summary>
         [Required]
-        public int VATNumber { get; set; }
+        [MaxLength(VATNumberMaxLength)]
+        public string VATNumber { get; set; } = string.Empty;
 
-        [Required]
         /// <summary>
         /// CounterParty ValueAddedTaxLaw Id
         /// </summary>
-        public int ValueAddedTaxLawId { get; set; }
+        [Required]
+        [MaxLength(ValueAddedTaxLawIdMaxLength)]
+        public string ValueAddedTaxLawId { get; set; } = string.Empty;
 
         /// <summary>
         /// BankId - foreign key
@@ -64,7 +72,7 @@
         /// BankId - foreign key
         /// </summary>
         [Comment("BankId - FK")]
-        [ForeignKey(nameof(Bank))]
+        [ForeignKey(nameof(Firm))]
         [Required]
         public int FirmId { get; set; }
 
@@ -72,5 +80,11 @@
         /// Firm Entity
         /// </summary>
         public Firm Firm { get; set; } = null!;
+
+        /// <summary>
+        /// Collection with Operation Entity
+        /// </summary>
+        public ICollection<Operation> Operations { get; set; }
+            = new List<Operation>();
     }
 }
