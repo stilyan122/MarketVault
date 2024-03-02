@@ -2,6 +2,7 @@
 {
     using Microsoft.EntityFrameworkCore;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using static MarketVault.Infrastructure.Constants
         .DataConstants.BarcodeConstants;
 
@@ -33,9 +34,16 @@
         public bool IsActive { get; set; } = true;
 
         /// <summary>
-        /// Collection with Product entities
+        /// ProductId - foreign key
         /// </summary>
-        public IEnumerable<Product> Products { get; set; }
-            = new List<Product>();
+        [Comment("ProductId - FK")]
+        [ForeignKey(nameof(Product))]
+        [Required]
+        public int ProductId { get; set; }
+
+        /// <summary>
+        /// Product Entity
+        /// </summary>
+        public Product Product { get; set; } = null!;
     }
 }

@@ -1,8 +1,17 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+AAA
+<div id="react-root"></div>
+<script src="./js//marketvault/node_modules/react/index.js"></script>
+<script src="./js//marketvault/node_modules/react-dom/index.js"></script>
+<script src="./js/marketvault/build/static/js/main.04f9a626.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="./js/marketvault//src/Components/MyComponent.jsx"></script>
+<script>
+    ReactDOM.render(
+        React.createElement(MyComponent),
+        document.getElementById('react-root')
+    );
+</script>

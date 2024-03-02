@@ -117,5 +117,11 @@
         /// </summary>
         public IEnumerable<ProductMeasure> ProductsMeasures { get; set; }
             = new List<ProductMeasure>();
+
+        /// <summary>
+        /// Collection with entities from the mapping table - ProductsOperations
+        /// </summary>
+        public IEnumerable<ProductOperation> ProductsOperations { get; set; }
+            = new List<ProductOperation>();
     }
 }
