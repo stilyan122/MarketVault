@@ -1,19 +1,10 @@
-﻿namespace MarketVault.Core.Modes
+﻿namespace MarketVault.Models.Product
 {
-    /// <summary>
-    /// Service model used for product entity
-    /// </summary>
-    public class ProductServiceModel
+    public class ProductViewModel
     {
-        public int Id { get; set; }
-
         public string Name { get; set; } = string.Empty;
 
         public string CashRegisterName { get; set; } = string.Empty;
-
-        public int ArticleNumber { get; set; }
-
-        public int NomenclatureNumber { get; set; }
 
         public int CodeForScales { get; set; }
 
@@ -22,8 +13,6 @@
         public decimal SalePrice { get; set; }
 
         public decimal Quantity { get; set; }
-
-        public string Description { get; set; } = string.Empty;
 
         public string ItemGroupName { get; set; } = string.Empty;
 

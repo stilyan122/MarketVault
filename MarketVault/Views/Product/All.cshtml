@@ -1,0 +1,14 @@
+﻿@model IEnumerable<ProductViewModel>
+
+@{
+    ViewBag.Title = "All products";
+}
+
+@foreach(ProductViewModel product in Model)
+{
+    <div>
+        <p>
+            @product
+        </p>
+    </div>
+}

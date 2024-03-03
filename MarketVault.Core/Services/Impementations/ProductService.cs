@@ -39,9 +39,27 @@
         {
             var entities = await this.repository
                 .All()
+                .Include(p => p.ItemGroup)
+                .Include(p => p.Barcodes)
+                .Include(p => p.ProductsMeasures)
+                .ThenInclude(pm => pm.Measure)
                 .Select(e => new ProductServiceModel()
                 {
-
+                    Id = e.Id,
+                    ArticleNumber = e.ArticleNumber,
+                    DateAdded = e.DateAdded,
+                    CashRegisterName = e.CashRegisterName,
+                    CodeForScales = e.CodeForScales,
+                    DateModified = e.DateModified,
+                    Description = e.Description,
+                    ItemGroupName = e.ItemGroup.Name,
+                    Measure = e.ProductsMeasures.First().Measure.Name,
+                    Barcodes = e.Barcodes.Select(b => b.Value).ToList(),
+                    Name = e.Name,
+                    NomenclatureNumber = e.NomenclatureNumber,
+                    PurchasePrice = e.PurchasePrice,
+                    Quantity = e.Quantity,
+                    SalePrice = e.SalePrice,
                 })
                 .ToListAsync();
 

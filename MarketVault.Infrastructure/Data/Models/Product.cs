@@ -107,6 +107,18 @@
         public ItemGroup ItemGroup { get; set; } = null!;
 
         /// <summary>
+        /// Date when the product was added
+        /// </summary>
+        [Comment("Date when the product was added")]
+        public DateTime DateAdded { get; set; } = DateTime.Now;
+
+        /// <summary>
+        /// Date when the product was last modified
+        /// </summary>
+        [Comment("Date when the product was last modified")]
+        public DateTime DateModified { get; set; } = DateTime.Now;
+
+        /// <summary>
         /// Collection with Barcode Entities
         /// </summary>
         public IEnumerable<Barcode> Barcodes { get; set; }
