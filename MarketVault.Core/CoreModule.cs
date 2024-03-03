@@ -5,6 +5,10 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.AspNetCore.Identity;
+    using MarketVault.Core.Contracts;
+    using MarketVault.Core.Implementations;
+    using MarketVault.Core.Services.Interfaces;
+    using MarketVault.Core.Services.Impementations;
 
     /// <summary>
     /// Services modules
@@ -18,6 +22,9 @@
         /// <returns></returns>
         public static IServiceCollection AddCoreServices(this IServiceCollection services)
         {
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IProductService, ProductService>();
+
             return services;
         }
 

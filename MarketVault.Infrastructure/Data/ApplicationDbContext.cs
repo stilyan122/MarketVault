@@ -104,18 +104,19 @@
                 .WithMany(f => f.CounterParties)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.ApplyConfiguration(new AddressConfiguration());
-            builder.ApplyConfiguration(new BankConfiguration());
-            builder.ApplyConfiguration(new FirmConfiguration());
-            builder.ApplyConfiguration(new DocumentTypeConfiguration());
-            builder.ApplyConfiguration(new CounterPartyConfiguration());
-            builder.ApplyConfiguration(new ItemGroupConfiguration());
-            builder.ApplyConfiguration(new MeasureConfiguration());
-            builder.ApplyConfiguration(new OperationConfiguration());
-            builder.ApplyConfiguration(new ProductConfiguration());
-            builder.ApplyConfiguration(new BarcodeConfiguration());
-            builder.ApplyConfiguration(new ProductMeasureConfiguration());
-            builder.ApplyConfiguration(new ProductOperationConfiguration());
+            builder
+            .ApplyConfiguration(new AddressConfiguration())
+            .ApplyConfiguration(new BankConfiguration())
+            .ApplyConfiguration(new FirmConfiguration())
+            .ApplyConfiguration(new DocumentTypeConfiguration())
+            .ApplyConfiguration(new CounterPartyConfiguration())
+            .ApplyConfiguration(new ItemGroupConfiguration())
+            .ApplyConfiguration(new MeasureConfiguration())
+            .ApplyConfiguration(new OperationConfiguration())
+            .ApplyConfiguration(new ProductConfiguration())
+            .ApplyConfiguration(new BarcodeConfiguration())
+            .ApplyConfiguration(new ProductMeasureConfiguration())
+            .ApplyConfiguration(new ProductOperationConfiguration());
 
             base.OnModelCreating(builder);
         }
