@@ -23,7 +23,11 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <select id="selectOption" class="nav-link text-dark">
+                                <option value="">Nomenclatures</option>
+                                <option value="Option1">Products</option>
+                                <option value="Option2">Counter Parties</option>
+                            </select>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -39,7 +43,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - MarketVault - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; @DateTime.Now.Year - MarketVault
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -48,3 +52,14 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+<script>
+    document.getElementById("selectOption").addEventListener("change", function () {
+        var optionValue = this.value;
+        if (optionValue === "Option1") {
+            window.location.href = "/Product/All";
+        } else if (optionValue === "Option2") {
+            window.location.href = "/Product/All";
+        }
+    });
+</script>

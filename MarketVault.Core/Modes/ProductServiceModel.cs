@@ -27,6 +27,8 @@
 
         public string ItemGroupName { get; set; } = string.Empty;
 
+        public int ItemGroupId { get; set; }
+
         public List<string> Barcodes { get; set; } = new List<string>();
 
         public DateTime DateAdded { get; set; }
