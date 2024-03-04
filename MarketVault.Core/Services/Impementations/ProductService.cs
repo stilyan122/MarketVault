@@ -19,7 +19,18 @@
         {
             var entity = new Product()
             {
-
+                Name = product.Name,
+                CashRegisterName = product.CashRegisterName,
+                ArticleNumber = product.ArticleNumber,
+                NomenclatureNumber = product.NomenclatureNumber,
+                CodeForScales = product.CodeForScales,
+                PurchasePrice = product.PurchasePrice,
+                SalePrice = product.SalePrice,
+                Quantity = product.Quantity,
+                Description = product.Description,
+                ItemGroupId = product.ItemGroupId,
+                DateAdded = product.DateAdded,
+                DateModified = product.DateModified,
             };
 
             await this.repository.AddAsync(entity);
@@ -43,6 +54,8 @@
                 .Include(p => p.Barcodes)
                 .Include(p => p.ProductsMeasures)
                 .ThenInclude(pm => pm.Measure)
+                .Where(p => p.IsActive)
+                .AsNoTracking()
                 .Select(e => new ProductServiceModel()
                 {
                     Id = e.Id,

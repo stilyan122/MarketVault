@@ -26,10 +26,21 @@
                 .GetAllAsync();
 
             var viewModels = serviceModels
-                .Select(sm => new ProductViewModel()
+            .Select(sm => new ProductViewModel()
             {
-
-            });
+                Barcodes = sm.Barcodes,
+                DateAdded = sm.DateAdded,
+                CashRegisterName = sm.CashRegisterName,
+                DateModified = sm.DateModified,
+                CodeForScales = sm.CodeForScales,
+                ItemGroupName = sm.ItemGroupName,
+                Measure = sm.Measure,
+                Name = sm.Name,
+                PurchasePrice = sm.PurchasePrice,
+                Quantity = sm.Quantity,
+                SalePrice = sm.SalePrice
+            })
+            .ToList();
 
             return View(viewModels);
         }
