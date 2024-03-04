@@ -17,18 +17,21 @@
         /// Add entity method (Asynchronous)
         /// </summary>
         /// <param name="entity">Entity to add</param>
+        /// <returns>(void)</returns>
         Task AddAsync(TEntity entity);
 
         /// <summary>
         /// Update entity method (Asynchronous)
         /// </summary>
         /// <param name="entity">Entity to update</param>
+        /// <returns>(void)</returns>
         Task UpdateAsync(TEntity entity);
 
         /// <summary>
         /// Delete entity method (Asynchronous)
         /// </summary>
         /// <param name="entity">Entity to remove</param>
+        /// <returns>(void)</returns>
         Task DeleteAsync(TEntity entity);
 
         /// <summary>
