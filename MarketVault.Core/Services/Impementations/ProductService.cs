@@ -6,15 +6,30 @@
     using MarketVault.Infrastructure.Data.Models;
     using Microsoft.EntityFrameworkCore;
 
+    /// <summary>
+    /// Product service
+    /// </summary>
     public class ProductService : IProductService
     {
+        /// <summary>
+        /// Product repository
+        /// </summary>
         private readonly IRepository<Product> repository = null!;
 
+        /// <summary>
+        /// Default constructor, injection of Product repository (DI)
+        /// </summary>
+        /// <param name="repository">Product repository</param>
         public ProductService(IRepository<Product> repository)
         {
             this.repository = repository;
         }
 
+        /// <summary>
+        /// Add product method (Asynchronous)
+        /// </summary>
+        /// <param name="product">Product to add</param>
+        /// <returns>(void)</returns>
         public async Task AddAsync(ProductServiceModel product)
         {
             var entity = new Product()
@@ -28,14 +43,19 @@
                 SalePrice = product.SalePrice,
                 Quantity = product.Quantity,
                 Description = product.Description,
-                ItemGroupId = product.ItemGroupId,
+                ItemGroupId = product.ItemGroup.Id,
                 DateAdded = product.DateAdded,
                 DateModified = product.DateModified,
             };
 
             await this.repository.AddAsync(entity);
         }
-
+        
+        /// <summary>
+        /// Delete product method (Asynchronous)
+        /// </summary>
+        /// <param name="product">Product to delete</param>
+        /// <returns>(void)</returns>
         public async Task DeleteAsync(ProductServiceModel product)
         {
             var entity = new Product()
@@ -46,6 +66,10 @@
             await this.repository.DeleteAsync(entity);
         }
 
+        /// <summary>
+        /// Get all products method (Asynchronous)
+        /// </summary>
+        /// <returns>Task<IEnumerable<ProductServiceModel>></returns>
         public async Task<IEnumerable<ProductServiceModel>> GetAllAsync()
         {
             var entities = await this.repository
@@ -65,9 +89,9 @@
                     CodeForScales = e.CodeForScales,
                     DateModified = e.DateModified,
                     Description = e.Description,
-                    ItemGroupName = e.ItemGroup.Name,
-                    Measure = e.ProductsMeasures.First().Measure.Name,
-                    Barcodes = e.Barcodes.Select(b => b.Value).ToList(),
+                    ItemGroup = e.ItemGroup,
+                    Measure = e.ProductsMeasures.First().Measure,
+                    Barcodes = e.Barcodes.ToList(),
                     Name = e.Name,
                     NomenclatureNumber = e.NomenclatureNumber,
                     PurchasePrice = e.PurchasePrice,
@@ -79,6 +103,11 @@
             return entities;
         }
 
+        /// <summary>
+        /// Update product method (Asynchronous)
+        /// </summary>
+        /// <param name="product">Product to update</param>
+        /// <returns>(void)</returns>
         public async Task UpdateAsync(ProductServiceModel product)
         {
             var entity = new Product()

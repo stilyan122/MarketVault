@@ -1,0 +1,17 @@
+﻿@model IEnumerable<CounterPartyViewModel>
+
+@{
+    ViewBag.Title = "All counter parties";
+}
+
+@foreach (CounterPartyViewModel counterParty in Model)
+{
+    <div>
+        <p>
+            @counterParty.Name
+        </p>
+        <p>
+            @counterParty.BankName
+        </p>
+    </div>
+}

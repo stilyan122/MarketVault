@@ -24,6 +24,7 @@
         {
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICounterPartyService, CounterPartyService>();
 
             return services;
         }
