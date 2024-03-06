@@ -1,6 +1,12 @@
 namespace MarketVault
 {
     using MarketVault.Core;
+    using Microsoft.AspNetCore.StaticFiles;
+    using Microsoft.Extensions.FileProviders;
+    using Microsoft.AspNetCore.Http;
+    using JavaScriptEngineSwitcher.V8;
+    using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
+    using React.AspNet;
 
     /// <summary>
     /// Start point of the app
@@ -15,6 +21,30 @@ namespace MarketVault
             builder.Services.AddDbServices(builder.Configuration);
             builder.Services.AddIdentityServices();
             builder.Services.AddCoreServices();
+
+            // Services, from google / chatgpt
+
+            var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  policy =>
+                                  {
+                                      policy.WithOrigins("http://example.com",
+                                                          "http://www.contoso.com");
+                                  });
+            });
+
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            builder.Services.AddReact();
+
+            // Make sure a JS engine is registered, or you will get an error!
+            builder.Services.AddJsEngineSwitcher(
+                options => options.DefaultEngineName = V8JsEngine.EngineName)
+              .AddV8();
+
+            // MVC Add Controllers with Views
 
             builder.Services.AddControllersWithViews();
 
@@ -31,9 +61,18 @@ namespace MarketVault
             }
 
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseCors(MyAllowSpecificOrigins);
+
+            app.UseReact(config =>
+            {
+                //config
+                //.AddScript("~/js/MyComponent.jsx");
+            });
 
             app.UseAuthentication();
             app.UseAuthorization();

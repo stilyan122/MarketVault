@@ -93,10 +93,10 @@
                 });
 
             builder.Entity<ProductOperation>()
-                .HasKey(pm => new
+                .HasKey(po => new
                 {
-                    pm.OperationId,
-                    pm.ProductId
+                    po.OperationId,
+                    po.ProductId
                 });
 
             builder.Entity<CounterParty>()

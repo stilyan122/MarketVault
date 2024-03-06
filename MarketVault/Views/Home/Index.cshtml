@@ -2,16 +2,7 @@
     ViewData["Title"] = "Home Page";
 }
 AAA
-<div id="react-root"></div>
-<script src="./js//marketvault/node_modules/react/index.js"></script>
-<script src="./js//marketvault/node_modules/react-dom/index.js"></script>
-<script src="./js/marketvault/build/static/js/main.04f9a626.js"></script>
-<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-<script src="./js/marketvault//src/Components/MyComponent.jsx"></script>
-<script>
-    ReactDOM.render(
-        React.createElement(MyComponent),
-        document.getElementById('react-root')
-    );
-</script>
+<div id="content"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js"></script>
+<script src="@Url.Content("~/js/CommentBox.jsx")"></script>
