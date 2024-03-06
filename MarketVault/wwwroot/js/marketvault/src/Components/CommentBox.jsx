@@ -1,9 +1,14 @@
 class CommentBox extends React.Component {
     render() {
-        return (
-            <div className="commentBox">Hello, world! I am a CommentBox.</div>
+        return React.createElement(
+            'div',
+            { className: 'commentBox' },
+            'Hello, world! I am a CommentBox.',
         );
     }
 }
 
-ReactDOM.render(<CommentBox />, document.getElementById('content'));
+ReactDOM.render(
+    React.createElement(CommentBox, null),
+    document.getElementById('content'),
+);

@@ -60,19 +60,23 @@ namespace MarketVault
                 app.UseHsts();
             }
 
+
             app.UseHttpsRedirection();
+            app.UseReact(config =>
+            {
+                config
+                .AddScript("~/js/marketvault/src/Components/CommentBox.jsx");
+
+                //config
+                //  .SetLoadBabel(false)
+                //  .AddScriptWithoutTransform("~/js/marketvault/src/Components/CommentBox.jsx");
+            });
 
             app.UseStaticFiles();
 
             app.UseRouting();
 
             app.UseCors(MyAllowSpecificOrigins);
-
-            app.UseReact(config =>
-            {
-                //config
-                //.AddScript("~/js/MyComponent.jsx");
-            });
 
             app.UseAuthentication();
             app.UseAuthorization();
