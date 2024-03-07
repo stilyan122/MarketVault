@@ -2,16 +2,55 @@
 
 @{
     ViewBag.Title = "All products";
+    int counter = 1;
+
+    Pager pager = new Pager();
+
+    int pageNo = 0;
+
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
 }
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+
+<script src="@Url.Content("~/js/marketvault/src/Components/CommentBox.jsx")"></script>
+<script>
+    let props = {};
+</script>
+
+<link rel="stylesheet" href="~/css/nomenclatures..css" />
+
+<partial name="_PagerPartial" model="@pager" />
 
 @foreach(ProductViewModel product in Model)
 {
     <div>
-        <p>
+       <p>
+            <div id="@counter"></div>
+            <script>
+                props = {
+                    name: @product.Quantity
+                };
+
+                ReactDOM.render(
+                    React.createElement(CommentBox, props),
+                    document.getElementById(@counter),
+                );
+            </script>
+            @product.Quantity
             @product.Name
-        </p>
-        <p>
-            @product.CashRegisterName
+
+            @{
+                counter++;
+            }
         </p>
     </div>
 }
+
+<partial name="_PagerPartial" model="@pager" />

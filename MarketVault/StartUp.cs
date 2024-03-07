@@ -1,11 +1,9 @@
 namespace MarketVault
 {
-    using MarketVault.Core;
-    using Microsoft.AspNetCore.StaticFiles;
-    using Microsoft.Extensions.FileProviders;
-    using Microsoft.AspNetCore.Http;
-    using JavaScriptEngineSwitcher.V8;
     using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
+    using JavaScriptEngineSwitcher.V8;
+    using MarketVault.Core;
+    using Microsoft.AspNetCore.Http;
     using React.AspNet;
 
     /// <summary>

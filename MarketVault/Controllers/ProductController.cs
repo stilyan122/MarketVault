@@ -1,5 +1,6 @@
 ﻿namespace MarketVault.Controllers
 {
+    using MarketVault.Core;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Models.Product;
     using Microsoft.AspNetCore.Authorization;
@@ -38,13 +39,13 @@
         /// Action for all products in app (Asynchronous)
         /// </summary>
         /// <returns>Task<IActionResult></returns>
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> All(int pages = 1)
         {
             var serviceModels = await this.service
                 .GetAllAsync();
 
             var viewModels = serviceModels
-            .Select(sm => new ProductViewModel()
+                .Select(sm => new ProductViewModel()
             {
                 DateAdded = sm.DateAdded,
                 CashRegisterName = sm.CashRegisterName,
@@ -57,9 +58,29 @@
                 Quantity = sm.Quantity,
                 SalePrice = sm.SalePrice
             })
-            .ToList();
+                .ToList();
 
-            return View(viewModels);
+            const int pageSize = 10;
+
+            if (pages < 1)
+            {
+                pages = 1;
+            }
+
+            int recsCount = viewModels.Count;
+
+            var pager = new Pager(recsCount, pages, pageSize);
+
+            int recsSkip = (pages - 1) * pageSize;
+
+            var data = viewModels
+                .Skip(recsSkip)
+                .Take(pager.PageSize)
+                .ToList();
+
+            this.ViewBag.Pager = pager;
+
+            return View(data);
         }
     }
 }
