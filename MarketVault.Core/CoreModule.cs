@@ -1,14 +1,14 @@
 ﻿namespace MarketVault.Core
 {
-    using MarketVault.Data;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.AspNetCore.Identity;
     using MarketVault.Core.Contracts;
     using MarketVault.Core.Implementations;
-    using MarketVault.Core.Services.Interfaces;
     using MarketVault.Core.Services.Impementations;
+    using MarketVault.Core.Services.Interfaces;
+    using MarketVault.Data;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
 
     /// <summary>
     /// Services modules
@@ -23,6 +23,7 @@
         public static IServiceCollection AddCoreServices(this IServiceCollection services)
         {
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICounterPartyService, CounterPartyService>();
 
@@ -39,10 +40,13 @@
         public static IServiceCollection AddDbServices(this IServiceCollection services,
             IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            var connectionString = configuration.GetConnectionString("DefaultConnection") ?? 
+                throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString));
+            {
+                options.UseSqlServer(connectionString);
+            });
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -64,7 +68,7 @@
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;
             })
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            .AddEntityFrameworkStores<ApplicationDbContext>();
 
             return services;
         }

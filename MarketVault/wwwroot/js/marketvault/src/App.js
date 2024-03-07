@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-import ReactDOM from 'react-dom';
 
 function App() {
   return (
@@ -8,12 +7,11 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.awerawera3
-
+          Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
           className="App-link"
-          href="https://reactjsawrtWAErwrww.org"
+          href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
