@@ -1,9 +1,11 @@
 class CommentBox extends React.Component {
     render() {
-        return React.createElement(
-            'div',
-            { className: 'commentBox' },
-            'Hello, world!' + this.props.name,
+        return (
+            <div>
+                <p>
+                    {this.props.name}
+                </p>
+            </div>
         );
     }
 }
