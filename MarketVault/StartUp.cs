@@ -15,34 +15,17 @@ namespace MarketVault
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Setting up services
             builder.Services.AddDbServices(builder.Configuration);
             builder.Services.AddIdentityServices();
             builder.Services.AddCoreServices();
 
-            // Services, from google / chatgpt
-
-            var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy(name: MyAllowSpecificOrigins,
-                                  policy =>
-                                  {
-                                      policy.WithOrigins("http://example.com",
-                                                          "http://www.contoso.com");
-                                  });
-            });
-
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             builder.Services.AddReact();
 
-            // Make sure a JS engine is registered, or you will get an error!
-            builder.Services.AddJsEngineSwitcher(
-                options => options.DefaultEngineName = V8JsEngine.EngineName)
+            builder.Services
+                .AddJsEngineSwitcher(options => 
+                options.DefaultEngineName = V8JsEngine.EngineName)
               .AddV8();
-
-            // MVC Add Controllers with Views
 
             builder.Services.AddControllersWithViews();
 
@@ -58,23 +41,17 @@ namespace MarketVault
                 app.UseHsts();
             }
 
-
             app.UseHttpsRedirection();
             app.UseReact(config =>
             {
                 config
-                .AddScript("~/js/marketvault/src/Components/CommentBox.jsx");
-
-                //config
-                //  .SetLoadBabel(false)
-                //  .AddScriptWithoutTransform("~/js/marketvault/src/Components/CommentBox.jsx");
+                .AddScript("~/js/marketvault/src/Components/CommentBox.jsx")
+                .AddScript("~/js/marketvault/src/Components/ProductViewComponent.jsx");
             });
 
             app.UseStaticFiles();
 
             app.UseRouting();
-
-            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthentication();
             app.UseAuthorization();

@@ -19,38 +19,46 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
 
-<script src="@Url.Content("~/js/marketvault/src/Components/CommentBox.jsx")"></script>
+<script src="@Url.Content("~/js/marketvault/src/Components/ProductViewComponent.jsx")"></script>
 <script>
     let props = {};
 </script>
 
 <link rel="stylesheet" href="~/css/nomenclatures..css" />
 
-<partial name="_PagerPartial" model="@pager" />
+<div class="viewContainer">
+    <partial name="_PagerPartial" model="@pager" />
 
-@foreach(ProductViewModel product in Model)
-{
-    <div>
-       <p>
-            <div id="@counter"></div>
-            <script>
-                props = {
-                    name: @product.Quantity
-                };
+    <div class="productsContainer">
+        @foreach (ProductViewModel product in Model)
+        {
+            <div class="productContainer">
+                <div id="@counter" class="productComponentContainer"></div>
+                <script>
+                    props = {
+                        name: '@product.Name',
+                        cashRegisterName: '@product.CashRegisterName',
+                        quantity: @product.Quantity,
+                        itemGroup: '@product.ItemGroupName',
+                        purchasePrice: @product.PurchasePrice,
+                        salePrice: @product.SalePrice,
+                        codeForScales: '@product.CodeForScales',
+                        dateAdded: '@product.DateAdded',
+                        dateModified: '@product.DateModified',
+                        measure: '@product.Measure'
+                    };
 
-                ReactDOM.render(
-                    React.createElement(CommentBox, props),
-                    document.getElementById(@counter),
-                );
-            </script>
-            @product.Quantity
-            @product.Name
-
-            @{
-                counter++;
-            }
-        </p>
+                    ReactDOM.render(
+                        React.createElement(ProductViewComponent, props),
+                        document.getElementById(@counter),
+                    );
+                </script>
+                @{
+                    counter++;
+                }
+            </div>
+        }
     </div>
-}
 
-<partial name="_PagerPartial" model="@pager" />
+    <partial name="_PagerPartial" model="@pager" />
+</div>
