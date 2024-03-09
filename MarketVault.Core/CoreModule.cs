@@ -1,14 +1,18 @@
 ﻿namespace MarketVault.Core
 {
+    using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
+    using JavaScriptEngineSwitcher.V8;
     using MarketVault.Core.Contracts;
     using MarketVault.Core.Implementations;
     using MarketVault.Core.Services.Impementations;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Data;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using React.AspNet;
 
     /// <summary>
     /// Services modules
@@ -26,6 +30,9 @@
 
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICounterPartyService, CounterPartyService>();
+            services.AddScoped<IItemGroupService, ItemGroupService>();
+            services.AddScoped<IMeasureService, MeasureService>();
+            services.AddScoped<IProductMeasureService, ProductMeasureService>();
 
             return services;
         }
@@ -69,6 +76,24 @@
                 options.Password.RequireUppercase = false;
             })
             .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            return services;
+        }
+
+        /// <summary>
+        /// Adding services for usage of React
+        /// </summary>
+        /// <param name="services">Service Collection</param>
+        /// <returns></returns>
+        public static IServiceCollection AddReactServices(this IServiceCollection services)
+        {
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddReact();
+
+            services
+                .AddJsEngineSwitcher(options =>
+                options.DefaultEngineName = V8JsEngine.EngineName)
+              .AddV8();
 
             return services;
         }

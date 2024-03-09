@@ -1,0 +1,66 @@
+﻿@model ProductFormModel
+
+@{
+    ViewBag.Title = "Add product";
+}
+
+<div>
+    <form asp-action="Add" asp-controller="Product" id="addProductForm">
+        <div>
+            <label asp-for="Name">Product name</label>
+            <input asp-for="Name" />
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div>
+            <label asp-for="CashRegisterName">Product cash register name</label>
+            <input asp-for="CashRegisterName" />
+            <span asp-validation-for="CashRegisterName"></span>
+        </div>
+        <div>
+            <label asp-for="CodeForScales">Product code for scales</label>
+            <input asp-for="CodeForScales" type="number"/>
+        </div>
+        <div>
+            <label asp-for="SalePrice">Product sale price</label>
+            <input asp-for="SalePrice"/>
+            <span asp-validation-for="SalePrice"></span>
+        </div>
+        <div>
+            <label asp-for="PurchasePrice">Product purchase price</label>
+            <input asp-for="PurchasePrice" />
+            <span asp-validation-for="PurchasePrice"></span>
+        </div>
+        <div>
+            <label asp-for="Description">Product description</label>
+            <input asp-for="Description" />
+            <span asp-validation-for="Description"></span>
+        </div>
+        <div>
+            <label asp-for="ItemGroupId">Select Item Group</label>
+            <select asp-for="ItemGroupId">
+                <option disabled selected value="">Select Item Group...</option>
+                @foreach (ItemGroupViewModel itemGroup in Model.ItemGroups)
+                {
+                    <option value="@itemGroup.Id">@itemGroup.Name</option>
+                }
+            </select>
+            <span asp-validation-for="ItemGroupId"></span>
+        </div>
+        <div>
+            <label asp-for="MeasureId">Select Item Group</label>
+            <select asp-for="MeasureId">
+                <option disabled selected value="">Select Measure...</option>
+                @foreach (MeasureViewModel measure in Model.Measures)
+                {
+                    <option value="@measure.Id">@measure.Value</option>
+                }
+            </select>
+            <span asp-validation-for="MeasureId"></span>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

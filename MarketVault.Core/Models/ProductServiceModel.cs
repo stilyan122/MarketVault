@@ -1,7 +1,7 @@
-﻿using MarketVault.Infrastructure.Data.Models;
-
-namespace MarketVault.Core.Modes
+﻿namespace MarketVault.Core.Models
 {
+    using MarketVault.Infrastructure.Data.Models;
+
     /// <summary>
     /// Service model used for product entity
     /// </summary>
@@ -63,6 +63,11 @@ namespace MarketVault.Core.Modes
         public ItemGroup ItemGroup { get; set; } = null!;
 
         /// <summary>
+        /// Service model item group id
+        /// </summary>
+        public int ItemGroupId { get; set; }
+
+        /// <summary>
         /// Service model collection with barcodes
         /// </summary>
         public List<Barcode> Barcodes { get; set; } = new List<Barcode>();
@@ -81,5 +86,10 @@ namespace MarketVault.Core.Modes
         /// Service model measure
         /// </summary>
         public Measure Measure { get; set; } = null!;
+
+        /// <summary>
+        /// Service model measure id
+        /// </summary>
+        public int MeasureId { get; set; }
     }
 }

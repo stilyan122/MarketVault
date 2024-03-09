@@ -1,7 +1,7 @@
 ﻿namespace MarketVault.Core.Services.Impementations
 {
     using MarketVault.Core.Contracts;
-    using MarketVault.Core.Modes;
+    using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Infrastructure.Data.Models;
     using Microsoft.EntityFrameworkCore;
@@ -90,7 +90,9 @@
                     DateModified = e.DateModified,
                     Description = e.Description,
                     ItemGroup = e.ItemGroup,
+                    ItemGroupId = e.ItemGroupId,
                     Measure = e.ProductsMeasures.First().Measure,
+                    MeasureId = e.ProductsMeasures.First().MeasureId,
                     Barcodes = e.Barcodes.ToList(),
                     Name = e.Name,
                     NomenclatureNumber = e.NomenclatureNumber,
