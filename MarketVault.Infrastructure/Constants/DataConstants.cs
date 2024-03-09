@@ -43,7 +43,7 @@
             public const int NameMinLength = 5;
             public const int NameMaxLength = 50;
 
-            public const int CashRegisterNameMinLength = 1;
+            public const int CashRegisterNameMinLength = 3;
             public const int CashRegisterNameMaxLength = 30;
 
             public const int DescriptionMinLength = 10;
@@ -115,6 +115,48 @@
         {
             public const int NameMinLength = 2;
             public const int NameMaxLength = 25;
+        }
+
+        /// <summary>
+        /// Constants for exception messages
+        /// </summary>
+        public static class ExceptionMessagesConstants
+        {
+            public const string ProductNameRequiredExceptionMessage
+                = "Field for name is required!";
+            public const string ProductNameLengthExceptionMessage
+                = "Length of field name must be between {2} " +
+                "and {1} characters long!";
+
+            public const string ProductCashRegisterNameRequiredExceptionMessage
+                = "Field for cash register name is required!";
+            public const string ProductCashRegisterNameLengthExceptionMessage
+                = "Length of field cash register name must be between {2} " +
+                "and {1} characters long!";
+
+            public const string ProductSalePriceRequiredExceptionMessage
+                = "Field for sale price is required!";
+            public const string ProductSalePriceRangeExceptionMessage
+                = "Length of field sale price must be between {2} " +
+                "and {1} characters long!";
+
+            public const string ProductPurchasePriceRequiredExceptionMessage
+               = "Field for purchase price is required!";
+            public const string ProductPurchasePriceRangeExceptionMessage
+                = "Length of field purchase price must be between {2} " +
+                "and {1} characters long!";
+
+            public const string ProductDescriptionRequiredExceptionMessage
+                = "Field for description is required!";
+            public const string ProductDescriptionLengthExceptionMessage
+                = "Length of field description must be between {2} " +
+                "and {1} characters long!";
+
+            public const string ProductItemGroupRequiredExceptionMessage
+               = "Field for item group is required!";
+
+            public const string ProductMeasureRequiredExceptionMessage
+               = "Field for measure is required!";
         }
     }
 }

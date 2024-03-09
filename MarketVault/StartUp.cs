@@ -18,15 +18,8 @@ namespace MarketVault
             builder.Services.AddDbServices(builder.Configuration);
             builder.Services.AddIdentityServices();
             builder.Services.AddCoreServices();
-
-            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            builder.Services.AddReact();
-
-            builder.Services
-                .AddJsEngineSwitcher(options => 
-                options.DefaultEngineName = V8JsEngine.EngineName)
-              .AddV8();
-
+            builder.Services.AddReactServices();
+            
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();

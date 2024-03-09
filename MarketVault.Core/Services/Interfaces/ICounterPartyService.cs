@@ -3,7 +3,7 @@
     using MarketVault.Core.Models;
 
     /// <summary>
-    /// Interface resposinble for counter party service
+    /// Interface responsible for counter party service
     /// </summary>
     public interface ICounterPartyService
     {

@@ -1,9 +1,9 @@
 ﻿namespace MarketVault.Core.Services.Interfaces
 {
-    using MarketVault.Core.Modes;
+    using MarketVault.Core.Models;
 
     /// <summary>
-    /// Interface resposinble for product service
+    /// Interface responsible for product service
     /// </summary>
     public interface IProductService
     {
