@@ -3,11 +3,14 @@
     using MarketVault.Core;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
+    using MarketVault.Infrastructure.Data.Models;
     using MarketVault.Models.ItemGroup;
     using MarketVault.Models.Measure;
     using MarketVault.Models.Product;
+    using MarketVault.Models.Search;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using System;
 
     /// <summary>
     /// Product Controller (Authorized)
@@ -85,7 +88,7 @@
                 Quantity = sm.Quantity,
                 SalePrice = sm.SalePrice
             })
-                .ToList();
+            .ToList();
 
             const int pageSize = 10;
 
@@ -96,7 +99,11 @@
 
             int recsCount = viewModels.Count;
 
-            var pager = new Pager(recsCount, pages, pageSize);
+            var pager = new Pager(recsCount, pages, pageSize)
+            {
+                Action = "All",
+                Controller = "Product"
+            };
 
             int recsSkip = (pages - 1) * pageSize;
 
@@ -108,6 +115,65 @@
             this.ViewBag.Pager = pager;
 
             return View(data);
+        }
+
+        /// <summary>
+        /// Action for filtering products (Asynchronous)
+        /// </summary>
+        /// <param name="searchModel">Search model used for filtering</param>
+        /// <returns>Task<IActionResult></returns>
+        public async Task<IActionResult> SearchProducts(
+            SearchModel? searchModel, int pages = 1)
+        {
+            var predicate = GetCorrectPredicate(searchModel?.SortType ?? "",
+                searchModel?.Value ?? "");
+
+            var serviceModels = await this.service
+                .GetAllByPredicateAsync(predicate);
+
+            var viewModels = serviceModels
+                .Select(sm => new ProductViewModel()
+                {
+                    DateAdded = sm.DateAdded,
+                    CashRegisterName = sm.CashRegisterName,
+                    DateModified = sm.DateModified,
+                    CodeForScales = sm.CodeForScales,
+                    ItemGroupName = sm.ItemGroup.Name,
+                    Measure = sm.Measure.Name,
+                    Name = sm.Name,
+                    PurchasePrice = sm.PurchasePrice,
+                    Quantity = sm.Quantity,
+                    SalePrice = sm.SalePrice
+                })
+                .ToList();
+
+            const int pageSize = 10;
+
+            if (pages < 1)
+            {
+                pages = 1;
+            }
+
+            int recsCount = viewModels.Count;
+
+            var pager = new Pager(recsCount, pages, pageSize)
+            {
+                Action = "SearchProducts",
+                Controller = "Product"
+            };
+
+            int recsSkip = (pages - 1) * pageSize;
+
+            var data = viewModels
+                .Skip(recsSkip)
+                .Take(pager.PageSize)
+                .ToList();
+
+            this.ViewBag.Pager = pager;
+
+            string viewName = searchModel?.ViewName ?? "Index";
+
+            return View(viewName, data);
         }
 
         /// <summary>
@@ -203,6 +269,36 @@
                 });
 
             return itemGroupViewModels;
+        }
+
+        /// <summary>
+        /// Private method for getting correct predicate for sorting products
+        /// </summary>
+        /// <param name="sortType">Sort Type to use</param>
+        /// <param name="value">Value of the sorter</param>
+        /// <returns>Predicate<Product></returns>
+        private static Predicate<Product> GetCorrectPredicate(string sortType, 
+            string value)
+        {
+            return sortType switch
+            {
+                "Name" => x => x.Name == value,
+                "Cash Register Name" => x => x.CashRegisterName == value,
+                "Article Number" => x => x.ArticleNumber == int.Parse(
+                                        value),
+                "Nomenclature Number" => x => x.NomenclatureNumber == int.Parse(
+                                        value),
+                "Sale Price" => x => x.SalePrice == decimal.Parse(
+                                        value),
+                "Purchase Price" => x => x.PurchasePrice == decimal.Parse(
+                                        value),
+                "Item Group Name" => x => x.ItemGroup.Name == value,
+                "Measure" => x => x.ProductsMeasures
+                                    .First()
+                                    .Measure
+                                    .Name == value,
+                _ => x => x.Id == 0,
+            };
         }
     }
 }

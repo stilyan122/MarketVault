@@ -1,0 +1,23 @@
+﻿@model SearchModel
+
+<div class="searchProductPanel">
+    <form asp-controller="Product" asp-action="SearchProducts">
+        <input placeholder="Search product(s)..." asp-for="Value"/>
+        <button type="submit">Search</button>
+        <select asp-for="SortType">
+            <option disabled selected value="">Search with...</option>
+            <option>Name</option>
+            <option>Cash Register Name</option>
+            <option>Article Number</option>
+            <option>Nomenclature Number</option>
+            <option>Sale Price</option>
+            <option>Purchase Price</option>
+            <option>Item Group Name</option>
+            <option>Measure Type</option>
+        </select>
+
+        <input type="hidden" asp-for="ViewName" value="@Model.ViewName"/>
+        <input type="hidden" asp-for="SortType" value="@Model.SortType"/>
+        <input type="hidden" asp-for="Value" value="@Model.Value"/>
+    </form>
+</div>

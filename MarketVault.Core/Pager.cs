@@ -36,6 +36,16 @@
         public int EndPage { get; private set; }
 
         /// <summary>
+        /// Controller name
+        /// </summary>
+        public string Controller { get; set; } = "Home";
+
+        /// <summary>
+        /// Action name
+        /// </summary>
+        public string Action { get; set; } = "Index";
+
+        /// <summary>
         /// Default constructor
         /// </summary>
         public Pager()

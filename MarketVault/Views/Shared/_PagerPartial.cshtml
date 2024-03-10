@@ -9,16 +9,16 @@
             {
                 <li class="page-item">
                     <a class="page-link"
-                       asp-controller="Product"
-                       asp-action="All"
+                       asp-controller="@Model.Controller"
+                       asp-action="@Model.Action"
                        asp-route-pages="1">
                         First
                     </a>
                 </li>
                 <li class="page-item">
                     <a class="page-link"
-                       asp-controller="Product"
-                       asp-action="All"
+                       asp-controller="@Model.Controller"
+                       asp-action="@Model.Action"
                        asp-route-pages="@(Model.CurrentPage - 1)">
                         Previous
                     </a>
@@ -29,8 +29,8 @@
             {
                 <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
                     <a class="page-link"
-                       asp-controller="Product"
-                       asp-action="All"
+                       asp-controller="@Model.Controller"
+                       asp-action="@Model.Action"
                        asp-route-pages="@i">
                         @i
                     </a>
@@ -41,16 +41,16 @@
             {
                 <li class="page-item">
                     <a class="page-link"
-                       asp-controller="Product"
-                       asp-action="All"
+                       asp-controller="@Model.Controller"
+                       asp-action="@Model.Action"
                        asp-route-pages="@(Model.CurrentPage + 1)">
                         Next
                     </a>
                 </li>
                 <li class="page-item">
                     <a class="page-link"
-                       asp-controller="Product"
-                       asp-action="All"
+                       asp-controller="@Model.Controller"
+                       asp-action="@Model.Action"
                        asp-route-pages="@Model.TotalPages">
                         Last
                     </a>

@@ -4,7 +4,16 @@
     ViewBag.Title = "All products";
     int counter = 1;
 
-    Pager pager = new Pager();
+    Pager pager = new Pager()
+    {
+        Controller = "Product",
+        Action = "All"
+    };
+
+    SearchModel searcher = new SearchModel()
+    {
+        ViewName = "All"
+    };
 
     int pageNo = 0;
 
@@ -27,6 +36,8 @@
 <link rel="stylesheet" href="~/css/nomenclatures..css" />
 
 <div class="viewContainer">
+    <partial name="_SearchProductPartial" model="@searcher" />
+
     <partial name="_PagerPartial" model="@pager" />
 
     <div class="productsContainer">
