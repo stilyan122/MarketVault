@@ -1,6 +1,7 @@
 ﻿namespace MarketVault.Core.Services.Interfaces
 {
     using MarketVault.Core.Models;
+    using MarketVault.Infrastructure.Data.Models;
 
     /// <summary>
     /// Interface responsible for product service
@@ -12,6 +13,13 @@
         /// </summary>
         /// <returns>Task<IEnumerable<ProductServiceModel>></returns>
         Task<IEnumerable<ProductServiceModel>> GetAllAsync();
+
+        /// <summary>
+        /// Asynchronous method to get all products with condition
+        /// </summary>
+        /// <returns>Task<IEnumerable<ProductServiceModel>></returns>
+        Task<IEnumerable<ProductServiceModel>> GetAllByPredicateAsync
+            (Predicate<Product> condition);
 
         /// <summary>
         /// Asynchronous method for adding a product

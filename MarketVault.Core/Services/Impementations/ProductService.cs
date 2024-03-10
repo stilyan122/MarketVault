@@ -106,6 +106,50 @@
         }
 
         /// <summary>
+        /// Get all products that match a condition (Asynchronous)
+        /// </summary>
+        /// <param name="condition">Condition for filtering</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<ProductServiceModel>> GetAllByPredicateAsync
+            (Predicate<Product> condition)
+        {
+            var entities = await this.repository
+                .All()
+                .Include(p => p.ItemGroup)
+                .Include(p => p.Barcodes)
+                .Include(p => p.ProductsMeasures)
+                .ThenInclude(pm => pm.Measure)
+                .AsNoTracking()
+                .Where(p => p.IsActive)
+                .ToListAsync();
+
+            var sorted = entities
+                .Where(e => condition.Invoke(e))
+                .Select(e => new ProductServiceModel()
+                {
+                    Id = e.Id,
+                    ArticleNumber = e.ArticleNumber,
+                    DateAdded = e.DateAdded,
+                    CashRegisterName = e.CashRegisterName,
+                    CodeForScales = e.CodeForScales,
+                    DateModified = e.DateModified,
+                    Description = e.Description,
+                    ItemGroup = e.ItemGroup,
+                    ItemGroupId = e.ItemGroupId,
+                    Measure = e.ProductsMeasures.First().Measure,
+                    MeasureId = e.ProductsMeasures.First().MeasureId,
+                    Barcodes = e.Barcodes.ToList(),
+                    Name = e.Name,
+                    NomenclatureNumber = e.NomenclatureNumber,
+                    PurchasePrice = e.PurchasePrice,
+                    Quantity = e.Quantity,
+                    SalePrice = e.SalePrice,
+                });
+
+            return sorted;
+        }
+
+        /// <summary>
         /// Update product method (Asynchronous)
         /// </summary>
         /// <param name="product">Product to update</param>
