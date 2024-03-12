@@ -4,62 +4,78 @@
     ViewBag.Title = "Add counter party";
 }
 
+<link rel="stylesheet" href="~/css/nomenclatures..css" />
+
 <div class="addCounterPartyContainer">
     <form asp-action="Add" asp-controller="CounterParty" id="addCounterPartyForm">
         <div>
-            <label asp-for="Name">Counter party name</label>
-            <input asp-for="Name" />
+            <div>
+                <label asp-for="Name">Counter party name</label>
+                <input asp-for="Name" />
+            </div>
             <span asp-validation-for="Name"></span>
         </div>
         <div>
-            <label asp-for="VATNumber">Counter party VAT Number</label>
-            <input asp-for="VATNumber" />
+            <div>
+                <label asp-for="VATNumber">Counter party VAT number</label>
+                <input asp-for="VATNumber" />
+            </div>
             <span asp-validation-for="VATNumber"></span>
         </div>
         <div>
-            <label asp-for="ValueAddedTaxLawId">Counter party Value Added Tax Law Id</label>
-            <input asp-for="ValueAddedTaxLawId" />
+            <div>
+                <label asp-for="ValueAddedTaxLawId">Counter party value added tax law id</label>
+                <input asp-for="ValueAddedTaxLawId" />
+            </div>
             <span asp-validation-for="ValueAddedTaxLawId"></span>
         </div>
         <div>
-            <label asp-for="BankIBAN">Counter party Bank IBAN</label>
-            <input asp-for="BankIBAN" />
+            <div>
+                <label asp-for="BankIBAN">Counter party bank IBAN</label>
+                <input asp-for="BankIBAN" />
+            </div>
             <span asp-validation-for="BankIBAN"></span>
         </div>
         <div>
-            <label asp-for="BankCode">Counter party Bank Code</label>
-            <input asp-for="BankCode" />
+            <div>
+                <label asp-for="BankCode">Counter party bank code</label>
+                <input asp-for="BankCode" />
+            </div>
             <span asp-validation-for="BankCode"></span>
         </div>
         <div>
-            <label asp-for="BankId">Select Bank</label>
-            <select asp-for="BankId">
-                <option disabled selected value="">Select Bank...</option>
-                @foreach (BankViewModel bank in Model.Banks)
-                {
-                    string bankName = bank.Name + " " +
-                    bank.TownName + " " + bank.StreetName + " " + bank.StreetNumber;
+            <div>
+                <label asp-for="BankId">Select Bank</label>
+                <select asp-for="BankId">
+                    <option disabled selected value="">Select bank...</option>
+                    @foreach (BankViewModel bank in Model.Banks)
+                    {
+                        string bankName = bank.Name + " " +
+                        bank.TownName + " " + bank.StreetName + " " + bank.StreetNumber;
 
-                    <option value="@bank.Id">@bankName</option>
-                }
-            </select>
+                        <option value="@bank.Id">@bankName</option>
+                    }
+                </select>
+            </div>
             <span asp-validation-for="BankId"></span>
         </div>
         <div>
-            <label asp-for="FirmId">Select Firm</label>
-            <select asp-for="FirmId">
-                <option disabled selected value="">Select Firm...</option>
-                @foreach (FirmViewModel firm in Model.Firms)
-                {
-                    string firmName = firm.Name + " " +
-                    firm.TownName + " " + firm.StreetName + " " + firm.StreetNumber;
+            <div>
+                <label asp-for="FirmId">Select Firm</label>
+                <select asp-for="FirmId">
+                    <option disabled selected value="">Select firm...</option>
+                    @foreach (FirmViewModel firm in Model.Firms)
+                    {
+                        string firmName = firm.Name + " " +
+                        firm.TownName + " " + firm.StreetName + " " + firm.StreetNumber;
 
-                    <option value="@firm.Id">@firmName</option>
-                }
-            </select>
+                        <option value="@firm.Id">@firmName</option>
+                    }
+                </select>
+            </div>
             <span asp-validation-for="FirmId"></span>
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" id="addCounterPartyBtn">Submit</button>
     </form>
 </div>
 

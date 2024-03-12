@@ -9,6 +9,7 @@
     using MarketVault.Data;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -35,6 +36,11 @@
             services.AddScoped<IProductMeasureService, ProductMeasureService>();
             services.AddScoped<IBankService, BankService>();
             services.AddScoped<IFirmService, FirmService>();
+
+            services.AddMvc(options =>
+                options
+                .Filters
+                .Add(new AutoValidateAntiforgeryTokenAttribute()));
 
             return services;
         }

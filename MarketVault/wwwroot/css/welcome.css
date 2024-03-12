@@ -1,0 +1,77 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+body {
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.welcomeContainer {
+    background: hsla(216, 37%, 55%, 1);
+    background: linear-gradient(180deg, hsla(216, 37%, 55%, 1) 0%, hsla(350, 51%, 46%, 1) 100%);
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+    padding: 5%;
+    font-size: 30px;
+    margin: 0;
+    border-radius: 14px;
+    margin: auto auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    color: white;
+}
+
+.section1,
+.section2 {
+    padding: 1%;
+    animation: welcomeZoomIn 2s ease 0s 1 normal forwards;
+}
+
+@keyframes welcomeZoomIn {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.welcomeBtn {
+    text-decoration: none;
+    color: white;
+    animation: welcomeBtnFlash 2s ease 0s 100 normal forwards;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+@keyframes welcomeBtnFlash {
+    0%, 50%, 100% {
+        opacity: 1;
+    }
+
+    25%, 75% {
+        opacity: 0;
+    }
+}
+
+.welcomeBtn:hover{
+    color: black;
+    background-color: white;
+    padding: 0 12px;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); 
+}
