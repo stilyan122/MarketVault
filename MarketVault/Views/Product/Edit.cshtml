@@ -1,38 +1,34 @@
 ﻿@model ProductFormModel
 
-@{
-    ViewBag.Title = "Add product";
-}
-
-<div class="addProductContainer">
-    <form asp-action="Add" asp-controller="Product" id="addProductForm">
+<div class="editProductContainer">
+    <form asp-action="Edit" asp-controller="Product" id="editProductForm">
         <div>
             <label asp-for="Name">Product name</label>
-            <input asp-for="Name" />
+            <input asp-for="Name" value="@Model.Name" />
             <span asp-validation-for="Name"></span>
         </div>
         <div>
             <label asp-for="CashRegisterName">Product cash register name</label>
-            <input asp-for="CashRegisterName" />
+            <input asp-for="CashRegisterName" value="@Model.CashRegisterName" />
             <span asp-validation-for="CashRegisterName"></span>
         </div>
         <div>
             <label asp-for="CodeForScales">Product code for scales</label>
-            <input asp-for="CodeForScales" type="number"/>
+            <input asp-for="CodeForScales" type="number" value="@Model.CodeForScales"/>
         </div>
         <div>
             <label asp-for="SalePrice">Product sale price</label>
-            <input asp-for="SalePrice"/>
-            <span asp-validation-for="SalePrice"></span>
+            <input asp-for="SalePrice" />
+            <span asp-validation-for="SalePrice" value="@Model.SalePrice"></span>
         </div>
         <div>
             <label asp-for="PurchasePrice">Product purchase price</label>
-            <input asp-for="PurchasePrice" />
+            <input asp-for="PurchasePrice" value="@Model.PurchasePrice"/>
             <span asp-validation-for="PurchasePrice"></span>
         </div>
         <div>
             <label asp-for="Description">Product description</label>
-            <input asp-for="Description" />
+            <input asp-for="Description" value="@Model.Description" />
             <span asp-validation-for="Description"></span>
         </div>
         <div>

@@ -120,13 +120,21 @@
         /// <summary>
         /// Action for filtering products (Asynchronous)
         /// </summary>
-        /// <param name="searchModel">Search model used for filtering</param>
         /// <returns>Task<IActionResult></returns>
         public async Task<IActionResult> SearchProducts(
-            SearchModel? searchModel, int pages = 1)
+                string sortType,
+                string value,
+                string viewName, 
+                int pages = 1)
         {
-            var predicate = GetCorrectPredicate(searchModel?.SortType ?? "",
-                searchModel?.Value ?? "");
+            if (value == null || 
+                String.IsNullOrEmpty(value) || 
+                String.IsNullOrWhiteSpace(value))
+            {
+                return RedirectToAction("All");
+            }
+
+            var predicate = GetCorrectPredicate(sortType, value);
 
             var serviceModels = await this.service
                 .GetAllByPredicateAsync(predicate);
@@ -162,6 +170,14 @@
                 Controller = "Product"
             };
 
+            var searcher = new SearchModel()
+            {
+                ViewName = viewName,
+                SortType = sortType,
+                Value = value,
+                IsInSearch = true
+            };
+
             int recsSkip = (pages - 1) * pageSize;
 
             var data = viewModels
@@ -170,8 +186,14 @@
                 .ToList();
 
             this.ViewBag.Pager = pager;
+            this.ViewBag.Searcher = searcher; 
 
-            string viewName = searchModel?.ViewName ?? "Index";
+            if (viewName == null ||
+                String.IsNullOrEmpty(viewName) ||
+                String.IsNullOrWhiteSpace(viewName))
+            {
+                viewName = "Index";
+            }
 
             return View(viewName, data);
         }
@@ -229,6 +251,57 @@
 
             await this.productMeasureService.AddAsync(productMeasureServiceModel);
             await this.service.AddAsync(serviceModel);
+
+            return RedirectToAction("All");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            try
+            {
+                var entity = await this.service.GetByIdAsync(id);
+
+                var viewModel = new ProductFormModel()
+                {
+                    CashRegisterName = entity.CashRegisterName,
+                    Name = entity.Name,
+                    Description = entity.Description,
+                    CodeForScales = entity.CodeForScales,
+                    ItemGroupId = entity.ItemGroupId,
+                    ItemGroups = await this.GetItemGroups(),
+                    MeasureId = entity.MeasureId,
+                    Measures = await this.GetMeasures(),
+                    PurchasePrice = entity.PurchasePrice,
+                    SalePrice = entity.SalePrice,
+                };
+
+                return View(viewModel);
+            }
+            catch (ArgumentNullException)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, ProductFormModel model)
+        {
+            var serviceModel = new ProductServiceModel()
+            {
+                Id = id,
+                DateModified = DateTime.Now,
+                Description = model.Description,
+                ItemGroupId = model.ItemGroupId,
+                MeasureId = model.MeasureId,
+                Name = model.Name,
+                CashRegisterName = model.CashRegisterName,
+                PurchasePrice = model.PurchasePrice,
+                SalePrice = model.SalePrice,
+                CodeForScales = model.CodeForScales
+            };
+
+            await this.service.UpdateAsync(serviceModel);
 
             return RedirectToAction("All");
         }

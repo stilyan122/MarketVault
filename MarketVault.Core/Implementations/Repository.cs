@@ -77,6 +77,7 @@
         /// <returns>(void)</returns>
         public async Task UpdateAsync(TEntity entity)
         {
+            this.context.Attach(entity);
             this.context.Update(entity);
             await this.SaveChangesAsync();
         }

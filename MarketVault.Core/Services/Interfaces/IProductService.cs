@@ -22,6 +22,13 @@
             (Predicate<Product> condition);
 
         /// <summary>
+        /// Asynchronous method to get a product by a given id
+        /// </summary>
+        /// <param name="id">Id to get</param>
+        /// <returns>Task<ProductServiceModel></returns>
+        Task<ProductServiceModel> GetByIdAsync (int id);
+
+        /// <summary>
         /// Asynchronous method for adding a product
         /// </summary>
         /// <param name="product">Product service model</param>
