@@ -1,9 +1,26 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<div id="content"></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.development.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
 
-<script src="@Url.Content("~/js/marketvault/src/Components/CommentBox.jsx")"></script>
+<link rel="stylesheet" href="~/css/welcome.css" asp-append-version="true" />
+
+<div class="welcomeContainer">
+    <section class="section1">
+        Welcome to MarketVault – your ultimate solution for 
+        streamlining supermarket operations and maximizing efficiency! 
+        With MarketVault, you can 
+        effortlessly manage counter parties, track products, 
+        manage and edit banks and firms, and generate insightful reports,
+        all in one intuitive platform.
+    </section>
+
+    <section class="section2">
+        Say goodbye to tedious paperwork and manual data entry – 
+        our user-friendly interface empowers you to create and manage products with ease. 
+        Whether you're following your products or handling deliver orders, 
+        MarketVault simplifies the entire invoicing process, saving you time
+        and reducing errors.
+    </section>
+
+    <a class="welcomeBtn" asp-controller="Product" asp-action="All">Let's go!</a>
+</div>

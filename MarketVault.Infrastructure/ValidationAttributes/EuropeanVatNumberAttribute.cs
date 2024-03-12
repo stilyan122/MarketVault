@@ -5,17 +5,18 @@
 
     public class EuropeanVatNumberAttribute : ValidationAttribute
     {
-        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        protected override ValidationResult? IsValid(object? value, 
+            ValidationContext validationContext)
         {
             if (value != null)
             {
-                string vatNumber = value.ToString();
+                string vatNumber = value.ToString() ?? "";
 
                 // European VAT number format: [Country Code][Digits]
                 // Example: DE123456789 (Germany)
                 if (!Regex.IsMatch(vatNumber, @"^[A-Z]{2}\d{9}$"))
                 {
-                    return new ValidationResult("Invalid European VAT number format.");
+                    return new ValidationResult("Invalid European VAT number format. (ex: BG123456789)");
                 }
 
                 // Validate country code against a list of valid EU member states
@@ -28,7 +29,7 @@
             return ValidationResult.Success;
         }
 
-        private bool IsValidEUCountryCode(string countryCode)
+        private static bool IsValidEUCountryCode(string countryCode)
         {
             // Sample list of EU member states
             List<string> euCountries = new List<string>
