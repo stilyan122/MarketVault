@@ -68,6 +68,12 @@
         public decimal TotalPurchasePriceWithVAT { get; set; }
 
         /// <summary>
+        /// DateTime Date when made
+        /// </summary>
+        [Comment("DateTime when made")]
+        public DateTime DateMade { get; set; } = DateTime.Now;
+
+        /// <summary>
         /// Collection with entities from the mapping table - ProductsOperations
         /// </summary>
         public IEnumerable<ProductOperation> ProductsOperations { get; set; }

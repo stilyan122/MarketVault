@@ -1,0 +1,68 @@
+﻿@model CounterPartyFormModel
+
+@{
+    ViewBag.Title = "Add counter party";
+}
+
+<div class="addCounterPartyContainer">
+    <form asp-action="Add" asp-controller="CounterParty" id="addCounterPartyForm">
+        <div>
+            <label asp-for="Name">Counter party name</label>
+            <input asp-for="Name" />
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div>
+            <label asp-for="VATNumber">Counter party VAT Number</label>
+            <input asp-for="VATNumber" />
+            <span asp-validation-for="VATNumber"></span>
+        </div>
+        <div>
+            <label asp-for="ValueAddedTaxLawId">Counter party Value Added Tax Law Id</label>
+            <input asp-for="ValueAddedTaxLawId" />
+            <span asp-validation-for="ValueAddedTaxLawId"></span>
+        </div>
+        <div>
+            <label asp-for="BankIBAN">Counter party Bank IBAN</label>
+            <input asp-for="BankIBAN" />
+            <span asp-validation-for="BankIBAN"></span>
+        </div>
+        <div>
+            <label asp-for="BankCode">Counter party Bank Code</label>
+            <input asp-for="BankCode" />
+            <span asp-validation-for="BankCode"></span>
+        </div>
+        <div>
+            <label asp-for="BankId">Select Bank</label>
+            <select asp-for="BankId">
+                <option disabled selected value="">Select Bank...</option>
+                @foreach (BankViewModel bank in Model.Banks)
+                {
+                    string bankName = bank.Name + " " +
+                    bank.TownName + " " + bank.StreetName + " " + bank.StreetNumber;
+
+                    <option value="@bank.Id">@bankName</option>
+                }
+            </select>
+            <span asp-validation-for="BankId"></span>
+        </div>
+        <div>
+            <label asp-for="FirmId">Select Firm</label>
+            <select asp-for="FirmId">
+                <option disabled selected value="">Select Firm...</option>
+                @foreach (FirmViewModel firm in Model.Firms)
+                {
+                    string firmName = firm.Name + " " +
+                    firm.TownName + " " + firm.StreetName + " " + firm.StreetNumber;
+
+                    <option value="@firm.Id">@firmName</option>
+                }
+            </select>
+            <span asp-validation-for="FirmId"></span>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
