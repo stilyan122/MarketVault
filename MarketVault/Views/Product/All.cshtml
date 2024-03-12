@@ -4,16 +4,9 @@
     ViewBag.Title = "All products";
     int counter = 1;
 
-    Pager pager = new Pager()
-    {
-        Controller = "Product",
-        Action = "All"
-    };
+    Pager pager = new Pager();
 
-    SearchModel searcher = new SearchModel()
-    {
-        ViewName = "All"
-    };
+    SearchModel searcher = new SearchModel();
 
     int pageNo = 0;
 
@@ -21,6 +14,20 @@
     {
         pager = ViewBag.Pager;
         pageNo = pager.CurrentPage;
+    }
+    else
+    {
+        pager.Action = "All";
+        pager.Controller = "Product";
+    }
+
+    if (ViewBag.Searcher != null)
+    {
+        searcher = ViewBag.Searcher;
+    }
+    else
+    {
+        searcher.ViewName = "All";
     }
 }
 
@@ -36,7 +43,10 @@
 <link rel="stylesheet" href="~/css/nomenclatures..css" />
 
 <div class="viewContainer">
-    <partial name="_SearchProductPartial" model="@searcher" />
+    @if (searcher.IsInSearch)
+    {
+        <partial name="_SearchProductPartial" model="@searcher" />
+    }
 
     <partial name="_PagerPartial" model="@pager" />
 
@@ -45,6 +55,7 @@
         {
             <div class="productContainer">
                 <div id="@counter" class="productComponentContainer"></div>
+
                 <script>
                     props = {
                         name: '@product.Name',
@@ -64,6 +75,11 @@
                         document.getElementById(@counter),
                     );
                 </script>
+
+                <a asp-controller="Product" asp-action="Edit" asp-route-id="@counter">
+                    Edit
+                </a>
+
                 @{
                     counter++;
                 }

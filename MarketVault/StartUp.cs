@@ -1,9 +1,6 @@
 namespace MarketVault
 {
-    using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
-    using JavaScriptEngineSwitcher.V8;
     using MarketVault.Core;
-    using Microsoft.AspNetCore.Http;
     using React.AspNet;
 
     /// <summary>
