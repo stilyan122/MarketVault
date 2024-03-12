@@ -1,5 +1,6 @@
 ﻿namespace MarketVault.Infrastructure.Data.Models
 {
+    using MarketVault.Infrastructure.ValidationAttributes;
     using Microsoft.EntityFrameworkCore;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -33,6 +34,7 @@
         /// CounterParty VAT Number
         /// </summary>
         [Required]
+        [EuropeanVatNumber]
         [MaxLength(VATNumberMaxLength)]
         public string VATNumber { get; set; } = string.Empty;
 

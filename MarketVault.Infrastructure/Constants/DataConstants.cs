@@ -106,6 +106,12 @@
 
             public const int ValueAddedTaxLawIdMinLength = 2;
             public const int ValueAddedTaxLawIdMaxLength = 28;
+
+            public const int BankCodeMinLength = 6;
+            public const int BankCodeMaxLength = 12;
+
+            public const int BankIBANMinLength = 8;
+            public const int BankIBANMaxLength = 18;
         }
 
         /// <summary>
@@ -157,6 +163,47 @@
 
             public const string ProductMeasureRequiredExceptionMessage
                = "Field for measure is required!";
+
+
+
+
+
+            public const string CounterPartyNameRequiredExceptionMessage
+                = "Field for counter party name is required!";
+            public const string CounterPartyNameLengthExceptionMessage
+                = "Length of field counter party name must be between {2} " +
+                "and {1} characters long!";
+
+            public const string CounterPartyVATNumberRequiredExceptionMessage
+                = "Field for counter party VAT number is required!";
+            public const string CounterPartyVATNumberLengthExceptionMessage
+                = "Length of field counter party VAT number must be between {2} " +
+                "and {1} characters long!";
+
+            public const string CounterPartyValueAddedTaxLawIdRequiredExceptionMessage
+                = "Field for counter party value added tax law id is required!";
+            public const string CounterPartyValueAddedTaxLawIdLengthExceptionMessage
+                = "Length of field counter party value added tax law id " +
+                "must be between {2} " +
+                "and {1} characters long!";
+
+            public const string CounterPartyBankRequiredExceptionMessage
+                = "Field for bank is required!";
+
+            public const string CounterPartyBankCodeRequiredExceptionMessage
+                = "Field for counter party bank code is required!";
+            public const string CounterPartyBankCodeLengthExceptionMessage
+                = "Length of field counter party bank code must be between {2} " +
+                "and {1} characters long!";
+
+            public const string CounterPartyBankIBANRequiredExceptionMessage
+                = "Field for counter party bank IBAN is required!";
+            public const string CounterPartyBankIBANLengthExceptionMessage
+                = "Length of field counter party bank IBAN must be between {2} " +
+                "and {1} characters long!";
+
+            public const string CounterPartyFirmRequiredExceptionMessage
+                = "Field for firm is required!";
         }
     }
 }

@@ -33,6 +33,8 @@
             services.AddScoped<IItemGroupService, ItemGroupService>();
             services.AddScoped<IMeasureService, MeasureService>();
             services.AddScoped<IProductMeasureService, ProductMeasureService>();
+            services.AddScoped<IBankService, BankService>();
+            services.AddScoped<IFirmService, FirmService>();
 
             return services;
         }
@@ -94,6 +96,24 @@
                 .AddJsEngineSwitcher(options =>
                 options.DefaultEngineName = V8JsEngine.EngineName)
               .AddV8();
+
+            return services;
+        }
+
+        /// <summary>
+        /// Adding services for custom model binders
+        /// </summary>
+        /// <param name="services">Service Collection</param>
+        /// <returns></returns>
+        public static IServiceCollection AddBinderServices(this IServiceCollection services)
+        {
+            services.AddMvc(options =>
+            {
+                options.ModelBinderProviders.Insert(0,
+                    new Binders.DateTimeModelBinderProvider());
+                options.ModelBinderProviders.Insert(0,
+                    new Binders.DecimalModelBinderProvider());
+            });
 
             return services;
         }

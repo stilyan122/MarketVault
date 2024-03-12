@@ -16,6 +16,7 @@ namespace MarketVault
             builder.Services.AddIdentityServices();
             builder.Services.AddCoreServices();
             builder.Services.AddReactServices();
+            builder.Services.AddBinderServices();
             
             builder.Services.AddControllersWithViews();
 

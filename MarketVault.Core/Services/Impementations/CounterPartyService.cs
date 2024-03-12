@@ -36,7 +36,13 @@
         {
             var entity = new CounterParty()
             {
-
+                BankId = counterParty.BankId,
+                FirmId = counterParty.FirmId,
+                Name = counterParty.Name,
+                BankCode = counterParty.BankCode,
+                VATNumber = counterParty.VATNumber,
+                ValueAddedTaxLawId = counterParty.ValueAddedTaxLawId,
+                BankIBAN = counterParty.BankIBAN
             };
 
             await this.repository.AddAsync(entity);
@@ -76,6 +82,8 @@
                     BankCode = cp.BankCode,
                     BankIBAN = cp.BankIBAN,
                     Firm = cp.Firm,
+                    FirmId = cp.FirmId,
+                    BankId = cp.BankId,
                     Name = cp.Name,
                     ValueAddedTaxLawId = cp.ValueAddedTaxLawId,
                     VATNumber = cp.VATNumber

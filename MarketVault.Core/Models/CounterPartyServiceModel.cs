@@ -32,6 +32,10 @@
         /// </summary>
         public Bank Bank { get; set; } = null!;
 
+        /// <summary>
+        /// Service model bank id
+        /// </summary>
+        public int BankId { get; set; }
 
         /// <summary>
         /// Service model bank code
@@ -47,5 +51,10 @@
         /// Service model firm
         /// </summary>
         public Firm Firm { get; set; } = null!;
+
+        /// <summary>
+        /// Service model firm id
+        /// </summary>
+        public int FirmId { get; set;}
     }
 }
