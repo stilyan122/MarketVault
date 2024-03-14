@@ -1,10 +1,12 @@
 ﻿namespace MarketVault.Core.Services.Impementations
 {
     using MarketVault.Core.Contracts;
+    using MarketVault.Core.Extensions;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Infrastructure.Data.Models;
     using Microsoft.EntityFrameworkCore;
+    using System.Linq.Expressions;
 
     /// <summary>
     /// Product service
@@ -16,21 +18,13 @@
         /// </summary>
         private readonly IRepository<Product> repository = null!;
 
-        private readonly IRepository<ProductMeasure> productMeasureRepository = null!;
-
-        private readonly IRepository<Measure> measureRepository = null!;
-
         /// <summary>
         /// Default constructor, injection of Product repository (DI)
         /// </summary>
         /// <param name="repository">Product repository</param>
-        public ProductService(IRepository<Product> repository,
-            IRepository<ProductMeasure> productMeasureRepository,
-            IRepository<Measure> measureRepository)
+        public ProductService(IRepository<Product> repository)
         {
             this.repository = repository;
-            this.productMeasureRepository = productMeasureRepository;
-            this.measureRepository = measureRepository;
         }
 
         /// <summary>
@@ -40,21 +34,7 @@
         /// <returns>(void)</returns>
         public async Task AddAsync(ProductServiceModel product)
         {
-            var entity = new Product()
-            {
-                Name = product.Name,
-                CashRegisterName = product.CashRegisterName,
-                ArticleNumber = product.ArticleNumber,
-                NomenclatureNumber = product.NomenclatureNumber,
-                CodeForScales = product.CodeForScales,
-                PurchasePrice = product.PurchasePrice,
-                SalePrice = product.SalePrice,
-                Quantity = product.Quantity,
-                Description = product.Description,
-                ItemGroupId = product.ItemGroup.Id,
-                DateAdded = product.DateAdded,
-                DateModified = product.DateModified,
-            };
+            var entity = ConvertToEntityModel(product);
 
             await this.repository.AddAsync(entity);
         }
@@ -66,10 +46,7 @@
         /// <returns>(void)</returns>
         public async Task DeleteAsync(ProductServiceModel product)
         {
-            var entity = new Product()
-            {
-
-            };
+            var entity = ConvertToEntityModel(product);
 
             await this.repository.DeleteAsync(entity);
         }
@@ -82,79 +59,83 @@
         {
             var entities = await this.repository
                 .All()
-                .Include(p => p.ItemGroup)
-                .Include(p => p.Barcodes)
-                .Include(p => p.ProductsMeasures)
-                .ThenInclude(pm => pm.Measure)
-                .Where(p => p.IsActive)
-                .AsNoTracking()
-                .Select(e => new ProductServiceModel()
-                {
-                    Id = e.Id,
-                    ArticleNumber = e.ArticleNumber,
-                    DateAdded = e.DateAdded,
-                    CashRegisterName = e.CashRegisterName,
-                    CodeForScales = e.CodeForScales,
-                    DateModified = e.DateModified,
-                    Description = e.Description,
-                    ItemGroup = e.ItemGroup,
-                    ItemGroupId = e.ItemGroupId,
-                    Measure = e.ProductsMeasures.First().Measure,
-                    MeasureId = e.ProductsMeasures.First().MeasureId,
-                    Barcodes = e.Barcodes.ToList(),
-                    Name = e.Name,
-                    NomenclatureNumber = e.NomenclatureNumber,
-                    PurchasePrice = e.PurchasePrice,
-                    Quantity = e.Quantity,
-                    SalePrice = e.SalePrice,
-                })
+                .ProjectToProductServiceModel()
                 .ToListAsync();
 
             return entities;
         }
 
         /// <summary>
-        /// Get all products that match a condition (Asynchronous)
+        /// Get all products that match a condition as IQueryable
         /// </summary>
-        /// <param name="condition">Condition for filtering</param>
-        /// <returns>Task<IEnumerable<ProductServiceModel>></returns>
-        public async Task<IEnumerable<ProductServiceModel>> GetAllByPredicateAsync
-            (Predicate<Product> condition)
+        /// <returns>IQueryable<ProductServiceModel></returns>
+        public IQueryable<ProductServiceModel> GetAllByPredicateAsync
+            (string sortType, string value)
         {
-            var entities = await this.repository
-                .All()
-                .Include(p => p.ItemGroup)
-                .Include(p => p.Barcodes)
-                .Include(p => p.ProductsMeasures)
-                .ThenInclude(pm => pm.Measure)
-                .AsNoTracking()
-                .Where(p => p.IsActive)
-                .ToListAsync();
+            var entities = this.repository
+                .AllReadOnly()
+                .UseIncludeProductStatements()
+                .ProjectToProductServiceModel();
 
-            var sorted = entities
-                .Where(e => condition.Invoke(e))
-                .Select(e => new ProductServiceModel()
+            try
+            {
+                entities = sortType switch
                 {
-                    Id = e.Id,
-                    ArticleNumber = e.ArticleNumber,
-                    DateAdded = e.DateAdded,
-                    CashRegisterName = e.CashRegisterName,
-                    CodeForScales = e.CodeForScales,
-                    DateModified = e.DateModified,
-                    Description = e.Description,
-                    ItemGroup = e.ItemGroup,
-                    ItemGroupId = e.ItemGroupId,
-                    Measure = e.ProductsMeasures.First().Measure,
-                    MeasureId = e.ProductsMeasures.First().MeasureId,
-                    Barcodes = e.Barcodes.ToList(),
-                    Name = e.Name,
-                    NomenclatureNumber = e.NomenclatureNumber,
-                    PurchasePrice = e.PurchasePrice,
-                    Quantity = e.Quantity,
-                    SalePrice = e.SalePrice,
-                });
+                    "Name" => entities.Where(e => e.Name.ToLower().Contains(value.ToLower())),
+                    "Cash Register Name" => entities.Where(e => e.CashRegisterName.ToLower().Contains(value.ToLower())),
+                    "Article Number" when int.TryParse(value, out var articleNumber) =>
+                        entities.Where(e => e.ArticleNumber == articleNumber),
+                    "Nomenclature Number" when int.TryParse(value, out var nomenclatureNumber) =>
+                        entities.Where(e => e.NomenclatureNumber == nomenclatureNumber),
+                    "Sale Price" when decimal.TryParse(value, out var salePrice) =>
+                        entities.Where(e => e.SalePrice == salePrice),
+                    "Purchase Price" when decimal.TryParse(value, out var purchasePrice) =>
+                        entities.Where(e => e.PurchasePrice == purchasePrice),
+                    "Item Group Name" => entities.Where(e => e.ItemGroup.Name == value),
+                    "Measure Type" => entities.Where(e => e.Measure.Name == value),
+                    _ => entities.Where(e => e.Id == 0)
+                };
 
-            return sorted;
+                return entities;
+            }
+            catch (Exception)
+            {
+                entities = entities.Where(e => e.Id == 0);
+            }
+
+            return entities;
+        }
+
+        /// <summary>
+        /// Get matching products paginated (Asynchronous)
+        /// </summary>
+        /// <param name="sortType">Sort type used to sort them</param>
+        /// <param name="value">Sort value</param>
+        /// <param name="pageSize">Size of 1 page</param>
+        /// <param name="pageNumber">Number of page</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<ProductServiceModel>> GetAllByPredicatePagedAsync(
+            string sortType, string value,
+            int pageSize, int pageNumber)
+        {
+            var entities = this.GetAllByPredicateAsync(sortType, value);
+
+            return await entities
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToListAsync();
+        }
+
+        /// <summary>
+        /// Method to get count of sorted paginated products
+        /// </summary>
+        /// <param name="sortType">Sort type used to sort them</param>
+        /// <param name="value">Sort value</param>
+        /// <returns>Task<int></returns>
+        public async Task<int> GetPredicatedCount(string sortType, string value)
+        {
+            return await this.GetAllByPredicateAsync(sortType, value)
+                .CountAsync();
         }
 
         /// <summary>
@@ -165,19 +146,8 @@
         public async Task<ProductServiceModel> GetByIdAsync(int id)
         {
             var entity = await this.repository
-                .All()
-                .Include(p => p.ItemGroup)
-                .Include(p => p.Barcodes)
-                .Include(p => p.ProductsMeasures)
-                .ThenInclude(pm => pm.Measure)
-                .AsNoTracking()
-                .Where(p => p.IsActive)
-                .FirstOrDefaultAsync(p => p.Id == id);
-
-            if (entity == null)
-            {
+                .GetByIdAsync(id) ??
                 throw new ArgumentNullException("Entity is null!");
-            }
 
             var serviceModel = new ProductServiceModel()
             {
@@ -210,7 +180,34 @@
         /// <returns>(void)</returns>
         public async Task UpdateAsync(ProductServiceModel product)
         {
-            var entity = new Product()
+            var entity = await this.repository.GetByIdAsync(product.Id) 
+                ?? throw new ArgumentException("Entity not found");
+            
+            entity.CodeForScales = product.CodeForScales;
+            entity.Name = product.Name;
+            entity.CashRegisterName = product.CashRegisterName;
+            entity.NomenclatureNumber = product.NomenclatureNumber;
+            entity.PurchasePrice = product.PurchasePrice;
+            entity.Quantity = product.Quantity;
+            entity.SalePrice = product.SalePrice;
+            entity.ArticleNumber = product.ArticleNumber;
+            entity.Description = product.Description;
+            entity.ItemGroupId = product.ItemGroupId;
+            entity.ProductsMeasures.First().MeasureId = product.MeasureId;
+            entity.DateModified = DateTime.Now;
+
+            await this.repository.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Helper private method used for converting to entity model
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        private static Product 
+            ConvertToEntityModel(ProductServiceModel product)
+        {
+            return new Product()
             {
                 Name = product.Name,
                 CashRegisterName = product.CashRegisterName,
@@ -221,44 +218,10 @@
                 SalePrice = product.SalePrice,
                 Quantity = product.Quantity,
                 Description = product.Description,
-                ItemGroupId = product.ItemGroupId,
+                ItemGroupId = product.ItemGroup.Id,
                 DateAdded = product.DateAdded,
                 DateModified = product.DateModified,
             };
-
-            var oldEntity = await this.GetByIdAsync(product.Id);
-
-            var oldProductMeasure = new ProductMeasure()
-            {
-                ProductId = product.Id,
-                MeasureId = oldEntity.MeasureId
-            };
-
-            var measure = this.measureRepository
-                .All()
-                .Where(m => m.IsActive)
-                .AsNoTracking()
-                .FirstOrDefault(m => m.Id == product.MeasureId) 
-                ?? new Measure();
-
-            var productMeasure = new ProductMeasure()
-            {
-                ProductId = product.Id,
-                MeasureId = product.MeasureId
-            };
-
-            var productsMeasures = new List<ProductMeasure>()
-            {
-                productMeasure
-            };
-
-            entity.ProductsMeasures = productsMeasures;
-
-            await this.productMeasureRepository.DeleteAsync(oldProductMeasure);
-
-            await this.productMeasureRepository.AddAsync(productMeasure);
-
-            await this.repository.UpdateAsync(entity);
         }
     }
 }

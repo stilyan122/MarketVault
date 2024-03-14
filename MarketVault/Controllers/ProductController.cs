@@ -11,6 +11,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System;
+    using System.Linq.Expressions;
 
     /// <summary>
     /// Product Controller (Authorized)
@@ -122,22 +123,30 @@
         /// </summary>
         /// <returns>Task<IActionResult></returns>
         public async Task<IActionResult> SearchProducts(
-                string sortType,
-                string value,
-                string viewName, 
+                string searchSortType,
+                string searchViewName,
+                string searchQuery, 
                 int pages = 1)
         {
-            if (value == null || 
-                String.IsNullOrEmpty(value) || 
-                String.IsNullOrWhiteSpace(value))
+            if (IsNullOrEmptyOrWhiteSpace(searchSortType)
+                || IsNullOrEmptyOrWhiteSpace(searchViewName) 
+                || IsNullOrEmptyOrWhiteSpace(searchQuery))
             {
                 return RedirectToAction("All");
             }
 
-            var predicate = GetCorrectPredicate(sortType, value);
+            const int pageSize = 10;
+
+            if (pages < 1)
+            {
+                pages = 1;
+            }
 
             var serviceModels = await this.service
-                .GetAllByPredicateAsync(predicate);
+                .GetAllByPredicatePagedAsync(searchSortType, 
+                searchQuery,
+                pageSize,
+                pages);
 
             var viewModels = serviceModels
                 .Select(sm => new ProductViewModel()
@@ -155,47 +164,31 @@
                 })
                 .ToList();
 
-            const int pageSize = 10;
-
-            if (pages < 1)
-            {
-                pages = 1;
-            }
-
-            int recsCount = viewModels.Count;
+            int recsCount = await this.service
+                .GetPredicatedCount(searchSortType, searchQuery);
 
             var pager = new Pager(recsCount, pages, pageSize)
             {
                 Action = "SearchProducts",
-                Controller = "Product"
+                Controller = "Product",
+                SearchQuery = searchQuery,
+                SearchSortingType = searchSortType,
+                SearchViewName = searchViewName
             };
 
             var searcher = new SearchModel()
             {
-                ViewName = viewName,
-                SortType = sortType,
-                Value = value,
-                IsInSearch = true
+                ViewName = searchViewName,
+                SortingType = searchSortType,
+                Query = searchQuery
             };
 
             int recsSkip = (pages - 1) * pageSize;
 
-            var data = viewModels
-                .Skip(recsSkip)
-                .Take(pager.PageSize)
-                .ToList();
-
             this.ViewBag.Pager = pager;
             this.ViewBag.Searcher = searcher; 
 
-            if (viewName == null ||
-                String.IsNullOrEmpty(viewName) ||
-                String.IsNullOrWhiteSpace(viewName))
-            {
-                viewName = "Index";
-            }
-
-            return View(viewName, data);
+            return View(searchViewName, viewModels);
         }
 
         /// <summary>
@@ -345,33 +338,15 @@
         }
 
         /// <summary>
-        /// Private method for getting correct predicate for sorting products
+        /// Private help method to determine whether a string is null, whitespace or empty
         /// </summary>
-        /// <param name="sortType">Sort Type to use</param>
-        /// <param name="value">Value of the sorter</param>
-        /// <returns>Predicate<Product></returns>
-        private static Predicate<Product> GetCorrectPredicate(string sortType, 
-            string value)
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private static bool IsNullOrEmptyOrWhiteSpace(string value)
         {
-            return sortType switch
-            {
-                "Name" => x => x.Name == value,
-                "Cash Register Name" => x => x.CashRegisterName == value,
-                "Article Number" => x => x.ArticleNumber == int.Parse(
-                                        value),
-                "Nomenclature Number" => x => x.NomenclatureNumber == int.Parse(
-                                        value),
-                "Sale Price" => x => x.SalePrice == decimal.Parse(
-                                        value),
-                "Purchase Price" => x => x.PurchasePrice == decimal.Parse(
-                                        value),
-                "Item Group Name" => x => x.ItemGroup.Name == value,
-                "Measure" => x => x.ProductsMeasures
-                                    .First()
-                                    .Measure
-                                    .Name == value,
-                _ => x => x.Id == 0,
-            };
+            return value == null ||
+              String.IsNullOrEmpty(value) ||
+              String.IsNullOrWhiteSpace(value);
         }
     }
 }

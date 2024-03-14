@@ -1,16 +1,19 @@
 ﻿@model SearchModel
 
 <div class="searchProductPanel">
-    <form asp-action="SearchProducts" 
-          asp-controller="Product" 
-          asp-route-sortType="@Model.SortType"
-          asp-route-searchValue="@Model.Value"
-          asp-route-viewName="@Model.ViewName"
+    <form method="get"
+          asp-action="SearchProducts"
+          asp-controller="Product"
           id="searchProductForm">
+          
+        <input type="text" placeholder="Search product(s)..." 
+            asp-for="Query" 
+            name="searchQuery"/>
 
-        <input type="text" placeholder="Search product(s)..." asp-for="Value"/>
+        <select 
+            asp-for="SortingType" 
+            name="searchSortType">
 
-        <select asp-for="SortType">
             <option disabled selected value="">Search with...</option>
             <option>Name</option>
             <option>Cash Register Name</option>
@@ -20,11 +23,13 @@
             <option>Purchase Price</option>
             <option>Item Group Name</option>
             <option>Measure Type</option>
+
         </select>
 
-        <input type="hidden" asp-for="ViewName" value="@Model.ViewName"/>
-        <input type="hidden" asp-for="Value" value="@Model.Value"/>
-        <input type="hidden" asp-for="SortType" value="@Model.SortType"/>
+        <input type="hidden" 
+            asp-for="ViewName" 
+            name="searchViewName" 
+            value="@Model.ViewName"/>
 
         <input type="submit" value="Search" />
     </form>
