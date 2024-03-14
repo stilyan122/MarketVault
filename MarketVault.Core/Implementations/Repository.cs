@@ -52,6 +52,20 @@
             => this.dbSet;
 
         /// <summary>
+        /// Asynchronous method for getting all entities as read-only
+        /// </summary>
+        /// <returns>IQueryable<TEntity></returns>
+        public IQueryable<TEntity> AllReadOnly()
+            => this.dbSet.AsNoTracking();
+
+        /// <summary>
+        /// Asynchronous method for getting an entity by id
+        /// </summary>
+        /// <returns>Task<TEntity?></returns>
+        public async Task<TEntity?> GetByIdAsync(int id)
+            => await this.dbSet.FindAsync(id);
+
+        /// <summary>
         /// Asynchronous method for removing an entity
         /// </summary>
         /// <param name="entity">Entity to remove</param>
@@ -68,18 +82,6 @@
         public async Task<int> SaveChangesAsync()
         {
             return await this.context.SaveChangesAsync();
-        }
-
-        /// <summary>
-        /// Asynchronous method for updating an entity
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <returns>(void)</returns>
-        public async Task UpdateAsync(TEntity entity)
-        {
-            this.context.Attach(entity);
-            this.context.Update(entity);
-            await this.SaveChangesAsync();
         }
     }
 }

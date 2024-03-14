@@ -43,49 +43,87 @@
 <link rel="stylesheet" href="~/css/nomenclatures..css" />
 
 <div class="viewContainer">
-    @if (searcher.IsInSearch)
-    {
-        <partial name="_SearchProductPartial" model="@searcher" />
-    }
-
+    <partial name="_SearchProductPartial" model="@searcher" />
+    
     <partial name="_PagerPartial" model="@pager" />
 
-    <div class="productsContainer">
-        @foreach (ProductViewModel product in Model)
-        {
+    <a asp-action="All" asp-controller="Product">
+        Show All
+    </a>
+
+    @if (Model.Count() == 0)
+    {
+        <h1>No products found! Try again!</h1>
+    }
+
+    else
+    {
+        <div class="productsContainer">
+
             <div class="productContainer">
-                <div id="@counter" class="productComponentContainer"></div>
+                <div id="-1" class="productComponentContainer"></div>
 
                 <script>
                     props = {
-                        name: '@product.Name',
-                        cashRegisterName: '@product.CashRegisterName',
-                        quantity: @product.Quantity,
-                        itemGroup: '@product.ItemGroupName',
-                        purchasePrice: @product.PurchasePrice,
-                        salePrice: @product.SalePrice,
-                        codeForScales: '@product.CodeForScales',
-                        dateAdded: '@product.DateAdded',
-                        dateModified: '@product.DateModified',
-                        measure: '@product.Measure'
+                        name: 'Product Name',
+                        cashRegisterName: 'Product Cash Register Name',
+                        quantity: 'Product Quantity',
+                        itemGroup: 'Product Item Group Name',
+                        purchasePrice: 'Product Purchase Price',
+                        salePrice: 'Product Sale Price',
+                        codeForScales: 'Product Code For Scales',
+                        dateAdded: 'Product Date Added',
+                        dateModified: 'Product Date Modified',
+                        measure: 'Product Measure'
                     };
 
                     ReactDOM.render(
                         React.createElement(ProductViewComponent, props),
-                        document.getElementById(@counter),
+                        document.getElementById('-1'),
                     );
                 </script>
 
                 <a asp-controller="Product" asp-action="Edit" asp-route-id="@counter">
                     Edit
                 </a>
-
-                @{
-                    counter++;
-                }
             </div>
-        }
-    </div>
+
+            @foreach (ProductViewModel product in Model)
+            {
+                <div class="productContainer">
+                    <div id="@counter" class="productComponentContainer"></div>
+
+                    <script>
+                        props = {
+                            name: '@product.Name',
+                            cashRegisterName: '@product.CashRegisterName',
+                            quantity: @product.Quantity,
+                            itemGroup: '@product.ItemGroupName',
+                            purchasePrice: @product.PurchasePrice,
+                            salePrice: @product.SalePrice,
+                            codeForScales: '@product.CodeForScales',
+                            dateAdded: '@product.DateAdded',
+                            dateModified: '@product.DateModified',
+                            measure: '@product.Measure'
+                        };
+
+                        ReactDOM.render(
+                            React.createElement(ProductViewComponent, props),
+                            document.getElementById(@counter),
+                        );
+                    </script>
+
+                    <a asp-controller="Product" asp-action="Edit" asp-route-id="@counter">
+                        Edit
+                    </a>
+
+                    @{
+                        counter++;
+                    }
+                </div>
+            }
+        </div>
+    }
 
     <partial name="_PagerPartial" model="@pager" />
 </div>

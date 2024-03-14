@@ -46,6 +46,21 @@
         public string Action { get; set; } = "Index";
 
         /// <summary>
+        /// Search query result
+        /// </summary>
+        public string SearchQuery { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Search sort type
+        /// </summary>
+        public string SearchSortingType { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Search view name used to navigate to the view
+        /// </summary>
+        public string SearchViewName { get; set; } = string.Empty;
+
+        /// <summary>
         /// Default constructor
         /// </summary>
         public Pager()

@@ -1,7 +1,6 @@
 ﻿namespace MarketVault.Core.Services.Interfaces
 {
     using MarketVault.Core.Models;
-    using MarketVault.Infrastructure.Data.Models;
 
     /// <summary>
     /// Interface responsible for product service
@@ -15,11 +14,31 @@
         Task<IEnumerable<ProductServiceModel>> GetAllAsync();
 
         /// <summary>
-        /// Asynchronous method to get all products with condition
+        /// Get matching products paginated (Asynchronous)
         /// </summary>
-        /// <returns>Task<IEnumerable<ProductServiceModel>></returns>
-        Task<IEnumerable<ProductServiceModel>> GetAllByPredicateAsync
-            (Predicate<Product> condition);
+        /// <param name="sortType">Sort type used to sort them</param>
+        /// <param name="value">Sort value</param>
+        /// <param name="pageSize">Size of 1 page</param>
+        /// <param name="pageNumber">Number of page</param>
+        /// <returns></returns>
+        public Task<IEnumerable<ProductServiceModel>> GetAllByPredicatePagedAsync(
+            string sortType, string value,
+            int pageSize, int pageNumber);
+
+        /// <summary>
+        /// Get all products that match a condition as IQueryable
+        /// </summary>
+        /// <returns>IQueryable<ProductServiceModel></returns>
+        public IQueryable<ProductServiceModel> GetAllByPredicateAsync
+            (string sortType, string value);
+
+        /// <summary>
+        /// Method to get count of sorted paginated products
+        /// </summary>
+        /// <param name="sortType">Sort type used to sort them</param>
+        /// <param name="value">Sort value</param>
+        /// <returns>Task<int></returns>
+        public Task<int> GetPredicatedCount(string sortType, string value);
 
         /// <summary>
         /// Asynchronous method to get a product by a given id

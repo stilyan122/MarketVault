@@ -14,6 +14,12 @@
         IQueryable<TEntity> All();
 
         /// <summary>
+        /// Asynchronous method for getting all entities as read-only
+        /// </summary>
+        /// <returns>IQueryable<TEntity></returns>
+        IQueryable<TEntity> AllReadOnly();
+
+        /// <summary>
         /// Add entity method (Asynchronous)
         /// </summary>
         /// <param name="entity">Entity to add</param>
@@ -21,11 +27,10 @@
         Task AddAsync(TEntity entity);
 
         /// <summary>
-        /// Update entity method (Asynchronous)
+        /// Asynchronous method for getting an entity by id
         /// </summary>
-        /// <param name="entity">Entity to update</param>
-        /// <returns>(void)</returns>
-        Task UpdateAsync(TEntity entity);
+        /// <returns>Task<TEntity?></returns>
+         Task<TEntity?> GetByIdAsync(int id);
 
         /// <summary>
         /// Delete entity method (Asynchronous)

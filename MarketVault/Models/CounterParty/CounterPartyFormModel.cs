@@ -34,7 +34,7 @@
         public string VATNumber { get; set; } = string.Empty;
 
         /// <summary>
-        /// Counter party Value Added Tax Law Id
+        /// Counter party Query Added Tax Law Id
         /// </summary>
         [Required(ErrorMessage = CounterPartyValueAddedTaxLawIdRequiredExceptionMessage)]
         [StringLength(ValueAddedTaxLawIdMaxLength,
