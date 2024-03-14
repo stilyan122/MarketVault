@@ -1,4 +1,6 @@
-﻿.productsContainer{
+﻿@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+.productsContainer{
     display: flex;
     flex-direction: column;
 }
@@ -18,11 +20,14 @@
 
 .addCounterPartyContainer {
     background: hsla(205, 43%, 80%, 1);
-    background: linear-gradient(180deg, hsla(205, 43%, 80%, 1) 0%,
-    hsla(231, 75%, 87%, 1) 89%, hsla(240, 100%, 90%, 1) 100%);
-    padding: 24px;
+    background: linear-gradient(180deg, hsla(205, 43%, 80%, 1) 0%, hsla(231, 75%, 87%, 1) 89%, hsla(240, 100%, 90%, 1) 100%);
+    padding: 48px;
     border-radius: 12px;
     height: 100%;
+    margin-top: 4.809%;
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
 }
 
 .addCounterPartyContainer form {
@@ -39,16 +44,16 @@
     margin-top: 12px;
 }
 
-.addCounterPartyContainer form div div{
+.addCounterPartyContainer form div div {
     display: flex;
-    justify-content: flex-start;
 }
 
 .addCounterPartyContainer form div div input,
 .addCounterPartyContainer form div div select {
-    margin-left: auto;
     border-radius: 4px;
     padding: 4px;
+    animation: displayFormTags 2s ease 0s 1 normal forwards;
+    margin-left: auto;
 }
 
 #addCounterPartyBtn {
@@ -90,4 +95,202 @@
     90% {
         transform: rotate(2deg);
     }
+}
+
+@keyframes displayFormTags {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Product */
+
+.viewContainer {
+    padding: 3em;
+    border-radius: 14px;
+    background: hsla(346, 62%, 51%, 1);
+    background: linear-gradient(270deg, hsla(346, 62%, 51%, 1) 0%, hsla(326, 74%, 40%, 1) 92%);
+    background: -moz-linear-gradient(270deg, hsla(346, 62%, 51%, 1) 0%, hsla(326, 74%, 40%, 1) 92%);
+    background: -webkit-linear-gradient(270deg, hsla(346, 62%, 51%, 1) 0%, hsla(326, 74%, 40%, 1) 92%);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    animation: displayButtonsRight 2s ease 0s 1 normal forwards;
+}
+
+.viewContainer a:hover{
+    color: black;
+}
+
+.paginatorList {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 2em 0;
+}
+
+.paginatorLi {
+    background-color: white;
+    border: 1px solid black;
+    border-right: none;
+    cursor: pointer;
+    height: 2.4em;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 2;
+}
+
+@keyframes displayButtonsRight {
+    0% {
+        animation-timing-function: ease-in;
+        opacity: 0;
+        transform: translateX(-250px);
+    }
+
+    38% {
+        animation-timing-function: ease-out;
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    55% {
+        animation-timing-function: ease-in;
+        transform: translateX(-68px);
+    }
+
+    72% {
+        animation-timing-function: ease-out;
+        transform: translateX(0);
+    }
+
+    81% {
+        animation-timing-function: ease-in;
+        transform: translateX(-28px);
+    }
+
+    90% {
+        animation-timing-function: ease-out;
+        transform: translateX(0);
+    }
+
+    95% {
+        animation-timing-function: ease-in;
+        transform: translateX(-8px);
+    }
+
+    100% {
+        animation-timing-function: ease-out;
+        transform: translateX(0);
+    }
+}
+
+.paginatorLi:first-child {
+    border-left: 1px solid black;
+}
+
+.paginatorA {
+    text-decoration: none;
+    color: black;
+    padding: 1.2em;
+}
+
+#paginatorFirst a,
+#paginatorLast a,
+#paginatorNext a,
+#paginatorPrevious a {
+    color: #E7F9FF;
+    font-weight: 500;
+}
+
+.paginatorLi:hover {
+    background-color: #C1C3C4;
+}
+
+.active {
+    background-color: #ff296e;
+}
+
+.active a{
+    color: white;
+}
+
+#paginatorFirst,
+#paginatorLast {
+    background-color: #6495ed;
+}
+
+#paginatorFirst:hover,
+#paginatorLast:hover{
+    background-color: #4C71B5;
+}
+
+#paginatorNext:hover,
+#paginatorPrevious:hover {
+    background-color: #378BA7;
+}
+
+#paginatorNext,
+#paginatorPrevious {
+    background-color: #54D4FF;
+}
+
+#paginatorFirst{
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+#paginatorLast{
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.productsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    margin-top: 2em;
+}
+
+.productContainer {
+    background-color: white;
+    padding: 1.4em;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.productComponentContainerFirst {
+    font-weight: bold;
+}
+
+#showAllProductsBtn {
+    background-color: #8f183e;
+    text-decoration: none;
+    color: white;
+    border: 1px solid #4d0e22;
+    font-weight: 500;
+    padding: 0.5em 1em;
+    border-radius: 0.4em;
+    animation: displayButtonsRight 2s ease 0s 1 normal forwards;
+}
+
+#showAllProductsBtn:hover{
+    background-color: #630f2a;
+}
+
+#searchProductBtn {
+    padding: 0.2em 0.5em;
+    background-color: #ba003c;
+    border: 0.01em solid black;
+    border-radius: 0.3em;
+    color: white;
+}
+
+#searchProductBtn:hover{
+    background-color: #6E0023;
 }

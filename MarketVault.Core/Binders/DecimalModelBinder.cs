@@ -2,8 +2,17 @@
 {
     using Microsoft.AspNetCore.Mvc.ModelBinding;
 
+    /// <summary>
+    /// Custom Decimal Model Binder
+    /// </summary>
     public class DecimalModelBinder : IModelBinder
     {
+        /// <summary>
+        /// Bind model method (async)
+        /// </summary>
+        /// <param name="bindingContext">ModelBindingContext</param>
+        /// <returns>(void)</returns>
+        /// <exception cref="ArgumentException">Exception to throw when needed</exception>
         public Task BindModelAsync(ModelBindingContext bindingContext)
         {
             if (bindingContext == null)

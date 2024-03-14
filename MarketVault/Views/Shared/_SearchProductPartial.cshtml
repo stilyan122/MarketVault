@@ -1,5 +1,7 @@
 ﻿@model SearchModel
 
+<link rel="stylesheet" href="~/css/searchPanel.css" />
+
 <div class="searchProductPanel">
     <form method="get"
           asp-action="SearchProducts"
@@ -8,11 +10,13 @@
           
         <input type="text" placeholder="Search product(s)..." 
             asp-for="Query" 
-            name="searchQuery"/>
+            name="searchQuery"
+            id="searcherInput"/>
 
         <select 
             asp-for="SortingType" 
-            name="searchSortType">
+            name="searchSortType"
+            id="searcherSelect">
 
             <option disabled selected value="">Search with...</option>
             <option>Name</option>
@@ -31,6 +35,6 @@
             name="searchViewName" 
             value="@Model.ViewName"/>
 
-        <input type="submit" value="Search" />
+        <input id="searchProductBtn" type="submit" value="Search"/>
     </form>
 </div>

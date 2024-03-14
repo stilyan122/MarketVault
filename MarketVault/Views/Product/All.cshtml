@@ -40,20 +40,20 @@
     let props = {};
 </script>
 
-<link rel="stylesheet" href="~/css/nomenclatures..css" />
+<link rel="stylesheet" href="~/css/nomenclatures..css"/>
 
 <div class="viewContainer">
     <partial name="_SearchProductPartial" model="@searcher" />
     
     <partial name="_PagerPartial" model="@pager" />
 
-    <a asp-action="All" asp-controller="Product">
+    <a asp-action="All" asp-controller="Product" id="showAllProductsBtn">
         Show All
     </a>
 
     @if (Model.Count() == 0)
     {
-        <h1>No products found! Try again!</h1>
+        <h1 class="notFoundProductsBtn">No products found! Try again!</h1>
     }
 
     else
@@ -61,7 +61,7 @@
         <div class="productsContainer">
 
             <div class="productContainer">
-                <div id="-1" class="productComponentContainer"></div>
+                <div id="-1" class="productComponentContainer productComponentContainerFirst"></div>
 
                 <script>
                     props = {
@@ -82,10 +82,6 @@
                         document.getElementById('-1'),
                     );
                 </script>
-
-                <a asp-controller="Product" asp-action="Edit" asp-route-id="@counter">
-                    Edit
-                </a>
             </div>
 
             @foreach (ProductViewModel product in Model)
@@ -113,9 +109,22 @@
                         );
                     </script>
 
-                    <a asp-controller="Product" asp-action="Edit" asp-route-id="@counter">
-                        Edit
-                    </a>
+                    <div class="productsButtons">
+                        <a 
+                            id="productDetailsBtn"
+                            asp-controller="Product" asp-action="Details" asp-route-id="@counter">
+                            Details
+                        </a>
+                        <a 
+                            id="productEditBtn"
+                            asp-controller="Product" asp-action="Edit" asp-route-id="@counter">
+                            Edit
+                        </a>
+                        <a id="productDeleteBtn"
+                            asp-controller="Product" asp-action="Delete" asp-route-id="@counter">
+                            Delete
+                        </a>
+                    </div>
 
                     @{
                         counter++;

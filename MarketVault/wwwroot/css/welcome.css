@@ -5,6 +5,11 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+body header{
+    width: 100%;
 }
 
 html, body {
@@ -24,14 +29,20 @@ html, body {
     font-size: 30px;
     margin: 0;
     border-radius: 14px;
-    margin: auto auto;
+    margin: auto;
+    margin-top: calc(1.4%);
+    align-self: flex-start;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
     align-items: center;
+    align-self: center;
     color: white;
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
 }
 
 .section1,

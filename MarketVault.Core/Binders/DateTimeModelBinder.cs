@@ -4,8 +4,17 @@
     using System.Globalization;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Custom Date Time Model Binder
+    /// </summary>
     public class DateTimeModelBinder : IModelBinder
     {
+        /// <summary>
+        /// Bind model method (async)
+        /// </summary>
+        /// <param name="bindingContext">ModelBindingContext</param>
+        /// <returns>(void)</returns>
+        /// <exception cref="ArgumentException">Exception to throw when needed</exception>
         public Task BindModelAsync(ModelBindingContext bindingContext)
         {
             if (bindingContext == null)
