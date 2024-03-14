@@ -6,7 +6,6 @@
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Infrastructure.Data.Models;
     using Microsoft.EntityFrameworkCore;
-    using System.Linq.Expressions;
 
     /// <summary>
     /// Product service
