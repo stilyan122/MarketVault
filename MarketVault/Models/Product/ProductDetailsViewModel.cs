@@ -23,6 +23,6 @@
         /// <summary>
         /// Product collection of barcodes
         /// </summary>
-        public List<string> Barcodes { get; set; } = new List<string>();
+        public IEnumerable<string> Barcodes { get; set; } = new List<string>();
     }
 }

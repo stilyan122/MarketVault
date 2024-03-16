@@ -1,5 +1,9 @@
 ﻿@model ProductFormModel
 
+@{
+    ViewBag.Title = "Edit product";
+}
+
 <div class="editProductContainer">
     <form asp-action="Edit" asp-controller="Product" id="editProductForm">
         <div>
@@ -43,7 +47,7 @@
             <span asp-validation-for="ItemGroupId"></span>
         </div>
         <div>
-            <label asp-for="MeasureId">Select Item Group</label>
+            <label asp-for="MeasureId">Select Measure</label>
             <select asp-for="MeasureId">
                 <option disabled selected value="">Select Measure...</option>
                 @foreach (MeasureViewModel measure in Model.Measures)
@@ -53,7 +57,7 @@
             </select>
             <span asp-validation-for="MeasureId"></span>
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit">Edit Product</button>
     </form>
 </div>
 

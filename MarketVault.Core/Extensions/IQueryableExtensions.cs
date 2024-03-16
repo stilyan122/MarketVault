@@ -30,8 +30,8 @@
                     Description = e.Description,
                     ItemGroup = e.ItemGroup,
                     ItemGroupId = e.ItemGroupId,
-                    Measure = e.ProductsMeasures.First().Measure,
-                    MeasureId = e.ProductsMeasures.First().MeasureId,
+                    Measure = e.ProductsMeasures.Any() ? e.ProductsMeasures.First().Measure : new Measure(),
+                    MeasureId = e.ProductsMeasures.Any() ? e.ProductsMeasures.First().MeasureId : 0,
                     Barcodes = e.Barcodes.ToList(),
                     Name = e.Name,
                     NomenclatureNumber = e.NomenclatureNumber,
@@ -52,10 +52,11 @@
             return queryble
                 .Include(p => p.ItemGroup)
                 .Include(p => p.Barcodes)
+                .Include(p => p.ProductsOperations)
+                .ThenInclude(po => po.Operation)
                 .Include(p => p.ProductsMeasures)
                 .ThenInclude(pm => pm.Measure)
-                .Where(p => p.IsActive)
-                .AsNoTracking();
+                .Where(p => p.IsActive);
         }
     }
 }

@@ -33,13 +33,6 @@
          Task<TEntity?> GetByIdAsync(int id);
 
         /// <summary>
-        /// Delete entity method (Asynchronous)
-        /// </summary>
-        /// <param name="entity">Entity to remove</param>
-        /// <returns>(void)</returns>
-        Task DeleteAsync(TEntity entity);
-
-        /// <summary>
         /// Asynchronous method for saving changes in DB
         /// </summary>
         /// <returns>Integer to mark whether the changes have been made</returns>

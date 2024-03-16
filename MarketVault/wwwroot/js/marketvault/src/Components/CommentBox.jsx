@@ -3,7 +3,7 @@ class CommentBox extends React.Component {
         return (
             <div>
                 <p>
-                    {this.props.name}
+                    Hi, I am a comment box!
                 </p>
             </div>
         );

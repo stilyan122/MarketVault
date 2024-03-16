@@ -59,8 +59,7 @@
             {
 
             };
-
-            await this.repository.DeleteAsync(entity);
+            
         }
 
         /// <summary>
