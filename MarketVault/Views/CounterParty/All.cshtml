@@ -2,16 +2,128 @@
 
 @{
     ViewBag.Title = "All counter parties";
+    int counter = 1;
+
+    Pager pager = new Pager();
+
+    SearchModel searcher = new SearchModel();
+
+    int pageNo = 0;
+
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+    else
+    {
+        pager.Action = "All";
+        pager.Controller = "CounterParty";
+    }
+
+    if (ViewBag.Searcher != null)
+    {
+        searcher = ViewBag.Searcher;
+    }
+    else
+    {
+        searcher.ViewName = "All";
+    }
 }
 
-@foreach (CounterPartyViewModel counterParty in Model)
-{
-    <div>
-        <p>
-            @counterParty.Name
-        </p>
-        <p>
-            @counterParty.BankName
-        </p>
-    </div>
-}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+
+<script src="@Url.Content("~/js/marketvault/src/Components/CounterPartyViewComponent.jsx")"></script>
+
+<script>
+    let props = {};
+</script>
+
+<div class="viewContainer">
+    <partial name="_SearchCounterPartyPartial" model="@searcher" />
+
+    <partial name="_PagerPartial" model="@pager" />
+
+    <a asp-action="All" asp-controller="CounterParty" id="showAllCounterPartiesBtn">
+        Show All
+    </a>
+
+    @if (Model.Count() == 0)
+    {
+        <h1 class="notFoundCounterPartiesBtn">No counter parties found! Try again!</h1>
+    }
+
+    else
+    {
+        <div class="counterPartiesContainer">
+
+            <div class="counterPartyContainer">
+                <div id="-1" class="counterPartyComponentContainer counterPartyComponentContainerFirst"></div>
+
+                <script>
+                    props = {
+                        name: 'Counter Party Name',
+                        vatNumber: 'Counter Party VAT Number',
+                        valueAddedTaxLawId: 'Counter Party Value Added Tax Law Id',
+                        bankName: 'Counter Party Bank Name',
+                        bankCode: 'Counter Party Bank Code',
+                        bankIban: 'Counter Party Bank IBAN',
+                        firmName: 'Counter Party Firm Name'
+                    };
+
+                    ReactDOM.render(
+                        React.createElement(CounterPartyViewComponent, props),
+                        document.getElementById('-1'),
+                    );
+                </script>
+            </div>
+
+            @foreach (CounterPartyViewModel counterParty in Model)
+            {
+                <div class="counterPartyContainer">
+                    <div id="@counter" class="counterPartyComponentContainer"></div>
+                    
+                    <script>
+                        props = {
+                            name: '@counterParty.Name',
+                            vatNumber: '@counterParty.VATNumber',
+                            valueAddedTaxLawId: '@counterParty.ValueAddedTaxLawId',
+                            bankName: '@counterParty.BankName',
+                            bankCode: '@counterParty.BankCode',
+                            bankIban: '@counterParty.BankIBAN',
+                            firmName: '@counterParty.FirmName'
+                        };
+
+                        ReactDOM.render(
+                            React.createElement(CounterPartyViewComponent, props),
+                            document.getElementById(@counter),
+                        );
+                    </script>
+
+                    <div class="counterPartyButtons">
+                        <a id="counterPartyDetailsBtn"
+                           asp-controller="CounterParty" asp-action="Details" asp-route-id="@counterParty.Id">
+                            Details
+                        </a>
+                        <a id="counterPartyEditBtn"
+                           asp-controller="CounterParty" asp-action="Edit" asp-route-id="@counterParty.Id">
+                            Edit
+                        </a>
+                        <a id="counterPartyDeleteBtn"
+                           asp-controller="CounterParty" asp-action="DeleteGet" asp-route-id="@counterParty.Id">
+                            Delete
+                        </a>
+                    </div>
+
+                    @{
+                        counter++;
+                    }
+                </div>
+            }
+        </div>
+    }
+
+    <partial name="_PagerPartial" model="@pager" />
+</div>

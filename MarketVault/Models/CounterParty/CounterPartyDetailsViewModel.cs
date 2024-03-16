@@ -6,19 +6,14 @@
     public class CounterPartyDetailsViewModel : CounterPartyViewModel
     {
         /// <summary>
-        /// Counter party town name
+        /// Counter party bank address
         /// </summary>
-        public string TownName { get; set; } = string.Empty;
+        public string BankAddress { get; set; } = string.Empty;
 
         /// <summary>
-        /// Counter party street name
+        /// Counter party firm address
         /// </summary>
-        public string StreetName { get; set; } = string.Empty;
-
-        /// <summary>
-        /// Counter party street number
-        /// </summary>
-        public string StreetNumber { get; set; } = string.Empty;
+        public string FirmAddress { get; set; } = string.Empty;
 
         /// <summary>
         /// Counter party firm phone number

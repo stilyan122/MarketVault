@@ -37,7 +37,8 @@ namespace MarketVault
             {
                 config
                 .AddScript("~/js/marketvault/src/Components/CommentBox.jsx")
-                .AddScript("~/js/marketvault/src/Components/ProductViewComponent.jsx");
+                .AddScript("~/js/marketvault/src/Components/ProductViewComponent.jsx")
+                .AddScript("~/js/marketvault/src/Components/CounterPartyViewComponent.jsx");
             });
 
             app.UseStaticFiles();

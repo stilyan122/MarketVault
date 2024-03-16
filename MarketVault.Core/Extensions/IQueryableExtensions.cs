@@ -58,5 +58,46 @@
                 .ThenInclude(pm => pm.Measure)
                 .Where(p => p.IsActive);
         }
+
+        /// <summary>
+        /// ProjectToCounterPartyServiceModel method
+        /// </summary>
+        /// <param name="queryble">IQueryable<CounterParty></param>
+        /// <returns>IQueryable<CounterPartyServiceModel></returns>
+        public static IQueryable<CounterPartyServiceModel>
+            ProjectToCounterPartyServiceModel(this IQueryable<CounterParty> queryble)
+        {
+            return queryble
+                .UseIncludeCounterPartyStatements()
+                .Select(e => new CounterPartyServiceModel()
+                {
+                    Bank = e.Bank,
+                    BankCode = e.BankCode,
+                    ValueAddedTaxLawId = e.ValueAddedTaxLawId,
+                    VATNumber = e.VATNumber,
+                    BankIBAN = e.BankIBAN,
+                    BankId = e.BankId,
+                    Firm = e.Firm,
+                    FirmId = e.FirmId,
+                    Id = e.Id,
+                    Name = e.Name
+                });
+        }
+
+        /// <summary>
+        /// UseIncludeCounterPartyStatements method
+        /// </summary>
+        /// <param name="queryble">IQueryable<CounterParty></param>
+        /// <returns>IQueryable<CounterParty></returns>
+        public static IQueryable<CounterParty>
+            UseIncludeCounterPartyStatements(this IQueryable<CounterParty> queryble)
+        {
+            return queryble
+                .Include(cp => cp.Bank)
+                .ThenInclude(cp => cp.Address)
+                .Include(cp => cp.Firm)
+                .ThenInclude(cp => cp.Address)
+                .Where(p => p.IsActive);
+        }
     }
 }

@@ -1,0 +1,36 @@
+﻿@model SearchModel
+
+<link rel="stylesheet" href="~/css/searchPanel.css" />
+
+<div class="searchCounterPartyPanel">
+    <form method="get"
+          asp-action="SearchCounterParties"
+          asp-controller="CounterParty"
+          id="searchCounterPartyForm">
+
+        <input type="text" placeholder="Search counter party(ies)..."
+               asp-for="Query"
+               name="searchQuery"
+               id="searcherInput" />
+
+        <select asp-for="SortingType"
+                name="searchSortType"
+                id="searcherSelect">
+
+            <option disabled selected value="">Search with...</option>
+            <option>Name</option>
+            <option>Bank Code</option>
+            <option>Bank IBAN</option>
+            <option>Bank Name</option>
+            <option>Firm Name</option>
+
+        </select>
+
+        <input type="hidden"
+               asp-for="ViewName"
+               name="searchViewName"
+               value="@Model.ViewName" />
+
+        <input id="searchCounterPartyBtn" type="submit" value="Search" />
+    </form>
+</div>
