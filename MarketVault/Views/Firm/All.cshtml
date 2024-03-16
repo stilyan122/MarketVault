@@ -1,0 +1,129 @@
+﻿@model IEnumerable<FirmViewModel>
+
+@{
+    ViewBag.Title = "All firms";
+    int counter = 1;
+
+    Pager pager = new Pager();
+
+    SearchModel searcher = new SearchModel();
+
+    int pageNo = 0;
+
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+    else
+    {
+        pager.Action = "All";
+        pager.Controller = "Firm";
+    }
+
+    if (ViewBag.Searcher != null)
+    {
+        searcher = ViewBag.Searcher;
+    }
+    else
+    {
+        searcher.ViewName = "All";
+    }
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+
+<script src="@Url.Content("~/js/marketvault/src/Components/FirmViewComponent.jsx")"></script>
+
+<script>
+    let props = {};
+</script>
+
+<div class="viewContainer">
+    <partial name="_SearchFirmPartial" model="@searcher" />
+
+    <partial name="_PagerPartial" model="@pager" />
+
+    <a asp-action="All" asp-controller="Firm" id="showAllFirmsBtn">
+        Show All
+    </a>
+
+    @if (Model.Count() == 0)
+    {
+        <h1 class="notFoundFirmsBtn">No firms found! Try again!</h1>
+    }
+
+    else
+    {
+        <div class="firmsContainer">
+
+            <div class="firmContainer">
+                <div id="-1" class="firmComponentContainer firmComponentContainerFirst"></div>
+
+                <script>
+                    props = {
+                        name: 'Firm Name',
+                        phoneNumber: 'Firm Phone Number',
+                        email: 'Firm Email',
+                        responsiblePersonName: 'Firm Responsible Person Name',
+                        address: 'Firm Address',
+                    };
+
+                    ReactDOM.render(
+                        React.createElement(FirmViewComponent, props),
+                        document.getElementById('-1'),
+                    );
+                </script>
+            </div>
+
+            @foreach (FirmViewModel firm in Model)
+            {
+                <div class="firmContainer">
+                    <div id="@counter" class="firmComponentContainer"></div>
+
+                    @{
+                        var address = $"{firm.TownName} {firm.StreetName} {firm.StreetNumber}";
+                    }
+
+                    <script>
+                        props = {
+                            name: '@firm.Name',
+                            phoneNumber: '@firm.PhoneNumber',
+                            email: '@firm.Email',
+                            responsiblePersonName: '@firm.ResponsiblePersonName',
+                            address: '@address',
+                        };
+
+                        ReactDOM.render(
+                            React.createElement(FirmViewComponent, props),
+                            document.getElementById(@counter),
+                        );
+                    </script>
+
+                    <div class="firmButtons">
+                        <a id="firmDetailsBtn"
+                           asp-controller="Firm" asp-action="Details" asp-route-id="@firm.Id">
+                            Details
+                        </a>
+                        <a id="firmEditBtn"
+                           asp-controller="Firm" asp-action="Edit" asp-route-id="@firm.Id">
+                            Edit
+                        </a>
+                        <a id="firmDeleteBtn"
+                           asp-controller="Firm" asp-action="DeleteGet" asp-route-id="@firm.Id">
+                            Delete
+                        </a>
+                    </div>
+
+                    @{
+                        counter++;
+                    }
+                </div>
+            }
+        </div>
+    }
+
+    <partial name="_PagerPartial" model="@pager" />
+</div>

@@ -28,6 +28,8 @@
                                 <option value="Option1">Products</option>
                                 <option value="Option2">Counter Parties</option>
                                 <option value="Option3">Item Groups</option>
+                                <option value="Option4">Firms</option>
+                                <option value="Option5">Banks</option>
                             </select>
                         </li>
                         <li class="nav-item">
@@ -36,6 +38,8 @@
                                 <option value="Option1">Add a product</option>
                                 <option value="Option2">Add a counter party</option>
                                 <option value="Option3">Add an item group</option>
+                                <option value="Option4">Add a firm</option>
+                                <option value="Option5">Add a bank</option>
                             </select>
                         </li>
                         <li class="nav-item">
@@ -73,6 +77,10 @@
             window.location.href = "/CounterParty/All";
         } else if (optionValue === "Option3") {
             window.location.href = "/ItemGroup/All";
+        } else if (optionValue === "Option4") {
+            window.location.href = "/Firm/All";
+        } else if (optionValue === "Option5") {
+            window.location.href = "/Bank/All";
         }
     });
 
@@ -84,6 +92,10 @@
             window.location.href = "/CounterParty/Add";
         } else if (optionValue === "Option3") {
             window.location.href = "/ItemGroup/Add";
+        } else if (optionValue === "Option4") {
+            window.location.href = "/Firm/Add";
+        } else if (optionValue === "Option5") {
+            window.location.href = "/Bank/Add";
         }
     });
 

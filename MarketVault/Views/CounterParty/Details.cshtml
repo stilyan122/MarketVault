@@ -1,0 +1,75 @@
+﻿@model CounterPartyDetailsViewModel
+
+@{
+    ViewBag.Title = "Counter party Details";
+}
+
+<div>
+    <div>
+        <label asp-for="Name">Counter party name</label>
+        <h4>@Model.Name</h4>
+    </div>
+    
+    <div>
+        <label asp-for="VATNumber">Counter party VAT Number</label>
+        <h4>@Model.VATNumber</h4>
+    </div>
+
+    <div>
+        <label asp-for="ValueAddedTaxLawId">Counter party VATL Id</label>
+        <h4>@Model.ValueAddedTaxLawId</h4>
+    </div>
+
+    <div>
+        <label asp-for="BankName">Counter party bank name</label>
+        <h4>@Model.BankName</h4>
+    </div>
+
+    <div>
+        <label asp-for="BankCode">Counter party bank code</label>
+        <h4>@Model.BankCode</h4>
+    </div>
+
+    <div>
+        <label asp-for="BankIBAN">Counter party bank IBAN</label>
+        <h4>@Model.BankIBAN</h4>
+    </div>
+
+    <div>
+        <label asp-for="BankAddress">Counter party bank address</label>
+        <h4>@Model.BankAddress</h4>
+    </div>
+
+    <div>
+        <label asp-for="FirmName">Counter party firm name</label>
+        <h4>@Model.FirmName</h4>
+    </div>
+
+    <div>
+        <label asp-for="FirmEmail">Counter party firm email</label>
+        <h4>@Model.FirmEmail</h4>
+    </div>
+
+    <div>
+        <label asp-for="FirmPhoneNumber">Counter party firm phone number</label>
+        <h4>@Model.FirmPhoneNumber</h4>
+    </div>
+
+    <div>
+        <label asp-for="FirmResponsiblePersonName">Counter party firm responsible person name</label>
+        <h4>@Model.FirmResponsiblePersonName</h4>
+    </div>
+    
+    <div>
+        <label asp-for="FirmAddress">Counter party firm address</label>
+        <h4>@Model.FirmAddress</h4>
+    </div>
+
+    <a asp-controller="CounterParty" asp-action="All">
+        Back to all counter parties
+    </a>
+
+    <a asp-controller="Home" asp-action="Index">
+        Home page
+    </a>
+</div>

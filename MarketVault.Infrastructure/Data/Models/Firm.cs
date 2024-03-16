@@ -31,7 +31,6 @@
         /// Firm Phone Number
         /// </summary>
         [Comment("Firm Phone Number")]
-        [StringLength(PhoneNumberLength, MinimumLength = PhoneNumberLength)]
         [Required]
         public string PhoneNumber { get; set; } = string.Empty;
 

@@ -58,5 +58,81 @@
                 .ThenInclude(pm => pm.Measure)
                 .Where(p => p.IsActive);
         }
+
+        /// <summary>
+        /// ProjectToCounterPartyServiceModel method
+        /// </summary>
+        /// <param name="queryble">IQueryable<CounterParty></param>
+        /// <returns>IQueryable<CounterPartyServiceModel></returns>
+        public static IQueryable<CounterPartyServiceModel>
+            ProjectToCounterPartyServiceModel(this IQueryable<CounterParty> queryble)
+        {
+            return queryble
+                .UseIncludeCounterPartyStatements()
+                .Select(e => new CounterPartyServiceModel()
+                {
+                    Bank = e.Bank,
+                    BankCode = e.BankCode,
+                    ValueAddedTaxLawId = e.ValueAddedTaxLawId,
+                    VATNumber = e.VATNumber,
+                    BankIBAN = e.BankIBAN,
+                    BankId = e.BankId,
+                    Firm = e.Firm,
+                    FirmId = e.FirmId,
+                    Id = e.Id,
+                    Name = e.Name
+                });
+        }
+
+        /// <summary>
+        /// UseIncludeCounterPartyStatements method
+        /// </summary>
+        /// <param name="queryble">IQueryable<CounterParty></param>
+        /// <returns>IQueryable<CounterParty></returns>
+        public static IQueryable<CounterParty>
+            UseIncludeCounterPartyStatements(this IQueryable<CounterParty> queryble)
+        {
+            return queryble
+                .Include(cp => cp.Bank)
+                .ThenInclude(cp => cp.Address)
+                .Include(cp => cp.Firm)
+                .ThenInclude(cp => cp.Address)
+                .Where(cp => cp.IsActive);
+        }
+
+        /// <summary>
+        /// ProjectToFirmServiceModel method
+        /// </summary>
+        /// <param name="queryble">IQueryable<Firm></param>
+        /// <returns>IQueryable<FirmServiceModel></returns>
+        public static IQueryable<FirmServiceModel>
+            ProjectToFirmServiceModel(this IQueryable<Firm> queryble)
+        {
+            return queryble
+                .UseIncludeFirmStatements()
+                .Select(e => new FirmServiceModel()
+                {
+                    Address = e.Address,
+                    AddressId = e.AddressId,
+                    Email = e.Email,
+                    PhoneNumber = e.PhoneNumber,
+                    Id = e.Id,
+                    Name = e.Name,
+                    ResponsiblePersonName = e.ResponsiblePersonName
+                });
+        }
+
+        /// <summary>
+        /// UseIncludeFirmStatements method
+        /// </summary>
+        /// <param name="queryble">IQueryable<Firm></param>
+        /// <returns>IQueryable<Firm></returns>
+        public static IQueryable<Firm>
+            UseIncludeFirmStatements(this IQueryable<Firm> queryble)
+        {
+            return queryble
+                .Include(f => f.Address)
+                .Where(f => f.IsActive);
+        }
     }
 }
