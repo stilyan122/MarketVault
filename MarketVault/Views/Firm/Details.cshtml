@@ -1,0 +1,40 @@
+﻿@model FirmDetailsViewModel
+
+@{
+    ViewBag.Title = "Firm Details";
+}
+
+<div>
+    <div>
+        <label asp-for="Name">Firm name</label>
+        <h4>@Model.Name</h4>
+    </div>
+
+    <div>
+        <label asp-for="Email">Firm email</label>
+        <h4>@Model.Email</h4>
+    </div>
+
+    <div>
+        <label asp-for="PhoneNumber">Firm phone number</label>
+        <h4>@Model.PhoneNumber</h4>
+    </div>
+
+    <div>
+        <label asp-for="ResponsiblePersonName">Firm responsible person name</label>
+        <h4>@Model.ResponsiblePersonName</h4>
+    </div>
+
+    <div>
+        <label asp-for="Address">Firm address</label>
+        <h4>@Model.Address</h4>
+    </div>
+
+    <a asp-controller="Firm" asp-action="All">
+        Back to all firms
+    </a>
+
+    <a asp-controller="Home" asp-action="Index">
+        Home page
+    </a>
+</div>

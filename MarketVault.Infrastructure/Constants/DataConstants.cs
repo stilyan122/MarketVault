@@ -82,8 +82,6 @@
             public const int NameMinLength = 5;
             public const int NameMaxLength = 30;
 
-            public const int PhoneNumberLength = 20;
-
             public const int EmailMinLength = 3;
             public const int EmailMaxLength = 320;
 
@@ -204,6 +202,38 @@
 
             public const string CounterPartyFirmRequiredExceptionMessage
                 = "Field for firm is required!";
+
+
+
+
+            public const string FirmNameRequiredExceptionMessage
+               = "Field for firm name is required!";
+            public const string FirmNameLengthExceptionMessage
+                = "Length of field firm name must be between {2} " +
+                "and {1} characters long!";
+
+            public const string FirmPhoneRequiredExceptionMessage
+               = "Field for firm name is required!";
+            public const string FirmPhoneRegexExceptionMessage
+                = "Field phone must be in such standart: [0894564314] or " +
+                "[+359892345215]";
+
+            public const string FirmEmailRequiredExceptionMessage
+              = "Field for firm email is required!";
+            public const string FirmEmailLengthExceptionMessage
+                = "Length of field firm email must be between {2} " +
+                "and {1} characters long!";
+            public const string FirmEmailRegexExceptionMessage
+                = "Field email must be in such standard: [email@domain.extension]";
+
+            public const string FirmResponsiblePersonRequiredExceptionMessage
+             = "Field for firm responsible person is required!";
+            public const string FirmResponsiblePersonLengthExceptionMessage
+                = "Length of field firm responsible person must be between {2} " +
+                "and {1} characters long!";
+
+            public const string FirmAddressRequiredExceptionMessage
+               = "Field for firm address is required!";
         }
     }
 }

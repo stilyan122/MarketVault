@@ -76,9 +76,7 @@
         {
             var entities = await this.repository
                 .All()
-                .Include(cp => cp.Bank)
-                .Include(cp => cp.Firm)
-                .Where(cp => cp.IsActive)
+                .UseIncludeCounterPartyStatements()
                 .AsNoTracking()
                 .Select(cp => new CounterPartyServiceModel()
                 {

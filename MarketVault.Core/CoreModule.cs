@@ -36,6 +36,7 @@
             services.AddScoped<IProductMeasureService, ProductMeasureService>();
             services.AddScoped<IBankService, BankService>();
             services.AddScoped<IFirmService, FirmService>();
+            services.AddScoped<IAddressService, AddressService>();
 
             services.AddMvc(options =>
                 options

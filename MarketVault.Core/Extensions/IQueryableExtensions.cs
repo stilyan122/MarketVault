@@ -97,7 +97,42 @@
                 .ThenInclude(cp => cp.Address)
                 .Include(cp => cp.Firm)
                 .ThenInclude(cp => cp.Address)
-                .Where(p => p.IsActive);
+                .Where(cp => cp.IsActive);
+        }
+
+        /// <summary>
+        /// ProjectToFirmServiceModel method
+        /// </summary>
+        /// <param name="queryble">IQueryable<Firm></param>
+        /// <returns>IQueryable<FirmServiceModel></returns>
+        public static IQueryable<FirmServiceModel>
+            ProjectToFirmServiceModel(this IQueryable<Firm> queryble)
+        {
+            return queryble
+                .UseIncludeFirmStatements()
+                .Select(e => new FirmServiceModel()
+                {
+                    Address = e.Address,
+                    AddressId = e.AddressId,
+                    Email = e.Email,
+                    PhoneNumber = e.PhoneNumber,
+                    Id = e.Id,
+                    Name = e.Name,
+                    ResponsiblePersonName = e.ResponsiblePersonName
+                });
+        }
+
+        /// <summary>
+        /// UseIncludeFirmStatements method
+        /// </summary>
+        /// <param name="queryble">IQueryable<Firm></param>
+        /// <returns>IQueryable<Firm></returns>
+        public static IQueryable<Firm>
+            UseIncludeFirmStatements(this IQueryable<Firm> queryble)
+        {
+            return queryble
+                .Include(f => f.Address)
+                .Where(f => f.IsActive);
         }
     }
 }

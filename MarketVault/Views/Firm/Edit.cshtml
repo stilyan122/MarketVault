@@ -1,0 +1,49 @@
+﻿@model FirmFormModel
+
+@{
+    ViewBag.Title = "Edit firm";
+}
+
+<div class="editFirmContainer">
+    <form asp-action="Edit" asp-controller="Firm" id="editFirmForm">
+        <div>
+            <label asp-for="Name">Firm name</label>
+            <input asp-for="Name" value="@Model.Name" />
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div>
+            <label asp-for="PhoneNumber">Firm phone number</label>
+            <input asp-for="PhoneNumber" value="@Model.PhoneNumber" />
+            <span asp-validation-for="PhoneNumber"></span>
+        </div>
+        <div>
+            <label asp-for="Email">Firm email</label>
+            <input asp-for="Email" value="@Model.Email" />
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div>
+            <label asp-for="ResponsiblePersonName">Firm responsible person name</label>
+            <input asp-for="ResponsiblePersonName" />
+            <span asp-validation-for="ResponsiblePersonName" value="@Model.ResponsiblePersonName"></span>
+        </div>
+        <div>
+            <label asp-for="AddressId">Select Address</label>
+            <select asp-for="AddressId">
+                <option disabled selected value="">Select Address...</option>
+                @foreach (AddressViewModel address in Model.Addresses)
+                {
+                    var addressVal = $"{address.TownName} {address.StreetName}" + 
+                        $" {address.StreetNumber}";
+                    
+                    <option value="@address.Id">@addressVal</option>
+                }
+            </select>
+            <span asp-validation-for="AddressId"></span>
+        </div>
+        <button type="submit">Edit Firm</button>
+    </form>
+</div>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

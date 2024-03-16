@@ -3,10 +3,8 @@
     using MarketVault.Core;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
-    using MarketVault.Models.Bank;
-    using MarketVault.Models.CounterParty;
+    using MarketVault.Models.Address;
     using MarketVault.Models.Firm;
-    using MarketVault.Models.Product;
     using MarketVault.Models.Search;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -15,39 +13,29 @@
     /// Counter Party Controller (Authorized)
     /// </summary>
     [Authorize]
-    public class CounterPartyController : Controller
+    public class FirmController : Controller
     {
-        /// <summary>
-        /// Counter Party Service
-        /// </summary>
-        private readonly ICounterPartyService service = null!;
-
         /// <summary>
         /// Firm Service
         /// </summary>
-        private readonly IFirmService firmService = null!;
+        private readonly IFirmService service = null!;
 
         /// <summary>
-        /// Bank Service
+        /// Address Service
         /// </summary>
-        private readonly IBankService bankService = null!;
+        private readonly IAddressService addressService = null!;
 
         /// <summary>
-        /// Default constructor, injecting services (DI)
+        /// Default constructor, injecting service (DI)
         /// </summary>
-        /// <param name="service">ICounterPartyService</param>
-        /// <param name="firmService">IFirmService</param>
-        /// <param name="bankService">IBankService</param>
-        public CounterPartyController(ICounterPartyService service,
-            IFirmService firmService,
-            IBankService bankService)
+        /// <param name="service">IFirmService</param>
+        /// <param name="addressService">IAddressService</param>
+        public FirmController(IFirmService service,
+            IAddressService addressService)
         {
             this.service = service;
-            this.firmService = firmService;
-            this.bankService = bankService;
+            this.addressService = addressService;
         }
-
-      
 
         /// <summary>
         /// Default Index action
@@ -59,7 +47,7 @@
         }
 
         /// <summary>
-        /// Action for all counter parties in app (Asynchronous)
+        /// Action for all firms in app (Asynchronous)
         /// </summary>
         /// <returns>Task<IActionResult></returns>
         public async Task<IActionResult> All(int pages = 1)
@@ -68,16 +56,17 @@
                 .GetAllAsync();
 
             var viewModels = serviceModels
-                .Select(sm => new CounterPartyViewModel()
+                .Select(sm => new FirmViewModel()
                 {
-                    BankCode = sm.BankCode,
-                    BankIBAN = sm.BankIBAN,
-                    BankName = sm.Bank.Name,
-                    FirmName = sm.Firm.Name,
+                    AddressId = sm.AddressId,
+                    Email = sm.Email,
                     Id = sm.Id,
                     Name = sm.Name,
-                    ValueAddedTaxLawId = sm.ValueAddedTaxLawId,
-                    VATNumber = sm.VATNumber
+                    PhoneNumber = sm.PhoneNumber,
+                    ResponsiblePersonName = sm.ResponsiblePersonName,
+                    StreetName = sm.Address.StreetName,
+                    StreetNumber = sm.Address.StreetNumber,
+                    TownName = sm.Address.TownName
                 })
                 .ToList();
 
@@ -93,7 +82,7 @@
             var pager = new Pager(recsCount, pages, pageSize)
             {
                 Action = "All",
-                Controller = "CounterParty"
+                Controller = "Firm"
             };
 
             int recsSkip = (pages - 1) * pageSize;
@@ -109,10 +98,10 @@
         }
 
         /// <summary>
-        /// Action for filtering counter parties (Asynchronous)
+        /// Action for filtering firms (Asynchronous)
         /// </summary>
         /// <returns>Task<IActionResult></returns>
-        public async Task<IActionResult> SearchCounterParties(
+        public async Task<IActionResult> SearchFirms(
                 string searchSortType,
                 string searchViewName,
                 string searchQuery,
@@ -139,16 +128,17 @@
                 pages);
 
             var viewModels = serviceModels
-                .Select(sm => new CounterPartyViewModel()
+                .Select(sm => new FirmViewModel()
                 {
                     Id = sm.Id,
                     Name = sm.Name,
-                    BankCode = sm.BankCode,
-                    BankIBAN = sm.BankIBAN,
-                    BankName = sm.Bank.Name,
-                    FirmName = sm.Firm.Name,
-                    ValueAddedTaxLawId = sm.ValueAddedTaxLawId,
-                    VATNumber = sm.VATNumber
+                    AddressId = sm.AddressId,
+                    Email = sm.Email,
+                    PhoneNumber = sm.PhoneNumber,
+                    ResponsiblePersonName = sm.ResponsiblePersonName,
+                    StreetName = sm.Address.StreetName,
+                    StreetNumber = sm.Address.StreetNumber,
+                    TownName = sm.Address.TownName
                 })
                 .ToList();
 
@@ -157,8 +147,8 @@
 
             var pager = new Pager(recsCount, pages, pageSize)
             {
-                Action = "SearchCounterParties",
-                Controller = "CounterParty",
+                Action = "SearchFirms",
+                Controller = "Firm",
                 SearchQuery = searchQuery,
                 SearchSortingType = searchSortType,
                 SearchViewName = searchViewName
@@ -180,45 +170,41 @@
         }
 
         /// <summary>
-        /// Action for adding a counter party in app (Asynchronous, GET)
+        /// Action for adding a firm in app (Asynchronous, GET)
         /// </summary>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
         public async Task<IActionResult> Add()
         {
-            var formModel = new CounterPartyFormModel()
+            var formModel = new FirmFormModel()
             {
-                Firms = await this.GetFirms(),
-                Banks = await this.GetBanks(),
+                Addresses = await this.GetAddresses()
             };
 
             return View(formModel);
         }
 
         /// <summary>
-        /// Action for adding a counter party in app (Asynchronous, POST)
+        /// Action for adding a firm in app (Asynchronous, POST)
         /// </summary>
-        /// <param name="model">CounterPartyFormModel - model to add</param>
+        /// <param name="model">FirmFormModel - model to add</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        public async Task<IActionResult> Add(CounterPartyFormModel model)
+        public async Task<IActionResult> Add(FirmFormModel model)
         {
             if (!ModelState.IsValid)
             {
-                model.Banks = await this.GetBanks();
-                model.Firms = await this.GetFirms();
+                model.Addresses = await this.GetAddresses();
                 return View(model);
             }
 
-            var serviceModel = new CounterPartyServiceModel()
+            var serviceModel = new FirmServiceModel()
             {
+                Email = model.Email,
+                AddressId = model.AddressId,
+                PhoneNumber = model.PhoneNumber,
                 Name = model.Name,
-                BankCode = model.BankCode,
-                BankIBAN = model.BankIBAN,
-                BankId = model.BankId,
-                FirmId = model.FirmId,
-                ValueAddedTaxLawId = model.ValueAddedTaxLawId,
-                VATNumber= model.VATNumber
+                ResponsiblePersonName = model.ResponsiblePersonName
             };
 
             await this.service.AddAsync(serviceModel);
@@ -227,7 +213,7 @@
         }
 
         /// <summary>
-        /// Action for editing a counter party by id in app (Asynchronous, GET)
+        /// Action for editing a firm by id in app (Asynchronous, GET)
         /// </summary>
         /// <param name="id">Id to use for update</param>
         /// <returns>Task<IActionResult></returns>
@@ -243,17 +229,14 @@
 
                 var entity = await this.service.GetByIdAsync(parsed);
 
-                var viewModel = new CounterPartyFormModel()
+                var viewModel = new FirmFormModel()
                 {
-                    BankCode = entity.BankCode,
-                    FirmId = entity.FirmId,
-                    Firms = await this.GetFirms(),
-                    BankIBAN = entity.BankIBAN,
-                    BankId = entity.BankId,
-                    Banks = await this.GetBanks(),
+                    AddressId = entity.AddressId,
+                    Email = entity.Email,
+                    Addresses = await this.GetAddresses(),
                     Name = entity.Name,
-                    ValueAddedTaxLawId = entity.ValueAddedTaxLawId,
-                    VATNumber = entity.VATNumber
+                    PhoneNumber = entity.PhoneNumber,
+                    ResponsiblePersonName = entity.ResponsiblePersonName
                 };
 
                 return View(viewModel);
@@ -265,13 +248,13 @@
         }
 
         /// <summary>
-        /// Action for editing a counter party by id in app (Asynchronous, POST)
+        /// Action for editing a firm by id in app (Asynchronous, POST)
         /// </summary>
         /// <param name="id">Id to use for element</param>
         /// <param name="model">Form model to use</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        public async Task<IActionResult> Edit(string id, CounterPartyFormModel model)
+        public async Task<IActionResult> Edit(string id, FirmFormModel model)
         {
             if (model == null ||
                 !int.TryParse(id, out int parsed))
@@ -288,16 +271,14 @@
                 return NotFound();
             }
 
-            var serviceModel = new CounterPartyServiceModel()
+            var serviceModel = new FirmServiceModel()
             {
                 Id = parsed,
-                BankId = model.BankId,
-                BankCode = model.BankCode,
-                BankIBAN = model.BankIBAN,
-                FirmId = model.FirmId,
+                AddressId = model.AddressId,
+                Email = model.Email,
                 Name = model.Name,
-                ValueAddedTaxLawId = model.ValueAddedTaxLawId,
-                VATNumber = model.VATNumber
+                PhoneNumber = model.PhoneNumber,
+                ResponsiblePersonName = model.ResponsiblePersonName
             };
 
             await this.service.UpdateAsync(serviceModel);
@@ -306,7 +287,7 @@
         }
 
         /// <summary>
-        /// Action for deleting a counter party by id in app (Asynchronous, Get)
+        /// Action for deleting a firm by id in app (Asynchronous, Get)
         /// </summary>
         /// <param name="id">Id to use for element</param>
         /// <returns>Task<IActionResult></returns>
@@ -322,22 +303,17 @@
 
                 var entity = await this.service.GetByIdAsync(parsed);
 
-                var bankAddress = entity.Bank.Address;
-                var firmAddress = entity.Firm.Address;
+                var address = entity.Address;
 
-                var viewModel = new CounterPartyDeleteFormModel()
+                var viewModel = new FirmDeleteFormModel()
                 {
-                    Id = entity.Id,
+                    Id = parsed,
+                    Address = $"{address.TownName} {address.StreetName} " +
+                    $"{address.StreetNumber}",
+                    Email = entity.Email,
                     Name = entity.Name,
-                    BankAddress = $"{bankAddress.TownName} {bankAddress.StreetName} " +
-                    $"{bankAddress.StreetNumber}",
-                    FirmAddress = $"{firmAddress.TownName} {firmAddress.StreetName} " +
-                    $"{firmAddress.StreetNumber}",
-                    BankCode = entity.BankCode,
-                    BankIBAN = entity.BankIBAN,
-                    ValueAddedTaxLawId = entity.ValueAddedTaxLawId,
-                    VATNumber = entity.VATNumber,
-                    BankName = entity.Bank.Name
+                    PhoneNumber = entity.PhoneNumber,
+                    ResponsiblePersonName = entity.ResponsiblePersonName
                 };
 
                 return View("Delete", viewModel);
@@ -349,7 +325,7 @@
         }
 
         /// <summary>
-        /// Action for deleting a product by id in app (Asynchronous, POST)
+        /// Action for deleting a firm by id in app (Asynchronous, POST)
         /// </summary>
         /// <param name="id">Id to use for element</param>
         /// <returns>Task<IActionResult></returns>
@@ -365,15 +341,14 @@
             {
                 var model = await this.service.GetByIdAsync(parsed);
 
-                var serviceModel = new CounterPartyServiceModel()
+                var serviceModel = new FirmServiceModel()
                 {
                     Id = parsed,
-                    BankCode = model.BankCode,
-                    FirmId = model.FirmId,
-                    BankId = model.BankId,
-                    BankIBAN = model.BankIBAN,
-                    VATNumber = model.VATNumber,
-                    ValueAddedTaxLawId = model.ValueAddedTaxLawId
+                    AddressId = model.AddressId,
+                    Email = model.Email,
+                    Name = model.Name,
+                    PhoneNumber = model.PhoneNumber,
+                    ResponsiblePersonName = model.ResponsiblePersonName
                 };
 
                 await this.service.DeleteAsync(serviceModel);
@@ -402,26 +377,17 @@
 
                 var entity = await this.service.GetByIdAsync(parsed);
 
-                var bankAddress = entity.Bank.Address;
-                var firmAddress = entity.Firm.Address;
+                var address = entity.Address;
 
-                var viewModel = new CounterPartyDetailsViewModel()
+                var viewModel = new FirmDetailsViewModel()
                 {
-                    BankCode = entity.BankCode,
-                    BankIBAN = entity.BankIBAN,
-                    BankName = entity.Bank.Name,
-                    FirmEmail = entity.Firm.Email,
-                    FirmName = entity.Firm.Name,
-                    FirmPhoneNumber = entity.Firm.PhoneNumber,
-                    FirmResponsiblePersonName = entity.Firm.ResponsiblePersonName,
+                    Address = $"{address.TownName} {address.StreetName}" +
+                    $" {address.StreetNumber}",
+                    Email = entity.Email,
                     Id = entity.Id,
                     Name = entity.Name,
-                    FirmAddress = $"{firmAddress.TownName} {firmAddress.StreetName} " +
-                    $"{firmAddress.StreetNumber}",
-                    BankAddress = $"{bankAddress.TownName} {bankAddress.StreetName} " +
-                    $"{bankAddress.StreetNumber}",
-                    ValueAddedTaxLawId = entity.ValueAddedTaxLawId,
-                    VATNumber = entity.VATNumber
+                    PhoneNumber = entity.PhoneNumber,
+                    ResponsiblePersonName = entity.ResponsiblePersonName
                 };
 
                 return View(viewModel);
@@ -445,49 +411,21 @@
         }
 
         /// <summary>
-        /// Private method for accessing banks in app (used in actions)
+        /// Private method for accessing addresses in app (used in actions)
         /// </summary>
-        /// <returns>Task<IEnumerable<BankViewModel>></returns>
-        private async Task<IEnumerable<BankViewModel>> GetBanks()
+        /// <returns>Task<IEnumerable<AddressViewModel>></returns>
+        private async Task<IEnumerable<AddressViewModel>> GetAddresses()
         {
-            var bankServiceModels = await this.bankService
-                .GetAllAsync();
-
-            var bankViewModels = bankServiceModels
-                .Select(bsv => new BankViewModel
-                {
-                    Id = bsv.Id,
-                    Name = bsv.Name,
-                    AddressId = bsv.AddressId,
-                    StreetName = bsv.Address.StreetName,
-                    StreetNumber = bsv.Address.StreetNumber,
-                    TownName = bsv.Address.TownName
-                });
-
-            return bankViewModels;
-        }
-
-        /// <summary>
-        /// Private method for accessing firms in app (used in actions)
-        /// </summary>
-        /// <returns>Task<IEnumerable<FirmViewModel>></returns>
-        private async Task<IEnumerable<FirmViewModel>> GetFirms()
-        {
-            var firmServiceModels = await this.firmService
+            var firmServiceModels = await this.addressService
                  .GetAllAsync();
 
             var firmViewModels = firmServiceModels
-                .Select(fsm => new FirmViewModel
+                .Select(asm => new AddressViewModel
                 {
-                    Id = fsm.Id,
-                    Name = fsm.Name,
-                    AddressId = fsm.AddressId,
-                    Email = fsm.Email,
-                    PhoneNumber = fsm.PhoneNumber,
-                    ResponsiblePersonName = fsm.ResponsiblePersonName,
-                    StreetName = fsm.Address.StreetName,
-                    StreetNumber = fsm.Address.StreetNumber,
-                    TownName = fsm.Address.TownName
+                    Id = asm.Id,
+                    StreetName = asm.StreetName,
+                    StreetNumber = asm.StreetNumber,
+                    TownName = asm.TownName
                 });
 
             return firmViewModels;
