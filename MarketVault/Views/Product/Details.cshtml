@@ -1,0 +1,75 @@
+﻿@model ProductDetailsViewModel
+
+@{
+    ViewBag.Title = "Product Details";
+}
+
+<div>
+    <div>
+        <label asp-for="NomenclatureNumber">Product Nomenclature Number</label>
+        <h4>@Model.NomenclatureNumber</h4>
+    </div>
+    <div>
+        <label asp-for="ArticleNumber">Product Article Number</label>
+        <h4>@Model.ArticleNumber</h4>
+    </div>
+    <div>
+        <label asp-for="Name">Product name</label>
+        <h4>@Model.Name</h4>
+    </div>
+    <div>
+        <label asp-for="CashRegisterName">Product cash register name</label>
+        <h4>@Model.CashRegisterName</h4>
+    </div>
+    <div>
+        <label asp-for="Quantity">Product Quantity</label>
+        <h4>@Model.Quantity</h4>
+    </div>
+    <div>
+        <label asp-for="DateAdded">Product Date when added</label>
+        <h4>@Model.DateAdded.ToString("dddd, MMMM d, yyyy HH:mm:ss")</h4>
+    </div>
+    <div>
+        <label asp-for="DateModified">Product Date when last modified</label>
+        <h4>@Model.DateModified.ToString("dddd, MMMM d, yyyy HH:mm:ss")</h4>
+    </div>
+    <div>
+        <label asp-for="CodeForScales">Product code for scales</label>
+        <h4>@Model.CodeForScales</h4>
+    </div>
+    <div>
+        <label asp-for="SalePrice">Product sale price</label>
+        <h4>@Model.SalePrice</h4>
+    </div>
+    <div>
+        <label asp-for="PurchasePrice">Product purchase price</label>
+        <h4>@Model.PurchasePrice</h4>
+    </div>
+    <div>
+        <label asp-for="Description">Product description</label>
+        <h4>@Model.Description</h4>
+    </div>
+    <div>
+        <label asp-for="ItemGroupName">Item Group</label>
+        <h4>@Model.ItemGroupName</h4>
+    </div>
+    <div>
+        <label asp-for="Measure">Measure</label>
+        <h4>@Model.Measure</h4>
+    </div>
+    <div>
+        <label asp-for="Barcodes">Barcodes</label>
+        @foreach (string barcode in Model.Barcodes)
+        {
+            <p>@barcode</p>
+        }
+    </div>
+
+    <a asp-controller="Product" asp-action="All">
+        Back to all products
+    </a>
+
+    <a asp-controller="Home" asp-action="Index">
+        Home page
+    </a>
+</div>

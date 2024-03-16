@@ -18,36 +18,20 @@
         private readonly IRepository<Product> repository = null!;
 
         /// <summary>
+        /// ProductMeasure Service
+        /// </summary>
+        private readonly IProductMeasureService productMeasureService = null!;
+
+        /// <summary>
         /// Default constructor, injection of Product repository (DI)
         /// </summary>
         /// <param name="repository">Product repository</param>
-        public ProductService(IRepository<Product> repository)
+        /// <param name="productMeasureService">IProductMeasureService</param>
+        public ProductService(IRepository<Product> repository,
+            IProductMeasureService productMeasureService)
         {
             this.repository = repository;
-        }
-
-        /// <summary>
-        /// Add product method (Asynchronous)
-        /// </summary>
-        /// <param name="product">Product to add</param>
-        /// <returns>(void)</returns>
-        public async Task AddAsync(ProductServiceModel product)
-        {
-            var entity = ConvertToEntityModel(product);
-
-            await this.repository.AddAsync(entity);
-        }
-        
-        /// <summary>
-        /// Delete product method (Asynchronous)
-        /// </summary>
-        /// <param name="product">Product to delete</param>
-        /// <returns>(void)</returns>
-        public async Task DeleteAsync(ProductServiceModel product)
-        {
-            var entity = ConvertToEntityModel(product);
-
-            await this.repository.DeleteAsync(entity);
+            this.productMeasureService = productMeasureService;
         }
 
         /// <summary>
@@ -73,7 +57,7 @@
         {
             var entities = this.repository
                 .AllReadOnly()
-                .UseIncludeProductStatements()
+                .AsNoTracking()
                 .ProjectToProductServiceModel();
 
             try
@@ -138,6 +122,50 @@
         }
 
         /// <summary>
+        /// Add product method (Asynchronous)
+        /// </summary>
+        /// <param name="product">Product to add</param>
+        /// <returns>(void)</returns>
+        public async Task AddAsync(ProductServiceModel product)
+        {
+            var entity = ConvertToEntityModel(product);
+
+            await this.repository.AddAsync(entity);
+
+            entity.NomenclatureNumber = entity.Id;
+            entity.ArticleNumber = entity.Id;
+
+            await this.repository.SaveChangesAsync();
+
+            var mappingEntity = new ProductMeasureServiceModel()
+            {
+                ProductId = entity.Id,
+                MeasureId = product.MeasureId
+            };
+
+            await this.productMeasureService.AddAsync(mappingEntity);
+        }
+        
+        /// <summary>
+        /// Delete product method (Asynchronous)
+        /// </summary>
+        /// <param name="product">Product to delete</param>
+        /// <returns>(void)</returns>
+        public async Task DeleteAsync(ProductServiceModel product)
+        {
+            var entity = await this.repository
+                .All()
+                .UseIncludeProductStatements()
+                .Where(p => p.Id == product.Id)
+                .FirstOrDefaultAsync()
+                ?? throw new ArgumentException("Entity not found");
+
+            entity.IsActive = false;
+
+            await this.repository.SaveChangesAsync();
+        }
+
+        /// <summary>
         /// Get a product by a given id (Asynchronous)
         /// </summary>
         /// <param name="id">Id to get</param>
@@ -145,7 +173,10 @@
         public async Task<ProductServiceModel> GetByIdAsync(int id)
         {
             var entity = await this.repository
-                .GetByIdAsync(id) ??
+                .All()
+                .UseIncludeProductStatements()
+                .Where(p => p.Id == id)
+                .FirstOrDefaultAsync() ??
                 throw new ArgumentNullException("Entity is null!");
 
             var serviceModel = new ProductServiceModel()
@@ -179,7 +210,11 @@
         /// <returns>(void)</returns>
         public async Task UpdateAsync(ProductServiceModel product)
         {
-            var entity = await this.repository.GetByIdAsync(product.Id) 
+            var entity = await this.repository
+                .All()
+                .UseIncludeProductStatements()
+                .Where(p => p.Id == product.Id)
+                .FirstOrDefaultAsync()
                 ?? throw new ArgumentException("Entity not found");
             
             entity.CodeForScales = product.CodeForScales;
@@ -217,9 +252,9 @@
                 SalePrice = product.SalePrice,
                 Quantity = product.Quantity,
                 Description = product.Description,
-                ItemGroupId = product.ItemGroup.Id,
+                ItemGroupId = product.ItemGroupId,
                 DateAdded = product.DateAdded,
-                DateModified = product.DateModified,
+                DateModified = product.DateModified
             };
         }
     }

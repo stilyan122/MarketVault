@@ -1,0 +1,56 @@
+﻿@model ProductDeleteFormModel
+
+@{
+    ViewBag.Title = "Delete product";
+}
+
+<div class="editProductContainer">
+    <form 
+        asp-action="DeletePost" 
+        asp-controller="Product" 
+        id="deleteProductForm" 
+        method="post"
+        asp-route-id="@Model.Id">
+        <div>
+            <label asp-for="Name">Product name</label>
+            <h4>@Model.Name</h4>
+        </div>
+        <div>
+            <label asp-for="CashRegisterName">Product cash register name</label>
+            <h4>@Model.CashRegisterName</h4>
+        </div>
+        <div>
+            <label asp-for="CodeForScales">Product code for scales</label>
+            <h4>@Model.CodeForScales</h4>
+        </div>
+        <div>
+            <label asp-for="SalePrice">Product sale price</label>
+            <h4>@Model.SalePrice</h4>
+        </div>
+        <div>
+            <label asp-for="PurchasePrice">Product purchase price</label>
+            <h4>@Model.PurchasePrice</h4>
+        </div>
+        <div>
+            <label asp-for="Description">Product description</label>
+            <h4>@Model.Description</h4>
+        </div>
+        <div>
+            <label asp-for="ItemGroup">Item Group</label>
+            <h4>@Model.ItemGroup</h4>
+        </div>
+        <div>
+            <label asp-for="Measure">Measure</label>
+            <h4>@Model.Measure</h4>
+        </div>
+        <div>
+            <label asp-for="Barcodes">Barcodes</label>
+            @foreach (string barcode in Model.Barcodes)
+            {
+                <p>@barcode</p>
+            }
+        </div>
+
+        <button type="submit">Delete Product</button>
+    </form>
+</div>

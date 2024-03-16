@@ -1,9 +1,9 @@
 ﻿namespace MarketVault.Models.Product
 {
     /// <summary>
-    /// Product view model
+    /// Product delete form model
     /// </summary>
-    public class ProductViewModel
+    public class ProductDeleteFormModel
     {
         /// <summary>
         /// Product id
@@ -26,38 +26,44 @@
         public int CodeForScales { get; set; }
 
         /// <summary>
-        /// Product purchase price
-        /// </summary>
-        public decimal PurchasePrice { get; set; }
-
-        /// <summary>
         /// Product sale price
         /// </summary>
         public decimal SalePrice { get; set; }
 
         /// <summary>
-        /// Product quantity
+        /// Product purchase price
         /// </summary>
-        public decimal Quantity { get; set; }
+        public decimal PurchasePrice { get; set; }
 
         /// <summary>
-        /// Product item group name
+        /// Product description
         /// </summary>
-        public string ItemGroupName { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
 
         /// <summary>
-        /// Product date when added
+        /// Product item group
         /// </summary>
-        public DateTime DateAdded { get; set; }
+        public string ItemGroup { get; set; } = string.Empty;
 
         /// <summary>
-        /// Product date when last modified
+        /// Product item group id
         /// </summary>
-        public DateTime DateModified { get; set; }
+        public int ItemGroupId { get; set; }
 
         /// <summary>
-        /// Product measure value
+        /// Product measure
         /// </summary>
         public string Measure { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Product measure id
+        /// </summary>
+        public int MeasureId { get; set; }
+
+        /// <summary>
+        /// Product barcodes
+        /// </summary>
+        public IEnumerable<string> Barcodes { get; set; } =
+            new List<string>();
     }
 }

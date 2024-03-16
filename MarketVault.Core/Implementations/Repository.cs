@@ -66,16 +66,6 @@
             => await this.dbSet.FindAsync(id);
 
         /// <summary>
-        /// Asynchronous method for removing an entity
-        /// </summary>
-        /// <param name="entity">Entity to remove</param>
-        public async Task DeleteAsync(TEntity entity)
-        {
-            this.dbSet.Remove(entity);
-            await this.SaveChangesAsync();
-        }
-
-        /// <summary>
         /// Asynchronous method for saving changes in DB
         /// </summary>
         /// <returns>Task<int> whether the changes have been saved</returns>

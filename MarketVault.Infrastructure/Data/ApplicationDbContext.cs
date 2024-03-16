@@ -104,6 +104,21 @@
                 .WithMany(f => f.CounterParties)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            builder.Entity<Product>()
+                .Property(p => p.Id)
+                .ValueGeneratedOnAdd();
+
+            ApplyConfigurations(builder);
+
+            base.OnModelCreating(builder);
+        }
+
+        /// <summary>
+        /// Private method for applying configurations
+        /// </summary>
+        /// <param name="builder">Default Model Builder</param>
+        private static void ApplyConfigurations(ModelBuilder builder)
+        {
             builder
             .ApplyConfiguration(new AddressConfiguration())
             .ApplyConfiguration(new BankConfiguration())
@@ -117,8 +132,6 @@
             .ApplyConfiguration(new BarcodeConfiguration())
             .ApplyConfiguration(new ProductMeasureConfiguration())
             .ApplyConfiguration(new ProductOperationConfiguration());
-
-            base.OnModelCreating(builder);
         }
     }
 }

@@ -35,7 +35,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
 
+<script src="@Url.Content("~/js/marketvault/src/Components/CommentBox.jsx")"></script>
 <script src="@Url.Content("~/js/marketvault/src/Components/ProductViewComponent.jsx")"></script>
+
 <script>
     let props = {};
 </script>
@@ -44,7 +46,7 @@
 
 <div class="viewContainer">
     <partial name="_SearchProductPartial" model="@searcher" />
-    
+
     <partial name="_PagerPartial" model="@pager" />
 
     <a asp-action="All" asp-controller="Product" id="showAllProductsBtn">
@@ -88,7 +90,6 @@
             {
                 <div class="productContainer">
                     <div id="@counter" class="productComponentContainer"></div>
-
                     <script>
                         props = {
                             name: '@product.Name',
@@ -112,16 +113,16 @@
                     <div class="productsButtons">
                         <a 
                             id="productDetailsBtn"
-                            asp-controller="Product" asp-action="Details" asp-route-id="@counter">
+                            asp-controller="Product" asp-action="Details" asp-route-id="@product.Id">
                             Details
                         </a>
                         <a 
                             id="productEditBtn"
-                            asp-controller="Product" asp-action="Edit" asp-route-id="@counter">
+                            asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id">
                             Edit
                         </a>
                         <a id="productDeleteBtn"
-                            asp-controller="Product" asp-action="Delete" asp-route-id="@counter">
+                            asp-controller="Product" asp-action="DeleteGet" asp-route-id="@product.Id">
                             Delete
                         </a>
                     </div>

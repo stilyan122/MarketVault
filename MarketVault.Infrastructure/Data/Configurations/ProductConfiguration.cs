@@ -15,7 +15,7 @@
         /// </summary>
         /// <param name="builder">Entity Type Builder</param>
         public void Configure(EntityTypeBuilder<Product> builder)
-        {
+        { 
             var products = new List<Product>();
             var random = new Random();
 

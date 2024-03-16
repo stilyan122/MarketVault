@@ -3,7 +3,6 @@
     using MarketVault.Core;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
-    using MarketVault.Infrastructure.Data.Models;
     using MarketVault.Models.ItemGroup;
     using MarketVault.Models.Measure;
     using MarketVault.Models.Product;
@@ -11,7 +10,6 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System;
-    using System.Linq.Expressions;
 
     /// <summary>
     /// Product Controller (Authorized)
@@ -35,26 +33,18 @@
         private readonly IMeasureService measureService = null!;
 
         /// <summary>
-        /// ProductMeasure Service
-        /// </summary>
-        private readonly IProductMeasureService productMeasureService = null!;
-
-        /// <summary>
         /// Default constructor, injecting services (DI)
         /// </summary>
         /// <param name="service">IProductService</param>
         /// <param name="itemGroupService">IItemGroupService</param>
         /// <param name="measureService">IMeasureService</param>
-        /// <param name="productMeasureService">IProductMeasureService</param>
         public ProductController(IProductService service,
             IItemGroupService itemGroupService,
-            IMeasureService measureService,
-            IProductMeasureService productMeasureService)
+            IMeasureService measureService)
         {
             this.service = service;
             this.itemGroupService = itemGroupService;
             this.measureService = measureService;
-            this.productMeasureService = productMeasureService;
         }
 
         /// <summary>
@@ -78,6 +68,7 @@
             var viewModels = serviceModels
                 .Select(sm => new ProductViewModel()
             {
+                Id = sm.Id,
                 DateAdded = sm.DateAdded,
                 CashRegisterName = sm.CashRegisterName,
                 DateModified = sm.DateModified,
@@ -89,7 +80,7 @@
                 Quantity = sm.Quantity,
                 SalePrice = sm.SalePrice
             })
-            .ToList();
+                .ToList();
 
             const int pageSize = 10;
 
@@ -151,6 +142,7 @@
             var viewModels = serviceModels
                 .Select(sm => new ProductViewModel()
                 {
+                    Id = sm.Id,
                     DateAdded = sm.DateAdded,
                     CashRegisterName = sm.CashRegisterName,
                     DateModified = sm.DateModified,
@@ -237,23 +229,27 @@
                 MeasureId = model.MeasureId
             };
 
-            var productMeasureServiceModel = new ProductMeasureServiceModel()
-            {
-                MeasureId = model.MeasureId
-            };
-
-            await this.productMeasureService.AddAsync(productMeasureServiceModel);
             await this.service.AddAsync(serviceModel);
 
             return RedirectToAction("All");
         }
 
+        /// <summary>
+        /// Action for editing a product by id in app (Asynchronous, GET)
+        /// </summary>
+        /// <param name="id">Id to use for update</param>
+        /// <returns>Task<IActionResult></returns>
         [HttpGet]
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(string id)
         {
             try
             {
-                var entity = await this.service.GetByIdAsync(id);
+                if(!int.TryParse(id, out int parsed))
+                {
+                    return BadRequest();
+                }
+
+                var entity = await this.service.GetByIdAsync(parsed);
 
                 var viewModel = new ProductFormModel()
                 {
@@ -273,16 +269,37 @@
             }
             catch (ArgumentNullException)
             {
-                return BadRequest();
+                return NotFound();
             }
         }
 
+        /// <summary>
+        /// Action for editing a product by id in app (Asynchronous, POST)
+        /// </summary>
+        /// <param name="id">Id to use for element</param>
+        /// <param name="model">Form model to use</param>
+        /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, ProductFormModel model)
+        public async Task<IActionResult> Edit(string id, ProductFormModel model)
         {
+            if (model == null || 
+                !int.TryParse(id, out int parsed))
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var entity = await this.service.GetByIdAsync(parsed);
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound();
+            }
+
             var serviceModel = new ProductServiceModel()
             {
-                Id = id,
+                Id = parsed,
                 DateModified = DateTime.Now,
                 Description = model.Description,
                 ItemGroupId = model.ItemGroupId,
@@ -297,6 +314,135 @@
             await this.service.UpdateAsync(serviceModel);
 
             return RedirectToAction("All");
+        }
+
+        /// <summary>
+        /// Action for deleting a product by id in app (Asynchronous, Get)
+        /// </summary>
+        /// <param name="id">Id to use for element</param>
+        /// <returns>Task<IActionResult></returns>
+        [HttpGet]
+        public async Task<IActionResult> DeleteGet(string id)
+        {
+            try
+            {
+                if (!int.TryParse(id, out int parsed))
+                {
+                    return BadRequest();
+                }
+
+                var entity = await this.service.GetByIdAsync(parsed);
+
+                var viewModel = new ProductDeleteFormModel()
+                {
+                    Id = parsed,
+                    CashRegisterName = entity.CashRegisterName,
+                    Name = entity.Name,
+                    Description = entity.Description,
+                    CodeForScales = entity.CodeForScales,
+                    ItemGroupId = entity.ItemGroupId,
+                    ItemGroup = entity.ItemGroup.Name,
+                    MeasureId = entity.MeasureId,
+                    Measure = entity.Measure.Name,
+                    PurchasePrice = entity.PurchasePrice,
+                    SalePrice = entity.SalePrice,
+                };
+
+                return View("Delete", viewModel);
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound();
+            }
+        }
+
+        /// <summary>
+        /// Action for deleting a product by id in app (Asynchronous, POST)
+        /// </summary>
+        /// <param name="id">Id to use for element</param>
+        /// <returns>Task<IActionResult></returns>
+        [HttpPost]
+        public async Task<IActionResult> DeletePost(string id)
+        {
+            if (!int.TryParse(id, out int parsed))
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var model = await this.service.GetByIdAsync(parsed);
+
+                var serviceModel = new ProductServiceModel()
+                {
+                    Id = parsed,
+                    DateModified = DateTime.Now,
+                    Description = model.Description,
+                    ItemGroupId = model.ItemGroupId,
+                    MeasureId = model.MeasureId,
+                    Name = model.Name,
+                    CashRegisterName = model.CashRegisterName,
+                    PurchasePrice = model.PurchasePrice,
+                    SalePrice = model.SalePrice,
+                    CodeForScales = model.CodeForScales,
+                    ArticleNumber = model.ArticleNumber,
+                    NomenclatureNumber = model.NomenclatureNumber,
+                    DateAdded = model.DateAdded,
+                    ItemGroup = model.ItemGroup,
+                    Measure = model.Measure,
+                    Quantity = model.Quantity
+                };
+
+                await this.service.DeleteAsync(serviceModel);
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction("All");
+        }
+
+        /// <summary>
+        /// Action for checking product details (Asynchronous)
+        /// </summary>
+        /// <param name="id">Id to use</param>
+        /// <returns>Task<IActionResult></returns>
+        public async Task<IActionResult> Details(string id)
+        {
+            try
+            {
+                if (!int.TryParse(id, out int parsed))
+                {
+                    return BadRequest();
+                }
+
+                var entity = await this.service.GetByIdAsync(parsed);
+
+                var viewModel = new ProductDetailsViewModel()
+                {
+                    CashRegisterName = entity.CashRegisterName,
+                    Name = entity.Name,
+                    Description = entity.Description,
+                    CodeForScales = entity.CodeForScales,
+                    ItemGroupName = entity.ItemGroup.Name,
+                    Measure = entity.Measure.Name,
+                    DateAdded = entity.DateAdded,
+                    DateModified = entity.DateModified,
+                    ArticleNumber = entity.ArticleNumber,
+                    NomenclatureNumber = entity.NomenclatureNumber,
+                    Quantity = entity.Quantity,
+                    Barcodes = entity.Barcodes.Select(b => b.Value).ToList(),
+                    PurchasePrice = entity.PurchasePrice,
+                    SalePrice = entity.SalePrice,
+                };
+
+                return View(viewModel);
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound();
+            }
         }
 
         /// <summary>
@@ -340,8 +486,8 @@
         /// <summary>
         /// Private help method to determine whether a string is null, whitespace or empty
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value">Value to check</param>
+        /// <returns>bool</returns>
         private static bool IsNullOrEmptyOrWhiteSpace(string value)
         {
             return value == null ||
