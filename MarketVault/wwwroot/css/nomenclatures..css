@@ -1,4 +1,5 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Capriola&display=swap');
 
 .productsContainer{
     display: flex;
@@ -121,7 +122,6 @@
     box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
-    animation: displayButtonsRight 2s ease 0s 1 normal forwards;
 }
 
 .viewContainer a:hover{
@@ -144,50 +144,6 @@
     text-align: center;
     vertical-align: middle;
     line-height: 2;
-}
-
-@keyframes displayButtonsRight {
-    0% {
-        animation-timing-function: ease-in;
-        opacity: 0;
-        transform: translateX(-250px);
-    }
-
-    38% {
-        animation-timing-function: ease-out;
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    55% {
-        animation-timing-function: ease-in;
-        transform: translateX(-68px);
-    }
-
-    72% {
-        animation-timing-function: ease-out;
-        transform: translateX(0);
-    }
-
-    81% {
-        animation-timing-function: ease-in;
-        transform: translateX(-28px);
-    }
-
-    90% {
-        animation-timing-function: ease-out;
-        transform: translateX(0);
-    }
-
-    95% {
-        animation-timing-function: ease-in;
-        transform: translateX(-8px);
-    }
-
-    100% {
-        animation-timing-function: ease-out;
-        transform: translateX(0);
-    }
 }
 
 .paginatorLi:first-child {
@@ -213,11 +169,19 @@
 }
 
 .active {
-    background-color: #ff296e;
+    background-color: #ba003c;
 }
 
 .active a{
     color: white;
+}
+
+.active:hover{
+    background-color: #8f183e;
+}
+
+.active a:hover{
+    color:white;
 }
 
 #paginatorFirst,
@@ -264,8 +228,10 @@
     border-radius: 12px;
 }
 
-.productComponentContainerFirst {
-    font-weight: bold;
+.productContainerFirst {
+    font-weight: 700;
+    color: white;
+    background-color: #8f183e;
 }
 
 #showAllProductsBtn {
@@ -293,4 +259,500 @@
 
 #searchProductBtn:hover{
     background-color: #6E0023;
+}
+
+#productDetailsBtn {
+    background-color: #B7EBFF;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#productDetailsBtn:hover {
+    background-color: #5ED1FF;
+}
+
+#productEditBtn {
+    background-color: #B7EBFF;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#productEditBtn:hover{
+    background-color: #5ED1FF;
+}
+
+#productDeleteBtn {
+    background-color: #B7EBFF;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#productDeleteBtn:hover{
+    background-color: #5ED1FF;
+}
+
+.addProductContainer {
+    background: hsla(50, 87%, 85%, 1);
+    background: linear-gradient(270deg, hsla(50, 87%, 85%, 1) 0%, hsla(49, 82%, 74%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(50, 87%, 85%, 1) 0%, hsla(49, 82%, 74%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(50, 87%, 85%, 1) 0%, hsla(49, 82%, 74%, 1) 100%);
+    padding: 24px;
+    border-radius: 12px;
+    height: 100%;
+    margin-top: 4.809%;
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+}
+
+.addProductContainer form {
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    gap: 4px;
+    text-align: right;
+}
+
+.addProductContainer span {
+    color: #c90016;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.addProductContainer form div div {
+    display: flex;
+}
+
+.addProductContainer form div div input,
+.addProductContainer form div div textarea,
+.addProductContainer form div div select {
+    border-radius: 4px;
+    padding: 4px;
+    animation: displayProductFormTags 2s ease 0s 1 normal forwards;
+    margin-left: auto;
+    border: 2px solid black;
+    width: 20em;
+}
+
+#addProductBtn {
+    align-self: center;
+    padding: 12px 32px;
+    border-radius: 8px;
+    margin-top: 50px;
+    border: none;
+    background-color: #efcc00;
+    color: white;
+}
+
+#addProductBtn:hover {
+    animation: addProductShake 2s ease 0s 1 normal forwards;
+}
+
+@keyframes addProductShake {
+    0%, 100% {
+        transform: rotate(0deg);
+        transform-origin: 50% 100%;
+    }
+
+    10% {
+        transform: rotate(2deg);
+    }
+
+    20%, 40%, 60% {
+        transform: rotate(-4deg);
+    }
+
+    30%, 50%, 70% {
+        transform: rotate(4deg);
+    }
+
+    80% {
+        transform: rotate(-2deg);
+    }
+
+    90% {
+        transform: rotate(2deg);
+    }
+}
+
+@keyframes displayProductFormTags {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.productDetailsContainer {
+    background: hsla(285, 100%, 50%, 1);
+    background: linear-gradient(270deg, hsla(285, 100%, 50%, 1) 0%, hsla(285, 100%, 38%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(285, 100%, 50%, 1) 0%, hsla(285, 100%, 38%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(285, 100%, 50%, 1) 0%, hsla(285, 100%, 38%, 1) 100%);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    border-radius: 12px;
+    padding: 2em;
+    font-family: "Capriola", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.productDetailsContainer .productDetailsDiv {
+    display: flex;
+    margin: 3em;
+    background-color: #f0c2ff;
+    padding: 0.4em;
+    font-family: "Capriola", sans-serif;
+    border-radius: 8px;
+}
+
+.productDetailsContainer div label{
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.productDetailsContainer div h4{
+    margin-left: auto;
+}
+
+.productDetailsContainer div p{
+    margin-left: auto;
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.productDetailsContainer div div {
+    margin: 0;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#detailsProductBtns {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#backToAllProductsBtn,
+#homePageInProductsBtn {
+    border-radius: 8px;
+    background-color: #e6daeb;
+    text-decoration: none;
+    padding: 1em;
+    margin: 1em;
+    border: 1px solid black;
+    color: #ca37fa;
+    font-weight: 500;
+}
+
+#backToAllProductsBtn:hover,
+#homePageInProductsBtn:hover{
+    background-color: purple;
+    color: white;
+}
+
+.editProductContainer {
+    background: hsla(50, 87%, 85%, 1);
+    background: linear-gradient(270deg, hsla(50, 87%, 85%, 1) 0%, hsla(49, 82%, 74%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(50, 87%, 85%, 1) 0%, hsla(49, 82%, 74%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(50, 87%, 85%, 1) 0%, hsla(49, 82%, 74%, 1) 100%);
+    padding: 24px;
+    border-radius: 12px;
+    height: 100%;
+    margin-top: 4.809%;
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+}
+
+.editProductContainer form {
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    gap: 4px;
+    text-align: right;
+}
+
+.editProductContainer span {
+    color: #c90016;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.editProductContainer form div div {
+    display: flex;
+}
+
+.editProductContainer form div div input,
+.editProductContainer form div div textarea,
+.editProductContainer form div div select {
+    border-radius: 4px;
+    padding: 4px;
+    animation: displayProductFormTags 2s ease 0s 1 normal forwards;
+    margin-left: auto;
+    border: 2px solid black;
+    width: 20em;
+}
+
+.editProductContainer .productDescriptionDiv div input{
+    height: 2em;
+}
+
+#editProductBtn {
+    align-self: center;
+    padding: 12px 32px;
+    border-radius: 8px;
+    margin-top: 50px;
+    border: none;
+    background-color: #efcc00;
+    color: white;
+}
+
+#editProductBtn:hover {
+    animation: editProductShake 2s ease 0s 1 normal forwards;
+}
+
+@keyframes editProductShake {
+    0%, 100% {
+        transform: rotate(0deg);
+        transform-origin: 50% 100%;
+    }
+
+    10% {
+        transform: rotate(2deg);
+    }
+
+    20%, 40%, 60% {
+        transform: rotate(-4deg);
+    }
+
+    30%, 50%, 70% {
+        transform: rotate(4deg);
+    }
+
+    80% {
+        transform: rotate(-2deg);
+    }
+
+    90% {
+        transform: rotate(2deg);
+    }
+}
+
+@keyframes displayProductFormTags {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Firm */
+
+.addFirmContainer {
+    background: hsla(118, 70%, 76%, 1);
+    background: linear-gradient(270deg, hsla(118, 70%, 76%, 1) 0%, hsla(118, 45%, 67%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(118, 70%, 76%, 1) 0%, hsla(118, 45%, 67%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(118, 70%, 76%, 1) 0%, hsla(118, 45%, 67%, 1) 100%);
+    padding: 24px;
+    border-radius: 12px;
+    height: 100%;
+    margin-top: 4.809%;
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+}
+
+.addFirmContainer form {
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    gap: 4px;
+    text-align: right;
+}
+
+.addFirmContainer span {
+    color: #c90016;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.addFirmContainer form div div {
+    display: flex;
+}
+
+.addFirmContainer form div div input,
+.addFirmContainer form div div select {
+    border-radius: 4px;
+    padding: 4px;
+    animation: displayFirmFormTags 2s ease 0s 1 normal forwards;
+    margin-left: auto;
+}
+
+#addFirmBtn {
+    align-self: center;
+    padding: 12px 32px;
+    border-radius: 8px;
+    margin-top: 50px;
+    border: none;
+    background-color: #2e8b57;
+    color: white;
+}
+
+#addFirmBtn:hover {
+    animation: addFirmShake 2s ease 0s 1 normal forwards;
+}
+
+@keyframes addFirmShake {
+    0%, 100% {
+        transform: rotate(0deg);
+        transform-origin: 50% 100%;
+    }
+
+    10% {
+        transform: rotate(2deg);
+    }
+
+    20%, 40%, 60% {
+        transform: rotate(-4deg);
+    }
+
+    30%, 50%, 70% {
+        transform: rotate(4deg);
+    }
+
+    80% {
+        transform: rotate(-2deg);
+    }
+
+    90% {
+        transform: rotate(2deg);
+    }
+}
+
+@keyframes displayFirmFormTags {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Bank */
+
+.addBankContainer {
+    background: hsla(29, 100%, 84%, 1);
+    background: linear-gradient(270deg, hsla(29, 100%, 84%, 1) 0%, hsla(29, 86%, 72%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(29, 100%, 84%, 1) 0%, hsla(29, 86%, 72%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(29, 100%, 84%, 1) 0%, hsla(29, 86%, 72%, 1) 100%);
+    padding: 24px;
+    border-radius: 12px;
+    height: 100%;
+    margin-top: 4.809%;
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+}
+
+.addBankContainer form {
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    gap: 4px;
+    text-align: right;
+}
+
+.addBankContainer span {
+    color: #c90016;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.addBankContainer form div div {
+    display: flex;
+}
+
+.addBankContainer form div div input,
+.addBankContainer form div div select {
+    border-radius: 4px;
+    padding: 4px;
+    animation: displayBankFormTags 2s ease 0s 1 normal forwards;
+    margin-left: auto;
+}
+
+#addBankBtn {
+    align-self: center;
+    padding: 12px 32px;
+    border-radius: 8px;
+    margin-top: 50px;
+    border: none;
+    background-color: #ff8c00;
+    color: white;
+}
+
+#addBankBtn:hover {
+    animation: addBankShake 2s ease 0s 1 normal forwards;
+}
+
+@keyframes addBankShake {
+    0%, 100% {
+        transform: rotate(0deg);
+        transform-origin: 50% 100%;
+    }
+
+    10% {
+        transform: rotate(2deg);
+    }
+
+    20%, 40%, 60% {
+        transform: rotate(-4deg);
+    }
+
+    30%, 50%, 70% {
+        transform: rotate(4deg);
+    }
+
+    80% {
+        transform: rotate(-2deg);
+    }
+
+    90% {
+        transform: rotate(2deg);
+    }
+}
+
+@keyframes displayBankFormTags {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }

@@ -45,9 +45,9 @@
         </div>
         <div>
             <div>
-                <label asp-for="BankId">Select Bank</label>
+                <label asp-for="BankId">Select bank</label>
                 <select asp-for="BankId">
-                    <option disabled selected value="">Select bank...</option>
+                    <option disabled selected value="">Select Bank...</option>
                     @foreach (BankViewModel bank in Model.Banks)
                     {
                         string bankName = bank.Name + " " +
@@ -61,9 +61,9 @@
         </div>
         <div>
             <div>
-                <label asp-for="FirmId">Select Firm</label>
+                <label asp-for="FirmId">Select firm</label>
                 <select asp-for="FirmId">
-                    <option disabled selected value="">Select firm...</option>
+                    <option disabled selected value="">Select Firm...</option>
                     @foreach (FirmViewModel firm in Model.Firms)
                     {
                         string firmName = firm.Name + " " +

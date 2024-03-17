@@ -4,21 +4,21 @@
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Models.Address;
-    using MarketVault.Models.Firm;
+    using MarketVault.Models.Bank;
     using MarketVault.Models.Search;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     /// <summary>
-    /// Counter Party Controller (Authorized)
+    /// Bank Controller (Authorized)
     /// </summary>
     [Authorize]
-    public class FirmController : Controller
+    public class BankController : Controller
     {
         /// <summary>
-        /// Firm Service
+        /// Bank Service
         /// </summary>
-        private readonly IFirmService service = null!;
+        private readonly IBankService service = null!;
 
         /// <summary>
         /// Address Service
@@ -28,26 +28,22 @@
         /// <summary>
         /// Default constructor, injecting services (DI)
         /// </summary>
-        /// <param name="service">IFirmService</param>
+        /// <param name="service">IBankService</param>
         /// <param name="addressService">IAddressService</param>
-        public FirmController(IFirmService service,
+        public BankController(IBankService service,
             IAddressService addressService)
         {
             this.service = service;
             this.addressService = addressService;
         }
 
-        /// <summary>
-        /// Default Index action
-        /// </summary>
-        /// <returns>IActionResult</returns>
         public IActionResult Index()
         {
             return RedirectToAction("All");
         }
 
         /// <summary>
-        /// Action for all firms in app (Asynchronous)
+        /// Action for all banks in app (Asynchronous)
         /// </summary>
         /// <returns>Task<IActionResult></returns>
         public async Task<IActionResult> All(int pages = 1)
@@ -56,17 +52,14 @@
                 .GetAllAsync();
 
             var viewModels = serviceModels
-                .Select(sm => new FirmViewModel()
+                .Select(sm => new BankViewModel()
                 {
                     AddressId = sm.AddressId,
-                    Email = sm.Email,
                     Id = sm.Id,
                     Name = sm.Name,
-                    PhoneNumber = sm.PhoneNumber,
-                    ResponsiblePersonName = sm.ResponsiblePersonName,
+                    TownName = sm.Address.TownName,
                     StreetName = sm.Address.StreetName,
-                    StreetNumber = sm.Address.StreetNumber,
-                    TownName = sm.Address.TownName
+                    StreetNumber = sm.Address.StreetNumber
                 })
                 .ToList();
 
@@ -82,7 +75,7 @@
             var pager = new Pager(recsCount, pages, pageSize)
             {
                 Action = "All",
-                Controller = "Firm"
+                Controller = "Bank"
             };
 
             int recsSkip = (pages - 1) * pageSize;
@@ -98,10 +91,10 @@
         }
 
         /// <summary>
-        /// Action for filtering firms (Asynchronous)
+        /// Action for filtering banks (Asynchronous)
         /// </summary>
         /// <returns>Task<IActionResult></returns>
-        public async Task<IActionResult> SearchFirms(
+        public async Task<IActionResult> SearchBanks(
                 string searchSortType,
                 string searchViewName,
                 string searchQuery,
@@ -128,14 +121,11 @@
                 pages);
 
             var viewModels = serviceModels
-                .Select(sm => new FirmViewModel()
+                .Select(sm => new BankViewModel()
                 {
                     Id = sm.Id,
                     Name = sm.Name,
                     AddressId = sm.AddressId,
-                    Email = sm.Email,
-                    PhoneNumber = sm.PhoneNumber,
-                    ResponsiblePersonName = sm.ResponsiblePersonName,
                     StreetName = sm.Address.StreetName,
                     StreetNumber = sm.Address.StreetNumber,
                     TownName = sm.Address.TownName
@@ -147,8 +137,8 @@
 
             var pager = new Pager(recsCount, pages, pageSize)
             {
-                Action = "SearchFirms",
-                Controller = "Firm",
+                Action = "SearchBanks",
+                Controller = "Bank",
                 SearchQuery = searchQuery,
                 SearchSortingType = searchSortType,
                 SearchViewName = searchViewName
@@ -170,13 +160,13 @@
         }
 
         /// <summary>
-        /// Action for adding a firm in app (Asynchronous, GET)
+        /// Action for adding a bank in app (Asynchronous, GET)
         /// </summary>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
         public async Task<IActionResult> Add()
         {
-            var formModel = new FirmFormModel()
+            var formModel = new BankFormModel()
             {
                 Addresses = await this.GetAddresses()
             };
@@ -185,12 +175,12 @@
         }
 
         /// <summary>
-        /// Action for adding a firm in app (Asynchronous, POST)
+        /// Action for adding a bank in app (Asynchronous, POST)
         /// </summary>
-        /// <param name="model">FirmFormModel - model to add</param>
+        /// <param name="model">BankFormModel - model to add</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        public async Task<IActionResult> Add(FirmFormModel model)
+        public async Task<IActionResult> Add(BankFormModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -198,13 +188,10 @@
                 return View(model);
             }
 
-            var serviceModel = new FirmServiceModel()
+            var serviceModel = new BankServiceModel()
             {
-                Email = model.Email,
-                AddressId = model.AddressId,
-                PhoneNumber = model.PhoneNumber,
                 Name = model.Name,
-                ResponsiblePersonName = model.ResponsiblePersonName
+                AddressId = model.AddressId
             };
 
             await this.service.AddAsync(serviceModel);
@@ -213,7 +200,7 @@
         }
 
         /// <summary>
-        /// Action for editing a firm by id in app (Asynchronous, GET)
+        /// Action for editing a bank by id in app (Asynchronous, GET)
         /// </summary>
         /// <param name="id">Id to use for update</param>
         /// <returns>Task<IActionResult></returns>
@@ -229,14 +216,11 @@
 
                 var entity = await this.service.GetByIdAsync(parsed);
 
-                var viewModel = new FirmFormModel()
+                var viewModel = new BankFormModel()
                 {
                     AddressId = entity.AddressId,
-                    Email = entity.Email,
                     Addresses = await this.GetAddresses(),
-                    Name = entity.Name,
-                    PhoneNumber = entity.PhoneNumber,
-                    ResponsiblePersonName = entity.ResponsiblePersonName
+                    Name = entity.Name
                 };
 
                 return View(viewModel);
@@ -248,13 +232,13 @@
         }
 
         /// <summary>
-        /// Action for editing a firm by id in app (Asynchronous, POST)
+        /// Action for editing a bank by id in app (Asynchronous, POST)
         /// </summary>
         /// <param name="id">Id to use for element</param>
         /// <param name="model">Form model to use</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        public async Task<IActionResult> Edit(string id, FirmFormModel model)
+        public async Task<IActionResult> Edit(string id, BankFormModel model)
         {
             if (model == null ||
                 !int.TryParse(id, out int parsed))
@@ -271,14 +255,11 @@
                 return NotFound();
             }
 
-            var serviceModel = new FirmServiceModel()
+            var serviceModel = new BankServiceModel()
             {
                 Id = parsed,
                 AddressId = model.AddressId,
-                Email = model.Email,
-                Name = model.Name,
-                PhoneNumber = model.PhoneNumber,
-                ResponsiblePersonName = model.ResponsiblePersonName
+                Name = model.Name
             };
 
             await this.service.UpdateAsync(serviceModel);
@@ -287,7 +268,7 @@
         }
 
         /// <summary>
-        /// Action for deleting a firm by id in app (Asynchronous, Get)
+        /// Action for deleting a bank by id in app (Asynchronous, Get)
         /// </summary>
         /// <param name="id">Id to use for element</param>
         /// <returns>Task<IActionResult></returns>
@@ -305,15 +286,12 @@
 
                 var address = entity.Address;
 
-                var viewModel = new FirmDeleteFormModel()
+                var viewModel = new BankDeleteFormModel()
                 {
                     Id = parsed,
                     Address = $"{address.TownName} {address.StreetName} " +
                     $"{address.StreetNumber}",
-                    Email = entity.Email,
-                    Name = entity.Name,
-                    PhoneNumber = entity.PhoneNumber,
-                    ResponsiblePersonName = entity.ResponsiblePersonName
+                    Name = entity.Name
                 };
 
                 return View("Delete", viewModel);
@@ -325,7 +303,7 @@
         }
 
         /// <summary>
-        /// Action for deleting a firm by id in app (Asynchronous, POST)
+        /// Action for deleting a bank by id in app (Asynchronous, POST)
         /// </summary>
         /// <param name="id">Id to use for element</param>
         /// <returns>Task<IActionResult></returns>
@@ -341,14 +319,11 @@
             {
                 var model = await this.service.GetByIdAsync(parsed);
 
-                var serviceModel = new FirmServiceModel()
+                var serviceModel = new BankServiceModel()
                 {
                     Id = parsed,
                     AddressId = model.AddressId,
-                    Email = model.Email,
-                    Name = model.Name,
-                    PhoneNumber = model.PhoneNumber,
-                    ResponsiblePersonName = model.ResponsiblePersonName
+                    Name = model.Name
                 };
 
                 await this.service.DeleteAsync(serviceModel);
@@ -362,7 +337,7 @@
         }
 
         /// <summary>
-        /// Action for checking firm details (Asynchronous)
+        /// Action for bank details (Asynchronous)
         /// </summary>
         /// <param name="id">Id to use</param>
         /// <returns>Task<IActionResult></returns>
@@ -379,15 +354,12 @@
 
                 var address = entity.Address;
 
-                var viewModel = new FirmDetailsViewModel()
+                var viewModel = new BankDetailsViewModel()
                 {
                     Address = $"{address.TownName} {address.StreetName}" +
                     $" {address.StreetNumber}",
-                    Email = entity.Email,
                     Id = entity.Id,
-                    Name = entity.Name,
-                    PhoneNumber = entity.PhoneNumber,
-                    ResponsiblePersonName = entity.ResponsiblePersonName
+                    Name = entity.Name
                 };
 
                 return View(viewModel);
@@ -420,13 +392,13 @@
                  .GetAllAsync();
 
             var firmViewModels = firmServiceModels
-                .Select(asm => new AddressViewModel
-                {
-                    Id = asm.Id,
-                    StreetName = asm.StreetName,
-                    StreetNumber = asm.StreetNumber,
-                    TownName = asm.TownName
-                });
+            .Select(asm => new AddressViewModel
+            {
+                Id = asm.Id,
+                StreetName = asm.StreetName,
+                StreetNumber = asm.StreetNumber,
+                TownName = asm.TownName
+            });
 
             return firmViewModels;
         }

@@ -1,0 +1,123 @@
+﻿@model IEnumerable<BankViewModel>
+
+@{
+    ViewBag.Title = "All banks";
+    int counter = 1;
+
+    Pager pager = new Pager();
+
+    SearchModel searcher = new SearchModel();
+
+    int pageNo = 0;
+
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+    else
+    {
+        pager.Action = "All";
+        pager.Controller = "Bank";
+    }
+
+    if (ViewBag.Searcher != null)
+    {
+        searcher = ViewBag.Searcher;
+    }
+    else
+    {
+        searcher.ViewName = "All";
+    }
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+
+<script src="@Url.Content("~/js/marketvault/src/Components/BankViewComponent.jsx")"></script>
+
+<script>
+    let props = {};
+</script>
+
+<div class="viewContainer">
+    <partial name="_SearchBankPartial" model="@searcher" />
+
+    <partial name="_PagerPartial" model="@pager" />
+
+    <a asp-action="All" asp-controller="Bank" id="showAllBanksBtn">
+        Show All
+    </a>
+
+    @if (Model.Count() == 0)
+    {
+        <h1 class="notFoundBanksBtn">No banks found! Try again!</h1>
+    }
+
+    else
+    {
+        <div class="banksContainer">
+
+            <div class="bankContainer">
+                <div id="-1" class="bankComponentContainer bankComponentContainerFirst"></div>
+
+                <script>
+                    props = {
+                        name: 'Bank Name',
+                        address: 'Bank Address',
+                    };
+
+                    ReactDOM.render(
+                        React.createElement(BankViewComponent, props),
+                        document.getElementById('-1'),
+                    );
+                </script>
+            </div>
+
+            @foreach (BankViewModel bank in Model)
+            {
+                <div class="bankContainer">
+                    <div id="@counter" class="bankComponentContainer"></div>
+
+                    @{
+                        var address = $"{bank.TownName} {bank.StreetName} {bank.StreetNumber}";
+                    }
+
+                    <script>
+                        props = {
+                            name: '@bank.Name',
+                            address: '@address',
+                        };
+
+                        ReactDOM.render(
+                            React.createElement(BankViewComponent, props),
+                            document.getElementById(@counter),
+                        );
+                    </script>
+
+                    <div class="bankButtons">
+                        <a id="bankDetailsBtn"
+                           asp-controller="Bank" asp-action="Details" asp-route-id="@bank.Id">
+                            Details
+                        </a>
+                        <a id="bankEditBtn"
+                           asp-controller="Bank" asp-action="Edit" asp-route-id="@bank.Id">
+                            Edit
+                        </a>
+                        <a id="bankDeleteBtn"
+                           asp-controller="Bank" asp-action="DeleteGet" asp-route-id="@bank.Id">
+                            Delete
+                        </a>
+                    </div>
+
+                    @{
+                        counter++;
+                    }
+                </div>
+            }
+        </div>
+    }
+
+    <partial name="_PagerPartial" model="@pager" />
+</div>

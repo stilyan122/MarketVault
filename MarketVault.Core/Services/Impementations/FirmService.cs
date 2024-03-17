@@ -36,18 +36,8 @@
         {
             return await this.repository
                 .All()
-                .UseIncludeFirmStatements()
                 .AsNoTracking()
-                .Select(b => new FirmServiceModel()
-                {
-                    Address = b.Address,
-                    AddressId = b.AddressId,
-                    Id = b.Id,
-                    Name = b.Name,
-                    Email = b.Email,
-                    PhoneNumber = b.PhoneNumber,
-                    ResponsiblePersonName = b.ResponsiblePersonName
-                })
+                .ProjectToFirmServiceModel()
                 .ToListAsync();
         }
 
@@ -71,6 +61,11 @@
                     "Phone Number" => entities.Where(e => e.PhoneNumber.ToLower().Contains(value.ToLower())),
                     "Email" => entities.Where(e => e.Email.ToLower().Contains(value.ToLower())),
                     "Responsible Person Name" => entities.Where(e => e.ResponsiblePersonName.ToLower().Contains(value.ToLower())),
+                    "Address" => entities.Where(e => e
+                    .Address.TownName.ToLower()
+                    .Contains(value.ToLower()) || e.Address
+                    .StreetName.ToLower().Contains(value.ToLower()) || 
+                    e.Address.StreetNumber.ToLower().Contains(value.ToLower())),
                     _ => entities.Where(e => e.Id == 0)
                 };
 

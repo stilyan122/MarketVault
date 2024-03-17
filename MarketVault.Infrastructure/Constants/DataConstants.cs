@@ -206,6 +206,7 @@
 
 
 
+
             public const string FirmNameRequiredExceptionMessage
                = "Field for firm name is required!";
             public const string FirmNameLengthExceptionMessage
@@ -234,6 +235,19 @@
 
             public const string FirmAddressRequiredExceptionMessage
                = "Field for firm address is required!";
+
+
+
+
+
+            public const string BankNameRequiredExceptionMessage
+               = "Field for bank name is required!";
+            public const string BankNameLengthExceptionMessage
+                = "Length of field bank name must be between {2} " +
+                "and {1} characters long!";
+
+            public const string BankAddressRequiredExceptionMessage
+               = "Field for bank address is required!";
         }
     }
 }
