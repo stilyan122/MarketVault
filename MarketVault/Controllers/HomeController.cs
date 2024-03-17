@@ -31,5 +31,19 @@
         {
             return View();
         }
+
+        public IActionResult Error(int statusCode)
+        {
+            if (statusCode == 404)
+            {
+                return View("Error404");
+            }
+            else if (statusCode == 400)
+            {
+                return View("Error400");
+            }
+
+            return View();
+        }
     }
 }
