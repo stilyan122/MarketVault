@@ -36,10 +36,12 @@ namespace MarketVault
             app.UseReact(config =>
             {
                 config
-                .AddScript("~/js/marketvault/src/Components/CommentBox.jsx")
                 .AddScript("~/js/marketvault/src/Components/ProductViewComponent.jsx")
                 .AddScript("~/js/marketvault/src/Components/CounterPartyViewComponent.jsx")
-                .AddScript("~/js/marketvault/src/Components/FirmViewComponent.jsx");
+                .AddScript("~/js/marketvault/src/Components/FirmViewComponent.jsx")
+                .AddScript("~/js/marketvault/src/Components/BankViewComponent.jsx")
+                .AddScript("~/js/marketvault/src/Components/ItemGroupViewComponent.jsx")
+                .AddScript("~/js/marketvault/src/Components/AddressViewComponent.jsx");
             });
 
             app.UseStaticFiles();

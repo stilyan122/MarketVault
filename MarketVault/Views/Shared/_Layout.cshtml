@@ -30,6 +30,7 @@
                                 <option value="Option3">Item Groups</option>
                                 <option value="Option4">Firms</option>
                                 <option value="Option5">Banks</option>
+                                <option value="Option6">Addresses</option>
                             </select>
                         </li>
                         <li class="nav-item">
@@ -40,6 +41,7 @@
                                 <option value="Option3">Add an item group</option>
                                 <option value="Option4">Add a firm</option>
                                 <option value="Option5">Add a bank</option>
+                                <option value="Option6">Add an address</option>
                             </select>
                         </li>
                     </ul>
@@ -73,6 +75,8 @@
             window.location.href = "/Firm/All";
         } else if (optionValue === "Option5") {
             window.location.href = "/Bank/All";
+        } else if (optionValue === "Option6") {
+            window.location.href = "/Address/All";
         }
     });
 
@@ -88,6 +92,8 @@
             window.location.href = "/Firm/Add";
         } else if (optionValue === "Option5") {
             window.location.href = "/Bank/Add";
+        } else if (optionValue === "Option6") {
+            window.location.href = "/Address/Add";
         }
     });
 </script>

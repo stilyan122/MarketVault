@@ -1,5 +1,7 @@
 ﻿namespace MarketVault.Core.Models
 {
+    using MarketVault.Infrastructure.Data.Models;
+
     /// <summary>
     /// Service model used for item group entity
     /// </summary>
@@ -14,5 +16,11 @@
         /// Service model name
         /// </summary>
         public string Name { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Service model products
+        /// </summary>
+        public IEnumerable<ProductServiceModel> Products { get; set; }
+            = new List<ProductServiceModel>();
     }
 }

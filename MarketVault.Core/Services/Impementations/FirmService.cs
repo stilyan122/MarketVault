@@ -20,12 +20,19 @@
         private readonly IRepository<Firm> repository = null!;
 
         /// <summary>
-        /// Default constructor, injection of Firm repository (DI)
+        /// Counter party service
+        /// </summary>
+        private readonly ICounterPartyService counterPartyService = null!;
+
+        /// <summary>
+        /// Default constructor, injection of Firm repository and service (DI)
         /// </summary>
         /// <param name="repository">Firm repository</param>
-        public FirmService(IRepository<Firm> repository)
+        public FirmService(IRepository<Firm> repository,
+            ICounterPartyService counterPartyService)
         {
             this.repository = repository;
+            this.counterPartyService = counterPartyService;
         }
 
         /// <summary>
@@ -166,13 +173,49 @@
         public async Task DeleteAsync(FirmServiceModel firm)
         {
             var entity = await this.repository
+               .All()
+               .UseIncludeFirmStatements()
+               .Where(p => p.Id == firm.Id)
+               .FirstOrDefaultAsync()
+               ?? throw new ArgumentException("Entity not found");
+
+            entity.IsActive = false;
+
+            var counterParties = await this.counterPartyService.GetAllAsync();
+            foreach (CounterPartyServiceModel counterParty in counterParties
+                .Where(cp => cp.FirmId == entity.Id))
+            {
+                await this.counterPartyService.DeleteAsync(counterParty);
+            }
+
+            await this.repository.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Delete range firms method (Asynchronous)
+        /// </summary>
+        /// <param name="firms">Firms</param>
+        /// <returns></returns>
+        public async Task DeleteRangeAsync(IEnumerable<FirmServiceModel> firms)
+        {
+            foreach (FirmServiceModel firm in firms)
+            {
+                var entity = await this.repository
                 .All()
                 .UseIncludeFirmStatements()
                 .Where(p => p.Id == firm.Id)
                 .FirstOrDefaultAsync()
                 ?? throw new ArgumentException("Entity not found");
 
-            entity.IsActive = false;
+                entity.IsActive = false;
+
+                var counterParties = await this.counterPartyService.GetAllAsync();
+                foreach (CounterPartyServiceModel counterParty in counterParties
+                    .Where(cp => cp.FirmId == firm.Id))
+                {
+                    await this.counterPartyService.DeleteAsync(counterParty);
+                }
+            }
 
             await this.repository.SaveChangesAsync();
         }

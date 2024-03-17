@@ -1,0 +1,28 @@
+﻿@model AddressDeleteFormModel
+
+@{
+    ViewBag.Title = "Delete product";
+}
+
+<div class="editAddressContainer">
+    <form asp-action="DeletePost"
+          asp-controller="Address"
+          id="deleteAddressForm"
+          method="post"
+          asp-route-id="@Model.Id">
+        <div>
+            <label asp-for="TownName">Address town name</label>
+            <h4>@Model.TownName</h4>
+        </div>
+        <div>
+            <label asp-for="StreetName">Address street name</label>
+            <h4>@Model.StreetName</h4>
+        </div>
+        <div>
+            <label asp-for="StreetNumber">Address street number</label>
+            <h4>@Model.StreetNumber</h4>
+        </div>
+
+        <button type="submit">Delete Address</button>
+    </form>
+</div>

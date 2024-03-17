@@ -17,12 +17,19 @@
         private readonly IRepository<Bank> repository = null!;
 
         /// <summary>
-        /// Default constructor, injection of Bank repository (DI)
+        /// Counter party service
+        /// </summary>
+        private readonly ICounterPartyService counterPartyService = null!;
+
+        /// <summary>
+        /// Default constructor, injection of Bank repository and servce (DI)
         /// </summary>
         /// <param name="repository">Bank repository</param>
-        public BankService(IRepository<Bank> repository)
+        public BankService(IRepository<Bank> repository,
+             ICounterPartyService counterPartyService)
         {
             this.repository = repository;
+            this.counterPartyService = counterPartyService;
         }
 
         /// <summary>
@@ -161,6 +168,42 @@
                 ?? throw new ArgumentException("Entity not found");
 
             entity.IsActive = false;
+
+            var counterParties = await this.counterPartyService.GetAllAsync();
+            foreach (CounterPartyServiceModel counterParty in counterParties
+                .Where(cp => cp.BankId == entity.Id))
+            {
+                await this.counterPartyService.DeleteAsync(counterParty);
+            }
+
+            await this.repository.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Delete range banks method (Asynchronous)
+        /// </summary>
+        /// <param name="banks">Banks</param>
+        /// <returns></returns>
+        public async Task DeleteRangeAsync(IEnumerable<BankServiceModel> banks)
+        {
+            foreach (BankServiceModel bank in banks)
+            {
+                var entity = await this.repository
+                .All()
+                .UseIncludeBankStatements()
+                .Where(p => p.Id == bank.Id)
+                .FirstOrDefaultAsync()
+                ?? throw new ArgumentException("Entity not found");
+
+                entity.IsActive = false;
+
+                var counterParties = await this.counterPartyService.GetAllAsync();
+                foreach (CounterPartyServiceModel counterParty in counterParties
+                    .Where(cp => cp.BankId == bank.Id))
+                {
+                    await this.counterPartyService.DeleteAsync(counterParty);
+                }
+            }
 
             await this.repository.SaveChangesAsync();
         }

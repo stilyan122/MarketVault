@@ -1,0 +1,39 @@
+﻿@model AddressFormModel
+
+@{
+    ViewBag.Title = "Edit address";
+}
+
+<link rel="stylesheet" href="~/css/nomenclatures..css" />
+
+<div class="editAddressContainer">
+    <form asp-action="Edit" asp-controller="Address" id="editAddressForm">
+        <div>
+            <div>
+                <label asp-for="TownName">Address town name</label>
+                <input asp-for="TownName" value="@Model.TownName" />
+            </div>
+            <span asp-validation-for="TownName"></span>
+        </div>
+        <div>
+            <div>
+                <label asp-for="StreetName">Address street name</label>
+                <input asp-for="StreetName" value="@Model.StreetName" />
+            </div>
+            <span asp-validation-for="StreetName"></span>
+        </div>
+        <div>
+            <div>
+                <label asp-for="StreetNumber">Address street number</label>
+                <input asp-for="StreetNumber" />
+            </div>
+            <span asp-validation-for="StreetNumber" value="@Model.StreetNumber"></span>
+        </div>
+        
+        <button type="submit" id="editAddressBtn">Edit Address</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

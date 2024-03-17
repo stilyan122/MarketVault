@@ -1,0 +1,24 @@
+﻿@model ItemGroupDeleteFormModel
+
+@{
+    ViewBag.Title = "Delete firm";
+}
+
+<div class="editItemGroupContainer">
+    <form asp-action="DeletePost"
+          asp-controller="ItemGroup"
+          id="deleteItemGroupForm"
+          method="post"
+          asp-route-id="@Model.Id">
+        <div>
+            <label asp-for="Name">Item group name</label>
+            <h4>@Model.Name</h4>
+        </div>
+        <div>
+            <label asp-for="ProductsCount">Item group products count</label>
+            <h4>@Model.ProductsCount</h4>
+        </div>
+
+        <button type="submit">Delete item group</button>
+    </form>
+</div>
