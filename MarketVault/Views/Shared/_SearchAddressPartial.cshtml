@@ -1,0 +1,34 @@
+﻿@model SearchModel
+
+<link rel="stylesheet" href="~/css/searchPanel.css" />
+
+<div class="searchAddressPanel">
+    <form method="get"
+          asp-action="SearchAddresses"
+          asp-controller="Address"
+          id="searchAddressForm">
+
+        <input type="text" placeholder="Search address(s)..."
+               asp-for="Query"
+               name="searchQuery"
+               id="searcherInput" />
+
+        <select asp-for="SortingType"
+                name="searchSortType"
+                id="searcherSelect">
+
+            <option disabled selected value="">Search with...</option>
+            <option>Town Name</option>
+            <option>Street Number</option>
+            <option>Street Name</option>
+
+        </select>
+
+        <input type="hidden"
+               asp-for="ViewName"
+               name="searchViewName"
+               value="@Model.ViewName" />
+
+        <input id="searchAddressBtn" type="submit" value="Search" />
+    </form>
+</div>

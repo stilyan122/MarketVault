@@ -1,6 +1,7 @@
 ﻿namespace MarketVault.Core.Services.Impementations
 {
     using MarketVault.Core.Contracts;
+    using MarketVault.Core.Extensions;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Infrastructure.Data.Models;
@@ -32,12 +33,180 @@
         {
             return await this.repository
                 .All()
-                .Select(ig => new ItemGroupServiceModel() 
-                {
-                    Id = ig.Id,
-                    Name = ig.Name
-                })
+                .AsNoTracking()
+                .ProjectToItemGroupServiceModel()
                 .ToListAsync();
+        }
+
+        /// <summary>
+        /// Get all item groups that match a condition as IQueryable
+        /// </summary>
+        /// <returns>IQueryable<ItemGroupServiceModel></returns>
+        public IQueryable<ItemGroupServiceModel> GetAllByPredicateAsync
+            (string sortType, string value)
+        {
+            var entities = this.repository
+                .AllReadOnly()
+                .AsNoTracking()
+                .ProjectToItemGroupServiceModel();
+
+            try
+            {
+                entities = sortType switch
+                {
+                    "Name" => entities.Where(e => e.Name.ToLower().Contains(value.ToLower())),
+                    "Products Count" when int.TryParse(value, out var productsCount) =>
+                        entities.Where(e => e.Products.Count() == productsCount),
+                    _ => entities.Where(e => e.Id == 0)
+                };
+
+                return entities;
+            }
+            catch (Exception)
+            {
+                entities = entities.Where(e => e.Id == 0);
+            }
+
+            return entities;
+        }
+
+        /// <summary>
+        /// Get matching item groups paginated (Asynchronous)
+        /// </summary>
+        /// <param name="sortType">Sort type used to sort them</param>
+        /// <param name="value">Sort value</param>
+        /// <param name="pageSize">Size of 1 page</param>
+        /// <param name="pageNumber">Number of page</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<ItemGroupServiceModel>> GetAllByPredicatePagedAsync(
+            string sortType, string value,
+            int pageSize, int pageNumber)
+        {
+            var entities = this.GetAllByPredicateAsync(sortType, value);
+
+            return await entities
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToListAsync();
+        }
+
+        /// <summary>
+        /// Method to get count of sorted paginated item groups
+        /// </summary>
+        /// <param name="sortType">Sort type used to sort them</param>
+        /// <param name="value">Sort value</param>
+        /// <returns>Task<int></returns>
+        public async Task<int> GetPredicatedCount(string sortType, string value)
+        {
+            return await this.GetAllByPredicateAsync(sortType, value)
+                .CountAsync();
+        }
+
+        /// <summary>
+        /// Add item group method (Asynchronous)
+        /// </summary>
+        /// <param name="itemGroup">Item group to add</param>
+        /// <returns>(void)</returns>
+        public async Task AddAsync(ItemGroupServiceModel itemGroup)
+        {
+            var entity = ConvertToEntityModel(itemGroup);
+
+            await this.repository.AddAsync(entity);
+        }
+
+        /// <summary>
+        /// Delete item group method (Asynchronous)
+        /// </summary>
+        /// <param name="itemGroup">Product to delete</param>
+        /// <returns>(void)</returns>
+        public async Task DeleteAsync(ItemGroupServiceModel itemGroup)
+        {
+            var entity = await this.repository
+                .All()
+                .UseIncludeItemGroupStatements()
+                .Where(p => p.Id == itemGroup.Id)
+                .FirstOrDefaultAsync()
+                ?? throw new ArgumentException("Entity not found");
+
+            entity.IsActive = false;
+
+            await this.repository.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Get a item group by a given id (Asynchronous)
+        /// </summary>
+        /// <param name="id">Id to get</param>
+        /// <returns>Task<ItemGroupServiceModel></returns>
+        public async Task<ItemGroupServiceModel> GetByIdAsync(int id)
+        {
+            var entity = await this.repository
+                .All()
+                .UseIncludeItemGroupStatements()
+                .Where(p => p.Id == id)
+                .FirstOrDefaultAsync() ??
+                throw new ArgumentNullException("Entity is null!");
+
+            var serviceModel = new ItemGroupServiceModel()
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                Products = entity.Products.Select(p => new ProductServiceModel()
+                {
+                    ArticleNumber = p.ArticleNumber,
+                    Barcodes = p.Barcodes.ToList(),
+                    DateAdded = p.DateAdded,
+                    Description = p.Description,
+                    DateModified = p.DateModified,
+                    CashRegisterName = p.CashRegisterName,
+                    CodeForScales = p.CodeForScales,
+                    Id = p.Id,
+                    ItemGroupId = p.ItemGroupId,
+                    ItemGroup = p.ItemGroup,
+                    Measure = p.ProductsMeasures.Any() ? p.ProductsMeasures.First().Measure : new Measure(),
+                    MeasureId = p.ProductsMeasures.Any() ? p.ProductsMeasures.First().MeasureId : 0,
+                    Name = p.Name,
+                    NomenclatureNumber = p.NomenclatureNumber,
+                    PurchasePrice = p.PurchasePrice,
+                    Quantity = p.Quantity,
+                    SalePrice = p.SalePrice
+                })
+            };
+
+            return serviceModel;
+        }
+
+        /// <summary>
+        /// Update item group method (Asynchronous)
+        /// </summary>
+        /// <param name="product">Item group to update</param>
+        /// <returns>(void)</returns>
+        public async Task UpdateAsync(ItemGroupServiceModel itemGroup)
+        {
+            var entity = await this.repository
+                .All()
+                .UseIncludeItemGroupStatements()
+                .Where(p => p.Id == itemGroup.Id)
+                .FirstOrDefaultAsync()
+                ?? throw new ArgumentException("Entity not found");
+
+            entity.Name = itemGroup.Name;
+
+            await this.repository.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Helper private method used for converting to entity model
+        /// </summary>
+        /// <param name="itemGroup"></param>
+        /// <returns></returns>
+        private static ItemGroup ConvertToEntityModel
+            (ItemGroupServiceModel itemGroup)
+        {
+            return new ItemGroup()
+            {
+                Name = itemGroup.Name
+            };
         }
     }
 }

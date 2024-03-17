@@ -1,0 +1,24 @@
+﻿@model ItemGroupFormModel
+
+@{
+    ViewBag.Title = "Add item group";
+}
+
+<link rel="stylesheet" href="~/css/nomenclatures..css" />
+
+<div class="addItemGroupContainer">
+    <form asp-action="Add" asp-controller="ItemGroup" id="addItemGroupForm">
+        <div>
+            <div>
+                <label asp-for="Name">Item group name</label>
+                <input asp-for="Name" />
+            </div>
+            <span asp-validation-for="Name"></span>
+        </div>
+        <button type="submit" id="addItemGroupBtn">Add item group</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,31 +1,48 @@
 ﻿namespace MarketVault.Controllers
 {
-    using MarketVault.Core;
     using MarketVault.Core.Models;
+    using MarketVault.Core;
     using MarketVault.Core.Services.Interfaces;
-    using MarketVault.Models.ItemGroup;
+    using MarketVault.Models.Bank;
     using MarketVault.Models.Search;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using MarketVault.Models.Address;
 
     /// <summary>
-    /// Item Group Controller (Authorized)
+    /// Address Controller (Authorized)
     /// </summary>
     [Authorize]
-    public class ItemGroupController : Controller
+    public class AddressController : Controller
     {
         /// <summary>
-        /// Item Group Service
+        /// Address Service
         /// </summary>
-        private readonly IItemGroupService service = null!;
+        private readonly IAddressService service = null!;
+
+        /// <summary>
+        /// Firm Service
+        /// </summary>
+        private readonly IFirmService firmService = null!;
+
+        /// <summary>
+        /// Bank Service
+        /// </summary>
+        private readonly IBankService bankService = null!;
 
         /// <summary>
         /// Default constructor, injecting service (DI)
         /// </summary>
-        /// <param name="service">IItemGroupService</param>
-        public ItemGroupController(IItemGroupService service)
+        /// <param name="service">IAddressService</param>
+        /// <param name="firmService">IFirmService</param>
+        /// <param name="bankService">IBankService</param>
+        public AddressController(IAddressService service,
+            IFirmService firmService,
+            IBankService bankService)
         {
             this.service = service;
+            this.firmService = firmService;
+            this.bankService = bankService;
         }
 
         /// <summary>
@@ -38,7 +55,7 @@
         }
 
         /// <summary>
-        /// Action for all item groups in app (Asynchronous)
+        /// Action for all addresses in app (Asynchronous)
         /// </summary>
         /// <returns>Task<IActionResult></returns>
         public async Task<IActionResult> All(int pages = 1)
@@ -47,11 +64,12 @@
                 .GetAllAsync();
 
             var viewModels = serviceModels
-                .Select(sm => new ItemGroupViewModel()
+                .Select(sm => new AddressViewModel()
                 {
                     Id = sm.Id,
-                    Name = sm.Name,
-                    ProductsCount = sm.Products.Count()
+                    StreetName = sm.StreetName,
+                    StreetNumber = sm.StreetNumber,
+                    TownName = sm.TownName
                 })
                 .ToList();
 
@@ -67,7 +85,7 @@
             var pager = new Pager(recsCount, pages, pageSize)
             {
                 Action = "All",
-                Controller = "ItemGroup"
+                Controller = "Address"
             };
 
             int recsSkip = (pages - 1) * pageSize;
@@ -83,10 +101,10 @@
         }
 
         /// <summary>
-        /// Action for filtering item groups (Asynchronous)
+        /// Action for filtering addresses (Asynchronous)
         /// </summary>
         /// <returns>Task<IActionResult></returns>
-        public async Task<IActionResult> SearchItemGroups(
+        public async Task<IActionResult> SearchAddresses(
                 string searchSortType,
                 string searchViewName,
                 string searchQuery,
@@ -113,11 +131,12 @@
                 pages);
 
             var viewModels = serviceModels
-                .Select(sm => new ItemGroupViewModel()
+                .Select(sm => new AddressViewModel()
                 {
                     Id = sm.Id,
-                    Name = sm.Name,
-                    ProductsCount = sm.Products.Count()
+                    StreetName = sm.StreetName,
+                    StreetNumber = sm.StreetNumber,
+                    TownName = sm.TownName
                 })
                 .ToList();
 
@@ -126,8 +145,8 @@
 
             var pager = new Pager(recsCount, pages, pageSize)
             {
-                Action = "SearchItemGroups",
-                Controller = "ItemGroup",
+                Action = "SearchAddresses",
+                Controller = "Address",
                 SearchQuery = searchQuery,
                 SearchSortingType = searchSortType,
                 SearchViewName = searchViewName
@@ -149,13 +168,13 @@
         }
 
         /// <summary>
-        /// Action for adding an item group in app (GET)
+        /// Action for adding an address in app (GET)
         /// </summary>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
         public IActionResult Add()
         {
-            var formModel = new ItemGroupFormModel
+            var formModel = new AddressFormModel()
             {
             };
 
@@ -163,21 +182,23 @@
         }
 
         /// <summary>
-        /// Action for adding an item group in app (Asynchronous, POST)
+        /// Action for adding an address in app (Asynchronous, POST)
         /// </summary>
-        /// <param name="model">ItemGroupFormModel - model to add</param>
+        /// <param name="model">AddressFormModel - model to add</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        public async Task<IActionResult> Add(ItemGroupFormModel model)
+        public async Task<IActionResult> Add(AddressFormModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            var serviceModel = new ItemGroupServiceModel()
+            var serviceModel = new AddressServiceModel()
             {
-                Name = model.Name
+                StreetName = model.StreetName,
+                StreetNumber = model.StreetNumber,
+                TownName = model.TownName
             };
 
             await this.service.AddAsync(serviceModel);
@@ -186,7 +207,7 @@
         }
 
         /// <summary>
-        /// Action for editing an item group by id in app (Asynchronous, GET)
+        /// Action for editing an address by id in app (Asynchronous, GET)
         /// </summary>
         /// <param name="id">Id to use for update</param>
         /// <returns>Task<IActionResult></returns>
@@ -202,9 +223,11 @@
 
                 var entity = await this.service.GetByIdAsync(parsed);
 
-                var viewModel = new ItemGroupFormModel()
+                var viewModel = new AddressFormModel()
                 {
-                    Name = entity.Name
+                    StreetName = entity.StreetName,
+                    StreetNumber = entity.StreetNumber,
+                    TownName = entity.TownName
                 };
 
                 return View(viewModel);
@@ -216,13 +239,13 @@
         }
 
         /// <summary>
-        /// Action for editing an item group by id in app (Asynchronous, POST)
+        /// Action for editing an address by id in app (Asynchronous, POST)
         /// </summary>
         /// <param name="id">Id to use for element</param>
         /// <param name="model">Form model to use</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        public async Task<IActionResult> Edit(string id, ItemGroupFormModel model)
+        public async Task<IActionResult> Edit(string id, AddressFormModel model)
         {
             if (model == null ||
                 !int.TryParse(id, out int parsed))
@@ -239,10 +262,12 @@
                 return NotFound();
             }
 
-            var serviceModel = new ItemGroupServiceModel()
+            var serviceModel = new AddressServiceModel()
             {
                 Id = parsed,
-                Name = model.Name
+                StreetName = model.StreetName,
+                TownName = model.TownName,
+                StreetNumber = model.StreetNumber
             };
 
             await this.service.UpdateAsync(serviceModel);
@@ -251,7 +276,7 @@
         }
 
         /// <summary>
-        /// Action for deleting an item group by id in app (Asynchronous, Get)
+        /// Action for deleting an address by id in app (Asynchronous, Get)
         /// </summary>
         /// <param name="id">Id to use for element</param>
         /// <returns>Task<IActionResult></returns>
@@ -267,11 +292,12 @@
 
                 var entity = await this.service.GetByIdAsync(parsed);
 
-                var viewModel = new ItemGroupDeleteFormModel()
+                var viewModel = new AddressDeleteFormModel()
                 {
                     Id = parsed,
-                    Name = entity.Name,
-                    ProductsCount = entity.Products.Count()
+                    StreetName = entity.StreetName,
+                    StreetNumber = entity.StreetNumber,
+                    TownName = entity.TownName
                 };
 
                 return View("Delete", viewModel);
@@ -283,7 +309,7 @@
         }
 
         /// <summary>
-        /// Action for deleting an item group by id in app (Asynchronous, POST)
+        /// Action for deleting an address by id in app (Asynchronous, POST)
         /// </summary>
         /// <param name="id">Id to use for element</param>
         /// <returns>Task<IActionResult></returns>
@@ -299,13 +325,21 @@
             {
                 var model = await this.service.GetByIdAsync(parsed);
 
-                var serviceModel = new ItemGroupServiceModel()
+                var serviceModel = new AddressServiceModel()
                 {
                     Id = parsed,
-                    Name = model.Name
+                    StreetName = model.StreetName,
+                    StreetNumber= model.StreetNumber,
+                    TownName = model.TownName
                 };
 
                 await this.service.DeleteAsync(serviceModel);
+
+                var firms = await this.firmService.GetAllAsync();
+                var banks = await this.bankService.GetAllAsync();
+
+                await this.firmService.DeleteRangeAsync(firms.Where(f => f.AddressId == parsed));
+                await this.bankService.DeleteRangeAsync(banks.Where(b => b.AddressId == parsed));
             }
             catch (ArgumentNullException)
             {

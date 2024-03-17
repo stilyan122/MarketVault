@@ -1,0 +1,33 @@
+﻿@model SearchModel
+
+<link rel="stylesheet" href="~/css/searchPanel.css" />
+
+<div class="searchItemGroupPanel">
+    <form method="get"
+          asp-action="SearchItemGroups"
+          asp-controller="ItemGroup"
+          id="searchItemGroupForm">
+
+        <input type="text" placeholder="Search item group(s)..."
+               asp-for="Query"
+               name="searchQuery"
+               id="searcherInput" />
+
+        <select asp-for="SortingType"
+                name="searchSortType"
+                id="searcherSelect">
+
+            <option disabled selected value="">Search with...</option>
+            <option>Name</option>
+            <option>Products Count</option>
+
+        </select>
+
+        <input type="hidden"
+               asp-for="ViewName"
+               name="searchViewName"
+               value="@Model.ViewName" />
+
+        <input id="searchItemGroupBtn" type="submit" value="Search" />
+    </form>
+</div>

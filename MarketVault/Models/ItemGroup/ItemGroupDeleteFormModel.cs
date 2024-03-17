@@ -1,9 +1,9 @@
 ﻿namespace MarketVault.Models.ItemGroup
 {
     /// <summary>
-    /// Item group view model
+    /// Item group delete form model
     /// </summary>
-    public class ItemGroupViewModel
+    public class ItemGroupDeleteFormModel
     {
         /// <summary>
         /// Item group id

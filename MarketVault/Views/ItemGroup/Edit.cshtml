@@ -1,0 +1,21 @@
+﻿@model ItemGroupFormModel
+
+@{
+    ViewBag.Title = "Edit item group";
+}
+
+<div class="editItemGroupContainer">
+    <form asp-action="Edit" asp-controller="ItemGroup" id="editItemGroupForm">
+        <div>
+            <label asp-for="Name">Item group name</label>
+            <input asp-for="Name" value="@Model.Name" />
+            <span asp-validation-for="Name"></span>
+        </div>
+
+        <button type="submit">Edit item group</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

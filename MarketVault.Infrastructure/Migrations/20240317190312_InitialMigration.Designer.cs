@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MarketVault.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240316122313_ChangesMigration")]
-    partial class ChangesMigration
+    [Migration("20240317190312_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -209,1050 +209,1050 @@ namespace MarketVault.Infrastructure.Migrations
                         {
                             Id = 1,
                             IsActive = true,
-                            ProductId = 75,
-                            Value = "999999999999"
+                            ProductId = 122,
+                            Value = "333333333333"
                         },
                         new
                         {
                             Id = 2,
                             IsActive = true,
-                            ProductId = 82,
-                            Value = "555555555555"
+                            ProductId = 19,
+                            Value = "999999999999"
                         },
                         new
                         {
                             Id = 3,
                             IsActive = true,
-                            ProductId = 80,
+                            ProductId = 145,
                             Value = "888888888888"
                         },
                         new
                         {
                             Id = 4,
                             IsActive = true,
-                            ProductId = 81,
-                            Value = "444444444444"
+                            ProductId = 33,
+                            Value = "222222222222"
                         },
                         new
                         {
                             Id = 5,
                             IsActive = true,
-                            ProductId = 57,
-                            Value = "333333333333"
+                            ProductId = 20,
+                            Value = "999999999999"
                         },
                         new
                         {
                             Id = 6,
                             IsActive = true,
-                            ProductId = 5,
-                            Value = "999999999999"
+                            ProductId = 72,
+                            Value = "666666666666"
                         },
                         new
                         {
                             Id = 7,
                             IsActive = true,
-                            ProductId = 121,
-                            Value = "333333333333"
+                            ProductId = 150,
+                            Value = "444444444444"
                         },
                         new
                         {
                             Id = 8,
                             IsActive = true,
-                            ProductId = 51,
-                            Value = "222222222222"
+                            ProductId = 32,
+                            Value = "666666666666"
                         },
                         new
                         {
                             Id = 9,
                             IsActive = true,
-                            ProductId = 80,
-                            Value = "888888888888"
+                            ProductId = 37,
+                            Value = "111111111111"
                         },
                         new
                         {
                             Id = 10,
                             IsActive = true,
-                            ProductId = 31,
-                            Value = "888888888888"
+                            ProductId = 55,
+                            Value = "999999999999"
                         },
                         new
                         {
                             Id = 11,
                             IsActive = true,
-                            ProductId = 94,
+                            ProductId = 142,
                             Value = "111111111111"
                         },
                         new
                         {
                             Id = 12,
                             IsActive = true,
-                            ProductId = 20,
-                            Value = "111111111111"
+                            ProductId = 32,
+                            Value = "333333333333"
                         },
                         new
                         {
                             Id = 13,
                             IsActive = true,
-                            ProductId = 112,
-                            Value = "777777777777"
+                            ProductId = 109,
+                            Value = "666666666666"
                         },
                         new
                         {
                             Id = 14,
                             IsActive = true,
-                            ProductId = 138,
+                            ProductId = 140,
                             Value = "555555555555"
                         },
                         new
                         {
                             Id = 15,
                             IsActive = true,
-                            ProductId = 90,
+                            ProductId = 107,
                             Value = "999999999999"
                         },
                         new
                         {
                             Id = 16,
                             IsActive = true,
-                            ProductId = 112,
+                            ProductId = 115,
                             Value = "555555555555"
                         },
                         new
                         {
                             Id = 17,
                             IsActive = true,
-                            ProductId = 93,
-                            Value = "333333333333"
+                            ProductId = 104,
+                            Value = "999999999999"
                         },
                         new
                         {
                             Id = 18,
                             IsActive = true,
-                            ProductId = 28,
+                            ProductId = 132,
                             Value = "555555555555"
                         },
                         new
                         {
                             Id = 19,
                             IsActive = true,
-                            ProductId = 107,
-                            Value = "111111111111"
+                            ProductId = 117,
+                            Value = "888888888888"
                         },
                         new
                         {
                             Id = 20,
                             IsActive = true,
-                            ProductId = 132,
-                            Value = "444444444444"
+                            ProductId = 81,
+                            Value = "666666666666"
                         },
                         new
                         {
                             Id = 21,
                             IsActive = true,
-                            ProductId = 55,
-                            Value = "555555555555"
+                            ProductId = 18,
+                            Value = "333333333333"
                         },
                         new
                         {
                             Id = 22,
                             IsActive = true,
-                            ProductId = 124,
-                            Value = "999999999999"
+                            ProductId = 10,
+                            Value = "444444444444"
                         },
                         new
                         {
                             Id = 23,
                             IsActive = true,
-                            ProductId = 85,
-                            Value = "333333333333"
+                            ProductId = 36,
+                            Value = "555555555555"
                         },
                         new
                         {
                             Id = 24,
                             IsActive = true,
-                            ProductId = 120,
-                            Value = "444444444444"
+                            ProductId = 127,
+                            Value = "999999999999"
                         },
                         new
                         {
                             Id = 25,
-                            IsActive = true,
-                            ProductId = 64,
-                            Value = "666666666666"
-                        },
-                        new
-                        {
-                            Id = 26,
-                            IsActive = true,
-                            ProductId = 122,
-                            Value = "444444444444"
-                        },
-                        new
-                        {
-                            Id = 27,
-                            IsActive = true,
-                            ProductId = 114,
-                            Value = "999999999999"
-                        },
-                        new
-                        {
-                            Id = 28,
-                            IsActive = true,
-                            ProductId = 27,
-                            Value = "333333333333"
-                        },
-                        new
-                        {
-                            Id = 29,
-                            IsActive = true,
-                            ProductId = 20,
-                            Value = "999999999999"
-                        },
-                        new
-                        {
-                            Id = 30,
-                            IsActive = true,
-                            ProductId = 40,
-                            Value = "555555555555"
-                        },
-                        new
-                        {
-                            Id = 31,
-                            IsActive = true,
-                            ProductId = 105,
-                            Value = "666666666666"
-                        },
-                        new
-                        {
-                            Id = 32,
-                            IsActive = true,
-                            ProductId = 88,
-                            Value = "666666666666"
-                        },
-                        new
-                        {
-                            Id = 33,
-                            IsActive = true,
-                            ProductId = 23,
-                            Value = "444444444444"
-                        },
-                        new
-                        {
-                            Id = 34,
-                            IsActive = true,
-                            ProductId = 110,
-                            Value = "888888888888"
-                        },
-                        new
-                        {
-                            Id = 35,
-                            IsActive = true,
-                            ProductId = 118,
-                            Value = "333333333333"
-                        },
-                        new
-                        {
-                            Id = 36,
-                            IsActive = true,
-                            ProductId = 2,
-                            Value = "999999999999"
-                        },
-                        new
-                        {
-                            Id = 37,
-                            IsActive = true,
-                            ProductId = 34,
-                            Value = "444444444444"
-                        },
-                        new
-                        {
-                            Id = 38,
-                            IsActive = true,
-                            ProductId = 143,
-                            Value = "888888888888"
-                        },
-                        new
-                        {
-                            Id = 39,
-                            IsActive = true,
-                            ProductId = 100,
-                            Value = "111111111111"
-                        },
-                        new
-                        {
-                            Id = 40,
-                            IsActive = true,
-                            ProductId = 84,
-                            Value = "333333333333"
-                        },
-                        new
-                        {
-                            Id = 41,
-                            IsActive = true,
-                            ProductId = 17,
-                            Value = "888888888888"
-                        },
-                        new
-                        {
-                            Id = 42,
-                            IsActive = true,
-                            ProductId = 122,
-                            Value = "999999999999"
-                        },
-                        new
-                        {
-                            Id = 43,
-                            IsActive = true,
-                            ProductId = 117,
-                            Value = "333333333333"
-                        },
-                        new
-                        {
-                            Id = 44,
                             IsActive = true,
                             ProductId = 75,
                             Value = "444444444444"
                         },
                         new
                         {
-                            Id = 45,
+                            Id = 26,
                             IsActive = true,
-                            ProductId = 28,
-                            Value = "111111111111"
+                            ProductId = 61,
+                            Value = "888888888888"
                         },
                         new
                         {
-                            Id = 46,
+                            Id = 27,
+                            IsActive = true,
+                            ProductId = 21,
+                            Value = "888888888888"
+                        },
+                        new
+                        {
+                            Id = 28,
                             IsActive = true,
                             ProductId = 104,
-                            Value = "888888888888"
-                        },
-                        new
-                        {
-                            Id = 47,
-                            IsActive = true,
-                            ProductId = 43,
-                            Value = "555555555555"
-                        },
-                        new
-                        {
-                            Id = 48,
-                            IsActive = true,
-                            ProductId = 65,
-                            Value = "444444444444"
-                        },
-                        new
-                        {
-                            Id = 49,
-                            IsActive = true,
-                            ProductId = 97,
-                            Value = "666666666666"
-                        },
-                        new
-                        {
-                            Id = 50,
-                            IsActive = true,
-                            ProductId = 150,
-                            Value = "333333333333"
-                        },
-                        new
-                        {
-                            Id = 51,
-                            IsActive = true,
-                            ProductId = 49,
-                            Value = "777777777777"
-                        },
-                        new
-                        {
-                            Id = 52,
-                            IsActive = true,
-                            ProductId = 35,
-                            Value = "222222222222"
-                        },
-                        new
-                        {
-                            Id = 53,
-                            IsActive = true,
-                            ProductId = 100,
-                            Value = "777777777777"
-                        },
-                        new
-                        {
-                            Id = 54,
-                            IsActive = true,
-                            ProductId = 41,
-                            Value = "777777777777"
-                        },
-                        new
-                        {
-                            Id = 55,
-                            IsActive = true,
-                            ProductId = 58,
-                            Value = "444444444444"
-                        },
-                        new
-                        {
-                            Id = 56,
-                            IsActive = true,
-                            ProductId = 117,
-                            Value = "333333333333"
-                        },
-                        new
-                        {
-                            Id = 57,
-                            IsActive = true,
-                            ProductId = 92,
-                            Value = "444444444444"
-                        },
-                        new
-                        {
-                            Id = 58,
-                            IsActive = true,
-                            ProductId = 40,
-                            Value = "666666666666"
-                        },
-                        new
-                        {
-                            Id = 59,
-                            IsActive = true,
-                            ProductId = 5,
-                            Value = "333333333333"
-                        },
-                        new
-                        {
-                            Id = 60,
-                            IsActive = true,
-                            ProductId = 33,
-                            Value = "333333333333"
-                        },
-                        new
-                        {
-                            Id = 61,
-                            IsActive = true,
-                            ProductId = 135,
-                            Value = "333333333333"
-                        },
-                        new
-                        {
-                            Id = 62,
-                            IsActive = true,
-                            ProductId = 77,
-                            Value = "333333333333"
-                        },
-                        new
-                        {
-                            Id = 63,
-                            IsActive = true,
-                            ProductId = 23,
-                            Value = "222222222222"
-                        },
-                        new
-                        {
-                            Id = 64,
-                            IsActive = true,
-                            ProductId = 19,
-                            Value = "888888888888"
-                        },
-                        new
-                        {
-                            Id = 65,
-                            IsActive = true,
-                            ProductId = 16,
-                            Value = "555555555555"
-                        },
-                        new
-                        {
-                            Id = 66,
-                            IsActive = true,
-                            ProductId = 103,
                             Value = "111111111111"
                         },
                         new
                         {
-                            Id = 67,
+                            Id = 29,
                             IsActive = true,
-                            ProductId = 131,
-                            Value = "444444444444"
-                        },
-                        new
-                        {
-                            Id = 68,
-                            IsActive = true,
-                            ProductId = 81,
-                            Value = "777777777777"
-                        },
-                        new
-                        {
-                            Id = 69,
-                            IsActive = true,
-                            ProductId = 112,
-                            Value = "111111111111"
-                        },
-                        new
-                        {
-                            Id = 70,
-                            IsActive = true,
-                            ProductId = 118,
+                            ProductId = 4,
                             Value = "333333333333"
                         },
                         new
                         {
-                            Id = 71,
-                            IsActive = true,
-                            ProductId = 119,
-                            Value = "888888888888"
-                        },
-                        new
-                        {
-                            Id = 72,
-                            IsActive = true,
-                            ProductId = 23,
-                            Value = "666666666666"
-                        },
-                        new
-                        {
-                            Id = 73,
-                            IsActive = true,
-                            ProductId = 138,
-                            Value = "333333333333"
-                        },
-                        new
-                        {
-                            Id = 74,
-                            IsActive = true,
-                            ProductId = 114,
-                            Value = "333333333333"
-                        },
-                        new
-                        {
-                            Id = 75,
+                            Id = 30,
                             IsActive = true,
                             ProductId = 13,
                             Value = "777777777777"
                         },
                         new
                         {
-                            Id = 76,
+                            Id = 31,
                             IsActive = true,
-                            ProductId = 107,
-                            Value = "111111111111"
-                        },
-                        new
-                        {
-                            Id = 77,
-                            IsActive = true,
-                            ProductId = 58,
-                            Value = "888888888888"
-                        },
-                        new
-                        {
-                            Id = 78,
-                            IsActive = true,
-                            ProductId = 18,
-                            Value = "888888888888"
-                        },
-                        new
-                        {
-                            Id = 79,
-                            IsActive = true,
-                            ProductId = 95,
+                            ProductId = 129,
                             Value = "555555555555"
                         },
                         new
                         {
-                            Id = 80,
+                            Id = 32,
                             IsActive = true,
-                            ProductId = 20,
-                            Value = "777777777777"
-                        },
-                        new
-                        {
-                            Id = 81,
-                            IsActive = true,
-                            ProductId = 77,
+                            ProductId = 53,
                             Value = "666666666666"
                         },
                         new
                         {
-                            Id = 82,
+                            Id = 33,
                             IsActive = true,
-                            ProductId = 56,
+                            ProductId = 14,
                             Value = "555555555555"
                         },
                         new
                         {
-                            Id = 83,
-                            IsActive = true,
-                            ProductId = 77,
-                            Value = "111111111111"
-                        },
-                        new
-                        {
-                            Id = 84,
-                            IsActive = true,
-                            ProductId = 17,
-                            Value = "333333333333"
-                        },
-                        new
-                        {
-                            Id = 85,
-                            IsActive = true,
-                            ProductId = 146,
-                            Value = "111111111111"
-                        },
-                        new
-                        {
-                            Id = 86,
-                            IsActive = true,
-                            ProductId = 140,
-                            Value = "777777777777"
-                        },
-                        new
-                        {
-                            Id = 87,
-                            IsActive = true,
-                            ProductId = 12,
-                            Value = "111111111111"
-                        },
-                        new
-                        {
-                            Id = 88,
-                            IsActive = true,
-                            ProductId = 125,
-                            Value = "222222222222"
-                        },
-                        new
-                        {
-                            Id = 89,
-                            IsActive = true,
-                            ProductId = 121,
-                            Value = "555555555555"
-                        },
-                        new
-                        {
-                            Id = 90,
-                            IsActive = true,
-                            ProductId = 120,
-                            Value = "444444444444"
-                        },
-                        new
-                        {
-                            Id = 91,
-                            IsActive = true,
-                            ProductId = 1,
-                            Value = "555555555555"
-                        },
-                        new
-                        {
-                            Id = 92,
-                            IsActive = true,
-                            ProductId = 5,
-                            Value = "555555555555"
-                        },
-                        new
-                        {
-                            Id = 93,
-                            IsActive = true,
-                            ProductId = 50,
-                            Value = "777777777777"
-                        },
-                        new
-                        {
-                            Id = 94,
-                            IsActive = true,
-                            ProductId = 77,
-                            Value = "888888888888"
-                        },
-                        new
-                        {
-                            Id = 95,
-                            IsActive = true,
-                            ProductId = 113,
-                            Value = "111111111111"
-                        },
-                        new
-                        {
-                            Id = 96,
-                            IsActive = true,
-                            ProductId = 92,
-                            Value = "111111111111"
-                        },
-                        new
-                        {
-                            Id = 97,
-                            IsActive = true,
-                            ProductId = 145,
-                            Value = "888888888888"
-                        },
-                        new
-                        {
-                            Id = 98,
-                            IsActive = true,
-                            ProductId = 131,
-                            Value = "777777777777"
-                        },
-                        new
-                        {
-                            Id = 99,
+                            Id = 34,
                             IsActive = true,
                             ProductId = 116,
-                            Value = "333333333333"
+                            Value = "666666666666"
                         },
                         new
                         {
-                            Id = 100,
+                            Id = 35,
                             IsActive = true,
-                            ProductId = 145,
-                            Value = "888888888888"
+                            ProductId = 17,
+                            Value = "666666666666"
                         },
                         new
                         {
-                            Id = 101,
+                            Id = 36,
                             IsActive = true,
                             ProductId = 15,
-                            Value = "333333333333"
+                            Value = "666666666666"
                         },
                         new
                         {
-                            Id = 102,
-                            IsActive = true,
-                            ProductId = 89,
-                            Value = "111111111111"
-                        },
-                        new
-                        {
-                            Id = 103,
-                            IsActive = true,
-                            ProductId = 114,
-                            Value = "444444444444"
-                        },
-                        new
-                        {
-                            Id = 104,
-                            IsActive = true,
-                            ProductId = 118,
-                            Value = "333333333333"
-                        },
-                        new
-                        {
-                            Id = 105,
-                            IsActive = true,
-                            ProductId = 109,
-                            Value = "777777777777"
-                        },
-                        new
-                        {
-                            Id = 106,
-                            IsActive = true,
-                            ProductId = 110,
-                            Value = "777777777777"
-                        },
-                        new
-                        {
-                            Id = 107,
-                            IsActive = true,
-                            ProductId = 37,
-                            Value = "111111111111"
-                        },
-                        new
-                        {
-                            Id = 108,
-                            IsActive = true,
-                            ProductId = 113,
-                            Value = "111111111111"
-                        },
-                        new
-                        {
-                            Id = 109,
-                            IsActive = true,
-                            ProductId = 80,
-                            Value = "999999999999"
-                        },
-                        new
-                        {
-                            Id = 110,
-                            IsActive = true,
-                            ProductId = 50,
-                            Value = "333333333333"
-                        },
-                        new
-                        {
-                            Id = 111,
+                            Id = 37,
                             IsActive = true,
                             ProductId = 33,
                             Value = "222222222222"
                         },
                         new
                         {
-                            Id = 112,
+                            Id = 38,
+                            IsActive = true,
+                            ProductId = 16,
+                            Value = "111111111111"
+                        },
+                        new
+                        {
+                            Id = 39,
+                            IsActive = true,
+                            ProductId = 148,
+                            Value = "777777777777"
+                        },
+                        new
+                        {
+                            Id = 40,
                             IsActive = true,
                             ProductId = 133,
+                            Value = "555555555555"
+                        },
+                        new
+                        {
+                            Id = 41,
+                            IsActive = true,
+                            ProductId = 71,
                             Value = "444444444444"
+                        },
+                        new
+                        {
+                            Id = 42,
+                            IsActive = true,
+                            ProductId = 103,
+                            Value = "222222222222"
+                        },
+                        new
+                        {
+                            Id = 43,
+                            IsActive = true,
+                            ProductId = 10,
+                            Value = "888888888888"
+                        },
+                        new
+                        {
+                            Id = 44,
+                            IsActive = true,
+                            ProductId = 77,
+                            Value = "888888888888"
+                        },
+                        new
+                        {
+                            Id = 45,
+                            IsActive = true,
+                            ProductId = 126,
+                            Value = "555555555555"
+                        },
+                        new
+                        {
+                            Id = 46,
+                            IsActive = true,
+                            ProductId = 93,
+                            Value = "999999999999"
+                        },
+                        new
+                        {
+                            Id = 47,
+                            IsActive = true,
+                            ProductId = 74,
+                            Value = "111111111111"
+                        },
+                        new
+                        {
+                            Id = 48,
+                            IsActive = true,
+                            ProductId = 119,
+                            Value = "777777777777"
+                        },
+                        new
+                        {
+                            Id = 49,
+                            IsActive = true,
+                            ProductId = 16,
+                            Value = "111111111111"
+                        },
+                        new
+                        {
+                            Id = 50,
+                            IsActive = true,
+                            ProductId = 75,
+                            Value = "555555555555"
+                        },
+                        new
+                        {
+                            Id = 51,
+                            IsActive = true,
+                            ProductId = 88,
+                            Value = "333333333333"
+                        },
+                        new
+                        {
+                            Id = 52,
+                            IsActive = true,
+                            ProductId = 127,
+                            Value = "222222222222"
+                        },
+                        new
+                        {
+                            Id = 53,
+                            IsActive = true,
+                            ProductId = 99,
+                            Value = "777777777777"
+                        },
+                        new
+                        {
+                            Id = 54,
+                            IsActive = true,
+                            ProductId = 89,
+                            Value = "333333333333"
+                        },
+                        new
+                        {
+                            Id = 55,
+                            IsActive = true,
+                            ProductId = 56,
+                            Value = "444444444444"
+                        },
+                        new
+                        {
+                            Id = 56,
+                            IsActive = true,
+                            ProductId = 30,
+                            Value = "333333333333"
+                        },
+                        new
+                        {
+                            Id = 57,
+                            IsActive = true,
+                            ProductId = 16,
+                            Value = "222222222222"
+                        },
+                        new
+                        {
+                            Id = 58,
+                            IsActive = true,
+                            ProductId = 90,
+                            Value = "777777777777"
+                        },
+                        new
+                        {
+                            Id = 59,
+                            IsActive = true,
+                            ProductId = 112,
+                            Value = "111111111111"
+                        },
+                        new
+                        {
+                            Id = 60,
+                            IsActive = true,
+                            ProductId = 10,
+                            Value = "111111111111"
+                        },
+                        new
+                        {
+                            Id = 61,
+                            IsActive = true,
+                            ProductId = 4,
+                            Value = "999999999999"
+                        },
+                        new
+                        {
+                            Id = 62,
+                            IsActive = true,
+                            ProductId = 106,
+                            Value = "555555555555"
+                        },
+                        new
+                        {
+                            Id = 63,
+                            IsActive = true,
+                            ProductId = 96,
+                            Value = "999999999999"
+                        },
+                        new
+                        {
+                            Id = 64,
+                            IsActive = true,
+                            ProductId = 148,
+                            Value = "444444444444"
+                        },
+                        new
+                        {
+                            Id = 65,
+                            IsActive = true,
+                            ProductId = 93,
+                            Value = "333333333333"
+                        },
+                        new
+                        {
+                            Id = 66,
+                            IsActive = true,
+                            ProductId = 6,
+                            Value = "222222222222"
+                        },
+                        new
+                        {
+                            Id = 67,
+                            IsActive = true,
+                            ProductId = 40,
+                            Value = "666666666666"
+                        },
+                        new
+                        {
+                            Id = 68,
+                            IsActive = true,
+                            ProductId = 113,
+                            Value = "333333333333"
+                        },
+                        new
+                        {
+                            Id = 69,
+                            IsActive = true,
+                            ProductId = 6,
+                            Value = "999999999999"
+                        },
+                        new
+                        {
+                            Id = 70,
+                            IsActive = true,
+                            ProductId = 106,
+                            Value = "777777777777"
+                        },
+                        new
+                        {
+                            Id = 71,
+                            IsActive = true,
+                            ProductId = 1,
+                            Value = "333333333333"
+                        },
+                        new
+                        {
+                            Id = 72,
+                            IsActive = true,
+                            ProductId = 80,
+                            Value = "888888888888"
+                        },
+                        new
+                        {
+                            Id = 73,
+                            IsActive = true,
+                            ProductId = 71,
+                            Value = "111111111111"
+                        },
+                        new
+                        {
+                            Id = 74,
+                            IsActive = true,
+                            ProductId = 18,
+                            Value = "111111111111"
+                        },
+                        new
+                        {
+                            Id = 75,
+                            IsActive = true,
+                            ProductId = 121,
+                            Value = "444444444444"
+                        },
+                        new
+                        {
+                            Id = 76,
+                            IsActive = true,
+                            ProductId = 103,
+                            Value = "333333333333"
+                        },
+                        new
+                        {
+                            Id = 77,
+                            IsActive = true,
+                            ProductId = 41,
+                            Value = "999999999999"
+                        },
+                        new
+                        {
+                            Id = 78,
+                            IsActive = true,
+                            ProductId = 69,
+                            Value = "333333333333"
+                        },
+                        new
+                        {
+                            Id = 79,
+                            IsActive = true,
+                            ProductId = 114,
+                            Value = "222222222222"
+                        },
+                        new
+                        {
+                            Id = 80,
+                            IsActive = true,
+                            ProductId = 88,
+                            Value = "555555555555"
+                        },
+                        new
+                        {
+                            Id = 81,
+                            IsActive = true,
+                            ProductId = 124,
+                            Value = "666666666666"
+                        },
+                        new
+                        {
+                            Id = 82,
+                            IsActive = true,
+                            ProductId = 14,
+                            Value = "888888888888"
+                        },
+                        new
+                        {
+                            Id = 83,
+                            IsActive = true,
+                            ProductId = 10,
+                            Value = "999999999999"
+                        },
+                        new
+                        {
+                            Id = 84,
+                            IsActive = true,
+                            ProductId = 33,
+                            Value = "111111111111"
+                        },
+                        new
+                        {
+                            Id = 85,
+                            IsActive = true,
+                            ProductId = 83,
+                            Value = "555555555555"
+                        },
+                        new
+                        {
+                            Id = 86,
+                            IsActive = true,
+                            ProductId = 70,
+                            Value = "222222222222"
+                        },
+                        new
+                        {
+                            Id = 87,
+                            IsActive = true,
+                            ProductId = 125,
+                            Value = "111111111111"
+                        },
+                        new
+                        {
+                            Id = 88,
+                            IsActive = true,
+                            ProductId = 19,
+                            Value = "555555555555"
+                        },
+                        new
+                        {
+                            Id = 89,
+                            IsActive = true,
+                            ProductId = 97,
+                            Value = "999999999999"
+                        },
+                        new
+                        {
+                            Id = 90,
+                            IsActive = true,
+                            ProductId = 53,
+                            Value = "888888888888"
+                        },
+                        new
+                        {
+                            Id = 91,
+                            IsActive = true,
+                            ProductId = 32,
+                            Value = "666666666666"
+                        },
+                        new
+                        {
+                            Id = 92,
+                            IsActive = true,
+                            ProductId = 98,
+                            Value = "333333333333"
+                        },
+                        new
+                        {
+                            Id = 93,
+                            IsActive = true,
+                            ProductId = 121,
+                            Value = "777777777777"
+                        },
+                        new
+                        {
+                            Id = 94,
+                            IsActive = true,
+                            ProductId = 118,
+                            Value = "444444444444"
+                        },
+                        new
+                        {
+                            Id = 95,
+                            IsActive = true,
+                            ProductId = 4,
+                            Value = "999999999999"
+                        },
+                        new
+                        {
+                            Id = 96,
+                            IsActive = true,
+                            ProductId = 45,
+                            Value = "666666666666"
+                        },
+                        new
+                        {
+                            Id = 97,
+                            IsActive = true,
+                            ProductId = 25,
+                            Value = "777777777777"
+                        },
+                        new
+                        {
+                            Id = 98,
+                            IsActive = true,
+                            ProductId = 60,
+                            Value = "444444444444"
+                        },
+                        new
+                        {
+                            Id = 99,
+                            IsActive = true,
+                            ProductId = 41,
+                            Value = "111111111111"
+                        },
+                        new
+                        {
+                            Id = 100,
+                            IsActive = true,
+                            ProductId = 42,
+                            Value = "888888888888"
+                        },
+                        new
+                        {
+                            Id = 101,
+                            IsActive = true,
+                            ProductId = 18,
+                            Value = "999999999999"
+                        },
+                        new
+                        {
+                            Id = 102,
+                            IsActive = true,
+                            ProductId = 47,
+                            Value = "777777777777"
+                        },
+                        new
+                        {
+                            Id = 103,
+                            IsActive = true,
+                            ProductId = 89,
+                            Value = "444444444444"
+                        },
+                        new
+                        {
+                            Id = 104,
+                            IsActive = true,
+                            ProductId = 97,
+                            Value = "222222222222"
+                        },
+                        new
+                        {
+                            Id = 105,
+                            IsActive = true,
+                            ProductId = 110,
+                            Value = "555555555555"
+                        },
+                        new
+                        {
+                            Id = 106,
+                            IsActive = true,
+                            ProductId = 134,
+                            Value = "555555555555"
+                        },
+                        new
+                        {
+                            Id = 107,
+                            IsActive = true,
+                            ProductId = 146,
+                            Value = "666666666666"
+                        },
+                        new
+                        {
+                            Id = 108,
+                            IsActive = true,
+                            ProductId = 136,
+                            Value = "222222222222"
+                        },
+                        new
+                        {
+                            Id = 109,
+                            IsActive = true,
+                            ProductId = 82,
+                            Value = "999999999999"
+                        },
+                        new
+                        {
+                            Id = 110,
+                            IsActive = true,
+                            ProductId = 123,
+                            Value = "555555555555"
+                        },
+                        new
+                        {
+                            Id = 111,
+                            IsActive = true,
+                            ProductId = 115,
+                            Value = "111111111111"
+                        },
+                        new
+                        {
+                            Id = 112,
+                            IsActive = true,
+                            ProductId = 21,
+                            Value = "999999999999"
                         },
                         new
                         {
                             Id = 113,
                             IsActive = true,
-                            ProductId = 149,
-                            Value = "333333333333"
+                            ProductId = 2,
+                            Value = "111111111111"
                         },
                         new
                         {
                             Id = 114,
                             IsActive = true,
-                            ProductId = 123,
-                            Value = "999999999999"
+                            ProductId = 94,
+                            Value = "333333333333"
                         },
                         new
                         {
                             Id = 115,
                             IsActive = true,
-                            ProductId = 69,
-                            Value = "222222222222"
+                            ProductId = 93,
+                            Value = "444444444444"
                         },
                         new
                         {
                             Id = 116,
                             IsActive = true,
-                            ProductId = 111,
-                            Value = "333333333333"
+                            ProductId = 14,
+                            Value = "222222222222"
                         },
                         new
                         {
                             Id = 117,
                             IsActive = true,
-                            ProductId = 71,
-                            Value = "666666666666"
+                            ProductId = 35,
+                            Value = "222222222222"
                         },
                         new
                         {
                             Id = 118,
                             IsActive = true,
-                            ProductId = 73,
-                            Value = "111111111111"
+                            ProductId = 7,
+                            Value = "555555555555"
                         },
                         new
                         {
                             Id = 119,
                             IsActive = true,
-                            ProductId = 51,
-                            Value = "999999999999"
+                            ProductId = 61,
+                            Value = "222222222222"
                         },
                         new
                         {
                             Id = 120,
                             IsActive = true,
-                            ProductId = 42,
-                            Value = "444444444444"
+                            ProductId = 80,
+                            Value = "111111111111"
                         },
                         new
                         {
                             Id = 121,
                             IsActive = true,
-                            ProductId = 122,
-                            Value = "555555555555"
+                            ProductId = 26,
+                            Value = "333333333333"
                         },
                         new
                         {
                             Id = 122,
                             IsActive = true,
-                            ProductId = 48,
-                            Value = "444444444444"
+                            ProductId = 45,
+                            Value = "888888888888"
                         },
                         new
                         {
                             Id = 123,
                             IsActive = true,
-                            ProductId = 135,
-                            Value = "888888888888"
+                            ProductId = 98,
+                            Value = "666666666666"
                         },
                         new
                         {
                             Id = 124,
                             IsActive = true,
-                            ProductId = 14,
-                            Value = "666666666666"
+                            ProductId = 67,
+                            Value = "222222222222"
                         },
                         new
                         {
                             Id = 125,
                             IsActive = true,
-                            ProductId = 116,
-                            Value = "222222222222"
+                            ProductId = 48,
+                            Value = "111111111111"
                         },
                         new
                         {
                             Id = 126,
                             IsActive = true,
-                            ProductId = 121,
-                            Value = "111111111111"
+                            ProductId = 36,
+                            Value = "444444444444"
                         },
                         new
                         {
                             Id = 127,
                             IsActive = true,
-                            ProductId = 59,
-                            Value = "222222222222"
+                            ProductId = 120,
+                            Value = "333333333333"
                         },
                         new
                         {
                             Id = 128,
                             IsActive = true,
-                            ProductId = 127,
-                            Value = "555555555555"
+                            ProductId = 67,
+                            Value = "999999999999"
                         },
                         new
                         {
                             Id = 129,
                             IsActive = true,
-                            ProductId = 76,
-                            Value = "111111111111"
+                            ProductId = 51,
+                            Value = "333333333333"
                         },
                         new
                         {
                             Id = 130,
                             IsActive = true,
-                            ProductId = 4,
+                            ProductId = 132,
                             Value = "555555555555"
                         },
                         new
                         {
                             Id = 131,
                             IsActive = true,
-                            ProductId = 20,
-                            Value = "111111111111"
+                            ProductId = 8,
+                            Value = "777777777777"
                         },
                         new
                         {
                             Id = 132,
                             IsActive = true,
-                            ProductId = 37,
-                            Value = "777777777777"
+                            ProductId = 40,
+                            Value = "888888888888"
                         },
                         new
                         {
                             Id = 133,
                             IsActive = true,
-                            ProductId = 73,
-                            Value = "555555555555"
+                            ProductId = 74,
+                            Value = "999999999999"
                         },
                         new
                         {
                             Id = 134,
                             IsActive = true,
-                            ProductId = 59,
-                            Value = "777777777777"
+                            ProductId = 53,
+                            Value = "333333333333"
                         },
                         new
                         {
                             Id = 135,
                             IsActive = true,
-                            ProductId = 85,
-                            Value = "888888888888"
+                            ProductId = 139,
+                            Value = "555555555555"
                         },
                         new
                         {
                             Id = 136,
                             IsActive = true,
-                            ProductId = 62,
-                            Value = "222222222222"
+                            ProductId = 14,
+                            Value = "999999999999"
                         },
                         new
                         {
                             Id = 137,
                             IsActive = true,
-                            ProductId = 62,
-                            Value = "444444444444"
+                            ProductId = 55,
+                            Value = "111111111111"
                         },
                         new
                         {
                             Id = 138,
                             IsActive = true,
-                            ProductId = 124,
-                            Value = "444444444444"
+                            ProductId = 58,
+                            Value = "777777777777"
                         },
                         new
                         {
                             Id = 139,
                             IsActive = true,
-                            ProductId = 81,
-                            Value = "555555555555"
+                            ProductId = 36,
+                            Value = "888888888888"
                         },
                         new
                         {
                             Id = 140,
                             IsActive = true,
-                            ProductId = 16,
-                            Value = "777777777777"
+                            ProductId = 55,
+                            Value = "888888888888"
                         },
                         new
                         {
                             Id = 141,
                             IsActive = true,
-                            ProductId = 45,
-                            Value = "777777777777"
+                            ProductId = 122,
+                            Value = "333333333333"
                         },
                         new
                         {
                             Id = 142,
                             IsActive = true,
-                            ProductId = 113,
-                            Value = "444444444444"
+                            ProductId = 134,
+                            Value = "333333333333"
                         },
                         new
                         {
                             Id = 143,
                             IsActive = true,
-                            ProductId = 58,
-                            Value = "333333333333"
+                            ProductId = 148,
+                            Value = "777777777777"
                         },
                         new
                         {
                             Id = 144,
                             IsActive = true,
-                            ProductId = 135,
-                            Value = "222222222222"
+                            ProductId = 58,
+                            Value = "111111111111"
                         },
                         new
                         {
                             Id = 145,
                             IsActive = true,
-                            ProductId = 20,
-                            Value = "999999999999"
+                            ProductId = 49,
+                            Value = "777777777777"
                         },
                         new
                         {
                             Id = 146,
                             IsActive = true,
-                            ProductId = 87,
-                            Value = "666666666666"
+                            ProductId = 25,
+                            Value = "555555555555"
                         },
                         new
                         {
                             Id = 147,
                             IsActive = true,
-                            ProductId = 93,
-                            Value = "777777777777"
+                            ProductId = 41,
+                            Value = "222222222222"
                         },
                         new
                         {
                             Id = 148,
                             IsActive = true,
-                            ProductId = 134,
-                            Value = "666666666666"
+                            ProductId = 40,
+                            Value = "333333333333"
                         },
                         new
                         {
                             Id = 149,
                             IsActive = true,
-                            ProductId = 36,
+                            ProductId = 22,
                             Value = "111111111111"
                         },
                         new
                         {
                             Id = 150,
                             IsActive = true,
-                            ProductId = 90,
+                            ProductId = 78,
                             Value = "111111111111"
                         });
                 });
@@ -1534,8 +1534,8 @@ namespace MarketVault.Infrastructure.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)")
                         .HasComment("ItemGroup Name");
 
                     b.HasKey("Id");
@@ -1603,7 +1603,7 @@ namespace MarketVault.Infrastructure.Migrations
                         {
                             Id = 10,
                             IsActive = true,
-                            Name = "Fruts and vegetables"
+                            Name = "Fruits and vegetables"
                         });
                 });
 
@@ -1705,7 +1705,7 @@ namespace MarketVault.Infrastructure.Migrations
                         {
                             Id = 1,
                             CounterPartyId = 1,
-                            DateMade = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8575),
+                            DateMade = new DateTime(2024, 3, 17, 21, 3, 11, 485, DateTimeKind.Local).AddTicks(9964),
                             DocumentTypeId = 1,
                             TotalPurchasePriceWithVAT = 70.00m,
                             TotalPurchasePriceWithoutVAT = 58.33m,
@@ -1716,7 +1716,7 @@ namespace MarketVault.Infrastructure.Migrations
                         {
                             Id = 2,
                             CounterPartyId = 2,
-                            DateMade = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8616),
+                            DateMade = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(8),
                             DocumentTypeId = 1,
                             TotalPurchasePriceWithVAT = 50.00m,
                             TotalPurchasePriceWithoutVAT = 41.67m,
@@ -1727,7 +1727,7 @@ namespace MarketVault.Infrastructure.Migrations
                         {
                             Id = 3,
                             CounterPartyId = 3,
-                            DateMade = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8619),
+                            DateMade = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(11),
                             DocumentTypeId = 2,
                             TotalPurchasePriceWithVAT = 40.00m,
                             TotalPurchasePriceWithoutVAT = 33.33m,
@@ -1738,7 +1738,7 @@ namespace MarketVault.Infrastructure.Migrations
                         {
                             Id = 4,
                             CounterPartyId = 4,
-                            DateMade = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8621),
+                            DateMade = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(14),
                             DocumentTypeId = 2,
                             TotalPurchasePriceWithVAT = 100.00m,
                             TotalPurchasePriceWithoutVAT = 83.33m,
@@ -1749,7 +1749,7 @@ namespace MarketVault.Infrastructure.Migrations
                         {
                             Id = 5,
                             CounterPartyId = 5,
-                            DateMade = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8623),
+                            DateMade = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(16),
                             DocumentTypeId = 1,
                             TotalPurchasePriceWithVAT = 150.00m,
                             TotalPurchasePriceWithoutVAT = 125.00m,
@@ -1840,16 +1840,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 1,
                             CashRegisterName = "Chocolate Ice Cream",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8937),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8940),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(872),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(878),
                             Description = "Description about product - Chocolate Chip Cookie Dough Ice Cream",
                             IsActive = true,
                             ItemGroupId = 1,
                             Name = "Chocolate Chip Cookie Dough Ice Cream",
                             NomenclatureNumber = 1,
-                            PurchasePrice = 13m,
-                            Quantity = 91m,
-                            SalePrice = 15.60m
+                            PurchasePrice = 188m,
+                            Quantity = 89m,
+                            SalePrice = 225.60m
                         },
                         new
                         {
@@ -1857,16 +1857,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 2,
                             CashRegisterName = "Vanilla Ice Cream",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8954),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8955),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(894),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(896),
                             Description = "Description about product - Vanilla Bean Ice Cream",
                             IsActive = true,
                             ItemGroupId = 1,
                             Name = "Vanilla Bean Ice Cream",
                             NomenclatureNumber = 2,
-                            PurchasePrice = 159m,
-                            Quantity = 151m,
-                            SalePrice = 190.80m
+                            PurchasePrice = 211m,
+                            Quantity = 38m,
+                            SalePrice = 253.20m
                         },
                         new
                         {
@@ -1874,16 +1874,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 3,
                             CashRegisterName = "Strawberry Ice Cream",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8958),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8959),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(900),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(901),
                             Description = "Description about product - Strawberry Swirl Ice Cream",
                             IsActive = true,
                             ItemGroupId = 1,
                             Name = "Strawberry Swirl Ice Cream",
                             NomenclatureNumber = 3,
-                            PurchasePrice = 111m,
-                            Quantity = 193m,
-                            SalePrice = 133.20m
+                            PurchasePrice = 10m,
+                            Quantity = 160m,
+                            SalePrice = 12.00m
                         },
                         new
                         {
@@ -1891,16 +1891,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 4,
                             CashRegisterName = "Mint Ice Cream",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8963),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8964),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(904),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(905),
                             Description = "Description about product - Mint Chocolate Chip Ice Cream",
                             IsActive = true,
                             ItemGroupId = 1,
                             Name = "Mint Chocolate Chip Ice Cream",
                             NomenclatureNumber = 4,
-                            PurchasePrice = 195m,
-                            Quantity = 44m,
-                            SalePrice = 234.00m
+                            PurchasePrice = 105m,
+                            Quantity = 170m,
+                            SalePrice = 126.00m
                         },
                         new
                         {
@@ -1908,16 +1908,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 5,
                             CashRegisterName = "Cookies Ice Cream",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8966),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8967),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(908),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(909),
                             Description = "Description about product - Cookies and Cream Ice Cream",
                             IsActive = true,
                             ItemGroupId = 1,
                             Name = "Cookies and Cream Ice Cream",
                             NomenclatureNumber = 5,
-                            PurchasePrice = 209m,
-                            Quantity = 180m,
-                            SalePrice = 250.80m
+                            PurchasePrice = 277m,
+                            Quantity = 98m,
+                            SalePrice = 332.40m
                         },
                         new
                         {
@@ -1925,16 +1925,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 6,
                             CashRegisterName = "Rocky Ice Cream",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8971),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8972),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(912),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(914),
                             Description = "Description about product - Rocky Road Ice Cream",
                             IsActive = true,
                             ItemGroupId = 1,
                             Name = "Rocky Road Ice Cream",
                             NomenclatureNumber = 6,
-                            PurchasePrice = 72m,
-                            Quantity = 43m,
-                            SalePrice = 86.40m
+                            PurchasePrice = 279m,
+                            Quantity = 74m,
+                            SalePrice = 334.80m
                         },
                         new
                         {
@@ -1942,16 +1942,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 7,
                             CashRegisterName = "Neapolitan Ice Cream",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8975),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8976),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(916),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(918),
                             Description = "Description about product - Neapolitan Ice Cream",
                             IsActive = true,
                             ItemGroupId = 1,
                             Name = "Neapolitan Ice Cream",
                             NomenclatureNumber = 7,
-                            PurchasePrice = 126m,
-                            Quantity = 102m,
-                            SalePrice = 151.20m
+                            PurchasePrice = 230m,
+                            Quantity = 39m,
+                            SalePrice = 276.00m
                         },
                         new
                         {
@@ -1959,16 +1959,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 8,
                             CashRegisterName = "Butter Ice Cream",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8979),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8980),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(920),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(921),
                             Description = "Description about product - Butter Pecan Ice Cream",
                             IsActive = true,
                             ItemGroupId = 1,
                             Name = "Butter Pecan Ice Cream",
                             NomenclatureNumber = 8,
-                            PurchasePrice = 69m,
-                            Quantity = 19m,
-                            SalePrice = 82.80m
+                            PurchasePrice = 245m,
+                            Quantity = 49m,
+                            SalePrice = 294.00m
                         },
                         new
                         {
@@ -1976,16 +1976,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 9,
                             CashRegisterName = "Pistachio Ice Cream",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8982),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8983),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(924),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(925),
                             Description = "Description about product - Pistachio Ice Cream",
                             IsActive = true,
                             ItemGroupId = 1,
                             Name = "Pistachio Ice Cream",
                             NomenclatureNumber = 9,
-                            PurchasePrice = 287m,
-                            Quantity = 162m,
-                            SalePrice = 344.40m
+                            PurchasePrice = 241m,
+                            Quantity = 179m,
+                            SalePrice = 289.20m
                         },
                         new
                         {
@@ -1993,16 +1993,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 10,
                             CashRegisterName = "Salted Ice Cream",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8987),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8988),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(928),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(929),
                             Description = "Description about product - Salted Caramel Ice Cream",
                             IsActive = true,
                             ItemGroupId = 1,
                             Name = "Salted Caramel Ice Cream",
                             NomenclatureNumber = 10,
-                            PurchasePrice = 225m,
-                            Quantity = 41m,
-                            SalePrice = 270.00m
+                            PurchasePrice = 140m,
+                            Quantity = 168m,
+                            SalePrice = 168.00m
                         },
                         new
                         {
@@ -2010,16 +2010,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 11,
                             CashRegisterName = "Coca-Cola Classic",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8991),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8992),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(931),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(932),
                             Description = "Description about product - Coca-Cola Classic",
                             IsActive = true,
                             ItemGroupId = 2,
                             Name = "Coca-Cola Classic",
                             NomenclatureNumber = 11,
-                            PurchasePrice = 164m,
-                            Quantity = 148m,
-                            SalePrice = 196.80m
+                            PurchasePrice = 11m,
+                            Quantity = 96m,
+                            SalePrice = 13.20m
                         },
                         new
                         {
@@ -2027,16 +2027,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 12,
                             CashRegisterName = "Pepsi Cola",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8995),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8996),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(935),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(936),
                             Description = "Description about product - Pepsi Cola",
                             IsActive = true,
                             ItemGroupId = 2,
                             Name = "Pepsi Cola",
                             NomenclatureNumber = 12,
-                            PurchasePrice = 75m,
-                            Quantity = 98m,
-                            SalePrice = 90.00m
+                            PurchasePrice = 181m,
+                            Quantity = 168m,
+                            SalePrice = 217.20m
                         },
                         new
                         {
@@ -2044,16 +2044,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 13,
                             CashRegisterName = "Sprite Soda",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(8999),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9000),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(938),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(940),
                             Description = "Description about product - Sprite Lemon-Lime Soda",
                             IsActive = true,
                             ItemGroupId = 2,
                             Name = "Sprite Lemon-Lime Soda",
                             NomenclatureNumber = 13,
-                            PurchasePrice = 254m,
-                            Quantity = 172m,
-                            SalePrice = 304.80m
+                            PurchasePrice = 79m,
+                            Quantity = 173m,
+                            SalePrice = 94.80m
                         },
                         new
                         {
@@ -2061,16 +2061,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 14,
                             CashRegisterName = "Fanta Soda",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9567),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9570),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(942),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(943),
                             Description = "Description about product - Fanta Orange Soda",
                             IsActive = true,
                             ItemGroupId = 2,
                             Name = "Fanta Orange Soda",
                             NomenclatureNumber = 14,
-                            PurchasePrice = 194m,
-                            Quantity = 44m,
-                            SalePrice = 232.80m
+                            PurchasePrice = 163m,
+                            Quantity = 155m,
+                            SalePrice = 195.60m
                         },
                         new
                         {
@@ -2078,16 +2078,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 15,
                             CashRegisterName = "Mountain Soda",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9576),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9578),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(992),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(993),
                             Description = "Description about product - Mountain Dew Citrus Soda",
                             IsActive = true,
                             ItemGroupId = 2,
                             Name = "Mountain Dew Citrus Soda",
                             NomenclatureNumber = 15,
-                            PurchasePrice = 87m,
-                            Quantity = 108m,
-                            SalePrice = 104.40m
+                            PurchasePrice = 152m,
+                            Quantity = 49m,
+                            SalePrice = 182.40m
                         },
                         new
                         {
@@ -2095,16 +2095,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 16,
                             CashRegisterName = "Dr. Pepper Soda",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9580),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9581),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(997),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(998),
                             Description = "Description about product - Dr. Pepper Soda",
                             IsActive = true,
                             ItemGroupId = 2,
                             Name = "Dr. Pepper Soda",
                             NomenclatureNumber = 16,
-                            PurchasePrice = 94m,
-                            Quantity = 35m,
-                            SalePrice = 112.80m
+                            PurchasePrice = 27m,
+                            Quantity = 55m,
+                            SalePrice = 32.40m
                         },
                         new
                         {
@@ -2112,16 +2112,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 17,
                             CashRegisterName = "Canada Ale",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9584),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9585),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1000),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1002),
                             Description = "Description about product - Canada Dry Ginger Ale",
                             IsActive = true,
                             ItemGroupId = 2,
                             Name = "Canada Dry Ginger Ale",
                             NomenclatureNumber = 17,
-                            PurchasePrice = 119m,
-                            Quantity = 121m,
-                            SalePrice = 142.80m
+                            PurchasePrice = 248m,
+                            Quantity = 140m,
+                            SalePrice = 297.60m
                         },
                         new
                         {
@@ -2129,16 +2129,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 18,
                             CashRegisterName = "7UP Lemon-Lime Soda",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9591),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9592),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1005),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1006),
                             Description = "Description about product - 7UP Lemon-Lime Soda",
                             IsActive = true,
                             ItemGroupId = 2,
                             Name = "7UP Lemon-Lime Soda",
                             NomenclatureNumber = 18,
-                            PurchasePrice = 296m,
-                            Quantity = 176m,
-                            SalePrice = 355.20m
+                            PurchasePrice = 81m,
+                            Quantity = 87m,
+                            SalePrice = 97.20m
                         },
                         new
                         {
@@ -2146,16 +2146,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 19,
                             CashRegisterName = "Root Beer Soda",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9595),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9596),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1008),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1009),
                             Description = "Description about product - Root Beer Soda",
                             IsActive = true,
                             ItemGroupId = 2,
                             Name = "Root Beer Soda",
                             NomenclatureNumber = 19,
-                            PurchasePrice = 206m,
-                            Quantity = 170m,
-                            SalePrice = 247.20m
+                            PurchasePrice = 238m,
+                            Quantity = 6m,
+                            SalePrice = 285.60m
                         },
                         new
                         {
@@ -2163,16 +2163,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 20,
                             CashRegisterName = "Red Bull Drink",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9599),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9600),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1012),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1013),
                             Description = "Description about product - Red Bull Energy Drink",
                             IsActive = true,
                             ItemGroupId = 2,
                             Name = "Red Bull Energy Drink",
                             NomenclatureNumber = 20,
-                            PurchasePrice = 173m,
-                            Quantity = 95m,
-                            SalePrice = 207.60m
+                            PurchasePrice = 95m,
+                            Quantity = 127m,
+                            SalePrice = 114.00m
                         },
                         new
                         {
@@ -2180,16 +2180,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 21,
                             CashRegisterName = "Budweiser Beer",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9603),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9604),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1015),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1016),
                             Description = "Description about product - Budweiser Lager Beer",
                             IsActive = true,
                             ItemGroupId = 3,
                             Name = "Budweiser Lager Beer",
                             NomenclatureNumber = 21,
-                            PurchasePrice = 232m,
-                            Quantity = 190m,
-                            SalePrice = 278.40m
+                            PurchasePrice = 277m,
+                            Quantity = 51m,
+                            SalePrice = 332.40m
                         },
                         new
                         {
@@ -2197,16 +2197,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 22,
                             CashRegisterName = "Jack Whiskey",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9607),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9608),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1019),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1020),
                             Description = "Description about product - Jack Daniel's Tennessee Whiskey",
                             IsActive = true,
                             ItemGroupId = 3,
                             Name = "Jack Daniel's Tennessee Whiskey",
                             NomenclatureNumber = 22,
-                            PurchasePrice = 159m,
-                            Quantity = 141m,
-                            SalePrice = 190.80m
+                            PurchasePrice = 205m,
+                            Quantity = 113m,
+                            SalePrice = 246.00m
                         },
                         new
                         {
@@ -2214,16 +2214,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 23,
                             CashRegisterName = "Grey Goose Vodka",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9610),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9611),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1023),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1024),
                             Description = "Description about product - Grey Goose Vodka",
                             IsActive = true,
                             ItemGroupId = 3,
                             Name = "Grey Goose Vodka",
                             NomenclatureNumber = 23,
-                            PurchasePrice = 256m,
-                            Quantity = 146m,
-                            SalePrice = 307.20m
+                            PurchasePrice = 263m,
+                            Quantity = 90m,
+                            SalePrice = 315.60m
                         },
                         new
                         {
@@ -2231,16 +2231,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 24,
                             CashRegisterName = "Captain Rum",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9614),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9615),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1026),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1027),
                             Description = "Description about product - Captain Morgan Spiced Rum",
                             IsActive = true,
                             ItemGroupId = 3,
                             Name = "Captain Morgan Spiced Rum",
                             NomenclatureNumber = 24,
-                            PurchasePrice = 218m,
-                            Quantity = 113m,
-                            SalePrice = 261.60m
+                            PurchasePrice = 221m,
+                            Quantity = 76m,
+                            SalePrice = 265.20m
                         },
                         new
                         {
@@ -2248,16 +2248,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 25,
                             CashRegisterName = "Jose Tequila",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9618),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9619),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1030),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1031),
                             Description = "Description about product - Jose Cuervo Tequila",
                             IsActive = true,
                             ItemGroupId = 3,
                             Name = "Jose Cuervo Tequila",
                             NomenclatureNumber = 25,
-                            PurchasePrice = 45m,
-                            Quantity = 63m,
-                            SalePrice = 54.00m
+                            PurchasePrice = 271m,
+                            Quantity = 133m,
+                            SalePrice = 325.20m
                         },
                         new
                         {
@@ -2265,16 +2265,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 26,
                             CashRegisterName = "Chardonnay Wine",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9621),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9622),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1033),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1034),
                             Description = "Description about product - Chardonnay White Wine",
                             IsActive = true,
                             ItemGroupId = 3,
                             Name = "Chardonnay White Wine",
                             NomenclatureNumber = 26,
-                            PurchasePrice = 217m,
-                            Quantity = 153m,
-                            SalePrice = 260.40m
+                            PurchasePrice = 172m,
+                            Quantity = 109m,
+                            SalePrice = 206.40m
                         },
                         new
                         {
@@ -2282,16 +2282,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 27,
                             CashRegisterName = "Pinot Wine",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9625),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9626),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1037),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1038),
                             Description = "Description about product - Pinot Noir Red Wine",
                             IsActive = true,
                             ItemGroupId = 3,
                             Name = "Pinot Noir Red Wine",
                             NomenclatureNumber = 27,
-                            PurchasePrice = 98m,
-                            Quantity = 69m,
-                            SalePrice = 117.60m
+                            PurchasePrice = 141m,
+                            Quantity = 12m,
+                            SalePrice = 169.20m
                         },
                         new
                         {
@@ -2299,16 +2299,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 28,
                             CashRegisterName = "Moet & Chandon Champagne",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9629),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9630),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1040),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1041),
                             Description = "Description about product - Moet & Chandon Champagne",
                             IsActive = true,
                             ItemGroupId = 3,
                             Name = "Moet & Chandon Champagne",
                             NomenclatureNumber = 28,
-                            PurchasePrice = 233m,
-                            Quantity = 83m,
-                            SalePrice = 279.60m
+                            PurchasePrice = 274m,
+                            Quantity = 21m,
+                            SalePrice = 328.80m
                         },
                         new
                         {
@@ -2316,16 +2316,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 29,
                             CashRegisterName = "Jameson Whiskey",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9633),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9634),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1044),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1045),
                             Description = "Description about product - Jameson Irish Whiskey",
                             IsActive = true,
                             ItemGroupId = 3,
                             Name = "Jameson Irish Whiskey",
                             NomenclatureNumber = 29,
-                            PurchasePrice = 106m,
-                            Quantity = 86m,
-                            SalePrice = 127.20m
+                            PurchasePrice = 272m,
+                            Quantity = 77m,
+                            SalePrice = 326.40m
                         },
                         new
                         {
@@ -2333,16 +2333,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 30,
                             CashRegisterName = "Absolut Vodka",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9637),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9638),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1047),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1049),
                             Description = "Description about product - Absolut Citron Vodka",
                             IsActive = true,
                             ItemGroupId = 3,
                             Name = "Absolut Citron Vodka",
                             NomenclatureNumber = 30,
-                            PurchasePrice = 131m,
-                            Quantity = 135m,
-                            SalePrice = 157.20m
+                            PurchasePrice = 118m,
+                            Quantity = 159m,
+                            SalePrice = 141.60m
                         },
                         new
                         {
@@ -2350,16 +2350,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 31,
                             CashRegisterName = "Whole Milk",
                             CodeForScales = 1,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9641),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9642),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1051),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1052),
                             Description = "Description about product - Whole Milk",
                             IsActive = true,
                             ItemGroupId = 4,
                             Name = "Whole Milk",
                             NomenclatureNumber = 31,
-                            PurchasePrice = 171m,
-                            Quantity = 139m,
-                            SalePrice = 205.20m
+                            PurchasePrice = 66m,
+                            Quantity = 103m,
+                            SalePrice = 79.20m
                         },
                         new
                         {
@@ -2367,16 +2367,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 32,
                             CashRegisterName = "2% Reduced Fat Milk",
                             CodeForScales = 2,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9644),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9646),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1055),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1056),
                             Description = "Description about product - 2% Reduced Fat Milk",
                             IsActive = true,
                             ItemGroupId = 4,
                             Name = "2% Reduced Fat Milk",
                             NomenclatureNumber = 32,
-                            PurchasePrice = 19m,
-                            Quantity = 52m,
-                            SalePrice = 22.80m
+                            PurchasePrice = 4m,
+                            Quantity = 68m,
+                            SalePrice = 4.80m
                         },
                         new
                         {
@@ -2384,16 +2384,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 33,
                             CashRegisterName = "Skim Milk",
                             CodeForScales = 3,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9648),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9649),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1060),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1061),
                             Description = "Description about product - Skim Milk",
                             IsActive = true,
                             ItemGroupId = 4,
                             Name = "Skim Milk",
                             NomenclatureNumber = 33,
-                            PurchasePrice = 258m,
-                            Quantity = 0m,
-                            SalePrice = 309.60m
+                            PurchasePrice = 211m,
+                            Quantity = 69m,
+                            SalePrice = 253.20m
                         },
                         new
                         {
@@ -2401,16 +2401,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 34,
                             CashRegisterName = "Chocolate Milk",
                             CodeForScales = 4,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9689),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9691),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1064),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1065),
                             Description = "Description about product - Chocolate Milk",
                             IsActive = true,
                             ItemGroupId = 4,
                             Name = "Chocolate Milk",
                             NomenclatureNumber = 34,
-                            PurchasePrice = 107m,
-                            Quantity = 87m,
-                            SalePrice = 128.40m
+                            PurchasePrice = 160m,
+                            Quantity = 90m,
+                            SalePrice = 192.00m
                         },
                         new
                         {
@@ -2418,16 +2418,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 35,
                             CashRegisterName = "Half and Half Cream",
                             CodeForScales = 5,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9694),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9695),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1293),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1295),
                             Description = "Description about product - Half and Half Cream",
                             IsActive = true,
                             ItemGroupId = 4,
                             Name = "Half and Half Cream",
                             NomenclatureNumber = 35,
-                            PurchasePrice = 34m,
-                            Quantity = 36m,
-                            SalePrice = 40.80m
+                            PurchasePrice = 218m,
+                            Quantity = 3m,
+                            SalePrice = 261.60m
                         },
                         new
                         {
@@ -2435,16 +2435,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 36,
                             CashRegisterName = "Heavy Cream",
                             CodeForScales = 6,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9697),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9698),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1300),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1301),
                             Description = "Description about product - Heavy Cream",
                             IsActive = true,
                             ItemGroupId = 4,
                             Name = "Heavy Cream",
                             NomenclatureNumber = 36,
-                            PurchasePrice = 254m,
-                            Quantity = 162m,
-                            SalePrice = 304.80m
+                            PurchasePrice = 64m,
+                            Quantity = 197m,
+                            SalePrice = 76.80m
                         },
                         new
                         {
@@ -2452,16 +2452,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 37,
                             CashRegisterName = "Unsalted Butter",
                             CodeForScales = 7,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9701),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9702),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1304),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1305),
                             Description = "Description about product - Unsalted Butter",
                             IsActive = true,
                             ItemGroupId = 4,
                             Name = "Unsalted Butter",
                             NomenclatureNumber = 37,
-                            PurchasePrice = 158m,
-                            Quantity = 97m,
-                            SalePrice = 189.60m
+                            PurchasePrice = 70m,
+                            Quantity = 164m,
+                            SalePrice = 84.00m
                         },
                         new
                         {
@@ -2469,16 +2469,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 38,
                             CashRegisterName = "Salted Butter",
                             CodeForScales = 8,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9705),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9706),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1308),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1309),
                             Description = "Description about product - Salted Butter",
                             IsActive = true,
                             ItemGroupId = 4,
                             Name = "Salted Butter",
                             NomenclatureNumber = 38,
-                            PurchasePrice = 199m,
-                            Quantity = 160m,
-                            SalePrice = 238.80m
+                            PurchasePrice = 217m,
+                            Quantity = 54m,
+                            SalePrice = 260.40m
                         },
                         new
                         {
@@ -2486,16 +2486,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 39,
                             CashRegisterName = "Plain Yogurt",
                             CodeForScales = 9,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9709),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9710),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1311),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1312),
                             Description = "Description about product - Plain Yogurt",
                             IsActive = true,
                             ItemGroupId = 4,
                             Name = "Plain Yogurt",
                             NomenclatureNumber = 39,
-                            PurchasePrice = 77m,
-                            Quantity = 92m,
-                            SalePrice = 92.40m
+                            PurchasePrice = 124m,
+                            Quantity = 140m,
+                            SalePrice = 148.80m
                         },
                         new
                         {
@@ -2503,16 +2503,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 40,
                             CashRegisterName = "Greek Yogurt",
                             CodeForScales = 10,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9712),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9713),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1315),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1316),
                             Description = "Description about product - Greek Yogurt",
                             IsActive = true,
                             ItemGroupId = 4,
                             Name = "Greek Yogurt",
                             NomenclatureNumber = 40,
-                            PurchasePrice = 33m,
-                            Quantity = 77m,
-                            SalePrice = 39.60m
+                            PurchasePrice = 133m,
+                            Quantity = 100m,
+                            SalePrice = 159.60m
                         },
                         new
                         {
@@ -2520,16 +2520,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 41,
                             CashRegisterName = "Beef Dogs",
                             CodeForScales = 11,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9716),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9717),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1319),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1320),
                             Description = "Description about product - Beef Hot Dogs",
                             IsActive = true,
                             ItemGroupId = 5,
                             Name = "Beef Hot Dogs",
                             NomenclatureNumber = 41,
-                            PurchasePrice = 211m,
-                            Quantity = 14m,
-                            SalePrice = 253.20m
+                            PurchasePrice = 277m,
+                            Quantity = 91m,
+                            SalePrice = 332.40m
                         },
                         new
                         {
@@ -2537,16 +2537,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 42,
                             CashRegisterName = "Pork Sausages",
                             CodeForScales = 12,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9720),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9721),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1322),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1323),
                             Description = "Description about product - Pork Breakfast Sausages",
                             IsActive = true,
                             ItemGroupId = 5,
                             Name = "Pork Breakfast Sausages",
                             NomenclatureNumber = 42,
-                            PurchasePrice = 114m,
-                            Quantity = 160m,
-                            SalePrice = 136.80m
+                            PurchasePrice = 160m,
+                            Quantity = 158m,
+                            SalePrice = 192.00m
                         },
                         new
                         {
@@ -2554,16 +2554,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 43,
                             CashRegisterName = "Chicken Sausages",
                             CodeForScales = 13,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9723),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9724),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1326),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1327),
                             Description = "Description about product - Chicken Apple Sausages",
                             IsActive = true,
                             ItemGroupId = 5,
                             Name = "Chicken Apple Sausages",
                             NomenclatureNumber = 43,
-                            PurchasePrice = 185m,
+                            PurchasePrice = 109m,
                             Quantity = 52m,
-                            SalePrice = 222.00m
+                            SalePrice = 130.80m
                         },
                         new
                         {
@@ -2571,16 +2571,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 44,
                             CashRegisterName = "Italian Sausages",
                             CodeForScales = 14,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9727),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9728),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1330),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1331),
                             Description = "Description about product - Italian Style Sausages",
                             IsActive = true,
                             ItemGroupId = 5,
                             Name = "Italian Style Sausages",
                             NomenclatureNumber = 44,
-                            PurchasePrice = 91m,
-                            Quantity = 12m,
-                            SalePrice = 109.20m
+                            PurchasePrice = 78m,
+                            Quantity = 133m,
+                            SalePrice = 93.60m
                         },
                         new
                         {
@@ -2588,16 +2588,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 45,
                             CashRegisterName = "Bratwurst Sausages",
                             CodeForScales = 15,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9731),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9732),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1333),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1335),
                             Description = "Description about product - Bratwurst Sausages",
                             IsActive = true,
                             ItemGroupId = 5,
                             Name = "Bratwurst Sausages",
                             NomenclatureNumber = 45,
-                            PurchasePrice = 57m,
-                            Quantity = 66m,
-                            SalePrice = 68.40m
+                            PurchasePrice = 91m,
+                            Quantity = 2m,
+                            SalePrice = 109.20m
                         },
                         new
                         {
@@ -2605,16 +2605,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 46,
                             CashRegisterName = "Chorizo Sausages",
                             CodeForScales = 16,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9735),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9736),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1337),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1338),
                             Description = "Description about product - Chorizo Sausages",
                             IsActive = true,
                             ItemGroupId = 5,
                             Name = "Chorizo Sausages",
                             NomenclatureNumber = 46,
-                            PurchasePrice = 117m,
-                            Quantity = 45m,
-                            SalePrice = 140.40m
+                            PurchasePrice = 246m,
+                            Quantity = 112m,
+                            SalePrice = 295.20m
                         },
                         new
                         {
@@ -2622,16 +2622,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 47,
                             CashRegisterName = "Andouille Sausages",
                             CodeForScales = 17,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9739),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9740),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1341),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1342),
                             Description = "Description about product - Andouille Sausages",
                             IsActive = true,
                             ItemGroupId = 5,
                             Name = "Andouille Sausages",
                             NomenclatureNumber = 47,
-                            PurchasePrice = 128m,
-                            Quantity = 66m,
-                            SalePrice = 153.60m
+                            PurchasePrice = 256m,
+                            Quantity = 39m,
+                            SalePrice = 307.20m
                         },
                         new
                         {
@@ -2639,16 +2639,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 48,
                             CashRegisterName = "Kielbasa Sausages",
                             CodeForScales = 18,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9743),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9744),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1344),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1346),
                             Description = "Description about product - Kielbasa Sausages",
                             IsActive = true,
                             ItemGroupId = 5,
                             Name = "Kielbasa Sausages",
                             NomenclatureNumber = 48,
-                            PurchasePrice = 193m,
-                            Quantity = 76m,
-                            SalePrice = 231.60m
+                            PurchasePrice = 287m,
+                            Quantity = 57m,
+                            SalePrice = 344.40m
                         },
                         new
                         {
@@ -2656,16 +2656,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 49,
                             CashRegisterName = "Vegan Sausages",
                             CodeForScales = 19,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9746),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9748),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1348),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1349),
                             Description = "Description about product - Vegan Plant-Based Sausages",
                             IsActive = true,
                             ItemGroupId = 5,
                             Name = "Vegan Plant-Based Sausages",
                             NomenclatureNumber = 49,
-                            PurchasePrice = 64m,
-                            Quantity = 188m,
-                            SalePrice = 76.80m
+                            PurchasePrice = 101m,
+                            Quantity = 114m,
+                            SalePrice = 121.20m
                         },
                         new
                         {
@@ -2673,16 +2673,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 50,
                             CashRegisterName = "Maple Sausage",
                             CodeForScales = 20,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9750),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9751),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1352),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1353),
                             Description = "Description about product - Maple Glazed Sausage Links",
                             IsActive = true,
                             ItemGroupId = 5,
                             Name = "Maple Glazed Sausage Links",
                             NomenclatureNumber = 50,
-                            PurchasePrice = 266m,
-                            Quantity = 65m,
-                            SalePrice = 319.20m
+                            PurchasePrice = 81m,
+                            Quantity = 171m,
+                            SalePrice = 97.20m
                         },
                         new
                         {
@@ -2690,16 +2690,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 51,
                             CashRegisterName = "Ultra Detergent",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9754),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9755),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1355),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1356),
                             Description = "Description about product - Ultra Fresh Scented Laundry Detergent",
                             IsActive = true,
                             ItemGroupId = 6,
                             Name = "Ultra Fresh Scented Laundry Detergent",
                             NomenclatureNumber = 51,
-                            PurchasePrice = 275m,
-                            Quantity = 14m,
-                            SalePrice = 330.00m
+                            PurchasePrice = 170m,
+                            Quantity = 177m,
+                            SalePrice = 204.00m
                         },
                         new
                         {
@@ -2707,16 +2707,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 52,
                             CashRegisterName = "Fabric Sheets",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9758),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9759),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1359),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1360),
                             Description = "Description about product - Fabric Softener Sheets",
                             IsActive = true,
                             ItemGroupId = 6,
                             Name = "Fabric Softener Sheets",
                             NomenclatureNumber = 52,
-                            PurchasePrice = 20m,
-                            Quantity = 171m,
-                            SalePrice = 24.00m
+                            PurchasePrice = 66m,
+                            Quantity = 48m,
+                            SalePrice = 79.20m
                         },
                         new
                         {
@@ -2724,16 +2724,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 53,
                             CashRegisterName = "Stain Spray",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9761),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9762),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1363),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1364),
                             Description = "Description about product - Stain Remover Spray",
                             IsActive = true,
                             ItemGroupId = 6,
                             Name = "Stain Remover Spray",
                             NomenclatureNumber = 53,
-                            PurchasePrice = 204m,
-                            Quantity = 199m,
-                            SalePrice = 244.80m
+                            PurchasePrice = 8m,
+                            Quantity = 7m,
+                            SalePrice = 9.60m
                         },
                         new
                         {
@@ -2741,16 +2741,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 54,
                             CashRegisterName = "Color-Safe Bleach",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9765),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9766),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1366),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1367),
                             Description = "Description about product - Color-Safe Bleach",
                             IsActive = true,
                             ItemGroupId = 6,
                             Name = "Color-Safe Bleach",
                             NomenclatureNumber = 54,
-                            PurchasePrice = 92m,
-                            Quantity = 196m,
-                            SalePrice = 110.40m
+                            PurchasePrice = 57m,
+                            Quantity = 93m,
+                            SalePrice = 68.40m
                         },
                         new
                         {
@@ -2758,16 +2758,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 55,
                             CashRegisterName = "Liquid Softener",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9804),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9805),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1370),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1371),
                             Description = "Description about product - Liquid Fabric Softener",
                             IsActive = true,
                             ItemGroupId = 6,
                             Name = "Liquid Fabric Softener",
                             NomenclatureNumber = 55,
-                            PurchasePrice = 213m,
-                            Quantity = 105m,
-                            SalePrice = 255.60m
+                            PurchasePrice = 133m,
+                            Quantity = 170m,
+                            SalePrice = 159.60m
                         },
                         new
                         {
@@ -2775,16 +2775,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 56,
                             CashRegisterName = "Fragrance-Free Pods",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9809),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9810),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1373),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1374),
                             Description = "Description about product - Fragrance-Free Laundry Pods",
                             IsActive = true,
                             ItemGroupId = 6,
                             Name = "Fragrance-Free Laundry Pods",
                             NomenclatureNumber = 56,
-                            PurchasePrice = 101m,
-                            Quantity = 134m,
-                            SalePrice = 121.20m
+                            PurchasePrice = 243m,
+                            Quantity = 21m,
+                            SalePrice = 291.60m
                         },
                         new
                         {
@@ -2792,16 +2792,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 57,
                             CashRegisterName = "Wool Balls",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9812),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9813),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1433),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1434),
                             Description = "Description about product - Wool Dryer Balls",
                             IsActive = true,
                             ItemGroupId = 6,
                             Name = "Wool Dryer Balls",
                             NomenclatureNumber = 57,
-                            PurchasePrice = 150m,
-                            Quantity = 163m,
-                            SalePrice = 180.00m
+                            PurchasePrice = 200m,
+                            Quantity = 18m,
+                            SalePrice = 240.00m
                         },
                         new
                         {
@@ -2809,16 +2809,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 58,
                             CashRegisterName = "Oxygen Remover",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9816),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9817),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1437),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1438),
                             Description = "Description about product - Oxygen Stain Remover",
                             IsActive = true,
                             ItemGroupId = 6,
                             Name = "Oxygen Stain Remover",
                             NomenclatureNumber = 58,
-                            PurchasePrice = 115m,
-                            Quantity = 103m,
-                            SalePrice = 138.00m
+                            PurchasePrice = 105m,
+                            Quantity = 105m,
+                            SalePrice = 126.00m
                         },
                         new
                         {
@@ -2826,16 +2826,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 59,
                             CashRegisterName = "Laundry Spray",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9820),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9821),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1440),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1441),
                             Description = "Description about product - Laundry Pre-Treatment Spray",
                             IsActive = true,
                             ItemGroupId = 6,
                             Name = "Laundry Pre-Treatment Spray",
                             NomenclatureNumber = 59,
-                            PurchasePrice = 101m,
-                            Quantity = 160m,
-                            SalePrice = 121.20m
+                            PurchasePrice = 8m,
+                            Quantity = 16m,
+                            SalePrice = 9.60m
                         },
                         new
                         {
@@ -2843,16 +2843,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 60,
                             CashRegisterName = "Delicate Detergent",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9823),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9824),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1444),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1445),
                             Description = "Description about product - Delicate Wash Laundry Detergent",
                             IsActive = true,
                             ItemGroupId = 6,
                             Name = "Delicate Wash Laundry Detergent",
                             NomenclatureNumber = 60,
-                            PurchasePrice = 198m,
-                            Quantity = 61m,
-                            SalePrice = 237.60m
+                            PurchasePrice = 97m,
+                            Quantity = 90m,
+                            SalePrice = 116.40m
                         },
                         new
                         {
@@ -2860,16 +2860,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 61,
                             CashRegisterName = "Roasted  Nuts",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9827),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9828),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1447),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1448),
                             Description = "Description about product - Roasted Salted Mixed Nuts",
                             IsActive = true,
                             ItemGroupId = 7,
                             Name = "Roasted Salted Mixed Nuts",
                             NomenclatureNumber = 61,
-                            PurchasePrice = 177m,
-                            Quantity = 15m,
-                            SalePrice = 212.40m
+                            PurchasePrice = 29m,
+                            Quantity = 14m,
+                            SalePrice = 34.80m
                         },
                         new
                         {
@@ -2877,16 +2877,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 62,
                             CashRegisterName = "Honey Cashews",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9830),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9832),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1451),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1452),
                             Description = "Description about product - Honey Glazed Cashews",
                             IsActive = true,
                             ItemGroupId = 7,
                             Name = "Honey Glazed Cashews",
                             NomenclatureNumber = 62,
-                            PurchasePrice = 132m,
-                            Quantity = 118m,
-                            SalePrice = 158.40m
+                            PurchasePrice = 244m,
+                            Quantity = 140m,
+                            SalePrice = 292.80m
                         },
                         new
                         {
@@ -2894,16 +2894,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 63,
                             CashRegisterName = "Spicy Almonds",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9834),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9835),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1455),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1456),
                             Description = "Description about product - Spicy Cajun Almonds",
                             IsActive = true,
                             ItemGroupId = 7,
                             Name = "Spicy Cajun Almonds",
                             NomenclatureNumber = 63,
-                            PurchasePrice = 284m,
-                            Quantity = 90m,
-                            SalePrice = 340.80m
+                            PurchasePrice = 3m,
+                            Quantity = 20m,
+                            SalePrice = 3.60m
                         },
                         new
                         {
@@ -2911,16 +2911,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 64,
                             CashRegisterName = "BBQ Peanuts",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9837),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9838),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1458),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1459),
                             Description = "Description about product - BBQ Flavored Peanuts",
                             IsActive = true,
                             ItemGroupId = 7,
                             Name = "BBQ Flavored Peanuts",
                             NomenclatureNumber = 64,
-                            PurchasePrice = 289m,
-                            Quantity = 77m,
-                            SalePrice = 346.80m
+                            PurchasePrice = 40m,
+                            Quantity = 147m,
+                            SalePrice = 48.00m
                         },
                         new
                         {
@@ -2928,16 +2928,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 65,
                             CashRegisterName = "Chocolate Hazelnuts",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9841),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9842),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1462),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1463),
                             Description = "Description about product - Chocolate Covered Hazelnuts",
                             IsActive = true,
                             ItemGroupId = 7,
                             Name = "Chocolate Covered Hazelnuts",
                             NomenclatureNumber = 65,
-                            PurchasePrice = 28m,
-                            Quantity = 158m,
-                            SalePrice = 33.60m
+                            PurchasePrice = 193m,
+                            Quantity = 196m,
+                            SalePrice = 231.60m
                         },
                         new
                         {
@@ -2945,16 +2945,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 66,
                             CashRegisterName = "Sea Pistachios",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9845),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9846),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1467),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1468),
                             Description = "Description about product - Sea Salt Pistachios",
                             IsActive = true,
                             ItemGroupId = 7,
                             Name = "Sea Salt Pistachios",
                             NomenclatureNumber = 66,
-                            PurchasePrice = 73m,
-                            Quantity = 152m,
-                            SalePrice = 87.60m
+                            PurchasePrice = 56m,
+                            Quantity = 37m,
+                            SalePrice = 67.20m
                         },
                         new
                         {
@@ -2962,16 +2962,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 67,
                             CashRegisterName = "Smoked Almond Snack Mix",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9849),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9850),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1471),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1472),
                             Description = "Description about product - Smoked Almond Snack Mix",
                             IsActive = true,
                             ItemGroupId = 7,
                             Name = "Smoked Almond Snack Mix",
                             NomenclatureNumber = 67,
-                            PurchasePrice = 9m,
-                            Quantity = 132m,
-                            SalePrice = 10.80m
+                            PurchasePrice = 206m,
+                            Quantity = 196m,
+                            SalePrice = 247.20m
                         },
                         new
                         {
@@ -2979,16 +2979,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 68,
                             CashRegisterName = "Chili Lime Cashews",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9852),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9853),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1474),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1475),
                             Description = "Description about product - Chili Lime Cashews",
                             IsActive = true,
                             ItemGroupId = 7,
                             Name = "Chili Lime Cashews",
                             NomenclatureNumber = 68,
-                            PurchasePrice = 49m,
-                            Quantity = 108m,
-                            SalePrice = 58.80m
+                            PurchasePrice = 215m,
+                            Quantity = 83m,
+                            SalePrice = 258.00m
                         },
                         new
                         {
@@ -2996,16 +2996,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 69,
                             CashRegisterName = "Wasabi Almonds",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9856),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9857),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1478),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1479),
                             Description = "Description about product - Wasabi Soy Almonds",
                             IsActive = true,
                             ItemGroupId = 7,
                             Name = "Wasabi Soy Almonds",
                             NomenclatureNumber = 69,
-                            PurchasePrice = 62m,
-                            Quantity = 136m,
-                            SalePrice = 74.40m
+                            PurchasePrice = 126m,
+                            Quantity = 171m,
+                            SalePrice = 151.20m
                         },
                         new
                         {
@@ -3013,16 +3013,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 70,
                             CashRegisterName = "Maple Pecan Trail Mix",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9859),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9860),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1481),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1483),
                             Description = "Description about product - Maple Pecan Trail Mix",
                             IsActive = true,
                             ItemGroupId = 7,
                             Name = "Maple Pecan Trail Mix",
                             NomenclatureNumber = 70,
-                            PurchasePrice = 122m,
-                            Quantity = 190m,
-                            SalePrice = 146.40m
+                            PurchasePrice = 69m,
+                            Quantity = 144m,
+                            SalePrice = 82.80m
                         },
                         new
                         {
@@ -3030,16 +3030,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 71,
                             CashRegisterName = "Premium Cigarettes",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9863),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9864),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1485),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1486),
                             Description = "Description about product - Premium Menthol Cigarettes",
                             IsActive = true,
                             ItemGroupId = 8,
                             Name = "Premium Menthol Cigarettes",
                             NomenclatureNumber = 71,
-                            PurchasePrice = 147m,
-                            Quantity = 182m,
-                            SalePrice = 176.40m
+                            PurchasePrice = 103m,
+                            Quantity = 187m,
+                            SalePrice = 123.60m
                         },
                         new
                         {
@@ -3047,16 +3047,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 72,
                             CashRegisterName = "Classic Blend Cigarettes",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9866),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9867),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1489),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1490),
                             Description = "Description about product - Classic Tobacco Blend Cigarettes",
                             IsActive = true,
                             ItemGroupId = 8,
                             Name = "Classic Tobacco Blend Cigarettes",
                             NomenclatureNumber = 72,
-                            PurchasePrice = 75m,
-                            Quantity = 164m,
-                            SalePrice = 90.00m
+                            PurchasePrice = 94m,
+                            Quantity = 62m,
+                            SalePrice = 112.80m
                         },
                         new
                         {
@@ -3064,16 +3064,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 73,
                             CashRegisterName = "Slims Cigarettes",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9870),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9871),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1493),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1494),
                             Description = "Description about product - Slims Light Cigarettes",
                             IsActive = true,
                             ItemGroupId = 8,
                             Name = "Slims Light Cigarettes",
                             NomenclatureNumber = 73,
-                            PurchasePrice = 103m,
-                            Quantity = 157m,
-                            SalePrice = 123.60m
+                            PurchasePrice = 150m,
+                            Quantity = 101m,
+                            SalePrice = 180.00m
                         },
                         new
                         {
@@ -3081,16 +3081,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 74,
                             CashRegisterName = "Menthol Cigarettes",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9909),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9910),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1496),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1497),
                             Description = "Description about product - Menthol Gold Cigarettes",
                             IsActive = true,
                             ItemGroupId = 8,
                             Name = "Menthol Gold Cigarettes",
                             NomenclatureNumber = 74,
-                            PurchasePrice = 222m,
-                            Quantity = 185m,
-                            SalePrice = 266.40m
+                            PurchasePrice = 7m,
+                            Quantity = 65m,
+                            SalePrice = 8.40m
                         },
                         new
                         {
@@ -3098,16 +3098,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 75,
                             CashRegisterName = "Full Cigarettes",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9913),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9914),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1712),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1715),
                             Description = "Description about product - Full Flavor Cigarettes",
                             IsActive = true,
                             ItemGroupId = 8,
                             Name = "Full Flavor Cigarettes",
                             NomenclatureNumber = 75,
-                            PurchasePrice = 236m,
-                            Quantity = 113m,
-                            SalePrice = 283.20m
+                            PurchasePrice = 6m,
+                            Quantity = 192m,
+                            SalePrice = 7.20m
                         },
                         new
                         {
@@ -3115,16 +3115,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 76,
                             CashRegisterName = "Menthol Cigarettes",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9916),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9917),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1724),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1725),
                             Description = "Description about product - Menthol Silver Cigarettes",
                             IsActive = true,
                             ItemGroupId = 8,
                             Name = "Menthol Silver Cigarettes",
                             NomenclatureNumber = 76,
-                            PurchasePrice = 184m,
-                            Quantity = 71m,
-                            SalePrice = 220.80m
+                            PurchasePrice = 36m,
+                            Quantity = 50m,
+                            SalePrice = 43.20m
                         },
                         new
                         {
@@ -3132,16 +3132,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 77,
                             CashRegisterName = "Ultra Cigarettes",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9920),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9921),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1729),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1731),
                             Description = "Description about product - Ultra Light Cigarettes",
                             IsActive = true,
                             ItemGroupId = 8,
                             Name = "Ultra Light Cigarettes",
                             NomenclatureNumber = 77,
-                            PurchasePrice = 215m,
-                            Quantity = 15m,
-                            SalePrice = 258.00m
+                            PurchasePrice = 214m,
+                            Quantity = 130m,
+                            SalePrice = 256.80m
                         },
                         new
                         {
@@ -3149,16 +3149,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 78,
                             CashRegisterName = "Regular Filtered Cigarettes",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9923),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9924),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1735),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1737),
                             Description = "Description about product - Regular Filtered Cigarettes",
                             IsActive = true,
                             ItemGroupId = 8,
                             Name = "Regular Filtered Cigarettes",
                             NomenclatureNumber = 78,
-                            PurchasePrice = 291m,
-                            Quantity = 93m,
-                            SalePrice = 349.20m
+                            PurchasePrice = 183m,
+                            Quantity = 177m,
+                            SalePrice = 219.60m
                         },
                         new
                         {
@@ -3166,16 +3166,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 79,
                             CashRegisterName = "Menthol Blue Cigarettes",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9927),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9928),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1739),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1741),
                             Description = "Description about product - Menthol Blue Cigarettes",
                             IsActive = true,
                             ItemGroupId = 8,
                             Name = "Menthol Blue Cigarettes",
                             NomenclatureNumber = 79,
-                            PurchasePrice = 165m,
-                            Quantity = 81m,
-                            SalePrice = 198.00m
+                            PurchasePrice = 26m,
+                            Quantity = 95m,
+                            SalePrice = 31.20m
                         },
                         new
                         {
@@ -3183,16 +3183,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 80,
                             CashRegisterName = "Menthol Green Cigarettes",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9931),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9932),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1743),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1744),
                             Description = "Description about product - Menthol Green Cigarettes",
                             IsActive = true,
                             ItemGroupId = 8,
                             Name = "Menthol Green Cigarettes",
                             NomenclatureNumber = 80,
-                            PurchasePrice = 240m,
-                            Quantity = 97m,
-                            SalePrice = 288.00m
+                            PurchasePrice = 227m,
+                            Quantity = 129m,
+                            SalePrice = 272.40m
                         },
                         new
                         {
@@ -3200,16 +3200,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 81,
                             CashRegisterName = "Whole Bread",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9934),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9935),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1747),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1748),
                             Description = "Description about product - Whole Wheat Sandwich Bread",
                             IsActive = true,
                             ItemGroupId = 9,
                             Name = "Whole Wheat Sandwich Bread",
                             NomenclatureNumber = 81,
-                            PurchasePrice = 245m,
-                            Quantity = 81m,
-                            SalePrice = 294.00m
+                            PurchasePrice = 122m,
+                            Quantity = 111m,
+                            SalePrice = 146.40m
                         },
                         new
                         {
@@ -3217,16 +3217,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 82,
                             CashRegisterName = "French Baguette",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9938),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9939),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1751),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1752),
                             Description = "Description about product - French Baguette",
                             IsActive = true,
                             ItemGroupId = 9,
                             Name = "French Baguette",
                             NomenclatureNumber = 82,
-                            PurchasePrice = 25m,
-                            Quantity = 25m,
-                            SalePrice = 30.00m
+                            PurchasePrice = 196m,
+                            Quantity = 32m,
+                            SalePrice = 235.20m
                         },
                         new
                         {
@@ -3234,16 +3234,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 83,
                             CashRegisterName = "Artisanal Loaf",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9941),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9942),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1754),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1755),
                             Description = "Description about product - Artisanal Sourdough Loaf",
                             IsActive = true,
                             ItemGroupId = 9,
                             Name = "Artisanal Sourdough Loaf",
                             NomenclatureNumber = 83,
-                            PurchasePrice = 256m,
-                            Quantity = 7m,
-                            SalePrice = 307.20m
+                            PurchasePrice = 235m,
+                            Quantity = 2m,
+                            SalePrice = 282.00m
                         },
                         new
                         {
@@ -3251,16 +3251,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 84,
                             CashRegisterName = "Multigrain Bread",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9945),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9946),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1758),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1759),
                             Description = "Description about product - Multigrain Bread",
                             IsActive = true,
                             ItemGroupId = 9,
                             Name = "Multigrain Bread",
                             NomenclatureNumber = 84,
-                            PurchasePrice = 219m,
-                            Quantity = 38m,
-                            SalePrice = 262.80m
+                            PurchasePrice = 152m,
+                            Quantity = 112m,
+                            SalePrice = 182.40m
                         },
                         new
                         {
@@ -3268,16 +3268,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 85,
                             CashRegisterName = "Rye Bread",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9949),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9950),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1761),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1763),
                             Description = "Description about product - Rye Bread",
                             IsActive = true,
                             ItemGroupId = 9,
                             Name = "Rye Bread",
                             NomenclatureNumber = 85,
-                            PurchasePrice = 162m,
-                            Quantity = 46m,
-                            SalePrice = 194.40m
+                            PurchasePrice = 8m,
+                            Quantity = 55m,
+                            SalePrice = 9.60m
                         },
                         new
                         {
@@ -3285,16 +3285,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 86,
                             CashRegisterName = "Gluten-Free Bread",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9953),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9954),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1765),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1766),
                             Description = "Description about product - Gluten-Free White Bread",
                             IsActive = true,
                             ItemGroupId = 9,
                             Name = "Gluten-Free White Bread",
                             NomenclatureNumber = 86,
-                            PurchasePrice = 237m,
-                            Quantity = 108m,
-                            SalePrice = 284.40m
+                            PurchasePrice = 54m,
+                            Quantity = 29m,
+                            SalePrice = 64.80m
                         },
                         new
                         {
@@ -3302,16 +3302,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 87,
                             CashRegisterName = "Cinnamon Bread",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9956),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9957),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1769),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1770),
                             Description = "Description about product - Cinnamon Raisin Bread",
                             IsActive = true,
                             ItemGroupId = 9,
                             Name = "Cinnamon Raisin Bread",
                             NomenclatureNumber = 87,
-                            PurchasePrice = 15m,
-                            Quantity = 96m,
-                            SalePrice = 18.00m
+                            PurchasePrice = 39m,
+                            Quantity = 191m,
+                            SalePrice = 46.80m
                         },
                         new
                         {
@@ -3319,16 +3319,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 88,
                             CashRegisterName = "Italian Loaf",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9960),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9961),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1773),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1774),
                             Description = "Description about product - Italian Ciabatta Loaf",
                             IsActive = true,
                             ItemGroupId = 9,
                             Name = "Italian Ciabatta Loaf",
                             NomenclatureNumber = 88,
-                            PurchasePrice = 89m,
-                            Quantity = 119m,
-                            SalePrice = 106.80m
+                            PurchasePrice = 94m,
+                            Quantity = 147m,
+                            SalePrice = 112.80m
                         },
                         new
                         {
@@ -3336,16 +3336,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 89,
                             CashRegisterName = "Pumpernickel Bread",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9963),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9964),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1776),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1777),
                             Description = "Description about product - Pumpernickel Bread",
                             IsActive = true,
                             ItemGroupId = 9,
                             Name = "Pumpernickel Bread",
                             NomenclatureNumber = 89,
-                            PurchasePrice = 187m,
-                            Quantity = 200m,
-                            SalePrice = 224.40m
+                            PurchasePrice = 219m,
+                            Quantity = 120m,
+                            SalePrice = 262.80m
                         },
                         new
                         {
@@ -3353,16 +3353,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 90,
                             CashRegisterName = "Bagels Pack",
                             CodeForScales = 0,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9967),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9968),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1779),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1780),
                             Description = "Description about product - Bagels Assortment Pack",
                             IsActive = true,
                             ItemGroupId = 9,
                             Name = "Bagels Assortment Pack",
                             NomenclatureNumber = 90,
-                            PurchasePrice = 217m,
-                            Quantity = 93m,
-                            SalePrice = 260.40m
+                            PurchasePrice = 104m,
+                            Quantity = 144m,
+                            SalePrice = 124.80m
                         },
                         new
                         {
@@ -3370,16 +3370,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 91,
                             CashRegisterName = "Organic Gala Apples",
                             CodeForScales = 21,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9971),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9972),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1783),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1784),
                             Description = "Description about product - Organic Gala Apples",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Organic Gala Apples",
                             NomenclatureNumber = 91,
-                            PurchasePrice = 247m,
-                            Quantity = 74m,
-                            SalePrice = 296.40m
+                            PurchasePrice = 136m,
+                            Quantity = 173m,
+                            SalePrice = 163.20m
                         },
                         new
                         {
@@ -3387,16 +3387,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 92,
                             CashRegisterName = "Fresh Strawberries",
                             CodeForScales = 22,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9974),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9975),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1787),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1788),
                             Description = "Description about product - Fresh Strawberries",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Fresh Strawberries",
                             NomenclatureNumber = 92,
-                            PurchasePrice = 127m,
-                            Quantity = 21m,
-                            SalePrice = 152.40m
+                            PurchasePrice = 2m,
+                            Quantity = 197m,
+                            SalePrice = 2.40m
                         },
                         new
                         {
@@ -3404,16 +3404,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 93,
                             CashRegisterName = "Green Grapes",
                             CodeForScales = 23,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9978),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9979),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1790),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1792),
                             Description = "Description about product - Green Seedless Grapes",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Green Seedless Grapes",
                             NomenclatureNumber = 93,
-                            PurchasePrice = 293m,
-                            Quantity = 75m,
-                            SalePrice = 351.60m
+                            PurchasePrice = 94m,
+                            Quantity = 120m,
+                            SalePrice = 112.80m
                         },
                         new
                         {
@@ -3421,16 +3421,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 94,
                             CashRegisterName = "Ripe Avocados",
                             CodeForScales = 24,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9982),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9983),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1794),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1795),
                             Description = "Description about product - Ripe Avocados",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Ripe Avocados",
                             NomenclatureNumber = 94,
-                            PurchasePrice = 53m,
-                            Quantity = 24m,
-                            SalePrice = 63.60m
+                            PurchasePrice = 248m,
+                            Quantity = 90m,
+                            SalePrice = 297.60m
                         },
                         new
                         {
@@ -3438,16 +3438,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 95,
                             CashRegisterName = "Sweet Juicy Oranges",
                             CodeForScales = 25,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9985),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 935, DateTimeKind.Local).AddTicks(9986),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1798),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1799),
                             Description = "Description about product - Sweet Juicy Oranges",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Sweet Juicy Oranges",
                             NomenclatureNumber = 95,
-                            PurchasePrice = 136m,
-                            Quantity = 142m,
-                            SalePrice = 163.20m
+                            PurchasePrice = 294m,
+                            Quantity = 173m,
+                            SalePrice = 352.80m
                         },
                         new
                         {
@@ -3455,16 +3455,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 96,
                             CashRegisterName = "Crisp Apples",
                             CodeForScales = 26,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(24),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(25),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1801),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1802),
                             Description = "Description about product - Crisp Red Delicious Apples",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Crisp Red Delicious Apples",
                             NomenclatureNumber = 96,
-                            PurchasePrice = 63m,
-                            Quantity = 148m,
-                            SalePrice = 75.60m
+                            PurchasePrice = 81m,
+                            Quantity = 116m,
+                            SalePrice = 97.20m
                         },
                         new
                         {
@@ -3472,16 +3472,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 97,
                             CashRegisterName = "Fresh Raspberries",
                             CodeForScales = 27,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(28),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(29),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1860),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1862),
                             Description = "Description about product - Fresh Raspberries",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Fresh Raspberries",
                             NomenclatureNumber = 97,
-                            PurchasePrice = 170m,
-                            Quantity = 82m,
-                            SalePrice = 204.00m
+                            PurchasePrice = 10m,
+                            Quantity = 6m,
+                            SalePrice = 12.00m
                         },
                         new
                         {
@@ -3489,16 +3489,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 98,
                             CashRegisterName = "Crisp Apples",
                             CodeForScales = 28,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(31),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(32),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1865),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1866),
                             Description = "Description about product - Crisp Green Granny Smith Apples",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Crisp Green Granny Smith Apples",
                             NomenclatureNumber = 98,
-                            PurchasePrice = 141m,
-                            Quantity = 161m,
-                            SalePrice = 169.20m
+                            PurchasePrice = 267m,
+                            Quantity = 181m,
+                            SalePrice = 320.40m
                         },
                         new
                         {
@@ -3506,16 +3506,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 99,
                             CashRegisterName = "Juicy Clementines",
                             CodeForScales = 29,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(35),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(36),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1868),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1869),
                             Description = "Description about product - Juicy Clementines",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Juicy Clementines",
                             NomenclatureNumber = 99,
-                            PurchasePrice = 153m,
-                            Quantity = 153m,
-                            SalePrice = 183.60m
+                            PurchasePrice = 107m,
+                            Quantity = 193m,
+                            SalePrice = 128.40m
                         },
                         new
                         {
@@ -3523,16 +3523,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 100,
                             CashRegisterName = "Organic Bananas",
                             CodeForScales = 30,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(38),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(39),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1872),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1873),
                             Description = "Description about product - Organic Bananas",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Organic Bananas",
                             NomenclatureNumber = 100,
-                            PurchasePrice = 236m,
-                            Quantity = 197m,
-                            SalePrice = 283.20m
+                            PurchasePrice = 232m,
+                            Quantity = 143m,
+                            SalePrice = 278.40m
                         },
                         new
                         {
@@ -3540,16 +3540,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 101,
                             CashRegisterName = "Plump Blueberries",
                             CodeForScales = 31,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(42),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(43),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1876),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1877),
                             Description = "Description about product - Plump Blueberries",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Plump Blueberries",
                             NomenclatureNumber = 101,
-                            PurchasePrice = 16m,
-                            Quantity = 149m,
-                            SalePrice = 19.20m
+                            PurchasePrice = 66m,
+                            Quantity = 118m,
+                            SalePrice = 79.20m
                         },
                         new
                         {
@@ -3557,16 +3557,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 102,
                             CashRegisterName = "Ripe Red Tomatoes",
                             CodeForScales = 32,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(46),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(47),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1879),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1880),
                             Description = "Description about product - Ripe Red Tomatoes",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Ripe Red Tomatoes",
                             NomenclatureNumber = 102,
-                            PurchasePrice = 151m,
-                            Quantity = 0m,
-                            SalePrice = 181.20m
+                            PurchasePrice = 252m,
+                            Quantity = 75m,
+                            SalePrice = 302.40m
                         },
                         new
                         {
@@ -3574,16 +3574,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 103,
                             CashRegisterName = "Vibrant Red Bell Peppers",
                             CodeForScales = 33,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(50),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(51),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1883),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1884),
                             Description = "Description about product - Vibrant Red Bell Peppers",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Vibrant Red Bell Peppers",
                             NomenclatureNumber = 103,
-                            PurchasePrice = 95m,
-                            Quantity = 13m,
-                            SalePrice = 114.00m
+                            PurchasePrice = 229m,
+                            Quantity = 79m,
+                            SalePrice = 274.80m
                         },
                         new
                         {
@@ -3591,16 +3591,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 104,
                             CashRegisterName = "Crisp Green Cucumbers",
                             CodeForScales = 34,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(53),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(54),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1887),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1888),
                             Description = "Description about product - Crisp Green Cucumbers",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Crisp Green Cucumbers",
                             NomenclatureNumber = 104,
-                            PurchasePrice = 137m,
-                            Quantity = 151m,
-                            SalePrice = 164.40m
+                            PurchasePrice = 265m,
+                            Quantity = 142m,
+                            SalePrice = 318.00m
                         },
                         new
                         {
@@ -3608,16 +3608,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 105,
                             CashRegisterName = "Fresh Broccoli Crowns",
                             CodeForScales = 35,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(57),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(58),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1890),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1891),
                             Description = "Description about product - Fresh Broccoli Crowns",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Fresh Broccoli Crowns",
                             NomenclatureNumber = 105,
-                            PurchasePrice = 174m,
-                            Quantity = 34m,
-                            SalePrice = 208.80m
+                            PurchasePrice = 27m,
+                            Quantity = 169m,
+                            SalePrice = 32.40m
                         },
                         new
                         {
@@ -3625,16 +3625,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 106,
                             CashRegisterName = "Sweet Juicy Peaches",
                             CodeForScales = 36,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(60),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(61),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1894),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1895),
                             Description = "Description about product - Sweet Juicy Peaches",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Sweet Juicy Peaches",
                             NomenclatureNumber = 106,
-                            PurchasePrice = 296m,
-                            Quantity = 192m,
-                            SalePrice = 355.20m
+                            PurchasePrice = 206m,
+                            Quantity = 131m,
+                            SalePrice = 247.20m
                         },
                         new
                         {
@@ -3642,16 +3642,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 107,
                             CashRegisterName = "Crisp Iceberg Lettuce",
                             CodeForScales = 37,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(64),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(65),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1897),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1899),
                             Description = "Description about product - Crisp Iceberg Lettuce",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Crisp Iceberg Lettuce",
                             NomenclatureNumber = 107,
-                            PurchasePrice = 269m,
-                            Quantity = 132m,
-                            SalePrice = 322.80m
+                            PurchasePrice = 184m,
+                            Quantity = 158m,
+                            SalePrice = 220.80m
                         },
                         new
                         {
@@ -3659,16 +3659,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 108,
                             CashRegisterName = "Ripe Yellow Bananas",
                             CodeForScales = 38,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(68),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(69),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1901),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1902),
                             Description = "Description about product - Ripe Yellow Bananas",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Ripe Yellow Bananas",
                             NomenclatureNumber = 108,
-                            PurchasePrice = 172m,
-                            Quantity = 184m,
-                            SalePrice = 206.40m
+                            PurchasePrice = 233m,
+                            Quantity = 54m,
+                            SalePrice = 279.60m
                         },
                         new
                         {
@@ -3676,16 +3676,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 109,
                             CashRegisterName = "Fresh Spinach Leaves",
                             CodeForScales = 39,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(72),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(73),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1905),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1907),
                             Description = "Description about product - Fresh Spinach Leaves",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Fresh Spinach Leaves",
                             NomenclatureNumber = 109,
-                            PurchasePrice = 193m,
-                            Quantity = 75m,
-                            SalePrice = 231.60m
+                            PurchasePrice = 278m,
+                            Quantity = 190m,
+                            SalePrice = 333.60m
                         },
                         new
                         {
@@ -3693,16 +3693,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 110,
                             CashRegisterName = "Crisp Carrots",
                             CodeForScales = 40,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(75),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(76),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1909),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1910),
                             Description = "Description about product - Crisp Carrots",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Crisp Carrots",
                             NomenclatureNumber = 110,
-                            PurchasePrice = 137m,
-                            Quantity = 111m,
-                            SalePrice = 164.40m
+                            PurchasePrice = 99m,
+                            Quantity = 109m,
+                            SalePrice = 118.80m
                         },
                         new
                         {
@@ -3710,16 +3710,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 111,
                             CashRegisterName = "Fresh Lemons",
                             CodeForScales = 41,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(79),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(80),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1913),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1914),
                             Description = "Description about product - Fresh Lemons",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Fresh Lemons",
                             NomenclatureNumber = 111,
-                            PurchasePrice = 81m,
-                            Quantity = 81m,
-                            SalePrice = 97.20m
+                            PurchasePrice = 27m,
+                            Quantity = 133m,
+                            SalePrice = 32.40m
                         },
                         new
                         {
@@ -3727,16 +3727,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 112,
                             CashRegisterName = "Ripe Mangos",
                             CodeForScales = 42,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(83),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(84),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1917),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1918),
                             Description = "Description about product - Ripe Mangos",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Ripe Mangos",
                             NomenclatureNumber = 112,
-                            PurchasePrice = 134m,
-                            Quantity = 117m,
-                            SalePrice = 160.80m
+                            PurchasePrice = 286m,
+                            Quantity = 136m,
+                            SalePrice = 343.20m
                         },
                         new
                         {
@@ -3744,16 +3744,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 113,
                             CashRegisterName = "Sweet Red Cherries",
                             CodeForScales = 43,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(86),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(87),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1920),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1921),
                             Description = "Description about product - Sweet Red Cherries",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Sweet Red Cherries",
                             NomenclatureNumber = 113,
-                            PurchasePrice = 182m,
-                            Quantity = 92m,
-                            SalePrice = 218.40m
+                            PurchasePrice = 263m,
+                            Quantity = 186m,
+                            SalePrice = 315.60m
                         },
                         new
                         {
@@ -3761,16 +3761,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 114,
                             CashRegisterName = "Crisp Celery Sticks",
                             CodeForScales = 44,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(90),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(91),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1924),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1925),
                             Description = "Description about product - Crisp Celery Sticks",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Crisp Celery Sticks",
                             NomenclatureNumber = 114,
-                            PurchasePrice = 263m,
-                            Quantity = 23m,
-                            SalePrice = 315.60m
+                            PurchasePrice = 209m,
+                            Quantity = 49m,
+                            SalePrice = 250.80m
                         },
                         new
                         {
@@ -3778,16 +3778,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 115,
                             CashRegisterName = "Juicy Watermelon",
                             CodeForScales = 45,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(93),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(94),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1927),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1929),
                             Description = "Description about product - Juicy Watermelon",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Juicy Watermelon",
                             NomenclatureNumber = 115,
-                            PurchasePrice = 117m,
-                            Quantity = 9m,
-                            SalePrice = 140.40m
+                            PurchasePrice = 212m,
+                            Quantity = 167m,
+                            SalePrice = 254.40m
                         },
                         new
                         {
@@ -3795,16 +3795,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 116,
                             CashRegisterName = "Green Zucchini Squash",
                             CodeForScales = 46,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(97),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(98),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1931),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1932),
                             Description = "Description about product - Green Zucchini Squash",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Green Zucchini Squash",
                             NomenclatureNumber = 116,
-                            PurchasePrice = 110m,
-                            Quantity = 48m,
-                            SalePrice = 132.00m
+                            PurchasePrice = 132m,
+                            Quantity = 31m,
+                            SalePrice = 158.40m
                         },
                         new
                         {
@@ -3812,16 +3812,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 117,
                             CashRegisterName = "Sweet Pineapple Chunks",
                             CodeForScales = 47,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(671),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(674),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1935),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1936),
                             Description = "Description about product - Sweet Pineapple Chunks",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Sweet Pineapple Chunks",
                             NomenclatureNumber = 117,
-                            PurchasePrice = 6m,
-                            Quantity = 75m,
-                            SalePrice = 7.20m
+                            PurchasePrice = 206m,
+                            Quantity = 71m,
+                            SalePrice = 247.20m
                         },
                         new
                         {
@@ -3829,16 +3829,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 118,
                             CashRegisterName = "Fresh Kiwi Fruit",
                             CodeForScales = 48,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(682),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(683),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1938),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1939),
                             Description = "Description about product - Fresh Kiwi Fruit",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Fresh Kiwi Fruit",
                             NomenclatureNumber = 118,
-                            PurchasePrice = 231m,
-                            Quantity = 116m,
-                            SalePrice = 277.20m
+                            PurchasePrice = 274m,
+                            Quantity = 11m,
+                            SalePrice = 328.80m
                         },
                         new
                         {
@@ -3846,16 +3846,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 119,
                             CashRegisterName = "Crisp Radishes",
                             CodeForScales = 49,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(685),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(687),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1980),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1981),
                             Description = "Description about product - Crisp Radishes",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Crisp Radishes",
                             NomenclatureNumber = 119,
-                            PurchasePrice = 113m,
-                            Quantity = 31m,
-                            SalePrice = 135.60m
+                            PurchasePrice = 166m,
+                            Quantity = 85m,
+                            SalePrice = 199.20m
                         },
                         new
                         {
@@ -3863,16 +3863,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 120,
                             CashRegisterName = "Ripe Honeydew Melon",
                             CodeForScales = 50,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(689),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(690),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1984),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1985),
                             Description = "Description about product - Ripe Honeydew Melon",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Ripe Honeydew Melon",
                             NomenclatureNumber = 120,
-                            PurchasePrice = 130m,
-                            Quantity = 160m,
-                            SalePrice = 156.00m
+                            PurchasePrice = 252m,
+                            Quantity = 76m,
+                            SalePrice = 302.40m
                         },
                         new
                         {
@@ -3880,16 +3880,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 121,
                             CashRegisterName = "Fresh Green Beans",
                             CodeForScales = 51,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(693),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(695),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1987),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1989),
                             Description = "Description about product - Fresh Green Beans",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Fresh Green Beans",
                             NomenclatureNumber = 121,
-                            PurchasePrice = 160m,
-                            Quantity = 46m,
-                            SalePrice = 192.00m
+                            PurchasePrice = 99m,
+                            Quantity = 110m,
+                            SalePrice = 118.80m
                         },
                         new
                         {
@@ -3897,16 +3897,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 122,
                             CashRegisterName = "Crisp Iceberg Lettuce",
                             CodeForScales = 52,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(697),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(698),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1991),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1992),
                             Description = "Description about product - Crisp Iceberg Lettuce",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Crisp Iceberg Lettuce",
                             NomenclatureNumber = 122,
-                            PurchasePrice = 14m,
-                            Quantity = 65m,
-                            SalePrice = 16.80m
+                            PurchasePrice = 247m,
+                            Quantity = 88m,
+                            SalePrice = 296.40m
                         },
                         new
                         {
@@ -3914,16 +3914,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 123,
                             CashRegisterName = "Ripe Nectarines",
                             CodeForScales = 53,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(701),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(702),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1994),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1996),
                             Description = "Description about product - Ripe Nectarines",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Ripe Nectarines",
                             NomenclatureNumber = 123,
-                            PurchasePrice = 148m,
-                            Quantity = 69m,
-                            SalePrice = 177.60m
+                            PurchasePrice = 84m,
+                            Quantity = 164m,
+                            SalePrice = 100.80m
                         },
                         new
                         {
@@ -3931,16 +3931,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 124,
                             CashRegisterName = "Sweet Grapes",
                             CodeForScales = 54,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(705),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(706),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1998),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(1999),
                             Description = "Description about product - Sweet Red Grapes",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Sweet Red Grapes",
                             NomenclatureNumber = 124,
-                            PurchasePrice = 215m,
-                            Quantity = 111m,
-                            SalePrice = 258.00m
+                            PurchasePrice = 159m,
+                            Quantity = 64m,
+                            SalePrice = 190.80m
                         },
                         new
                         {
@@ -3948,16 +3948,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 125,
                             CashRegisterName = "Crisp Squash",
                             CodeForScales = 55,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(709),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(710),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2001),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2003),
                             Description = "Description about product - Crisp Yellow Squash",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Crisp Yellow Squash",
                             NomenclatureNumber = 125,
-                            PurchasePrice = 207m,
-                            Quantity = 62m,
-                            SalePrice = 248.40m
+                            PurchasePrice = 291m,
+                            Quantity = 41m,
+                            SalePrice = 349.20m
                         },
                         new
                         {
@@ -3965,16 +3965,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 126,
                             CashRegisterName = "Fresh Asparagus Spears",
                             CodeForScales = 56,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(713),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(714),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2005),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2006),
                             Description = "Description about product - Fresh Asparagus Spears",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Fresh Asparagus Spears",
                             NomenclatureNumber = 126,
-                            PurchasePrice = 129m,
-                            Quantity = 130m,
-                            SalePrice = 154.80m
+                            PurchasePrice = 62m,
+                            Quantity = 100m,
+                            SalePrice = 74.40m
                         },
                         new
                         {
@@ -3982,16 +3982,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 127,
                             CashRegisterName = "Juicy Blackberries",
                             CodeForScales = 57,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(716),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(718),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2009),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2010),
                             Description = "Description about product - Juicy Blackberries",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Juicy Blackberries",
                             NomenclatureNumber = 127,
-                            PurchasePrice = 104m,
-                            Quantity = 118m,
-                            SalePrice = 124.80m
+                            PurchasePrice = 82m,
+                            Quantity = 11m,
+                            SalePrice = 98.40m
                         },
                         new
                         {
@@ -3999,16 +3999,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 128,
                             CashRegisterName = "Ripe Apricots",
                             CodeForScales = 58,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(720),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(721),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2012),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2013),
                             Description = "Description about product - Ripe Apricots",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Ripe Apricots",
                             NomenclatureNumber = 128,
-                            PurchasePrice = 24m,
-                            Quantity = 9m,
-                            SalePrice = 28.80m
+                            PurchasePrice = 158m,
+                            Quantity = 138m,
+                            SalePrice = 189.60m
                         },
                         new
                         {
@@ -4016,16 +4016,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 129,
                             CashRegisterName = "Sweet Strawberries",
                             CodeForScales = 59,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(724),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(725),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2016),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2017),
                             Description = "Description about product - Sweet Strawberries",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Sweet Strawberries",
                             NomenclatureNumber = 129,
-                            PurchasePrice = 280m,
-                            Quantity = 66m,
-                            SalePrice = 336.00m
+                            PurchasePrice = 68m,
+                            Quantity = 189m,
+                            SalePrice = 81.60m
                         },
                         new
                         {
@@ -4033,16 +4033,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 130,
                             CashRegisterName = "Crisp Cauliflower Florets",
                             CodeForScales = 60,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(730),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(731),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2022),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2023),
                             Description = "Description about product - Crisp Cauliflower Florets",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Crisp Cauliflower Florets",
                             NomenclatureNumber = 130,
-                            PurchasePrice = 52m,
-                            Quantity = 116m,
-                            SalePrice = 62.40m
+                            PurchasePrice = 64m,
+                            Quantity = 175m,
+                            SalePrice = 76.80m
                         },
                         new
                         {
@@ -4050,16 +4050,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 131,
                             CashRegisterName = "Ripe Papaya",
                             CodeForScales = 61,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(734),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(735),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2025),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2026),
                             Description = "Description about product - Ripe Papaya",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Ripe Papaya",
                             NomenclatureNumber = 131,
-                            PurchasePrice = 65m,
-                            Quantity = 182m,
-                            SalePrice = 78.00m
+                            PurchasePrice = 282m,
+                            Quantity = 121m,
+                            SalePrice = 338.40m
                         },
                         new
                         {
@@ -4067,16 +4067,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 132,
                             CashRegisterName = "Fresh Artichokes",
                             CodeForScales = 62,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(737),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(738),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2029),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2030),
                             Description = "Description about product - Fresh Artichokes",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Fresh Artichokes",
                             NomenclatureNumber = 132,
-                            PurchasePrice = 102m,
-                            Quantity = 161m,
-                            SalePrice = 122.40m
+                            PurchasePrice = 134m,
+                            Quantity = 149m,
+                            SalePrice = 160.80m
                         },
                         new
                         {
@@ -4084,16 +4084,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 133,
                             CashRegisterName = "Sweet Cantaloupe",
                             CodeForScales = 63,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(741),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(742),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2032),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2034),
                             Description = "Description about product - Sweet Cantaloupe",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Sweet Cantaloupe",
                             NomenclatureNumber = 133,
-                            PurchasePrice = 127m,
-                            Quantity = 140m,
-                            SalePrice = 152.40m
+                            PurchasePrice = 171m,
+                            Quantity = 188m,
+                            SalePrice = 205.20m
                         },
                         new
                         {
@@ -4101,16 +4101,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 134,
                             CashRegisterName = "Ripe Pears",
                             CodeForScales = 64,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(794),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(795),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2036),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2037),
                             Description = "Description about product - Ripe Pears",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Ripe Pears",
                             NomenclatureNumber = 134,
-                            PurchasePrice = 116m,
-                            Quantity = 75m,
-                            SalePrice = 139.20m
+                            PurchasePrice = 135m,
+                            Quantity = 22m,
+                            SalePrice = 162.00m
                         },
                         new
                         {
@@ -4118,16 +4118,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 135,
                             CashRegisterName = "Crisp Green Peas",
                             CodeForScales = 65,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(798),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(799),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2089),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2091),
                             Description = "Description about product - Crisp Green Peas",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Crisp Green Peas",
                             NomenclatureNumber = 135,
-                            PurchasePrice = 39m,
-                            Quantity = 75m,
-                            SalePrice = 46.80m
+                            PurchasePrice = 100m,
+                            Quantity = 4m,
+                            SalePrice = 120.00m
                         },
                         new
                         {
@@ -4135,16 +4135,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 136,
                             CashRegisterName = "Juicy Grapefruit",
                             CodeForScales = 66,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(802),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(803),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2094),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2095),
                             Description = "Description about product - Juicy Grapefruit",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Juicy Grapefruit",
                             NomenclatureNumber = 136,
-                            PurchasePrice = 182m,
-                            Quantity = 79m,
-                            SalePrice = 218.40m
+                            PurchasePrice = 157m,
+                            Quantity = 6m,
+                            SalePrice = 188.40m
                         },
                         new
                         {
@@ -4152,16 +4152,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 137,
                             CashRegisterName = "Ripe Plums",
                             CodeForScales = 67,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(806),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(807),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2098),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2099),
                             Description = "Description about product - Ripe Plums",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Ripe Plums",
                             NomenclatureNumber = 137,
-                            PurchasePrice = 190m,
-                            Quantity = 67m,
-                            SalePrice = 228.00m
+                            PurchasePrice = 249m,
+                            Quantity = 33m,
+                            SalePrice = 298.80m
                         },
                         new
                         {
@@ -4169,16 +4169,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 138,
                             CashRegisterName = "Crisp Red Radishes",
                             CodeForScales = 68,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(809),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(810),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2101),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2102),
                             Description = "Description about product - Crisp Red Radishes",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Crisp Red Radishes",
                             NomenclatureNumber = 138,
-                            PurchasePrice = 295m,
-                            Quantity = 151m,
-                            SalePrice = 354.00m
+                            PurchasePrice = 1m,
+                            Quantity = 48m,
+                            SalePrice = 1.20m
                         },
                         new
                         {
@@ -4186,16 +4186,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 139,
                             CashRegisterName = "Fresh Beets",
                             CodeForScales = 69,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(813),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(814),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2105),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2106),
                             Description = "Description about product - Fresh Beets",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Fresh Beets",
                             NomenclatureNumber = 139,
-                            PurchasePrice = 112m,
-                            Quantity = 74m,
-                            SalePrice = 134.40m
+                            PurchasePrice = 83m,
+                            Quantity = 51m,
+                            SalePrice = 99.60m
                         },
                         new
                         {
@@ -4203,16 +4203,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 140,
                             CashRegisterName = "Sweet Red Peppers",
                             CodeForScales = 70,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(817),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(818),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2109),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2110),
                             Description = "Description about product - Sweet Red Peppers",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Sweet Red Peppers",
                             NomenclatureNumber = 140,
-                            PurchasePrice = 298m,
-                            Quantity = 125m,
-                            SalePrice = 357.60m
+                            PurchasePrice = 147m,
+                            Quantity = 78m,
+                            SalePrice = 176.40m
                         },
                         new
                         {
@@ -4220,16 +4220,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 141,
                             CashRegisterName = "Ripe Tangerines",
                             CodeForScales = 71,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(820),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(821),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2113),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2114),
                             Description = "Description about product - Ripe Tangerines",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Ripe Tangerines",
                             NomenclatureNumber = 141,
-                            PurchasePrice = 188m,
-                            Quantity = 59m,
-                            SalePrice = 225.60m
+                            PurchasePrice = 299m,
+                            Quantity = 90m,
+                            SalePrice = 358.80m
                         },
                         new
                         {
@@ -4237,16 +4237,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 142,
                             CashRegisterName = "Crisp Corn on the Cob",
                             CodeForScales = 72,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(824),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(825),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2116),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2117),
                             Description = "Description about product - Crisp Corn on the Cob",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Crisp Corn on the Cob",
                             NomenclatureNumber = 142,
-                            PurchasePrice = 136m,
-                            Quantity = 161m,
-                            SalePrice = 163.20m
+                            PurchasePrice = 84m,
+                            Quantity = 140m,
+                            SalePrice = 100.80m
                         },
                         new
                         {
@@ -4254,16 +4254,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 143,
                             CashRegisterName = "Fresh Brussels Sprouts",
                             CodeForScales = 73,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(828),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(829),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2120),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2121),
                             Description = "Description about product - Fresh Brussels Sprouts",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Fresh Brussels Sprouts",
                             NomenclatureNumber = 143,
-                            PurchasePrice = 46m,
-                            Quantity = 9m,
-                            SalePrice = 55.20m
+                            PurchasePrice = 253m,
+                            Quantity = 52m,
+                            SalePrice = 303.60m
                         },
                         new
                         {
@@ -4271,16 +4271,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 144,
                             CashRegisterName = "Ripe Lychees",
                             CodeForScales = 74,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(831),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(832),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2123),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2124),
                             Description = "Description about product - Ripe Lychees",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Ripe Lychees",
                             NomenclatureNumber = 144,
-                            PurchasePrice = 282m,
-                            Quantity = 35m,
-                            SalePrice = 338.40m
+                            PurchasePrice = 105m,
+                            Quantity = 36m,
+                            SalePrice = 126.00m
                         },
                         new
                         {
@@ -4288,16 +4288,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 145,
                             CashRegisterName = "Crisp Bok Choy",
                             CodeForScales = 75,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(835),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(836),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2127),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2128),
                             Description = "Description about product - Crisp Bok Choy",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Crisp Bok Choy",
                             NomenclatureNumber = 145,
-                            PurchasePrice = 251m,
-                            Quantity = 24m,
-                            SalePrice = 301.20m
+                            PurchasePrice = 38m,
+                            Quantity = 29m,
+                            SalePrice = 45.60m
                         },
                         new
                         {
@@ -4305,16 +4305,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 146,
                             CashRegisterName = "Juicy Pomegranates",
                             CodeForScales = 76,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(838),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(840),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2130),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2132),
                             Description = "Description about product - Juicy Pomegranates",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Juicy Pomegranates",
                             NomenclatureNumber = 146,
-                            PurchasePrice = 51m,
-                            Quantity = 138m,
-                            SalePrice = 61.20m
+                            PurchasePrice = 123m,
+                            Quantity = 166m,
+                            SalePrice = 147.60m
                         },
                         new
                         {
@@ -4322,16 +4322,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 147,
                             CashRegisterName = "Ripe Persimmons",
                             CodeForScales = 77,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(842),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(843),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2134),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2135),
                             Description = "Description about product - Ripe Persimmons",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Ripe Persimmons",
                             NomenclatureNumber = 147,
-                            PurchasePrice = 30m,
-                            Quantity = 22m,
-                            SalePrice = 36.00m
+                            PurchasePrice = 287m,
+                            Quantity = 61m,
+                            SalePrice = 344.40m
                         },
                         new
                         {
@@ -4339,16 +4339,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 148,
                             CashRegisterName = "Sweet Figs",
                             CodeForScales = 78,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(846),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(847),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2138),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2139),
                             Description = "Description about product - Sweet Figs",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Sweet Figs",
                             NomenclatureNumber = 148,
-                            PurchasePrice = 125m,
-                            Quantity = 199m,
-                            SalePrice = 150.00m
+                            PurchasePrice = 250m,
+                            Quantity = 32m,
+                            SalePrice = 300.00m
                         },
                         new
                         {
@@ -4356,16 +4356,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 149,
                             CashRegisterName = "Crisp Jicama",
                             CodeForScales = 79,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(849),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(850),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2142),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2143),
                             Description = "Description about product - Crisp Jicama",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Crisp Jicama",
                             NomenclatureNumber = 149,
-                            PurchasePrice = 92m,
-                            Quantity = 185m,
-                            SalePrice = 110.40m
+                            PurchasePrice = 108m,
+                            Quantity = 88m,
+                            SalePrice = 129.60m
                         },
                         new
                         {
@@ -4373,16 +4373,16 @@ namespace MarketVault.Infrastructure.Migrations
                             ArticleNumber = 150,
                             CashRegisterName = "Fresh Baby Spinach",
                             CodeForScales = 80,
-                            DateAdded = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(853),
-                            DateModified = new DateTime(2024, 3, 16, 14, 23, 11, 936, DateTimeKind.Local).AddTicks(854),
+                            DateAdded = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2145),
+                            DateModified = new DateTime(2024, 3, 17, 21, 3, 11, 486, DateTimeKind.Local).AddTicks(2146),
                             Description = "Description about product - Fresh Baby Spinach",
                             IsActive = true,
                             ItemGroupId = 10,
                             Name = "Fresh Baby Spinach",
                             NomenclatureNumber = 150,
-                            PurchasePrice = 278m,
-                            Quantity = 134m,
-                            SalePrice = 333.60m
+                            PurchasePrice = 251m,
+                            Quantity = 33m,
+                            SalePrice = 301.20m
                         });
                 });
 

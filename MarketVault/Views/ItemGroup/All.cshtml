@@ -1,0 +1,115 @@
+﻿@model IEnumerable<ItemGroupViewModel>
+
+@{
+    ViewBag.Title = "All item groups";
+    int counter = 1;
+
+    Pager pager = new Pager();
+
+    SearchModel searcher = new SearchModel();
+
+    int pageNo = 0;
+
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+    else
+    {
+        pager.Action = "All";
+        pager.Controller = "ItemGroup";
+    }
+
+    if (ViewBag.Searcher != null)
+    {
+        searcher = ViewBag.Searcher;
+    }
+    else
+    {
+        searcher.ViewName = "All";
+    }
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+
+<script src="@Url.Content("~/js/marketvault/src/Components/ItemGroupViewComponent.jsx")"></script>
+
+<script>
+    let props = {};
+</script>
+
+<div class="viewContainer">
+    <partial name="_SearchItemGroupPartial" model="@searcher" />
+
+    <partial name="_PagerPartial" model="@pager" />
+
+    <a asp-action="All" asp-controller="ItemGroup" id="showAllItemGroupsBtn">
+        Show All
+    </a>
+
+    @if (Model.Count() == 0)
+    {
+        <h1 class="notFoundItemGroupsBtn">No item groups found! Try again!</h1>
+    }
+
+    else
+    {
+        <div class="itemGroupsContainer">
+
+            <div class="itemGroupContainer">
+                <div id="-1" class="itemGroupComponentContainer itemGroupComponentContainerFirst"></div>
+
+                <script>
+                    props = {
+                        name: 'ItemGroup Name',
+                        productsCount: 'ItemGroup Products Count',
+                    };
+
+                    ReactDOM.render(
+                        React.createElement(ItemGroupViewComponent, props),
+                        document.getElementById('-1'),
+                    );
+                </script>
+            </div>
+
+            @foreach (ItemGroupViewModel itemGroup in Model)
+            {
+                <div class="itemGroupContainer">
+                    <div id="@counter" class="itemGroupComponentContainer"></div>
+
+                    <script>
+                        props = {
+                            name: '@itemGroup.Name',
+                            productsCount: '@itemGroup.ProductsCount'
+                        };
+
+                        ReactDOM.render(
+                            React.createElement(ItemGroupViewComponent, props),
+                            document.getElementById(@counter),
+                        );
+                    </script>
+
+                    <div class="itemGroupButtons">
+                        <a id="itemGroupEditBtn"
+                           asp-controller="ItemGroup" asp-action="Edit" asp-route-id="@itemGroup.Id">
+                            Edit
+                        </a>
+                        <a id="itemGroupDeleteBtn"
+                           asp-controller="ItemGroup" asp-action="DeleteGet" asp-route-id="@itemGroup.Id">
+                            Delete
+                        </a>
+                    </div>
+
+                    @{
+                        counter++;
+                    }
+                </div>
+            }
+        </div>
+    }
+
+    <partial name="_PagerPartial" model="@pager" />
+</div>

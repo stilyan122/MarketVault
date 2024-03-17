@@ -11,7 +11,7 @@
         public static class ItemGroupConstants
         {
             public const int NameMinLength = 2;
-            public const int NameMaxLength = 20;
+            public const int NameMaxLength = 30;
         }
 
         /// <summary>
@@ -248,6 +248,38 @@
 
             public const string BankAddressRequiredExceptionMessage
                = "Field for bank address is required!";
+
+
+
+
+
+            public const string ItemGroupNameRequiredExceptionMessage
+              = "Field for item group name is required!";
+            public const string ItemGroupNameLengthExceptionMessage
+                = "Length of field item group name must be between {2} " +
+                "and {1} characters long!";
+
+
+
+
+
+            public const string AddressTownNameRequiredExceptionMessage
+               = "Field for address town name is required!";
+            public const string AddressTownNameLengthExceptionMessage
+                = "Length of field address town name must be between {2} " +
+                "and {1} characters long!";
+
+            public const string AddressStreetNameRequiredExceptionMessage
+               = "Field for address street name is required!";
+            public const string AddressStreetNameLengthExceptionMessage
+                = "Length of field address street name must be between {2} " +
+                "and {1} characters long!";
+
+            public const string AddressStreetNumberRequiredExceptionMessage
+               = "Field for address street number is required!";
+            public const string AddressStreetNumberLengthExceptionMessage
+                = "Length of field address street number must be between {2} " +
+                "and {1} characters long!";
         }
     }
 }

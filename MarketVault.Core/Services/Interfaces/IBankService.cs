@@ -62,6 +62,13 @@
         public Task DeleteAsync(BankServiceModel bank);
 
         /// <summary>
+        /// Delete range banks method (Asynchronous)
+        /// </summary>
+        /// <param name="banks">Banks</param>
+        /// <returns></returns>
+        public Task DeleteRangeAsync(IEnumerable<BankServiceModel> banks);
+
+        /// <summary>
         /// Update bank method (Asynchronous)
         /// </summary>
         /// <param name="bank">Bank to update</param>

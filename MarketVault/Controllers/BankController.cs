@@ -37,6 +37,10 @@
             this.addressService = addressService;
         }
 
+        /// <summary>
+        /// Default Index action
+        /// </summary>
+        /// <returns>IActionResult</returns>
         public IActionResult Index()
         {
             return RedirectToAction("All");

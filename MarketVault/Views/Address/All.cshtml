@@ -1,0 +1,118 @@
+﻿@model IEnumerable<AddressViewModel>
+
+@{
+    ViewBag.Title = "All addresses";
+    int counter = 1;
+
+    Pager pager = new Pager();
+
+    SearchModel searcher = new SearchModel();
+
+    int pageNo = 0;
+
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+    else
+    {
+        pager.Action = "All";
+        pager.Controller = "Address";
+    }
+
+    if (ViewBag.Searcher != null)
+    {
+        searcher = ViewBag.Searcher;
+    }
+    else
+    {
+        searcher.ViewName = "All";
+    }
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+
+<script src="@Url.Content("~/js/marketvault/src/Components/AddressViewComponent.jsx")"></script>
+
+<script>
+    let props = {};
+</script>
+
+<link rel="stylesheet" href="~/css/nomenclatures..css" />
+
+<div class="viewContainer">
+    <partial name="_SearchAddressPartial" model="@searcher" />
+
+    <partial name="_PagerPartial" model="@pager" />
+
+    <a asp-action="All" asp-controller="Address" id="showAllAddresssBtn">
+        Show All
+    </a>
+
+    @if (Model.Count() == 0)
+    {
+        <h1 class="notFoundAddresssBtn">No addreses found! Try again!</h1>
+    }
+
+    else
+    {
+        <div class="addressContainer">
+
+            <div class="addressContainer addressContainerFirst">
+                <div id="-1" class="addressComponentContainer addressComponentContainerFirst"></div>
+
+                <script>
+                    props = {
+                        townName: 'Address Town Name',
+                        streetName: 'Address Street Name',
+                        streetNumber: 'Address Street Number'
+                    };
+
+                    ReactDOM.render(
+                        React.createElement(AddressViewComponent, props),
+                        document.getElementById('-1'),
+                    );
+                </script>
+            </div>
+
+            @foreach (AddressViewModel address in Model)
+            {
+                <div class="addressContainer">
+                    <div id="@counter" class="addressComponentContainer"></div>
+                    <script>
+                        props = {
+                            townName: '@address.TownName',
+                            streetName: '@address.StreetName',
+                            streetNumber: '@address.StreetNumber'
+                        };
+
+                        ReactDOM.render(
+                            React.createElement(AddressViewComponent, props),
+                            document.getElementById(@counter),
+                        );
+                    </script>
+
+                    <div class="addressButtons">
+                        <a id="addressEditBtn"
+                           asp-controller="Address" asp-action="Edit" asp-route-id="@address.Id">
+                            Edit
+                        </a>
+                        <a id="addressDeleteBtn"
+                           asp-controller="Address" asp-action="DeleteGet" asp-route-id="@address.Id">
+                            Delete
+                        </a>
+                    </div>
+
+                    @{
+                        counter++;
+                    }
+                </div>
+            }
+        </div>
+    }
+
+    <partial name="_PagerPartial" model="@pager" />
+</div>

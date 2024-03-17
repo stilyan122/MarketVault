@@ -65,7 +65,7 @@
                 new ItemGroup()
                 {
                     Id = 10,
-                    Name = "Fruts and vegetables"
+                    Name = "Fruits and vegetables"
                 },
             };
 

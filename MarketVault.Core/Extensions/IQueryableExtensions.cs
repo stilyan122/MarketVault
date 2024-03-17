@@ -166,5 +166,86 @@
                 .Include(f => f.Address)
                 .Where(f => f.IsActive);
         }
+
+        /// <summary>
+        /// ProjectToItemGroupServiceModel method
+        /// </summary>
+        /// <param name="queryble">IQueryable<ItemGroup></param>
+        /// <returns>IQueryable<ItemGroupServiceModel></returns>
+        public static IQueryable<ItemGroupServiceModel>
+            ProjectToItemGroupServiceModel(this IQueryable<ItemGroup> queryble)
+        {
+            return queryble
+                .UseIncludeItemGroupStatements()
+                .Select(e => new ItemGroupServiceModel()
+                {
+                    Id = e.Id,
+                    Name = e.Name,
+                    Products = e.Products.Select(p => new ProductServiceModel()
+                    {
+                        ArticleNumber = p.ArticleNumber,
+                        Barcodes = p.Barcodes.ToList(),
+                        DateAdded = p.DateAdded,
+                        Description = p.Description,
+                        DateModified = p.DateModified,
+                        CashRegisterName = p.CashRegisterName,
+                        CodeForScales = p.CodeForScales,
+                        Id = p.Id,
+                        ItemGroupId = p.ItemGroupId,
+                        ItemGroup = p.ItemGroup,
+                        Measure = p.ProductsMeasures.Any() ? p.ProductsMeasures.First().Measure : new Measure(),
+                        MeasureId = p.ProductsMeasures.Any() ? p.ProductsMeasures.First().MeasureId : 0,
+                        Name = p.Name,
+                        NomenclatureNumber = p.NomenclatureNumber,
+                        PurchasePrice = p.PurchasePrice,
+                        Quantity = p.Quantity,
+                        SalePrice = p.SalePrice
+                    })
+                });
+        }
+
+        /// <summary>
+        /// UseIncludeItemGroupStatements method
+        /// </summary>
+        /// <param name="queryble">IQueryable<ItemGroup></param>
+        /// <returns>IQueryable<ItemGroup></returns>
+        public static IQueryable<ItemGroup>
+            UseIncludeItemGroupStatements(this IQueryable<ItemGroup> queryble)
+        {
+            return queryble
+                .Include(ig => ig.Products)
+                .Where(ig => ig.IsActive);
+        }
+
+        /// <summary>
+        /// ProjectToAddressServiceModel method
+        /// </summary>
+        /// <param name="queryble">IQueryable<ItemGroup></param>
+        /// <returns>IQueryable<ItemGroupServiceModel></returns>
+        public static IQueryable<AddressServiceModel>
+            ProjectToAddressServiceModel(this IQueryable<Address> queryble)
+        {
+            return queryble
+                .UseIncludeAddressStatements()
+                .Select(e => new AddressServiceModel()
+                {
+                    Id = e.Id,
+                    StreetName = e.StreetName,
+                    StreetNumber = e.StreetNumber,
+                    TownName = e.TownName
+                });
+        }
+
+        /// <summary>
+        /// UseIncludeAddressStatements method
+        /// </summary>
+        /// <param name="queryble">IQueryable<Address></param>
+        /// <returns>IQueryable<Address></returns>
+        public static IQueryable<Address>
+            UseIncludeAddressStatements(this IQueryable<Address> queryble)
+        {
+            return queryble
+                .Where(a => a.IsActive);
+        }
     }
 }

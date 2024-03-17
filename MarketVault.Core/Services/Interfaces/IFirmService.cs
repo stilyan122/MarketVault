@@ -67,5 +67,12 @@
         /// <param name="firm">Firm to delete</param>
         /// <returns>(void)</returns>
         public Task DeleteAsync(FirmServiceModel firm);
+
+        /// <summary>
+        /// Delete range firms method (Asynchronous)
+        /// </summary>
+        /// <param name="firms">Firms</param>
+        /// <returns></returns>
+        public Task DeleteRangeAsync(IEnumerable<FirmServiceModel> firms);
     }
 }
