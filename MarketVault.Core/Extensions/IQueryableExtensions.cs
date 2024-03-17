@@ -134,5 +134,37 @@
                 .Include(f => f.Address)
                 .Where(f => f.IsActive);
         }
+
+        /// <summary>
+        /// ProjectToBankServiceModel method
+        /// </summary>
+        /// <param name="queryble">IQueryable<Bank></param>
+        /// <returns>IQueryable<BankServiceModel></returns>
+        public static IQueryable<BankServiceModel>
+            ProjectToBankServiceModel(this IQueryable<Bank> queryble)
+        {
+            return queryble
+                .UseIncludeBankStatements()
+                .Select(e => new BankServiceModel()
+                {
+                    Address = e.Address,
+                    AddressId = e.AddressId,
+                    Id = e.Id,
+                    Name = e.Name
+                });
+        }
+
+        /// <summary>
+        /// UseIncludeBankStatements method
+        /// </summary>
+        /// <param name="queryble">IQueryable<Bank></param>
+        /// <returns>IQueryable<Bank></returns>
+        public static IQueryable<Bank>
+            UseIncludeBankStatements(this IQueryable<Bank> queryble)
+        {
+            return queryble
+                .Include(f => f.Address)
+                .Where(f => f.IsActive);
+        }
     }
 }

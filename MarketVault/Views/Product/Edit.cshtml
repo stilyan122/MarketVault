@@ -4,60 +4,78 @@
     ViewBag.Title = "Edit product";
 }
 
+<link rel="stylesheet" href="~/css/nomenclatures..css" />
+
 <div class="editProductContainer">
     <form asp-action="Edit" asp-controller="Product" id="editProductForm">
         <div>
-            <label asp-for="Name">Product name</label>
-            <input asp-for="Name" value="@Model.Name" />
+            <div>
+                <label asp-for="Name">Product name</label>
+                <input asp-for="Name" value="@Model.Name" />
+            </div>
             <span asp-validation-for="Name"></span>
         </div>
         <div>
-            <label asp-for="CashRegisterName">Product cash register name</label>
-            <input asp-for="CashRegisterName" value="@Model.CashRegisterName" />
+            <div>
+                <label asp-for="CashRegisterName">Product cash register name</label>
+                <input asp-for="CashRegisterName" value="@Model.CashRegisterName" />
+            </div>
             <span asp-validation-for="CashRegisterName"></span>
         </div>
         <div>
-            <label asp-for="CodeForScales">Product code for scales</label>
-            <input asp-for="CodeForScales" type="number" value="@Model.CodeForScales"/>
+            <div>
+                <label asp-for="CodeForScales">Product code for scales</label>
+                <input asp-for="CodeForScales" type="number" value="@Model.CodeForScales" />
+            </div>
         </div>
         <div>
-            <label asp-for="SalePrice">Product sale price</label>
-            <input asp-for="SalePrice" />
+            <div>
+                <label asp-for="SalePrice">Product sale price</label>
+                <input asp-for="SalePrice" />
+            </div>
             <span asp-validation-for="SalePrice" value="@Model.SalePrice"></span>
         </div>
         <div>
-            <label asp-for="PurchasePrice">Product purchase price</label>
-            <input asp-for="PurchasePrice" value="@Model.PurchasePrice"/>
+            <div>
+                <label asp-for="PurchasePrice">Product purchase price</label>
+                <input asp-for="PurchasePrice" value="@Model.PurchasePrice" />
+            </div>
             <span asp-validation-for="PurchasePrice"></span>
         </div>
-        <div>
-            <label asp-for="Description">Product description</label>
-            <input asp-for="Description" value="@Model.Description" />
+        <div class="productDescriptionDiv">
+            <div>
+                <label asp-for="Description">Product description</label>
+                <textarea asp-for="Description" rows="2" cols="2">@Model.Description</textarea>
+            </div>
             <span asp-validation-for="Description"></span>
         </div>
         <div>
-            <label asp-for="ItemGroupId">Select Item Group</label>
-            <select asp-for="ItemGroupId">
-                <option disabled selected value="">Select Item Group...</option>
-                @foreach (ItemGroupViewModel itemGroup in Model.ItemGroups)
-                {
-                    <option value="@itemGroup.Id">@itemGroup.Name</option>
-                }
-            </select>
+            <div>
+                <label asp-for="ItemGroupId">Select Item Group</label>
+                <select asp-for="ItemGroupId">
+                    <option disabled selected value="">Select Item Group...</option>
+                    @foreach (ItemGroupViewModel itemGroup in Model.ItemGroups)
+                    {
+                        <option value="@itemGroup.Id">@itemGroup.Name</option>
+                    }
+                </select>
+            </div>
             <span asp-validation-for="ItemGroupId"></span>
         </div>
         <div>
-            <label asp-for="MeasureId">Select Measure</label>
-            <select asp-for="MeasureId">
-                <option disabled selected value="">Select Measure...</option>
-                @foreach (MeasureViewModel measure in Model.Measures)
-                {
-                    <option value="@measure.Id">@measure.Value</option>
-                }
-            </select>
+            <div>
+                <label asp-for="MeasureId">Select Measure</label>
+                <select asp-for="MeasureId">
+                    <option disabled selected value="">Select Measure...</option>
+                    @foreach (MeasureViewModel measure in Model.Measures)
+                    {
+                        <option value="@measure.Id">@measure.Value</option>
+                    }
+                </select>
+            </div>
             <span asp-validation-for="MeasureId"></span>
         </div>
-        <button type="submit">Edit Product</button>
+        <button type="submit" id="editProductBtn">Edit Product</button>
     </form>
 </div>
 

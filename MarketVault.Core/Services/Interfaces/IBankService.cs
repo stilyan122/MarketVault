@@ -12,5 +12,60 @@
         /// </summary>
         /// <returns>Task<IEnumerable<BankServiceModel>></returns>
         Task<IEnumerable<BankServiceModel>> GetAllAsync();
+
+        /// <summary>
+        /// Get all banks that match a condition as IQueryable
+        /// </summary>
+        /// <returns>IQueryable<FirmServiceModel></returns>
+        public IQueryable<BankServiceModel> GetAllByPredicateAsync
+            (string sortType, string value);
+
+        /// <summary>
+        /// Get matching banks paginated (Asynchronous)
+        /// </summary>
+        /// <param name="sortType">Sort type used to sort them</param>
+        /// <param name="value">Sort value</param>
+        /// <param name="pageSize">Size of 1 page</param>
+        /// <param name="pageNumber">Number of page</param>
+        /// <returns>Task<IEnumerable<BankServiceModel>></returns>
+        public Task<IEnumerable<BankServiceModel>> GetAllByPredicatePagedAsync(
+            string sortType, string value,
+            int pageSize, int pageNumber);
+
+        /// <summary>
+        /// Get a bank by a given id (Asynchronous)
+        /// </summary>
+        /// <param name="id">Id to get</param>
+        /// <returns>Task<BankServiceModel></returns>
+        public Task<BankServiceModel> GetByIdAsync(int id);
+
+        /// <summary>
+        /// Method to get count of sorted paginated banks
+        /// </summary>
+        /// <param name="sortType">Sort type used to sort them</param>
+        /// <param name="value">Sort value</param>
+        /// <returns>Task<int></returns>
+        public Task<int> GetPredicatedCount(string sortType, string value);
+
+        /// <summary>
+        /// Add bank method (Asynchronous)
+        /// </summary>
+        /// <param name="bank">Bank to add</param>
+        /// <returns>(void)</returns>
+        public Task AddAsync(BankServiceModel bank);
+
+        /// <summary>
+        /// Delete bank method (Asynchronous)
+        /// </summary>
+        /// <param name="bank">Bank to delete</param>
+        /// <returns>(void)</returns>
+        public Task DeleteAsync(BankServiceModel bank);
+
+        /// <summary>
+        /// Update bank method (Asynchronous)
+        /// </summary>
+        /// <param name="bank">Bank to update</param>
+        /// <returns>(void)</returns>
+        public Task UpdateAsync(BankServiceModel bank);
     }
 }

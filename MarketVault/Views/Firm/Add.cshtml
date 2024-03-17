@@ -31,14 +31,14 @@
         </div>
         <div>
             <div>
-                <label asp-for="ResponsiblePersonName">Firm responsible person</label>
+                <label asp-for="ResponsiblePersonName">Firm responsible person name</label>
                 <input asp-for="ResponsiblePersonName" />
             </div>
             <span asp-validation-for="ResponsiblePersonName"></span>
         </div>
         <div>
             <div>
-                <label asp-for="AddressId">Select Address</label>
+                <label asp-for="AddressId">Select address</label>
                 <select asp-for="AddressId">
                     <option disabled selected value="">Select address...</option>
                     @foreach (AddressViewModel address in Model.Addresses)

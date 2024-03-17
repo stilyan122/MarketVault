@@ -1,0 +1,24 @@
+﻿@model BankDeleteFormModel
+
+@{
+    ViewBag.Title = "Delete bank";
+}
+
+<div class="editBankContainer">
+    <form asp-action="DeletePost"
+          asp-controller="Bank"
+          id="deleteBankForm"
+          method="post"
+          asp-route-id="@Model.Id">
+        <div>
+            <label asp-for="Name">Bank name</label>
+            <h4>@Model.Name</h4>
+        </div>
+        <div>
+            <label asp-for="Address">Bank address</label>
+            <h4>@Model.Address</h4>
+        </div>
+
+        <button type="submit">Delete Bank</button>
+    </form>
+</div>

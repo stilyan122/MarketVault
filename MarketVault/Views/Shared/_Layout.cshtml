@@ -42,14 +42,6 @@
                                 <option value="Option5">Add a bank</option>
                             </select>
                         </li>
-                        <li class="nav-item">
-                            <select id="selectOption3" class="nav-link text-dark">
-                                <option disabled selected value="">Edit Nomenclature</option>
-                                <option value="Option1">Edit a product</option>
-                                <option value="Option2">Edit a counter party</option>
-                                <option value="Option3">Edit an item group</option>
-                            </select>
-                        </li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -96,17 +88,6 @@
             window.location.href = "/Firm/Add";
         } else if (optionValue === "Option5") {
             window.location.href = "/Bank/Add";
-        }
-    });
-
-    document.getElementById("selectOption3").addEventListener("change", function () {
-        var optionValue = this.value;
-        if (optionValue === "Option1") {
-            window.location.href = "/Product/Edit";
-        } else if (optionValue === "Option2") {
-            window.location.href = "/CounterParty/Edit";
-        } else if (optionValue === "Option3") {
-            window.location.href = "/ItemGroup/Edit";
         }
     });
 </script>
