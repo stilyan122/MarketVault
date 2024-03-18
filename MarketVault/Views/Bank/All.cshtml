@@ -41,10 +41,15 @@
     let props = {};
 </script>
 
-<div class="viewContainer">
+<link rel="stylesheet" href="~/css/nomenclatures..css" />
+
+<div class="bankViewContainer">
     <partial name="_SearchBankPartial" model="@searcher" />
 
-    <partial name="_PagerPartial" model="@pager" />
+    @if (pager.TotalPages != 1)
+    {
+        <partial name="_PagerPartial" model="@pager" />
+    }
 
     <a asp-action="All" asp-controller="Bank" id="showAllBanksBtn">
         Show All
@@ -119,5 +124,8 @@
         </div>
     }
 
-    <partial name="_PagerPartial" model="@pager" />
+    @if (pager.TotalPages != 1)
+    {
+        <partial name="_PagerPartial" model="@pager" />
+    }
 </div>

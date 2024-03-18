@@ -1,24 +1,8 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Capriola&display=swap');
 
-.productsContainer{
-    display: flex;
-    flex-direction: column;
-}
-
-.productContainer .productComponentContainer div{
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-}
-
-.productContainer .productComponentContainer div p{
-    width: 20%;
-}
-
 /* Counter party */
-
+    
 .addCounterPartyContainer {
     background: hsla(205, 43%, 80%, 1);
     background: linear-gradient(180deg, hsla(205, 43%, 80%, 1) 0%, hsla(231, 75%, 87%, 1) 89%, hsla(240, 100%, 90%, 1) 100%);
@@ -71,6 +55,35 @@
     animation: addCounterPartyShake 2s ease 0s 1 normal forwards;
 }
 
+.counterPartyContainer .counterPartyComponentContainer div {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.counterPartyContainer .counterPartyComponentContainer div p {
+        width: 20%;
+    }
+
+.counterPartyViewContainer {
+    padding: 3em;
+    border-radius: 14px;
+    background: hsla(29, 100%, 85%, 1);
+    background: linear-gradient(270deg, hsla(29, 100%, 85%, 1) 46%, hsla(118, 45%, 67%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(29, 100%, 85%, 1) 46%, hsla(118, 45%, 67%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(29, 100%, 85%, 1) 46%, hsla(118, 45%, 67%, 1) 100%);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.counterPartyViewContainer a:hover {
+    color: black;
+}
+
 @keyframes addCounterPartyShake {
     0%, 100% {
         transform: rotate(0deg);
@@ -108,9 +121,222 @@
     }
 }
 
+.counterPartiesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    margin-top: 2em;
+}
+
+.counterPartyContainer {
+    background-color: white;
+    padding: 1.4em;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.counterPartyComponentContainer {
+    background-color: white;
+    padding: 1.4em;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.counterPartyComponentContainerFirst {
+    font-weight: 700;
+    color: white;
+    background-color: #126942;
+}
+
+#showAllCounterPartiesBtn {
+    background-color: #126942;
+    text-decoration: none;
+    color: white;
+    border: 1px solid #4d0e22;
+    font-weight: 500;
+    padding: 0.5em 1em;
+    border-radius: 0.4em;
+    animation: displayButtonsRight 2s ease 0s 1 normal forwards;
+}
+
+#showAllCounterPartiesBtn:hover {
+    background-color: #0c422a;
+}
+
+#searchCounterPartyBtn {
+    padding: 0.2em 0.5em;
+    background-color: #199e63;
+    border: 0.01em solid black;
+    border-radius: 0.3em;
+    color: white;
+}
+
+#searchCounterPartyBtn:hover {
+    background-color: #126942;
+}
+
+#counterPartyDetailsBtn {
+    background-color: #f0bc89;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#counterPartyDetailsBtn:hover {
+    background-color: #ffdebf;
+}
+
+#counterPartyEditBtn {
+    background-color: #f0bc89;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#counterPartyEditBtn:hover {
+    background-color: #ffdebf;
+}
+
+#counterPartyDeleteBtn {
+    background-color: #f0bc89;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#counterPartyDeleteBtn:hover {
+    background-color: #ffdebf;
+}
+
 /* Product */
 
-.viewContainer {
+.productsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.productContainer .productComponentContainer div {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.productContainer .productComponentContainer div p {
+    width: 20%;
+}
+
+.productsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    margin-top: 2em;
+}
+
+.productContainer {
+    background-color: white;
+    padding: 1.4em;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.productContainerFirst {
+    font-weight: 700;
+    color: white;
+    background-color: #8f183e;
+}
+
+#showAllProductsBtn {
+    background-color: #8f183e;
+    text-decoration: none;
+    color: white;
+    border: 1px solid #4d0e22;
+    font-weight: 500;
+    padding: 0.5em 1em;
+    border-radius: 0.4em;
+    animation: displayButtonsRight 2s ease 0s 1 normal forwards;
+}
+
+#showAllProductsBtn:hover {
+    background-color: #630f2a;
+}
+
+#searchProductBtn {
+    padding: 0.2em 0.5em;
+    background-color: #ba003c;
+    border: 0.01em solid black;
+    border-radius: 0.3em;
+    color: white;
+}
+
+#searchProductBtn:hover {
+    background-color: #6E0023;
+}
+
+#productDetailsBtn {
+    background-color: #B7EBFF;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#productDetailsBtn:hover {
+    background-color: #5ED1FF;
+}
+
+#productEditBtn {
+    background-color: #B7EBFF;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#productEditBtn:hover {
+    background-color: #5ED1FF;
+}
+
+#productDeleteBtn {
+    background-color: #B7EBFF;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#productDeleteBtn:hover {
+    background-color: #5ED1FF;
+}
+
+.productViewContainer {
     padding: 3em;
     border-radius: 14px;
     background: hsla(346, 62%, 51%, 1);
@@ -124,7 +350,7 @@
     font-optical-sizing: auto;
 }
 
-.viewContainer a:hover{
+.productViewContainer a:hover {
     color: black;
 }
 
@@ -664,6 +890,265 @@
     }
 }
 
+.addFirmContainer {
+    background: hsla(285, 90%, 81%, 1);
+    background: linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
+    padding: 24px;
+    border-radius: 12px;
+    height: 100%;
+    margin-top: 4.809%;
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+}
+
+.addFirmContainer form {
+        display: flex;
+        flex-direction: column;
+        font-size: 24px;
+        gap: 4px;
+        text-align: right;
+    }
+
+.addFirmContainer span {
+        color: #c90016;
+        text-align: center;
+        margin-top: 12px;
+    }
+
+.addFirmContainer form div div {
+        display: flex;
+    }
+
+.addFirmContainer form div div input,
+.addFirmContainer form div div select {
+            border-radius: 4px;
+            padding: 4px;
+            animation: displayFirmFormTags 2s ease 0s 1 normal forwards;
+            margin-left: auto;
+        }
+
+#addFirmBtn {
+    align-self: center;
+    padding: 12px 32px;
+    border-radius: 8px;
+    margin-top: 50px;
+    border: none;
+    background-color: #9932cc;
+    color: white;
+}
+
+#addFirmBtn:hover {
+        animation: addFirmShake 2s ease 0s 1 normal forwards;
+    }
+
+@keyframes addFirmShake {
+    0%, 100% {
+        transform: rotate(0deg);
+        transform-origin: 50% 100%;
+    }
+
+    10% {
+        transform: rotate(2deg);
+    }
+
+    20%, 40%, 60% {
+        transform: rotate(-4deg);
+    }
+
+    30%, 50%, 70% {
+        transform: rotate(4deg);
+    }
+
+    80% {
+        transform: rotate(-2deg);
+    }
+
+    90% {
+        transform: rotate(2deg);
+    }
+}
+
+@keyframes displayFirmFormTags {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.firmContainer .firmComponentContainer div {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.firmContainer .firmComponentContainer div p {
+        width: 20%;
+    }
+
+.firmViewContainer {
+    padding: 3em;
+    border-radius: 14px;
+    background: hsla(178, 100%, 85%, 1);
+    background: linear-gradient(90deg, hsla(178, 100%, 85%, 1) 0%, hsla(63, 89%, 82%, 1) 73%);
+    background: -moz-linear-gradient(90deg, hsla(178, 100%, 85%, 1) 0%, hsla(63, 89%, 82%, 1) 73%);
+    background: -webkit-linear-gradient(90deg, hsla(178, 100%, 85%, 1) 0%, hsla(63, 89%, 82%, 1) 73%);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.firmViewContainer a:hover {
+        color: black;
+    }
+
+@keyframes addFirmShake {
+    0%, 100% {
+        transform: rotate(0deg);
+        transform-origin: 50% 100%;
+    }
+
+    10% {
+        transform: rotate(2deg);
+    }
+
+    20%, 40%, 60% {
+        transform: rotate(-4deg);
+    }
+
+    30%, 50%, 70% {
+        transform: rotate(4deg);
+    }
+
+    80% {
+        transform: rotate(-2deg);
+    }
+
+    90% {
+        transform: rotate(2deg);
+    }
+}
+
+@keyframes displayFormTags {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.firmsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    margin-top: 2em;
+}
+
+.firmContainer {
+    background-color: white;
+    padding: 1.4em;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.firmComponentContainer {
+    background-color: white;
+    padding: 1.4em;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.firmComponentContainerFirst {
+    font-weight: 700;
+    color: white;
+    background-color: #36918f;
+}
+
+#showAllFirmsBtn {
+    background-color: #36918f;
+    text-decoration: none;
+    color: white;
+    border: 1px solid #4d0e22;
+    font-weight: 500;
+    padding: 0.5em 1em;
+    border-radius: 0.4em;
+    animation: displayButtonsRight 2s ease 0s 1 normal forwards;
+}
+
+#showAllFirmsBtn:hover {
+        background-color: #173d3c;
+    }
+
+#searchFirmBtn {
+    padding: 0.2em 0.5em;
+    background-color: #5eccc9;
+    border: 0.01em solid black;
+    border-radius: 0.3em;
+    color: white;
+}
+
+#searchFirmBtn:hover {
+        background-color: #36918f;
+    }
+
+#firmEditBtn {
+    background-color: #fffacd;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#firmEditBtn:hover {
+        background-color: #faf09b;
+    }
+
+#firmDeleteBtn {
+    background-color: #fffacd;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#firmDeleteBtn:hover {
+        background-color: #faf09b;
+    }
+
+#firmDetailsBtn {
+    background-color: #ffdbb5;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#firmDetailsBtn:hover {
+    background-color: #ffc07d;
+}
+
 /* Bank */
 
 .addBankContainer {
@@ -755,4 +1240,674 @@
     100% {
         transform: scale(1);
     }
+}
+
+.bankContainer .bankComponentContainer div {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.bankContainer .bankComponentContainer div p {
+    width: 20%;
+}
+
+.bankViewContainer {
+    padding: 3em;
+    border-radius: 14px;
+    background: hsla(0, 100%, 61%, 1);
+    background: linear-gradient(90deg, hsla(0, 100%, 61%, 1) 0%, hsla(31, 100%, 69%, 1) 57%);
+    background: -moz-linear-gradient(90deg, hsla(0, 100%, 61%, 1) 0%, hsla(31, 100%, 69%, 1) 57%);
+    background: -webkit-linear-gradient(90deg, hsla(0, 100%, 61%, 1) 0%, hsla(31, 100%, 69%, 1) 57%);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.bankViewContainer a:hover {
+    color: black;
+}
+
+@keyframes addBankShake {
+    0%, 100% {
+        transform: rotate(0deg);
+        transform-origin: 50% 100%;
+    }
+
+    10% {
+        transform: rotate(2deg);
+    }
+
+    20%, 40%, 60% {
+        transform: rotate(-4deg);
+    }
+
+    30%, 50%, 70% {
+        transform: rotate(4deg);
+    }
+
+    80% {
+        transform: rotate(-2deg);
+    }
+
+    90% {
+        transform: rotate(2deg);
+    }
+}
+
+@keyframes displayFormTags {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.banksContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    margin-top: 2em;
+}
+
+.bankContainer {
+    background-color: white;
+    padding: 1.4em;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.bankComponentContainer {
+    background-color: white;
+    padding: 1.4em;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.bankComponentContainerFirst {
+    font-weight: 700;
+    color: white;
+    background-color: #ad2b2b;
+}
+
+#showAllBanksBtn {
+    background-color: #ad2b2b;
+    text-decoration: none;
+    color: white;
+    border: 1px solid #4d0e22;
+    font-weight: 500;
+    padding: 0.5em 1em;
+    border-radius: 0.4em;
+    animation: displayButtonsRight 2s ease 0s 1 normal forwards;
+}
+
+#showAllBanksBtn:hover {
+    background-color: #872222;
+}
+
+#searchBankBtn {
+    padding: 0.2em 0.5em;
+    background-color: #cc2b2b;
+    border: 0.01em solid black;
+    border-radius: 0.3em;
+    color: white;
+}
+
+#searchBankBtn:hover {
+    background-color: #ad2b2b;
+}
+
+#bankEditBtn {
+    background-color: #ffdbb5;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#bankEditBtn:hover {
+    background-color: #ffc07d;
+}
+
+#bankDeleteBtn {
+    background-color: #ffdbb5;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#bankDeleteBtn:hover {
+    background-color: #ffc07d;
+}
+
+#bankDetailsBtn {
+    background-color: #ffdbb5;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#bankDetailsBtn:hover {
+    background-color: #ffc07d;
+}
+
+/* Address */
+
+.addAddressContainer {
+    background: hsla(285, 90%, 81%, 1);
+    background: linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
+    padding: 24px;
+    border-radius: 12px;
+    height: 100%;
+    margin-top: 4.809%;
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+}
+
+.addAddressContainer form {
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    gap: 4px;
+    text-align: right;
+}
+
+.addAddressContainer span {
+    color: #c90016;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.addAddressContainer form div div {
+    display: flex;
+}
+
+.addAddressContainer form div div input,
+.addAddressContainer form div div select {
+    border-radius: 4px;
+    padding: 4px;
+    animation: displayAddressFormTags 2s ease 0s 1 normal forwards;
+    margin-left: auto;
+}
+
+#addAddressBtn {
+    align-self: center;
+    padding: 12px 32px;
+    border-radius: 8px;
+    margin-top: 50px;
+    border: none;
+    background-color: #9932cc;
+    color: white;
+}
+
+#addAddressBtn:hover {
+    animation: addAddressShake 2s ease 0s 1 normal forwards;
+}
+
+@keyframes addAddressShake {
+    0%, 100% {
+        transform: rotate(0deg);
+        transform-origin: 50% 100%;
+    }
+
+    10% {
+        transform: rotate(2deg);
+    }
+
+    20%, 40%, 60% {
+        transform: rotate(-4deg);
+    }
+
+    30%, 50%, 70% {
+        transform: rotate(4deg);
+    }
+
+    80% {
+        transform: rotate(-2deg);
+    }
+
+    90% {
+        transform: rotate(2deg);
+    }
+}
+
+@keyframes displayAddressFormTags {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.addressContainer .addressComponentContainer div {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.addressContainer .addressComponentContainer div p {
+    width: 20%;
+}
+
+.addressViewContainer {
+    padding: 3em;
+    border-radius: 14px;
+    background: hsla(178, 100%, 85%, 1);
+    background: linear-gradient(90deg, hsla(178, 100%, 85%, 1) 0%, hsla(63, 89%, 82%, 1) 73%);
+    background: -moz-linear-gradient(90deg, hsla(178, 100%, 85%, 1) 0%, hsla(63, 89%, 82%, 1) 73%);
+    background: -webkit-linear-gradient(90deg, hsla(178, 100%, 85%, 1) 0%, hsla(63, 89%, 82%, 1) 73%);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.addressViewContainer a:hover {
+    color: black;
+}
+
+@keyframes addAddressShake {
+    0%, 100% {
+        transform: rotate(0deg);
+        transform-origin: 50% 100%;
+    }
+
+    10% {
+        transform: rotate(2deg);
+    }
+
+    20%, 40%, 60% {
+        transform: rotate(-4deg);
+    }
+
+    30%, 50%, 70% {
+        transform: rotate(4deg);
+    }
+
+    80% {
+        transform: rotate(-2deg);
+    }
+
+    90% {
+        transform: rotate(2deg);
+    }
+}
+
+@keyframes displayFormTags {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.addressesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    margin-top: 2em;
+}
+
+.addressContainer {
+    background-color: white;
+    padding: 1.4em;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.addressComponentContainer {
+    background-color: white;
+    padding: 1.4em;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.addressComponentContainerFirst {
+    font-weight: 700;
+    color: white;
+    background-color: #36918f;
+}
+
+#showAllAddressesBtn {
+    background-color: #36918f;
+    text-decoration: none;
+    color: white;
+    border: 1px solid #4d0e22;
+    font-weight: 500;
+    padding: 0.5em 1em;
+    border-radius: 0.4em;
+    animation: displayButtonsRight 2s ease 0s 1 normal forwards;
+}
+
+#showAllAddressesBtn:hover {
+    background-color: #173d3c;
+}
+
+#searchAddressBtn {
+    padding: 0.2em 0.5em;
+    background-color: #5eccc9;
+    border: 0.01em solid black;
+    border-radius: 0.3em;
+    color: white;
+}
+
+#searchAddressBtn:hover {
+    background-color: #36918f;
+}
+
+#addressEditBtn {
+    background-color: #fffacd;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#addressEditBtn:hover {
+    background-color: #faf09b;
+}
+
+#addressDeleteBtn {
+    background-color: #fffacd;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#addressDeleteBtn:hover {
+    background-color: #faf09b;
+}
+
+/* Item group */
+
+.addItemGroupContainer {
+    background: hsla(352, 57%, 53%, 1);
+    background: linear-gradient(270deg, hsla(352, 57%, 53%, 1) 0%, hsla(352, 63%, 45%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(352, 57%, 53%, 1) 0%, hsla(352, 63%, 45%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(352, 57%, 53%, 1) 0%, hsla(352, 63%, 45%, 1) 100%);
+    padding: 24px;
+    border-radius: 12px;
+    height: 100%;
+    margin-top: 4.809%;
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+}
+
+.addItemGroupContainer form {
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    gap: 4px;
+    text-align: right;
+}
+
+.addItemGroupContainer span {
+    color: #c90016;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.addItemGroupContainer form div div {
+    display: flex;
+}
+
+.addItemGroupContainer form div div input,
+.addItemGroupContainer form div div select {
+    border-radius: 4px;
+    padding: 4px;
+    animation: displayItemGroupFormTags 2s ease 0s 1 normal forwards;
+    margin-left: auto;
+}
+
+#addItemGroupBtn {
+    align-self: center;
+    padding: 12px 32px;
+    border-radius: 8px;
+    margin-top: 50px;
+    border: none;
+    background-color: #FC8494;
+    color: white;
+}
+
+#addItemGroupBtn:hover {
+    animation: addItemGroupShake 2s ease 0s 1 normal forwards;
+}
+
+@keyframes addItemGroupShake {
+    0%, 100% {
+        transform: rotate(0deg);
+        transform-origin: 50% 100%;
+    }
+
+    10% {
+        transform: rotate(2deg);
+    }
+
+    20%, 40%, 60% {
+        transform: rotate(-4deg);
+    }
+
+    30%, 50%, 70% {
+        transform: rotate(4deg);
+    }
+
+    80% {
+        transform: rotate(-2deg);
+    }
+
+    90% {
+        transform: rotate(2deg);
+    }
+}
+
+@keyframes displayItemGroupFormTags {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.itemGroupContainer .itemGroupComponentContainer div {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.itemGroupContainer .itemGroupComponentContainer div p {
+        width: 20%;
+    }
+
+.itemGroupViewContainer {
+    padding: 3em;
+    border-radius: 14px;
+    background: hsla(131, 77%, 76%, 1);
+    background: linear-gradient(270deg, hsla(131, 77%, 76%, 1) 33%, hsla(240, 96%, 71%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(131, 77%, 76%, 1) 33%, hsla(240, 96%, 71%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(131, 77%, 76%, 1) 33%, hsla(240, 96%, 71%, 1) 100%);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.itemGroupViewContainer a:hover {
+        color: black;
+    }
+
+@keyframes addItemGroupShake {
+    0%, 100% {
+        transform: rotate(0deg);
+        transform-origin: 50% 100%;
+    }
+
+    10% {
+        transform: rotate(2deg);
+    }
+
+    20%, 40%, 60% {
+        transform: rotate(-4deg);
+    }
+
+    30%, 50%, 70% {
+        transform: rotate(4deg);
+    }
+
+    80% {
+        transform: rotate(-2deg);
+    }
+
+    90% {
+        transform: rotate(2deg);
+    }
+}
+
+@keyframes displayFormTags {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.itemGroupsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    margin-top: 2em;
+}
+
+.itemGroupContainer {
+    background-color: white;
+    padding: 1.4em;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.itemGroupComponentContainer {
+    background-color: white;
+    padding: 1.4em;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.itemGroupComponentContainerFirst {
+    font-weight: 700;
+    color: white;
+    background-color: #4b4bab;
+}
+
+#showAllItemGroupsBtn {
+    background-color: #4b4bab;
+    text-decoration: none;
+    color: white;
+    border: 1px solid #4d0e22;
+    font-weight: 500;
+    padding: 0.5em 1em;
+    border-radius: 0.4em;
+    animation: displayButtonsRight 2s ease 0s 1 normal forwards;
+}
+
+#showAllItemGroupsBtn:hover {
+        background-color: #383882;
+    }
+
+#searchItemGroupBtn {
+    padding: 0.2em 0.5em;
+    background-color: #7171eb;
+    border: 0.01em solid black;
+    border-radius: 0.3em;
+    color: white;
+}
+
+#searchItemGroupBtn:hover {
+     background-color:  #4b4bab;
+}
+
+#itemGroupEditBtn {
+    background-color: #cbf7d4;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#itemGroupEditBtn:hover {
+    background-color: #a8e6b4;
+}
+
+#itemGroupDeleteBtn {
+    background-color: #cbf7d4;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#itemGroupDeleteBtn:hover {
+    background-color: #a8e6b4;
+}
+
+#itemGroupDetailsBtn {
+    background-color: #ffdbb5;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
 }

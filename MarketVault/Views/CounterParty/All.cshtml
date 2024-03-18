@@ -37,14 +37,19 @@
 
 <script src="@Url.Content("~/js/marketvault/src/Components/CounterPartyViewComponent.jsx")"></script>
 
+<link rel="stylesheet" href="~/css/nomenclatures..css" />
+
 <script>
     let props = {};
 </script>
 
-<div class="viewContainer">
+<div class="counterPartyViewContainer">
     <partial name="_SearchCounterPartyPartial" model="@searcher" />
 
-    <partial name="_PagerPartial" model="@pager" />
+    @if (pager.TotalPages != 1)
+    {
+        <partial name="_PagerPartial" model="@pager" />
+    }
 
     <a asp-action="All" asp-controller="CounterParty" id="showAllCounterPartiesBtn">
         Show All
@@ -125,5 +130,8 @@
         </div>
     }
 
-    <partial name="_PagerPartial" model="@pager" />
+    @if (pager.TotalPages != 1)
+    {
+        <partial name="_PagerPartial" model="@pager" />
+    }
 </div>

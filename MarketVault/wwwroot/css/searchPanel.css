@@ -4,14 +4,10 @@
     width: 10rem;
     padding: 0.1rem;
     margin-left: 0.3rem;
+    margin-bottom: 2em;
 }
 
 #searcherButton{
     margin-left: 1rem;
     width: 6rem;
-}
-
-#searcherInput:hover,
-#searcherSelect:hover{
-
 }
