@@ -43,23 +43,26 @@
 
 <link rel="stylesheet" href="~/css/nomenclatures..css" />
 
-<div class="viewContainer">
+<div class="addressViewContainer">
     <partial name="_SearchAddressPartial" model="@searcher" />
 
-    <partial name="_PagerPartial" model="@pager" />
+    @if (pager.TotalPages != 1)
+    {
+        <partial name="_PagerPartial" model="@pager" />
+    }
 
-    <a asp-action="All" asp-controller="Address" id="showAllAddresssBtn">
+    <a asp-action="All" asp-controller="Address" id="showAllAddressesBtn">
         Show All
     </a>
 
     @if (Model.Count() == 0)
     {
-        <h1 class="notFoundAddresssBtn">No addreses found! Try again!</h1>
+        <h1 class="notFoundAddresesBtn">No addreses found! Try again!</h1>
     }
 
     else
     {
-        <div class="addressContainer">
+        <div class="addressesContainer">
 
             <div class="addressContainer addressContainerFirst">
                 <div id="-1" class="addressComponentContainer addressComponentContainerFirst"></div>
@@ -114,5 +117,8 @@
         </div>
     }
 
-    <partial name="_PagerPartial" model="@pager" />
+    @if (pager.TotalPages != 1)
+    {
+        <partial name="_PagerPartial" model="@pager" />
+    }
 </div>
