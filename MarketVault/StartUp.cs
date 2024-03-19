@@ -35,7 +35,7 @@ namespace MarketVault
             }
 
             app.UseHttpsRedirection();
-            app.UseReact(config =>
+            app.UseReact(config => 
             {
                 config
                 .AddScript("~/js/marketvault/src/Components/ProductViewComponent.jsx")
