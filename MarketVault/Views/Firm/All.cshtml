@@ -112,14 +112,17 @@
                            asp-controller="Firm" asp-action="Details" asp-route-id="@firm.Id">
                             Details
                         </a>
-                        <a id="firmEditBtn"
-                           asp-controller="Firm" asp-action="Edit" asp-route-id="@firm.Id">
-                            Edit
-                        </a>
-                        <a id="firmDeleteBtn"
-                           asp-controller="Firm" asp-action="DeleteGet" asp-route-id="@firm.Id">
-                            Delete
-                        </a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a id="firmEditBtn"
+                               asp-controller="Firm" asp-action="Edit" asp-route-id="@firm.Id">
+                                Edit
+                            </a>
+                            <a id="firmDeleteBtn"
+                               asp-controller="Firm" asp-action="DeleteGet" asp-route-id="@firm.Id">
+                                Delete
+                            </a>
+                        }
                     </div>
 
                     @{

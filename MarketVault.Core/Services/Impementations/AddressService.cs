@@ -1,6 +1,7 @@
 ﻿namespace MarketVault.Core.Services.Impementations
 {
     using MarketVault.Core.Contracts;
+    using MarketVault.Core.Exceptions;
     using MarketVault.Core.Extensions;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
@@ -105,7 +106,7 @@
                 .UseIncludeAddressStatements()
                 .Where(p => p.Id == id)
                 .FirstOrDefaultAsync() ??
-                throw new ArgumentNullException("Entity is null!");
+                throw new EntityNotFoundException("Address is null!");
 
             var serviceModel = new AddressServiceModel()
             {
@@ -159,7 +160,7 @@
                 .UseIncludeAddressStatements()
                 .Where(p => p.Id == address.Id)
                 .FirstOrDefaultAsync()
-                ?? throw new ArgumentException("Entity not found");
+                ?? throw new EntityNotFoundException("Address not found");
 
             entity.IsActive = false;
 
@@ -178,7 +179,7 @@
                 .UseIncludeAddressStatements()
                 .Where(p => p.Id == address.Id)
                 .FirstOrDefaultAsync()
-                ?? throw new ArgumentException("Entity not found");
+                ?? throw new EntityNotFoundException("Address not found");
 
             entity.StreetNumber = address.StreetNumber;
             entity.StreetName = address.StreetName;

@@ -33,17 +33,20 @@
                                 <option value="Option6">Addresses</option>
                             </select>
                         </li>
-                        <li class="nav-item">
-                            <select id="selectOption2" class="nav-link text-dark">
-                                <option disabled selected value="">Add Nomenclature</option>
-                                <option value="Option1">Add a product</option>
-                                <option value="Option2">Add a counter party</option>
-                                <option value="Option3">Add an item group</option>
-                                <option value="Option4">Add a firm</option>
-                                <option value="Option5">Add a bank</option>
-                                <option value="Option6">Add an address</option>
-                            </select>
-                        </li>
+                        @if (User?.IsInRole("Admin") ?? false)
+                        {
+                            <li class="nav-item">
+                                <select id="selectOption2" class="nav-link text-dark">
+                                    <option disabled selected value="">Add Nomenclature</option>
+                                    <option value="Option1">Add a product</option>
+                                    <option value="Option2">Add a counter party</option>
+                                    <option value="Option3">Add an item group</option>
+                                    <option value="Option4">Add a firm</option>
+                                    <option value="Option5">Add a bank</option>
+                                    <option value="Option6">Add an address</option>
+                                </select>
+                            </li>
+                        }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

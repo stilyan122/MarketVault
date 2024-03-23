@@ -112,14 +112,17 @@
                            asp-controller="CounterParty" asp-action="Details" asp-route-id="@counterParty.Id">
                             Details
                         </a>
-                        <a id="counterPartyEditBtn"
-                           asp-controller="CounterParty" asp-action="Edit" asp-route-id="@counterParty.Id">
-                            Edit
-                        </a>
-                        <a id="counterPartyDeleteBtn"
-                           asp-controller="CounterParty" asp-action="DeleteGet" asp-route-id="@counterParty.Id">
-                            Delete
-                        </a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a id="counterPartyEditBtn"
+                               asp-controller="CounterParty" asp-action="Edit" asp-route-id="@counterParty.Id">
+                                Edit
+                            </a>
+                            <a id="counterPartyDeleteBtn"
+                               asp-controller="CounterParty" asp-action="DeleteGet" asp-route-id="@counterParty.Id">
+                                Delete
+                            </a>
+                        }
                     </div>
 
                     @{

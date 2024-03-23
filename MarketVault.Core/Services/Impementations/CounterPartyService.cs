@@ -1,6 +1,7 @@
 ﻿namespace MarketVault.Core.Services.Impementations
 {
     using MarketVault.Core.Contracts;
+    using MarketVault.Core.Exceptions;
     using MarketVault.Core.Extensions;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
@@ -61,7 +62,7 @@
                 .UseIncludeCounterPartyStatements()
                 .Where(p => p.Id == counterParty.Id)
                 .FirstOrDefaultAsync()
-                ?? throw new ArgumentException("Entity not found");
+                ?? throw new EntityNotFoundException("Counter party not found");
 
             entity.IsActive = false;
 
@@ -162,7 +163,7 @@
                 .UseIncludeCounterPartyStatements()
                 .Where(p => p.Id == id)
                 .FirstOrDefaultAsync() ??
-                throw new ArgumentNullException("Entity is null!");
+                throw new EntityNotFoundException("Counter party is null!");
 
             var serviceModel = new CounterPartyServiceModel()
             {
@@ -205,7 +206,7 @@
                 .UseIncludeCounterPartyStatements()
                 .Where(p => p.Id == counterParty.Id)
                 .FirstOrDefaultAsync()
-                ?? throw new ArgumentException("Entity not found");
+                ?? throw new EntityNotFoundException("Counter party not found");
 
             entity.Name = counterParty.Name;
             entity.BankId = counterParty.BankId;
