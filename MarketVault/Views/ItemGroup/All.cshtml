@@ -96,17 +96,19 @@
                             document.getElementById(@counter),
                         );
                     </script>
-
-                    <div class="itemGroupButtons">
-                        <a id="itemGroupEditBtn"
-                           asp-controller="ItemGroup" asp-action="Edit" asp-route-id="@itemGroup.Id">
-                            Edit
-                        </a>
-                        <a id="itemGroupDeleteBtn"
-                           asp-controller="ItemGroup" asp-action="DeleteGet" asp-route-id="@itemGroup.Id">
-                            Delete
-                        </a>
-                    </div>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div class="itemGroupButtons">
+                            <a id="itemGroupEditBtn"
+                               asp-controller="ItemGroup" asp-action="Edit" asp-route-id="@itemGroup.Id">
+                                Edit
+                            </a>
+                            <a id="itemGroupDeleteBtn"
+                               asp-controller="ItemGroup" asp-action="DeleteGet" asp-route-id="@itemGroup.Id">
+                                Delete
+                            </a>
+                        </div>
+                    }
 
                     @{
                         counter++;

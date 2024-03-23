@@ -1,6 +1,7 @@
 ﻿namespace MarketVault.Controllers
 {
     using MarketVault.Core;
+    using MarketVault.Core.Exceptions;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Models.Address;
@@ -168,6 +169,7 @@
         /// </summary>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
+        [Authorize(Roles = "Admin, Worker")]
         public async Task<IActionResult> Add()
         {
             var formModel = new BankFormModel()
@@ -184,6 +186,7 @@
         /// <param name="model">BankFormModel - model to add</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
+        [Authorize(Roles = "Admin, Worker")]
         public async Task<IActionResult> Add(BankFormModel model)
         {
             if (!ModelState.IsValid)
@@ -209,6 +212,7 @@
         /// <param name="id">Id to use for update</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
+        [Authorize(Roles = "Admin, Worker")]
         public async Task<IActionResult> Edit(string id)
         {
             try
@@ -229,7 +233,7 @@
 
                 return View(viewModel);
             }
-            catch (ArgumentNullException)
+            catch (EntityNotFoundException)
             {
                 return NotFound();
             }
@@ -242,6 +246,7 @@
         /// <param name="model">Form model to use</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
+        [Authorize(Roles = "Admin, Worker")]
         public async Task<IActionResult> Edit(string id, BankFormModel model)
         {
             if (model == null ||
@@ -254,7 +259,7 @@
             {
                 var entity = await this.service.GetByIdAsync(parsed);
             }
-            catch (ArgumentNullException)
+            catch (EntityNotFoundException)
             {
                 return NotFound();
             }
@@ -277,6 +282,7 @@
         /// <param name="id">Id to use for element</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
+        [Authorize(Roles = "Admin, Worker")]
         public async Task<IActionResult> DeleteGet(string id)
         {
             try
@@ -300,7 +306,7 @@
 
                 return View("Delete", viewModel);
             }
-            catch (ArgumentNullException)
+            catch (EntityNotFoundException)
             {
                 return NotFound();
             }
@@ -312,6 +318,7 @@
         /// <param name="id">Id to use for element</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
+        [Authorize(Roles = "Admin, Worker")]
         public async Task<IActionResult> DeletePost(string id)
         {
             if (!int.TryParse(id, out int parsed))
@@ -332,7 +339,7 @@
 
                 await this.service.DeleteAsync(serviceModel);
             }
-            catch (ArgumentNullException)
+            catch (EntityNotFoundException)
             {
                 return NotFound();
             }
@@ -368,7 +375,7 @@
 
                 return View(viewModel);
             }
-            catch (ArgumentNullException)
+            catch (EntityNotFoundException)
             {
                 return NotFound();
             }

@@ -118,15 +118,17 @@
                             asp-controller="Product" asp-action="Details" asp-route-id="@product.Id">
                             Details
                         </a>
-                        <a 
-                            id="productEditBtn"
-                            asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id">
-                            Edit
-                        </a>
-                        <a id="productDeleteBtn"
-                            asp-controller="Product" asp-action="DeleteGet" asp-route-id="@product.Id">
-                            Delete
-                        </a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a id="productEditBtn"
+                               asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id">
+                                Edit
+                            </a>
+                            <a id="productDeleteBtn"
+                               asp-controller="Product" asp-action="DeleteGet" asp-route-id="@product.Id">
+                                Delete
+                            </a>
+                        }
                     </div>
 
                     @{

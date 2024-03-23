@@ -188,6 +188,7 @@
         /// </summary>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Add()
         {
             var formModel = new ProductFormModel
@@ -205,6 +206,7 @@
         /// <param name="model">ProductFormModel - model to add</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Add(ProductFormModel model)
         {
             if (!ModelState.IsValid)
@@ -240,6 +242,7 @@
         /// <param name="id">Id to use for update</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(string id)
         {
             try
@@ -280,6 +283,7 @@
         /// <param name="model">Form model to use</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(string id, ProductFormModel model)
         {
             if (model == null || 
@@ -322,6 +326,7 @@
         /// <param name="id">Id to use for element</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteGet(string id)
         {
             try
@@ -362,6 +367,7 @@
         /// <param name="id">Id to use for element</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeletePost(string id)
         {
             if (!int.TryParse(id, out int parsed))

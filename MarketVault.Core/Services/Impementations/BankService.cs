@@ -1,6 +1,7 @@
 ﻿namespace MarketVault.Core.Services.Impementations
 {
     using MarketVault.Core.Contracts;
+    using MarketVault.Core.Exceptions;
     using MarketVault.Core.Extensions;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
@@ -112,7 +113,7 @@
                 .UseIncludeBankStatements()
                 .Where(p => p.Id == id)
                 .FirstOrDefaultAsync() ??
-                throw new ArgumentNullException("Entity is null!");
+                throw new EntityNotFoundException("Bank is null!");
 
             var serviceModel = new BankServiceModel()
             {
@@ -165,7 +166,7 @@
                 .UseIncludeBankStatements()
                 .Where(p => p.Id == bank.Id)
                 .FirstOrDefaultAsync()
-                ?? throw new ArgumentException("Entity not found");
+                ?? throw new EntityNotFoundException("Bank not found");
 
             entity.IsActive = false;
 
@@ -193,7 +194,7 @@
                 .UseIncludeBankStatements()
                 .Where(p => p.Id == bank.Id)
                 .FirstOrDefaultAsync()
-                ?? throw new ArgumentException("Entity not found");
+                ?? throw new EntityNotFoundException("Bank not found");
 
                 entity.IsActive = false;
 
@@ -220,7 +221,7 @@
                 .UseIncludeBankStatements()
                 .Where(p => p.Id == bank.Id)
                 .FirstOrDefaultAsync()
-                ?? throw new ArgumentException("Entity not found");
+                ?? throw new EntityNotFoundException("Bank not found");
 
             entity.Name = bank.Name;
             entity.AddressId = bank.AddressId;

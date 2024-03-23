@@ -106,14 +106,17 @@
                            asp-controller="Bank" asp-action="Details" asp-route-id="@bank.Id">
                             Details
                         </a>
-                        <a id="bankEditBtn"
-                           asp-controller="Bank" asp-action="Edit" asp-route-id="@bank.Id">
-                            Edit
-                        </a>
-                        <a id="bankDeleteBtn"
-                           asp-controller="Bank" asp-action="DeleteGet" asp-route-id="@bank.Id">
-                            Delete
-                        </a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a id="bankEditBtn"
+                               asp-controller="Bank" asp-action="Edit" asp-route-id="@bank.Id">
+                                Edit
+                            </a>
+                            <a id="bankDeleteBtn"
+                               asp-controller="Bank" asp-action="DeleteGet" asp-route-id="@bank.Id">
+                                Delete
+                            </a>
+                        }
                     </div>
 
                     @{

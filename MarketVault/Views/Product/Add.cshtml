@@ -76,9 +76,79 @@
             <span asp-validation-for="MeasureId"></span>
         </div>
 
+        <div id="popUpContainerOverlay">
+            <div id="popUpContainer">
+                <div id="xBtnDiv">
+                    <a id="xBtn">
+                        ✘
+                    </a>
+                </div>
+                <butto onclick=
+                    "ClickAddBtn(@Model.BarcodeMaxLength,
+                    @Model.BarcodeMinLength)">Add barcode</button>
+            </div>
+        </div>
+
+        <button type="button" id="addBarcodeBtn">Add Barcode</button>
+
         <button type="submit" id="addProductBtn">Add Product</button>
     </form>
 </div>
+
+<script>
+    console.log(2);
+    var popUpContainerOverlay = document.getElementById("popUpContainerOverlay");
+    var popUpContainer = document.getElementById("popUpContainer");
+
+    popUpContainerOverlay.style.display = 'none';
+    popUpContainer.style.display = 'none';
+
+    function ClickAddBtn(barcodeMaxLength, barcodeMinLength) {
+        console.log(1);
+        var btn = document.getElementById('addBarcodeBtn');
+        var popUpContainerOverlay = document.getElementById("popUpContainerOverlay");
+        var popUpContainer = document.getElementById("popUpContainer");
+
+        var xMark = document.getElementById('xBtn');
+
+        xMark.addEventListener('click', function (event2) {
+            event2.preventDefault();
+            popUpContainer.style.display = 'none';
+            popUpContainerOverlay.style.display = 'none';
+        });
+
+            // $.ajax({
+            //     method: 'GET',
+            //     url: 'myservice/username',
+            //     data: { id: '42' }
+            // })
+            // .done(function success(data) {
+
+            // })
+            // .fail(function fail(data, status) {
+
+            // });
+
+            popUpContainerOverlay.style.display = 'flex';
+            popUpContainer.style.display = 'block';
+
+            var parent = document.getElementById('popUpContainer')
+            var section = document.createElement('section');
+            section.id = 'sectionPopUp';
+            parent.appendChild(section);
+
+            popUpContainer.addEventListener('click', function (event2) {
+                event2.stopPropagation();
+            });
+
+            popUpContainerOverlay.addEventListener('click', function (event2) {
+                event2.preventDefault();
+
+                popUpContainer.style.display = 'none';
+                popUpContainerOverlay.style.display = 'none';
+            });
+    }
+</script>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

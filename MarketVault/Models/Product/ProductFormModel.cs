@@ -82,6 +82,16 @@
         public int MeasureId { get; set; }
 
         /// <summary>
+        /// Product barcode max length
+        /// </summary>
+        public int BarcodeMaxLength { get; set; }
+
+        /// <summary>
+        /// Product barcode min length
+        /// </summary>
+        public int BarcodeMinLength { get; set; }
+
+        /// <summary>
         /// Product measures
         /// </summary>
         public IEnumerable<MeasureViewModel> Measures { get; set; }
