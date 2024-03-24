@@ -1,12 +1,13 @@
 ﻿namespace MarketVault.Core.Binders
 {
     using Microsoft.AspNetCore.Mvc.ModelBinding;
+    using System.Globalization;
 
     /// <summary>
     /// Custom Decimal Model Binder
     /// </summary>
     public class DecimalModelBinder : IModelBinder
-    {
+    {   
         /// <summary>
         /// Bind model method (async)
         /// </summary>
@@ -28,7 +29,7 @@
             }
 
             bindingContext.ModelState
-                .SetModelValue(bindingContext.ModelName, 
+                .SetModelValue(bindingContext.ModelName,
                 valueProviderResult);
 
             var valueAsString = valueProviderResult.FirstValue;
@@ -38,13 +39,23 @@
                 return Task.CompletedTask;
             }
 
-            if (!decimal.TryParse(valueAsString, out var decimalValue))
-            {
-                bindingContext.ModelState.TryAddModelError(
-                    bindingContext.ModelName,
-                    "Invalid decimal format.");
+            var culture = CultureInfo.InvariantCulture.Clone() as CultureInfo ?? new CultureInfo(1);
+            culture.NumberFormat.NumberDecimalSeparator = ".";
+            culture.NumberFormat.CurrencyDecimalSeparator = ".";
 
-                return Task.CompletedTask;
+            if (!decimal.TryParse(valueAsString, NumberStyles.Number,
+                culture, out var decimalValue))
+            {
+                culture.NumberFormat.NumberDecimalSeparator = ",";
+                culture.NumberFormat.CurrencyDecimalSeparator = ",";
+                if (!decimal.TryParse(valueAsString, NumberStyles.Number,
+                    culture, out decimalValue))
+                {
+                    bindingContext.ModelState.TryAddModelError(
+                        bindingContext.ModelName,
+                        "Invalid decimal format.");
+                    return Task.CompletedTask;
+                }
             }
 
             bindingContext.Result = ModelBindingResult.Success(decimalValue);

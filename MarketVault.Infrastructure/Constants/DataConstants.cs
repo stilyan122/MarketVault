@@ -40,6 +40,9 @@
             public const int NumberMinValue = 0;
             public const int NumberMaxValue = 9999;
 
+            public const int NumberMinLength = 2;
+            public const int NumberMaxLength = 10;
+
             public const int NameMinLength = 5;
             public const int NameMaxLength = 50;
 
@@ -162,8 +165,11 @@
             public const string ProductMeasureRequiredExceptionMessage
                = "Field for measure is required!";
 
+            public const string ProductPurchasePriceFormatExceptioMessage
+               = "Invalid purchase price format.";
 
-
+            public const string ProductSalePriceFormatExceptioMessage
+               = "Invalid sale price format.";
 
 
             public const string CounterPartyNameRequiredExceptionMessage

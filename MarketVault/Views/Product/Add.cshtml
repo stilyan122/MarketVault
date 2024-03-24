@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="~/css/nomenclatures..css" />
 
 <div class="addProductContainer">
-    <form asp-action="Add" asp-controller="Product" id="addProductForm">
+    <form asp-action="Add" asp-controller="Product" id="addProductForm" novalidate>
         <div>
             <div>
                 <label asp-for="Name"> Product name</label>
@@ -31,14 +31,14 @@
         <div>
             <div>
                 <label asp-for="SalePrice"> Product sale price</label>
-                <input asp-for="SalePrice" />
+                <input id="SalePriceInput" asp-for="SalePrice" />
             </div>
             <span asp-validation-for="SalePrice"></span>
         </div>
         <div>
             <div>
                 <label asp-for="PurchasePrice">Product purchase price</label>
-                <input asp-for="PurchasePrice" />
+                <input id="PurchasePriceInput" asp-for="PurchasePrice" />
             </div>
             <span asp-validation-for="PurchasePrice"></span>
         </div>
@@ -83,7 +83,7 @@
                         ✘
                     </a>
                 </div>
-                <butto onclick=
+                <button onclick=
                     "ClickAddBtn(@Model.BarcodeMaxLength,
                     @Model.BarcodeMinLength)">Add barcode</button>
             </div>

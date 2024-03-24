@@ -39,7 +39,10 @@
                 return Task.CompletedTask;
             }
 
-            if (!DateTime.TryParse(valueAsString,
+            string[] formats = { "dd/MM/yyyy", "dd.MM.yyyy", "dd,MM,yyyy" };
+
+            if (!DateTime.TryParseExact(valueAsString,
+                formats,
                 CultureInfo.InvariantCulture,
                 DateTimeStyles.None,
                 out var dateTime))

@@ -40,19 +40,22 @@
         /// Product sale price
         /// </summary>
         [Required(ErrorMessage = ProductSalePriceRequiredExceptionMessage)]
-        [Range(NumberMinValue,
-            NumberMaxValue,
+        [StringLength(NumberMaxLength,
+            MinimumLength = NumberMinLength,
             ErrorMessage = ProductSalePriceRangeExceptionMessage)]
-        public decimal SalePrice { get; set; }
+        [RegularExpression(@"^\d+(\.\d+)?(,\d+)?$",
+            ErrorMessage = ProductSalePriceFormatExceptioMessage)]
+        public string SalePrice { get; set; } = string.Empty;
 
         /// <summary>
         /// Product purchase price
         /// </summary>
         [Required(ErrorMessage = ProductPurchasePriceRequiredExceptionMessage)]
-        [Range(NumberMinValue,
-            NumberMaxValue,
+        [StringLength(NumberMaxLength,
+            MinimumLength = NumberMinLength,
             ErrorMessage = ProductPurchasePriceRangeExceptionMessage)]
-        public decimal PurchasePrice { get; set; }
+        [RegularExpression(@"^\d+(\.\d+)?(,\d+)?$", ErrorMessage = ProductPurchasePriceFormatExceptioMessage)]
+        public string PurchasePrice { get; set; } = string.Empty;
 
         /// <summary>
         /// Product description
