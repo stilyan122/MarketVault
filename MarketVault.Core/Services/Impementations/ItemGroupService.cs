@@ -1,6 +1,7 @@
 ﻿namespace MarketVault.Core.Services.Impementations
 {
     using MarketVault.Core.Contracts;
+    using MarketVault.Core.Exceptions;
     using MarketVault.Core.Extensions;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
@@ -126,7 +127,7 @@
                 .UseIncludeItemGroupStatements()
                 .Where(p => p.Id == itemGroup.Id)
                 .FirstOrDefaultAsync()
-                ?? throw new ArgumentException("Entity not found");
+                ?? throw new EntityNotFoundException("Item group not found");
 
             entity.IsActive = false;
 
@@ -145,7 +146,7 @@
                 .UseIncludeItemGroupStatements()
                 .Where(p => p.Id == id)
                 .FirstOrDefaultAsync() ??
-                throw new ArgumentNullException("Entity is null!");
+                throw new EntityNotFoundException("Item group is null!");
 
             var serviceModel = new ItemGroupServiceModel()
             {
@@ -188,7 +189,7 @@
                 .UseIncludeItemGroupStatements()
                 .Where(p => p.Id == itemGroup.Id)
                 .FirstOrDefaultAsync()
-                ?? throw new ArgumentException("Entity not found");
+                ?? throw new EntityNotFoundException("Item group not found");
 
             entity.Name = itemGroup.Name;
 

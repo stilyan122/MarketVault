@@ -1,5 +1,6 @@
 ﻿namespace MarketVault.Controllers
 {
+    using MarketVault.Core.Exceptions;
     using MarketVault.Core.Services.Interfaces;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
@@ -37,68 +38,75 @@
         /// <returns></returns>
         public async Task<IActionResult> Index()
         {
-            // Create roles
-            string[] roleNames = { "Admin", "User", "Worker" };
-            foreach (var roleName in roleNames)
+            try
             {
-                var roleExists = await userService.RoleExistsAsync(roleName);
-                if (!roleExists)
+                // Create roles
+                string[] roleNames = { "Admin", "User", "Worker" };
+                foreach (var roleName in roleNames)
                 {
-                    var role = new IdentityRole(roleName);
-                    await userService.CreateRoleAsync(role);
-                    await userService.UpdateRoleAsync(role);
+                    var roleExists = await userService.RoleExistsAsync(roleName);
+                    if (!roleExists)
+                    {
+                        var role = new IdentityRole(roleName);
+                        await userService.CreateRoleAsync(role);
+                        await userService.UpdateRoleAsync(role);
+                    }
+                }
+
+                // Create admin user
+                var adminUser = await userService.FindUserByEmailAsync("admin@example.com");
+                if (adminUser == null)
+                {
+                    var user = new IdentityUser
+                    {
+                        UserName = "admin@example.com",
+                        Email = "admin@example.com"
+                    };
+                    var result = await userService.CreateUserAsync(user, "admin");
+                    if (result.Succeeded)
+                    {
+                        await userService.AddUserToRoleAsync(user, "Admin");
+                    }
+                    await userService.UpdateUserAsync(user);
+                }
+
+                // Create worker user
+                var workerUser = await userService.FindUserByEmailAsync("worker@example.com");
+                if (workerUser == null)
+                {
+                    var user = new IdentityUser
+                    {
+                        UserName = "worker@example.com",
+                        Email = "worker@example.com"
+                    };
+                    var result = await userService.CreateUserAsync(user, "worker");
+                    if (result.Succeeded)
+                    {
+                        await userService.AddUserToRoleAsync(user, "Worker");
+                    }
+                    await userService.UpdateUserAsync(user);
+                }
+
+                // Create user
+                var userUser = await userService.FindUserByEmailAsync("user@example.com");
+                if (userUser == null)
+                {
+                    var user = new IdentityUser
+                    {
+                        UserName = "user@example.com",
+                        Email = "user@example.com"
+                    };
+                    var result = await userService.CreateUserAsync(user, "user");
+                    if (result.Succeeded)
+                    {
+                        await userService.AddUserToRoleAsync(user, "User");
+                    }
+                    await userService.UpdateUserAsync(user);
                 }
             }
-
-            // Create admin user
-            var adminUser = await userService.FindUserByEmailAsync("admin@example.com");
-            if (adminUser == null)
+            catch (UserNotFoundException exc)
             {
-                var user = new IdentityUser
-                {
-                    UserName = "admin@example.com",
-                    Email = "admin@example.com"
-                };
-                var result = await userService.CreateUserAsync(user, "admin");
-                if (result.Succeeded)
-                {
-                    await userService.AddUserToRoleAsync(user, "Admin");
-                }
-                await userService.UpdateUserAsync(user);
-            }
-
-            // Create worker user
-            var workerUser = await userService.FindUserByEmailAsync("worker@example.com");
-            if (workerUser == null)
-            {
-                var user = new IdentityUser
-                {
-                    UserName = "worker@example.com",
-                    Email = "worker@example.com"
-                };
-                var result = await userService.CreateUserAsync(user, "worker");
-                if (result.Succeeded)
-                {
-                    await userService.AddUserToRoleAsync(user, "Worker");
-                }
-                await userService.UpdateUserAsync(user);
-            }
-
-            // Create user
-            var userUser = await userService.FindUserByEmailAsync("user@example.com");
-            if (userUser == null)
-            {
-                var user = new IdentityUser
-                {
-                    UserName = "user@example.com",
-                    Email = "user@example.com"
-                };
-                var result = await userService.CreateUserAsync(user, "user");
-                if (result.Succeeded)
-                {
-                    await userService.AddUserToRoleAsync(user, "User");
-                }
-                await userService.UpdateUserAsync(user);
+                logger.LogError(exc, "Home/Index");
             }
 
             return View();

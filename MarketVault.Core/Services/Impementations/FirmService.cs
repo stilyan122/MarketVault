@@ -1,6 +1,7 @@
 ﻿namespace MarketVault.Core.Services.Impementations
 {
     using MarketVault.Core.Contracts;
+    using MarketVault.Core.Exceptions;
     using MarketVault.Core.Extensions;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
@@ -118,7 +119,7 @@
                 .UseIncludeFirmStatements()
                 .Where(p => p.Id == id)
                 .FirstOrDefaultAsync() ??
-                throw new ArgumentNullException("Entity is null!");
+                throw new EntityNotFoundException("Firm is null!");
 
             var serviceModel = new FirmServiceModel()
             {
@@ -177,7 +178,7 @@
                .UseIncludeFirmStatements()
                .Where(p => p.Id == firm.Id)
                .FirstOrDefaultAsync()
-               ?? throw new ArgumentException("Entity not found");
+               ?? throw new EntityNotFoundException("Firm not found");
 
             entity.IsActive = false;
 
@@ -205,7 +206,7 @@
                 .UseIncludeFirmStatements()
                 .Where(p => p.Id == firm.Id)
                 .FirstOrDefaultAsync()
-                ?? throw new ArgumentException("Entity not found");
+                ?? throw new EntityNotFoundException("Firm not found");
 
                 entity.IsActive = false;
 
@@ -232,7 +233,7 @@
                 .UseIncludeFirmStatements()
                 .Where(p => p.Id == firm.Id)
                 .FirstOrDefaultAsync()
-                ?? throw new ArgumentException("Entity not found");
+                ?? throw new EntityNotFoundException("Firm not found");
 
             entity.PhoneNumber = firm.PhoneNumber;
             entity.ResponsiblePersonName = firm.ResponsiblePersonName;

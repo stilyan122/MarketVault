@@ -1,6 +1,7 @@
 ﻿namespace MarketVault.Core.Services.Impementations
 {
     using MarketVault.Core.Contracts;
+    using MarketVault.Core.Exceptions;
     using MarketVault.Core.Extensions;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
@@ -158,7 +159,7 @@
                 .UseIncludeProductStatements()
                 .Where(p => p.Id == product.Id)
                 .FirstOrDefaultAsync()
-                ?? throw new ArgumentException("Entity not found");
+                ?? throw new EntityNotFoundException("Product not found");
 
             entity.IsActive = false;
 
@@ -177,7 +178,7 @@
                 .UseIncludeProductStatements()
                 .Where(p => p.Id == id)
                 .FirstOrDefaultAsync() ??
-                throw new ArgumentNullException("Entity is null!");
+                throw new EntityNotFoundException("Product is null!");
 
             var serviceModel = new ProductServiceModel()
             {
@@ -215,7 +216,7 @@
                 .UseIncludeProductStatements()
                 .Where(p => p.Id == product.Id)
                 .FirstOrDefaultAsync()
-                ?? throw new ArgumentException("Entity not found");
+                ?? throw new EntityNotFoundException("Product not found");
             
             entity.CodeForScales = product.CodeForScales;
             entity.Name = product.Name;

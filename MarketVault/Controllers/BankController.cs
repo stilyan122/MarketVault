@@ -27,13 +27,22 @@
         private readonly IAddressService addressService = null!;
 
         /// <summary>
-        /// Default constructor, injecting services (DI)
+        /// Logger
+        /// </summary>
+        private readonly ILogger<BankController> logger;
+
+        /// <summary>
+        /// Default constructor, injecting services and logger (DI)
         /// </summary>
         /// <param name="service">IBankService</param>
         /// <param name="addressService">IAddressService</param>
-        public BankController(IBankService service,
+        /// <param name="logger">Logger</param>
+        public BankController(
+            ILogger<BankController> logger,
+            IBankService service,
             IAddressService addressService)
         {
+            this.logger = logger;
             this.service = service;
             this.addressService = addressService;
         }
@@ -219,6 +228,7 @@
             {
                 if (!int.TryParse(id, out int parsed))
                 {
+                    logger.LogError("Bad request - Bank/Edit - (GET)");
                     return BadRequest();
                 }
 
@@ -233,8 +243,9 @@
 
                 return View(viewModel);
             }
-            catch (EntityNotFoundException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "Bank/Edit - (GET)");
                 return NotFound();
             }
         }
@@ -252,6 +263,7 @@
             if (model == null ||
                 !int.TryParse(id, out int parsed))
             {
+                logger.LogError("Bad request - Bank/Edit - (POST)");
                 return BadRequest();
             }
 
@@ -259,8 +271,9 @@
             {
                 var entity = await this.service.GetByIdAsync(parsed);
             }
-            catch (EntityNotFoundException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "Bank/Edit - (POST)");
                 return NotFound();
             }
 
@@ -289,6 +302,7 @@
             {
                 if (!int.TryParse(id, out int parsed))
                 {
+                    logger.LogError("Bad request - Bank/Delete - (GET)");
                     return BadRequest();
                 }
 
@@ -306,8 +320,9 @@
 
                 return View("Delete", viewModel);
             }
-            catch (EntityNotFoundException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "Bank/Delete - (GET)");
                 return NotFound();
             }
         }
@@ -323,6 +338,7 @@
         {
             if (!int.TryParse(id, out int parsed))
             {
+                logger.LogError("Bad request - Bank/Delete - (POST)");
                 return BadRequest();
             }
 
@@ -339,8 +355,9 @@
 
                 await this.service.DeleteAsync(serviceModel);
             }
-            catch (EntityNotFoundException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "Bank/Delete - (POST)");
                 return NotFound();
             }
 
@@ -358,6 +375,7 @@
             {
                 if (!int.TryParse(id, out int parsed))
                 {
+                    logger.LogError("Bad request - Bank/Details");
                     return BadRequest();
                 }
 
@@ -375,8 +393,9 @@
 
                 return View(viewModel);
             }
-            catch (EntityNotFoundException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "Bank/Details");
                 return NotFound();
             }
         }
