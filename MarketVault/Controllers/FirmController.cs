@@ -1,6 +1,7 @@
 ﻿namespace MarketVault.Controllers
 {
     using MarketVault.Core;
+    using MarketVault.Core.Exceptions;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Models.Address;
@@ -26,15 +27,24 @@
         private readonly IAddressService addressService = null!;
 
         /// <summary>
-        /// Default constructor, injecting services (DI)
+        /// Logger
+        /// </summary>
+        private readonly ILogger<FirmController> logger;
+
+        /// <summary>
+        /// Default constructor, injecting services and logger (DI)
         /// </summary>
         /// <param name="service">IFirmService</param>
         /// <param name="addressService">IAddressService</param>
-        public FirmController(IFirmService service,
+        /// <param name="logger">Logger</param>
+        public FirmController(
+            ILogger<FirmController> logger,
+            IFirmService service,
             IAddressService addressService)
         {
             this.service = service;
             this.addressService = addressService;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -227,6 +237,7 @@
             {
                 if (!int.TryParse(id, out int parsed))
                 {
+                    logger.LogError("Bad request - Firm/Edit - (GET)");
                     return BadRequest();
                 }
 
@@ -244,8 +255,9 @@
 
                 return View(viewModel);
             }
-            catch (ArgumentNullException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "Bad request - Firm/Edit - (GET)");
                 return NotFound();
             }
         }
@@ -263,6 +275,7 @@
             if (model == null ||
                 !int.TryParse(id, out int parsed))
             {
+                logger.LogError("Bad request - Firm/Edit - (POST)");
                 return BadRequest();
             }
 
@@ -270,8 +283,9 @@
             {
                 var entity = await this.service.GetByIdAsync(parsed);
             }
-            catch (ArgumentNullException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "Firm/Edit - (POST)");
                 return NotFound();
             }
 
@@ -303,6 +317,7 @@
             {
                 if (!int.TryParse(id, out int parsed))
                 {
+                    logger.LogError("Bad request - Firm/Delete - (GET)");
                     return BadRequest();
                 }
 
@@ -323,8 +338,9 @@
 
                 return View("Delete", viewModel);
             }
-            catch (ArgumentNullException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "Firm/Delete - (GET)");
                 return NotFound();
             }
         }
@@ -340,6 +356,7 @@
         {
             if (!int.TryParse(id, out int parsed))
             {
+                logger.LogError("Bad request - Firm/Delete - (POST)");
                 return BadRequest();
             }
 
@@ -359,8 +376,9 @@
 
                 await this.service.DeleteAsync(serviceModel);
             }
-            catch (ArgumentNullException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "Firm/Delete - (POST)");
                 return NotFound();
             }
 
@@ -378,6 +396,7 @@
             {
                 if (!int.TryParse(id, out int parsed))
                 {
+                    logger.LogError("Bad request - Firm/Details");
                     return BadRequest();
                 }
 
@@ -398,8 +417,9 @@
 
                 return View(viewModel);
             }
-            catch (ArgumentNullException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "Firm/Details");
                 return NotFound();
             }
         }

@@ -34,21 +34,28 @@
         private readonly IBankService bankService = null!;
 
         /// <summary>
-        /// Default constructor, injecting services (DI)
+        /// Logger
+        /// </summary>
+        private readonly ILogger<CounterPartyController> logger;
+
+        /// <summary>
+        /// Default constructor, injecting services and logger (DI)
         /// </summary>
         /// <param name="service">ICounterPartyService</param>
         /// <param name="firmService">IFirmService</param>
         /// <param name="bankService">IBankService</param>
-        public CounterPartyController(ICounterPartyService service,
+        /// <param name="logger">Logger</param>
+        public CounterPartyController(
+            ILogger<CounterPartyController> logger,
+            ICounterPartyService service,
             IFirmService firmService,
             IBankService bankService)
         {
             this.service = service;
             this.firmService = firmService;
             this.bankService = bankService;
+            this.logger = logger;
         }
-
-      
 
         /// <summary>
         /// Default Index action
@@ -242,6 +249,7 @@
             {
                 if (!int.TryParse(id, out int parsed))
                 {
+                    logger.LogError("Bad request - CounterParty/Edit - (GET)");
                     return BadRequest();
                 }
 
@@ -262,8 +270,9 @@
 
                 return View(viewModel);
             }
-            catch (EntityNotFoundException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "CounterParty/Edit - (GET)");
                 return NotFound();
             }
         }
@@ -281,6 +290,7 @@
             if (model == null ||
                 !int.TryParse(id, out int parsed))
             {
+                logger.LogError("Bad request - CounterParty/Edit - (POST)");
                 return BadRequest();
             }
 
@@ -288,8 +298,9 @@
             {
                 var entity = await this.service.GetByIdAsync(parsed);
             }
-            catch (EntityNotFoundException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "CounterParty/Edit - (POST)");
                 return NotFound();
             }
 
@@ -322,7 +333,8 @@
             try
             {
                 if (!int.TryParse(id, out int parsed))
-                {
+                { 
+                    logger.LogError("Bad request - CounterParty/Delete - (GET)");
                     return BadRequest();
                 }
 
@@ -348,8 +360,9 @@
 
                 return View("Delete", viewModel);
             }
-            catch (EntityNotFoundException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "CounterParty/Delete - (GET)");
                 return NotFound();
             }
         }
@@ -365,6 +378,7 @@
         {
             if (!int.TryParse(id, out int parsed))
             {
+                logger.LogError("Bad request - CounterParty/Delete - (POST)");
                 return BadRequest();
             }
 
@@ -385,8 +399,9 @@
 
                 await this.service.DeleteAsync(serviceModel);
             }
-            catch (EntityNotFoundException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "CounterParty/Delete - (POST)");
                 return NotFound();
             }
 
@@ -404,6 +419,7 @@
             {
                 if (!int.TryParse(id, out int parsed))
                 {
+                    logger.LogError("Bad request - CounterParty/Details");
                     return BadRequest();
                 }
 
@@ -433,8 +449,9 @@
 
                 return View(viewModel);
             }
-            catch (EntityNotFoundException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "CounterParty/Details");
                 return NotFound();
             }
         }

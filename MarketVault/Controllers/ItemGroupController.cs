@@ -1,6 +1,7 @@
 ﻿namespace MarketVault.Controllers
 {
     using MarketVault.Core;
+    using MarketVault.Core.Exceptions;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Models.ItemGroup;
@@ -20,12 +21,21 @@
         private readonly IItemGroupService service = null!;
 
         /// <summary>
-        /// Default constructor, injecting service (DI)
+        /// Logger
+        /// </summary>
+        private readonly ILogger<ItemGroupController> logger;
+
+        /// <summary>
+        /// Default constructor, injecting service and logger (DI)
         /// </summary>
         /// <param name="service">IItemGroupService</param>
-        public ItemGroupController(IItemGroupService service)
+        /// <param name="logger">Logger</param>
+        public ItemGroupController(
+            ILogger<ItemGroupController> logger,
+            IItemGroupService service)
         {
             this.service = service;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -200,6 +210,7 @@
             {
                 if (!int.TryParse(id, out int parsed))
                 {
+                    logger.LogError("Bad request - ItemGroup/Edit - (GET)");
                     return BadRequest();
                 }
 
@@ -212,8 +223,9 @@
 
                 return View(viewModel);
             }
-            catch (ArgumentNullException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "ItemGroup/Edit - (GET)");
                 return NotFound();
             }
         }
@@ -231,6 +243,7 @@
             if (model == null ||
                 !int.TryParse(id, out int parsed))
             {
+                logger.LogError("Bad request - ItemGroup/Edit - (POST)");
                 return BadRequest();
             }
 
@@ -238,8 +251,9 @@
             {
                 var entity = await this.service.GetByIdAsync(parsed);
             }
-            catch (ArgumentNullException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "ItemGroup/Edit - (POST)");
                 return NotFound();
             }
 
@@ -267,6 +281,7 @@
             {
                 if (!int.TryParse(id, out int parsed))
                 {
+                    logger.LogError("Bad request - ItemGroup/Delete - (GET)");
                     return BadRequest();
                 }
 
@@ -281,8 +296,9 @@
 
                 return View("Delete", viewModel);
             }
-            catch (ArgumentNullException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "ItemGroup/Delete - (GET)");
                 return NotFound();
             }
         }
@@ -298,6 +314,7 @@
         {
             if (!int.TryParse(id, out int parsed))
             {
+                logger.LogError("Bad request - ItemGroup/Delete - (POST)");
                 return BadRequest();
             }
 
@@ -313,8 +330,9 @@
 
                 await this.service.DeleteAsync(serviceModel);
             }
-            catch (ArgumentNullException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "ItemGroup/Delete - (POST)");
                 return NotFound();
             }
 

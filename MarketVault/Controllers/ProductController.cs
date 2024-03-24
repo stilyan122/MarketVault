@@ -1,6 +1,7 @@
 ﻿namespace MarketVault.Controllers
 {
     using MarketVault.Core;
+    using MarketVault.Core.Exceptions;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Models.ItemGroup;
@@ -33,18 +34,27 @@
         private readonly IMeasureService measureService = null!;
 
         /// <summary>
-        /// Default constructor, injecting services (DI)
+        /// Logger
+        /// </summary>
+        private readonly ILogger<ProductController> logger;
+
+        /// <summary>
+        /// Default constructor, injecting services and logger (DI)
         /// </summary>
         /// <param name="service">IProductService</param>
         /// <param name="itemGroupService">IItemGroupService</param>
         /// <param name="measureService">IMeasureService</param>
-        public ProductController(IProductService service,
+        /// <param name="logger">Logger</param>
+        public ProductController(
+            ILogger<ProductController> logger,
+            IProductService service,
             IItemGroupService itemGroupService,
             IMeasureService measureService)
         {
             this.service = service;
             this.itemGroupService = itemGroupService;
             this.measureService = measureService;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -249,6 +259,7 @@
             {
                 if(!int.TryParse(id, out int parsed))
                 {
+                    logger.LogError("Bad request - Product/Edit - (GET)");
                     return BadRequest();
                 }
 
@@ -270,8 +281,9 @@
 
                 return View(viewModel);
             }
-            catch (ArgumentNullException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "Product/Edit - (GET)");
                 return NotFound();
             }
         }
@@ -289,6 +301,7 @@
             if (model == null || 
                 !int.TryParse(id, out int parsed))
             {
+                logger.LogError("Bad request - Product/Edit - (POST)");
                 return BadRequest();
             }
 
@@ -296,8 +309,9 @@
             {
                 var entity = await this.service.GetByIdAsync(parsed);
             }
-            catch (ArgumentNullException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "Product/Edit - (POST)");
                 return NotFound();
             }
 
@@ -333,6 +347,7 @@
             {
                 if (!int.TryParse(id, out int parsed))
                 {
+                    logger.LogError("Bad request - Product/Delete - (GET)");
                     return BadRequest();
                 }
 
@@ -355,8 +370,9 @@
 
                 return View("Delete", viewModel);
             }
-            catch (ArgumentNullException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "Product/Delete - (GET)");
                 return NotFound();
             }
         }
@@ -372,6 +388,7 @@
         {
             if (!int.TryParse(id, out int parsed))
             {
+                logger.LogError("Bad request - Product/Delete - (POST)");
                 return BadRequest();
             }
 
@@ -401,8 +418,9 @@
 
                 await this.service.DeleteAsync(serviceModel);
             }
-            catch (ArgumentNullException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "Product/Delete - (POST)");
                 return NotFound();
             }
 
@@ -420,6 +438,7 @@
             {
                 if (!int.TryParse(id, out int parsed))
                 {
+                    logger.LogError("Bad request - Product/Details");
                     return BadRequest();
                 }
 
@@ -445,8 +464,9 @@
 
                 return View(viewModel);
             }
-            catch (ArgumentNullException)
+            catch (EntityNotFoundException exc)
             {
+                logger.LogError(exc, "Product/Details");
                 return NotFound();
             }
         }
