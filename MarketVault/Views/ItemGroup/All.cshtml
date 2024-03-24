@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<ItemGroupViewModel>
+@inject IUserService service
 
 @{
     ViewBag.Title = "All item groups";
@@ -96,7 +97,8 @@
                             document.getElementById(@counter),
                         );
                     </script>
-                    @if (User.IsInRole("Admin"))
+                    @if (await service.IsInRoleAsync(new string[] { "Admin", "Worker" },
+                   User.Id()))
                     {
                         <div class="itemGroupButtons">
                             <a id="itemGroupEditBtn"
