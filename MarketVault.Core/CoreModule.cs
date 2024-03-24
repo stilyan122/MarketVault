@@ -38,6 +38,7 @@
             services.AddScoped<IBankService, BankService>();
             services.AddScoped<IFirmService, FirmService>();
             services.AddScoped<IAddressService, AddressService>();
+            services.AddScoped<IUserService, UserService>();
 
             services.AddMvc(options =>
                 options
@@ -57,8 +58,10 @@
         public static IServiceCollection AddDbServices(this IServiceCollection services,
             IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("DefaultConnection") ??
-                throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            //var connectionString = configuration.GetConnectionString("DefaultConnection") ??
+            //    throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
+            var connectionString = "Server=.;Database=MarketVault;Trusted_Connection=True;MultipleActiveResultSets=true";
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {
@@ -91,6 +94,11 @@
             })
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.AccessDeniedPath = "/Home/Error403";
+            });
 
             return services;
         }

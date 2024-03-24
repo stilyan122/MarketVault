@@ -153,7 +153,7 @@
         /// </summary>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Worker")]
         public IActionResult Add()
         {
             var formModel = new ItemGroupFormModel
@@ -169,7 +169,7 @@
         /// <param name="model">ItemGroupFormModel - model to add</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Worker")]
         public async Task<IActionResult> Add(ItemGroupFormModel model)
         {
             if (!ModelState.IsValid)
@@ -193,7 +193,7 @@
         /// <param name="id">Id to use for update</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Worker")]
         public async Task<IActionResult> Edit(string id)
         {
             try
@@ -225,7 +225,7 @@
         /// <param name="model">Form model to use</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Worker")]
         public async Task<IActionResult> Edit(string id, ItemGroupFormModel model)
         {
             if (model == null ||
@@ -260,7 +260,7 @@
         /// <param name="id">Id to use for element</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Worker")]
         public async Task<IActionResult> DeleteGet(string id)
         {
             try
@@ -293,7 +293,7 @@
         /// <param name="id">Id to use for element</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Worker")]
         public async Task<IActionResult> DeletePost(string id)
         {
             if (!int.TryParse(id, out int parsed))

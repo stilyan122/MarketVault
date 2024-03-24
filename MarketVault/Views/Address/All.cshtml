@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<AddressViewModel>
+@inject IUserService service
 
 @{
     ViewBag.Title = "All addresses";
@@ -97,7 +98,8 @@
                             document.getElementById(@counter),
                         );
                     </script>
-                    @if (User.IsInRole("Admin"))
+                    @if (await service.IsInRoleAsync(new string[] { "Admin", "Worker" },
+                   User.Id()))
                     {
                         <div class="addressButtons">
                             <a id="addressEditBtn"

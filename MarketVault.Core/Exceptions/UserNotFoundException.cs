@@ -1,15 +1,15 @@
 ﻿namespace MarketVault.Core.Exceptions
 {
     /// <summary>
-    /// Custom exception class for no entity found exception
+    /// Custom exception class for no user found exception
     /// </summary>
-    public class EntityNotFoundException : Exception
+    public class UserNotFoundException : Exception
     {
         /// <summary>
         /// Default constructor with default message
         /// </summary>
-        public EntityNotFoundException()
-            :base("Entity not found!")
+        public UserNotFoundException()
+            : base("User not found!")
         {
         }
 
@@ -17,9 +17,9 @@
         /// Constructor with message
         /// </summary>
         /// <param name="message">Message</param>
-        public EntityNotFoundException(string message)
-            :base(message)
-        {  
+        public UserNotFoundException(string message)
+            : base(message)
+        {
         }
     }
 }

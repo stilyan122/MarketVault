@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<FirmViewModel>
+@inject IUserService service
 
 @{
     ViewBag.Title = "All firms";
@@ -112,7 +113,8 @@
                            asp-controller="Firm" asp-action="Details" asp-route-id="@firm.Id">
                             Details
                         </a>
-                        @if (User.IsInRole("Admin"))
+                        @if (await service.IsInRoleAsync(new string[] { "Admin", "Worker" },
+                       User.Id()))
                         {
                             <a id="firmEditBtn"
                                asp-controller="Firm" asp-action="Edit" asp-route-id="@firm.Id">
