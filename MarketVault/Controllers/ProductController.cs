@@ -366,6 +366,7 @@
                     Measure = entity.Measure.Name,
                     PurchasePrice = entity.PurchasePrice,
                     SalePrice = entity.SalePrice,
+                    Barcodes = entity.Barcodes.Select(b => b.Value)
                 };
 
                 return View("Delete", viewModel);

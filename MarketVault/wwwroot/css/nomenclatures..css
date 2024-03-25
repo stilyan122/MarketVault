@@ -1,8 +1,9 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Capriola&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 /* Counter party */
-    
+
 .addCounterPartyContainer {
     background: hsla(205, 43%, 80%, 1);
     background: linear-gradient(180deg, hsla(205, 43%, 80%, 1) 0%, hsla(231, 75%, 87%, 1) 89%, hsla(240, 100%, 90%, 1) 100%);
@@ -229,6 +230,235 @@
     font-weight: bold;
     -webkit-text-stroke: 1px black;
     margin-top: 1em;
+}
+
+.counterPartyDetailsContainer {
+    background: hsla(125, 85%, 65%, 1);
+    background: linear-gradient(270deg, hsla(125, 85%, 65%, 1) 0%, hsla(125, 63%, 45%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(125, 85%, 65%, 1) 0%, hsla(125, 63%, 45%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(125, 85%, 65%, 1) 0%, hsla(125, 63%, 45%, 1) 100%);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    border-radius: 12px;
+    padding: 2em;
+    font-family: "Capriola", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.counterPartyDetailsContainer .counterPartyDetailsDiv {
+    display: flex;
+    margin: 3em;
+    background-color: #a7faae;
+    padding: 0.4em;
+    font-family: "Capriola", sans-serif;
+    border-radius: 8px;
+}
+
+.counterPartyDetailsContainer div label {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.counterPartyDetailsContainer div h4 {
+    margin-left: auto;
+}
+
+.counterPartyDetailsContainer div p {
+    margin-left: auto;
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.counterPartyDetailsContainer div div {
+    margin: 0;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.editCounterPartyContainer {
+    background: hsla(205, 43%, 80%, 1);
+    background: linear-gradient(180deg, hsla(205, 43%, 80%, 1) 0%, hsla(231, 75%, 87%, 1) 89%, hsla(240, 100%, 90%, 1) 100%);
+    padding: 48px;
+    border-radius: 12px;
+    height: 100%;
+    margin-top: 4.809%;
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+}
+
+.editCounterPartyContainer form {
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    gap: 4px;
+    text-align: right;
+}
+
+.editCounterPartyContainer span {
+    color: #c90016;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.editCounterPartyContainer form div div {
+    display: flex;
+}
+
+.editCounterPartyContainer form div div input,
+.editCounterPartyContainer form div div select {
+    border-radius: 4px;
+    padding: 4px;
+    animation: displayFormTags 2s ease 0s 1 normal forwards;
+    margin-left: auto;
+    width: 20em;
+}
+
+#editCounterPartyBtn {
+    align-self: center;
+    padding: 12px 32px;
+    border-radius: 8px;
+    margin-top: 50px;
+    border: none;
+    background-color: #9ABED8;
+    color: white;
+}
+
+#editCounterPartyBtn:hover {
+    animation: editCounterPartyShake 2s ease 0s 1 normal forwards;
+}
+
+@keyframes editCounterPartyShake {
+    0%, 100% {
+        transform: rotate(0deg);
+        transform-origin: 50% 100%;
+    }
+
+    10% {
+        transform: rotate(2deg);
+    }
+
+    20%, 40%, 60% {
+        transform: rotate(-4deg);
+    }
+
+    30%, 50%, 70% {
+        transform: rotate(4deg);
+    }
+
+    80% {
+        transform: rotate(-2deg);
+    }
+
+    90% {
+        transform: rotate(2deg);
+    }
+}
+
+@keyframes displayCounterPartyFormTags {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+#detailsCounterPartiesBtns {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#backToAllCounterPartiesBtn,
+#homePageInCounterPartiesBtn {
+    border-radius: 8px;
+    background-color: #a7faae;
+    text-decoration: none;
+    padding: 1em;
+    margin: 1em;
+    border: 1px solid black;
+    color: #1c9125;
+    font-weight: 500;
+}
+
+#backToAllCounterPartiesBtn:hover,
+#homePageInCounterPartiesBtn:hover {
+    background-color: #127019;
+    color: white;
+}
+
+.deleteCounterPartyContainer {
+    background: hsla(60, 100%, 49%, 1);
+    background: linear-gradient(270deg, hsla(60, 100%, 49%, 1) 0%, hsla(88, 62%, 45%, 1) 67%);
+    background: -moz-linear-gradient(270deg, hsla(60, 100%, 49%, 1) 0%, hsla(88, 62%, 45%, 1) 67%);
+    background: -webkit-linear-gradient(270deg, hsla(60, 100%, 49%, 1) 0%, hsla(88, 62%, 45%, 1) 67%);
+    padding: 20px;
+    border-radius: 12px;
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.deleteCounterPartyContainer .deleteCounterPartyInfoContainer {
+    display: flex;
+    margin-top: 1.5em;
+    background-color: white;
+    padding: 1em;
+    border-radius: 12px;
+    margin: 1em;
+}
+
+.deleteCounterPartyContainer .deleteCounterPartyInfoContainer label {
+    margin-right: auto;
+    font-size: 1.5em;
+    font-weight: 900;
+}
+
+.deleteCounterPartyContainer .deleteCounterPartyInfoContainer h4 {
+    font-size: 1.5em;
+    font-weight: 400;
+    margin: 0;
+    width: 40%;
+    word-wrap: break-word;
+    margin-right: 3em;
+}
+
+.deleteCounterPartyContainer .deleteCounterPartyInfoContainer p {
+    font-size: 1.5em;
+}
+
+.deleteCounterPartyContainer .deleteCounterPartyInfoContainer div {
+    margin-right: 3em;
+    display: block;
+}
+
+.submitCounterPartyDeleteBtnContainer {
+    background-color: none;
+    display: flex;
+    justify-content: center;
+}
+
+.submitCounterPartyDeleteBtnContainer button {
+    font-size: 1.8em;
+    background-color: #d6d602;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 8px;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.submitCounterPartyDeleteBtnContainer button:hover {
+    background-color: #a6a602;
 }
 
 /* Product */
@@ -810,6 +1040,79 @@
     font-weight: bold;
     -webkit-text-stroke: 1px black;
     margin-top: 1em;
+}
+
+.deleteProductContainer {
+    background: hsla(274, 87%, 65%, 1);
+    background: linear-gradient(270deg, hsla(274, 87%, 65%, 1) 0%, hsla(190, 64%, 54%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(274, 87%, 65%, 1) 0%, hsla(190, 64%, 54%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(274, 87%, 65%, 1) 0%, hsla(190, 64%, 54%, 1) 100%);
+    padding: 20px;
+    border-radius: 12px;
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.container{
+    margin: auto;
+}
+
+.deleteProductContainer .deleteProductInfoContainer {
+    display: flex;
+    margin-top: 1.5em;
+    background-color: white;
+    padding: 1em;
+    border-radius: 12px;
+    margin: 1em;
+}
+
+.deleteProductContainer .deleteProductInfoContainer label {
+    margin-right: auto;
+    font-size: 1.5em;
+    font-weight: 900;
+}
+
+.deleteProductContainer .deleteProductInfoContainer h4 {
+    font-size: 1.5em;
+    font-weight: 400;
+    margin: 0;
+    width: 40%;
+    word-wrap: break-word;
+    margin-right: 3em;
+}
+
+.deleteProductContainer .deleteProductInfoContainer p {
+    font-size: 1.5em;
+}
+
+.deleteProductContainer .deleteProductInfoContainer div{
+    margin-right: 3em;
+    display: block;
+}
+
+.submitProductDeleteBtnContainer {
+    background-color: none;
+    display: flex;
+    justify-content: center;
+}
+
+.submitProductDeleteBtnContainer button {
+    font-size: 1.8em;
+    background-color: #B159F3;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 8px;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.submitProductDeleteBtnContainer button:hover {
+    background-color: #963fd9;
 }
 
 /* Firm */
@@ -1902,6 +2205,7 @@
 }
 
 /* Pop Up product menu */
+
 #popUpContainerOverlay {
     position: fixed;
     top: 0;

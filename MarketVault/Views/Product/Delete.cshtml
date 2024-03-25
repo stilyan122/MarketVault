@@ -4,53 +4,67 @@
     ViewBag.Title = "Delete product";
 }
 
-<div class="editProductContainer">
+<link rel="stylesheet" href="~/css/nomenclatures..css" />
+
+<div class="deleteProductContainer">
     <form 
         asp-action="DeletePost" 
         asp-controller="Product" 
         id="deleteProductForm" 
         method="post"
         asp-route-id="@Model.Id">
-        <div>
+        <div class="deleteProductInfoContainer">
             <label asp-for="Name">Product name</label>
             <h4>@Model.Name</h4>
         </div>
-        <div>
+        <div class="deleteProductInfoContainer">
             <label asp-for="CashRegisterName">Product cash register name</label>
             <h4>@Model.CashRegisterName</h4>
         </div>
-        <div>
+        <div class="deleteProductInfoContainer">
             <label asp-for="CodeForScales">Product code for scales</label>
             <h4>@Model.CodeForScales</h4>
         </div>
-        <div>
+        <div class="deleteProductInfoContainer">
             <label asp-for="SalePrice">Product sale price</label>
             <h4>@Model.SalePrice</h4>
         </div>
-        <div>
+        <div class="deleteProductInfoContainer">
             <label asp-for="PurchasePrice">Product purchase price</label>
             <h4>@Model.PurchasePrice</h4>
         </div>
-        <div>
+        <div class="deleteProductInfoContainer">
             <label asp-for="Description">Product description</label>
             <h4>@Model.Description</h4>
         </div>
-        <div>
+        <div class="deleteProductInfoContainer">
             <label asp-for="ItemGroup">Item Group</label>
             <h4>@Model.ItemGroup</h4>
         </div>
-        <div>
+        <div class="deleteProductInfoContainer">
             <label asp-for="Measure">Measure</label>
             <h4>@Model.Measure</h4>
         </div>
-        <div>
-            <label asp-for="Barcodes">Barcodes</label>
-            @foreach (string barcode in Model.Barcodes)
+        <div class="deleteProductInfoContainer">
+            @if (Model.Barcodes.Count() != 0)
             {
-                <p>@barcode</p>
+                <label asp-for="Barcodes">Barcodes</label>
+                <div>
+                    @foreach (string barcode in Model.Barcodes)
+                    {
+                        <p>@barcode</p>
+                    }
+                </div>
+            }
+            else
+            {
+                <label asp-for="Barcodes">Barcodes</label>
+                <h4>None</h4>
             }
         </div>
 
-        <button type="submit">Delete Product</button>
+        <div class="submitProductDeleteBtnContainer">
+            <button type="submit">Delete Product</button>
+        </div>
     </form>
 </div>

@@ -25,7 +25,8 @@
         /// </summary>
         /// <param name="logger">Logger</param>
         /// <param name="service">IUserService</param>
-        public HomeController(ILogger<HomeController> logger,
+        public HomeController(
+            ILogger<HomeController> logger,
             IUserService service)
         {
             this.logger = logger;
