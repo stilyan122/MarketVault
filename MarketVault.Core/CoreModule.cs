@@ -30,15 +30,16 @@
         {
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
-            services.AddScoped<IProductService, ProductService>();
-            services.AddScoped<ICounterPartyService, CounterPartyService>();
-            services.AddScoped<IItemGroupService, ItemGroupService>();
-            services.AddScoped<IMeasureService, MeasureService>();
-            services.AddScoped<IProductMeasureService, ProductMeasureService>();
-            services.AddScoped<IBankService, BankService>();
-            services.AddScoped<IFirmService, FirmService>();
-            services.AddScoped<IAddressService, AddressService>();
-            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IProductService, ProductService>()
+            .AddScoped<ICounterPartyService, CounterPartyService>()
+            .AddScoped<IItemGroupService, ItemGroupService>()
+            .AddScoped<IMeasureService, MeasureService>()
+            .AddScoped<IProductMeasureService, ProductMeasureService>()
+            .AddScoped<IBankService, BankService>()
+            .AddScoped<IFirmService, FirmService>()
+            .AddScoped<IAddressService, AddressService>()
+            .AddScoped<IUserService, UserService>()
+            .AddScoped<IOperationService, OperationService>();
 
             services.AddMvc(options =>
                 options

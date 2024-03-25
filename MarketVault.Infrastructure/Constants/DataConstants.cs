@@ -112,7 +112,7 @@
             public const int BankCodeMaxLength = 12;
 
             public const int BankIBANMinLength = 8;
-            public const int BankIBANMaxLength = 18;
+            public const int BankIBANMaxLength = 26;
         }
 
         /// <summary>

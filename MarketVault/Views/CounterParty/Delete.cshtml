@@ -4,45 +4,49 @@
     ViewBag.Title = "Delete counter party";
 }
 
-<div class="editCounterPartyContainer">
+<link rel="stylesheet" href="~/css/nomenclatures..css" />
+
+<div class="deleteCounterPartyContainer">
     <form asp-action="DeletePost"
           asp-controller="CounterParty"
           id="deleteCounterPartyForm"
           method="post"
           asp-route-id="@Model.Id">
-        <div>
+        <div class="deleteCounterPartyInfoContainer">
             <label asp-for="Name">Counter party name</label>
             <h4>@Model.Name</h4>
         </div>
-        <div>
+        <div class="deleteCounterPartyInfoContainer">
             <label asp-for="VATNumber">Counter party VAT Number</label>
             <h4>@Model.VATNumber</h4>
         </div>
-        <div>
+        <div class="deleteCounterPartyInfoContainer">
             <label asp-for="ValueAddedTaxLawId">Counter party VATL Id</label>
             <h4>@Model.ValueAddedTaxLawId</h4>
         </div>
-        <div>
+        <div class="deleteCounterPartyInfoContainer">
             <label asp-for="BankCode">Counter party bank code</label>
             <h4>@Model.BankCode</h4>
         </div>
-        <div>
+        <div class="deleteCounterPartyInfoContainer">
             <label asp-for="BankIBAN">Counter party bank IBAN</label>
             <h4>@Model.BankIBAN</h4>
         </div>
-        <div>
+        <div class="deleteCounterPartyInfoContainer">
             <label asp-for="BankName">Counter party bank Name</label>
             <h4>@Model.BankName</h4>
         </div>
-        <div>
+        <div class="deleteCounterPartyInfoContainer">
             <label asp-for="BankAddress">Bank Address</label>
             <h4>@Model.BankAddress</h4>
         </div>
-        <div>
+        <div class="deleteCounterPartyInfoContainer">
             <label asp-for="FirmAddress">Firm Address</label>
             <h4>@Model.FirmAddress</h4>
         </div>
 
-        <button type="submit">Delete Counter party</button>
+        <div class="submitCounterPartyDeleteBtnContainer">
+            <button type="submit">Delete Counter party</button>
+        </div>
     </form>
 </div>
