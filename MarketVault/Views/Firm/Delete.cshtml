@@ -4,33 +4,37 @@
     ViewBag.Title = "Delete firm";
 }
 
-<div class="editFirmContainer">
+<link rel="stylesheet" href="~/css/nomenclatures..css" />
+
+<div class="deleteFirmContainer">
     <form asp-action="DeletePost"
           asp-controller="Firm"
           id="deleteFirmForm"
           method="post"
           asp-route-id="@Model.Id">
-        <div>
+        <div class="deleteFirmInfoContainer">
             <label asp-for="Name">Firm name</label>
             <h4>@Model.Name</h4>
         </div>
-        <div>
+        <div class="deleteFirmInfoContainer">
             <label asp-for="Email">Firm email</label>
             <h4>@Model.Email</h4>
         </div>
-        <div>
+        <div class="deleteFirmInfoContainer">
             <label asp-for="PhoneNumber">Firm phone number</label>
             <h4>@Model.PhoneNumber</h4>
         </div>
-        <div>
+        <div class="deleteFirmInfoContainer">
             <label asp-for="ResponsiblePersonName">Firm responsible person name</label>
             <h4>@Model.ResponsiblePersonName</h4>
         </div>
-        <div>
+        <div class="deleteFirmInfoContainer">
             <label asp-for="Address">Firm address</label>
             <h4>@Model.Address</h4>
         </div>
 
-        <button type="submit">Delete Firm</button>
+        <div class="submitFirmDeleteBtnContainer">
+            <button type="submit">Delete Firm</button>
+        </div>
     </form>
 </div>
