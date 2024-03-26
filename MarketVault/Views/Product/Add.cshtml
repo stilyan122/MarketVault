@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="~/css/nomenclatures..css" />
 
 <div class="addProductContainer">
-    <form asp-action="Add" asp-controller="Product" id="addProductForm" novalidate>
+    <form asp-action="Add" asp-controller="Product" id="addProductForm">
         <div>
             <div>
                 <label asp-for="Name"> Product name</label>
@@ -82,30 +82,38 @@
                     <a id="xBtn">
                         ✘
                     </a>
+                    <input id="barcodeInputField"/>
                 </div>
-                <button onclick=
-                    "ClickAddBtn(@Model.BarcodeMaxLength,
-                    @Model.BarcodeMinLength)">Add barcode</button>
+                <button type="button" id="addBarcodeSubmitBtn">Add barcode</button>
             </div>
         </div>
+
+        <input type="hidden" value="@Model.BarcodeMaxLength" id="barcodeMaxLengthInput"/>
+
+        <input type="hidden" value="@Model.BarcodeMinLength" id="barcodeMinLengthInput"/>
 
         <button type="button" id="addBarcodeBtn">Add Barcode</button>
 
         <button type="submit" id="addProductBtn">Add Product</button>
+
+        <div id="barcodesDivContainer">
+            Barcodes
+        </div>
     </form>
 </div>
 
 <script>
-    console.log(2);
     var popUpContainerOverlay = document.getElementById("popUpContainerOverlay");
     var popUpContainer = document.getElementById("popUpContainer");
 
     popUpContainerOverlay.style.display = 'none';
     popUpContainer.style.display = 'none';
 
-    function ClickAddBtn(barcodeMaxLength, barcodeMinLength) {
-        console.log(1);
-        var btn = document.getElementById('addBarcodeBtn');
+    var btn = document.getElementById('addBarcodeBtn');
+
+    var addBarcodeBtn = document.getElementById('addBarcodeSubmitBtn');
+    btn.addEventListener('click', function(event)
+    {
         var popUpContainerOverlay = document.getElementById("popUpContainerOverlay");
         var popUpContainer = document.getElementById("popUpContainer");
 
@@ -117,37 +125,57 @@
             popUpContainerOverlay.style.display = 'none';
         });
 
-            // $.ajax({
-            //     method: 'GET',
-            //     url: 'myservice/username',
-            //     data: { id: '42' }
-            // })
-            // .done(function success(data) {
+        // $.ajax({
+        //     method: 'GET',
+        //     url: 'myservice/username',
+        //     data: { id: '42' }
+        // })
+        // .done(function success(data) {
 
-            // })
-            // .fail(function fail(data, status) {
+        // })
+        // .fail(function fail(data, status) {
 
-            // });
+        // });
+        
+        popUpContainerOverlay.style.display = 'flex';
+        popUpContainer.style.display = 'block';
 
-            popUpContainerOverlay.style.display = 'flex';
-            popUpContainer.style.display = 'block';
+        var parent = document.getElementById('popUpContainer')
+        var section = document.createElement('section');
+        section.id = 'sectionPopUp';
+        parent.appendChild(section);
 
-            var parent = document.getElementById('popUpContainer')
-            var section = document.createElement('section');
-            section.id = 'sectionPopUp';
-            parent.appendChild(section);
+        popUpContainer.addEventListener('click', function (event2) {
+            event2.stopPropagation();
+        });
 
-            popUpContainer.addEventListener('click', function (event2) {
-                event2.stopPropagation();
-            });
+        popUpContainerOverlay.addEventListener('click', function (event2) {
+            event2.preventDefault();
 
-            popUpContainerOverlay.addEventListener('click', function (event2) {
-                event2.preventDefault();
+            popUpContainer.style.display = 'none';
+            popUpContainerOverlay.style.display = 'none';
+        });
 
+        addBarcodeBtn.addEventListener('click', function (event) {
+            var barcodeInputField = document.getElementById('barcodeInputField');
+            var inputValue = barcodeInputField.value;
+            var maxLengthValue = document.getElementById('barcodeMaxLengthInput').value;
+            var minLengthValue = document.getElementById('barcodeMinLengthInput').value;
+
+            if (inputValue.length <= maxLengthValue && 
+                inputValue.length >= minLengthValue) {
+                var domElement = document.createElement('div');
+                domElement.textContent = inputValue;
+                var parent = document.getElementById('barcodesDivContainer');
+                parent.appendChild(domElement);
                 popUpContainer.style.display = 'none';
                 popUpContainerOverlay.style.display = 'none';
-            });
-    }
+                barcodeInputField.value = '';
+            } else{
+                console.log('invalid');
+            }
+        });
+    });
 </script>
 
 @section Scripts {

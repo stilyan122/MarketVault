@@ -7,36 +7,38 @@
 <link rel="stylesheet" href="~/css/nomenclatures..css" />
 
 <div class="firmDetailsContainer">
-    <div>
+    <div class="firmDetailsDiv">
         <label asp-for="Name">Firm name</label>
         <h4>@Model.Name</h4>
     </div>
 
-    <div>
+    <div class="firmDetailsDiv">
         <label asp-for="Email">Firm email</label>
         <h4>@Model.Email</h4>
     </div>
 
-    <div>
+    <div class="firmDetailsDiv">
         <label asp-for="PhoneNumber">Firm phone number</label>
         <h4>@Model.PhoneNumber</h4>
     </div>
 
-    <div>
+    <div class="firmDetailsDiv">
         <label asp-for="ResponsiblePersonName">Firm responsible person name</label>
         <h4>@Model.ResponsiblePersonName</h4>
     </div>
 
-    <div>
+    <div class="firmDetailsDiv">
         <label asp-for="Address">Firm address</label>
         <h4>@Model.Address</h4>
     </div>
 
-    <a asp-controller="Firm" asp-action="All">
-        Back to all firms
-    </a>
+    <div id="detailsFirmBtns">
+        <a asp-controller="Firm" asp-action="All" id="backToAllFirmsBtn">
+            Back to all firms
+        </a>
 
-    <a asp-controller="Home" asp-action="Index">
-        Home page
-    </a>
+        <a asp-controller="Home" asp-action="Index" id="homePageInFirmsBtn">
+            Home page
+        </a>
+    </div>
 </div>

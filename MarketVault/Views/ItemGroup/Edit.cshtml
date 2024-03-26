@@ -4,15 +4,19 @@
     ViewBag.Title = "Edit item group";
 }
 
+<link rel="stylesheet" href="~/css/nomenclatures..css" />
+
 <div class="editItemGroupContainer">
     <form asp-action="Edit" asp-controller="ItemGroup" id="editItemGroupForm">
         <div>
-            <label asp-for="Name">Item group name</label>
-            <input asp-for="Name" value="@Model.Name" />
+            <div>
+                <label asp-for="Name">Item group name</label>
+                <input asp-for="Name" value="@Model.Name" />
+            </div>
             <span asp-validation-for="Name"></span>
         </div>
 
-        <button type="submit">Edit item group</button>
+        <button type="submit" id="editItemGroupBtn">Edit item group</button>
     </form>
 </div>
 

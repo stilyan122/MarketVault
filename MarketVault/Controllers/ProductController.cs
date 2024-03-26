@@ -11,6 +11,8 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System;
+    using static MarketVault.Infrastructure.Constants
+        .DataConstants.BarcodeConstants;
 
     /// <summary>
     /// Product Controller (Authorized)
@@ -204,7 +206,9 @@
             var formModel = new ProductFormModel
             {
                 ItemGroups = await this.GetItemGroups(),
-                Measures = await this.GetMeasures()
+                Measures = await this.GetMeasures(),
+                BarcodeMaxLength = ValueMaxLength,
+                BarcodeMinLength = ValueMinLength
             };
 
             return View(formModel);

@@ -1115,6 +1115,10 @@
     background-color: #963fd9;
 }
 
+#barcodesDivContainer{
+    background-color: red;
+}
+
 /* Firm */
 
 @keyframes addFirmShake {
@@ -1418,6 +1422,206 @@
     font-weight: bold;
     -webkit-text-stroke: 1px black;
     margin-top: 1em;
+}
+
+.firmDetailsContainer {
+    background: hsla(259, 96%, 74%, 1);
+    background: linear-gradient(270deg, hsla(259, 96%, 74%, 1) 0%, hsla(263, 95%, 59%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(259, 96%, 74%, 1) 0%, hsla(263, 95%, 59%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(259, 96%, 74%, 1) 0%, hsla(263, 95%, 59%, 1) 100%);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    border-radius: 12px;
+    padding: 2em;
+    font-family: "Capriola", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.firmDetailsContainer .firmDetailsDiv {
+    display: flex;
+    margin: 3em;
+    background-color: #e1d4fc;
+    padding: 0.4em;
+    font-family: "Capriola", sans-serif;
+    border-radius: 8px;
+}
+
+.firmDetailsContainer div label {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.firmDetailsContainer div h4 {
+    margin-left: auto;
+}
+
+.firmDetailsContainer div p {
+    margin-left: auto;
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.firmDetailsContainer div div {
+    margin: 0;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#detailsFirmBtns {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#backToAllFirmsBtn,
+#homePageInFirmsBtn {
+    border-radius: 8px;
+    background-color: #e1d4fc;
+    text-decoration: none;
+    padding: 1em;
+    margin: 1em;
+    border: 1px solid black;
+    color: #a77ffa;
+    font-weight: 500;
+}
+
+#backToAllFirmsBtn:hover,
+#homePageInFirmsBtn:hover {
+    background-color: #5d35b0;
+    color: white;
+}
+
+.editFirmContainer {
+    background: hsla(285, 90%, 81%, 1);
+    background: linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
+    padding: 24px;
+    border-radius: 12px;
+    height: 100%;
+    margin-top: 4.809%;
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+}
+
+.editFirmContainer form {
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    gap: 4px;
+    text-align: right;
+}
+
+.editFirmContainer span {
+    color: #c90016;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.editFirmContainer form div div {
+    display: flex;
+}
+
+.editFirmContainer form div div input,
+.editFirmContainer form div div textarea,
+.editFirmContainer form div div select {
+    border-radius: 4px;
+    padding: 4px;
+    animation: displayFirmFormTags 2s ease 0s 1 normal forwards;
+    margin-left: auto;
+    border: 2px solid black;
+    width: 20em;
+}
+
+.editFirmContainer .firmDescriptionDiv div input {
+    height: 2em;
+}
+
+#editFirmBtn {
+    align-self: center;
+    padding: 12px 32px;
+    border-radius: 8px;
+    margin-top: 50px;
+    border: none;
+    background-color: #9932cc;
+    color: white;
+}
+
+#editFirmBtn:hover {
+    animation: editProductShake 2s ease 0s 1 normal forwards;
+}
+
+.deleteFirmContainer {
+    background: hsla(51, 100%, 81%, 1);
+    background: linear-gradient(270deg, hsla(51, 100%, 81%, 1) 0%, hsla(0, 3%, 77%, 1) 91%);
+    background: -moz-linear-gradient(270deg, hsla(51, 100%, 81%, 1) 0%, hsla(0, 3%, 77%, 1) 91%);
+    background: -webkit-linear-gradient(270deg, hsla(51, 100%, 81%, 1) 0%, hsla(0, 3%, 77%, 1) 91%);
+    padding: 20px;
+    border-radius: 12px;
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.deleteFirmContainer .deleteFirmInfoContainer {
+    display: flex;
+    margin-top: 1.5em;
+    background-color: white;
+    padding: 1em;
+    border-radius: 12px;
+    margin: 1em;
+}
+
+.deleteFirmContainer .deleteFirmInfoContainer label {
+    margin-right: auto;
+    font-size: 1.5em;
+    font-weight: 900;
+}
+
+.deleteFirmContainer .deleteFirmInfoContainer h4 {
+    font-size: 1.5em;
+    font-weight: 400;
+    margin: 0;
+    width: 40%;
+    word-wrap: break-word;
+    margin-right: 3em;
+}
+
+.deleteFirmContainer .deleteFirmInfoContainer p {
+    font-size: 1.5em;
+}
+
+.deleteFirmContainer .deleteFirmInfoContainer div {
+    margin-right: 3em;
+    display: block;
+}
+
+.submitFirmDeleteBtnContainer {
+    background-color: none;
+    display: flex;
+    justify-content: center;
+}
+
+.submitFirmDeleteBtnContainer button {
+    font-size: 1.8em;
+    background-color: #faeb8e;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 8px;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.submitFirmDeleteBtnContainer button:hover {
+    background-color: #ada04c;
 }
 
 /* Bank */
@@ -1954,6 +2158,7 @@
     -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
     -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
     box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    color: white;
 }
 
 .addItemGroupContainer form {
@@ -1965,7 +2170,7 @@
 }
 
 .addItemGroupContainer span {
-    color: #c90016;
+    color: white;
     text-align: center;
     margin-top: 12px;
 }
@@ -2202,6 +2407,131 @@
     font-weight: bold;
     -webkit-text-stroke: 1px black;
     margin-top: 1em;
+}
+
+.editItemGroupContainer {
+    background: hsla(352, 57%, 53%, 1);
+    background: linear-gradient(270deg, hsla(352, 57%, 53%, 1) 0%, hsla(352, 63%, 45%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(352, 57%, 53%, 1) 0%, hsla(352, 63%, 45%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(352, 57%, 53%, 1) 0%, hsla(352, 63%, 45%, 1) 100%);
+    padding: 48px;
+    border-radius: 12px;
+    height: 100%;
+    margin-top: 4.809%;
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    color: white;
+}
+
+.editItemGroupContainer form {
+        display: flex;
+        flex-direction: column;
+        font-size: 24px;
+        gap: 4px;
+        text-align: right;
+    }
+
+.editItemGroupContainer span {
+    color: white;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.editItemGroupContainer form div div {
+        display: flex;
+}
+
+.editItemGroupContainer form div div input,
+.editItemGroupContainer form div div select {
+            border-radius: 4px;
+            padding: 4px;
+            animation: displayFormTags 2s ease 0s 1 normal forwards;
+            margin-left: auto;
+            width: 20em;
+        }
+
+#editItemGroupBtn {
+    align-self: center;
+    padding: 12px 32px;
+    border-radius: 8px;
+    margin-top: 50px;
+    border: none;
+    background-color: #FC8494;
+    color: white;
+}
+
+#editItemGroupBtn:hover {
+        animation: editCounterPartyShake 2s ease 0s 1 normal forwards;
+    }
+
+.deleteItemGroupContainer {
+    background: hsla(300, 90%, 70%, 1);
+    background: linear-gradient(270deg, hsla(300, 90%, 70%, 1) 0%, hsla(125, 100%, 79%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(300, 90%, 70%, 1) 0%, hsla(125, 100%, 79%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(300, 90%, 70%, 1) 0%, hsla(125, 100%, 79%, 1) 100%);
+    padding: 20px;
+    border-radius: 12px;
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.deleteItemGroupContainer .deleteItemGroupInfoContainer {
+    display: flex;
+    margin-top: 1.5em;
+    background-color: white;
+    padding: 1em;
+    border-radius: 12px;
+    margin: 1em;
+}
+
+.deleteItemGroupContainer .deleteItemGroupInfoContainer label {
+    margin-right: auto;
+    font-size: 1.5em;
+    font-weight: 900;
+}
+
+.deleteItemGroupContainer .deleteItemGroupInfoContainer h4 {
+    font-size: 1.5em;
+    font-weight: 400;
+    margin: 0;
+    width: 40%;
+    word-wrap: break-word;
+    margin-right: 3em;
+}
+
+.deleteItemGroupContainer .deleteItemGroupInfoContainer p {
+    font-size: 1.5em;
+}
+
+.deleteItemGroupContainer .deleteItemGroupInfoContainer div {
+    margin-right: 3em;
+    display: block;
+}
+
+.submitItemGroupDeleteBtnContainer {
+    background-color: none;
+    display: flex;
+    justify-content: center;
+}
+
+.submitItemGroupDeleteBtnContainer button {
+    font-size: 1.8em;
+    background-color: #F76CF7;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 8px;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.submitItemGroupDeleteBtnContainer button:hover {
+    background-color: #d962d9;
 }
 
 /* Pop Up product menu */

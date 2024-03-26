@@ -51,7 +51,7 @@
         </div>
         <div>
             <div>
-                <label asp-for="ItemGroupId">Select Item Group</label>
+                <label asp-for="ItemGroupId">Select item group</label>
                 <select asp-for="ItemGroupId">
                     <option disabled selected value="">Select Item Group...</option>
                     @foreach (ItemGroupViewModel itemGroup in Model.ItemGroups)
@@ -64,7 +64,7 @@
         </div>
         <div>
             <div>
-                <label asp-for="MeasureId">Select Measure</label>
+                <label asp-for="MeasureId">Select measure</label>
                 <select asp-for="MeasureId">
                     <option disabled selected value="">Select Measure...</option>
                     @foreach (MeasureViewModel measure in Model.Measures)

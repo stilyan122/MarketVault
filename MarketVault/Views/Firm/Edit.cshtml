@@ -4,43 +4,55 @@
     ViewBag.Title = "Edit firm";
 }
 
+<link rel="stylesheet" href="~/css/nomenclatures..css" />
+
 <div class="editFirmContainer">
     <form asp-action="Edit" asp-controller="Firm" id="editFirmForm">
         <div>
-            <label asp-for="Name">Firm name</label>
-            <input asp-for="Name" value="@Model.Name" />
+            <div>
+                <label asp-for="Name">Firm name</label>
+                <input asp-for="Name" value="@Model.Name" />
+            </div>
             <span asp-validation-for="Name"></span>
         </div>
         <div>
-            <label asp-for="PhoneNumber">Firm phone number</label>
-            <input asp-for="PhoneNumber" value="@Model.PhoneNumber" />
+            <div>
+                <label asp-for="PhoneNumber">Firm phone number</label>
+                <input asp-for="PhoneNumber" value="@Model.PhoneNumber" />
+            </div>
             <span asp-validation-for="PhoneNumber"></span>
         </div>
         <div>
-            <label asp-for="Email">Firm email</label>
-            <input asp-for="Email" value="@Model.Email" />
+            <div>
+                <label asp-for="Email">Firm email</label>
+                <input asp-for="Email" value="@Model.Email" />
+            </div>
             <span asp-validation-for="Email"></span>
         </div>
         <div>
-            <label asp-for="ResponsiblePersonName">Firm responsible person name</label>
-            <input asp-for="ResponsiblePersonName" />
+            <div>
+                <label asp-for="ResponsiblePersonName">Firm responsible person name</label>
+                <input asp-for="ResponsiblePersonName" />
+            </div>
             <span asp-validation-for="ResponsiblePersonName" value="@Model.ResponsiblePersonName"></span>
         </div>
         <div>
-            <label asp-for="AddressId">Select Address</label>
-            <select asp-for="AddressId">
-                <option disabled selected value="">Select Address...</option>
-                @foreach (AddressViewModel address in Model.Addresses)
-                {
-                    var addressVal = $"{address.TownName} {address.StreetName}" + 
+            <div>
+                <label asp-for="AddressId">Select address</label>
+                <select asp-for="AddressId">
+                    <option disabled selected value="">Select Address...</option>
+                    @foreach (AddressViewModel address in Model.Addresses)
+                    {
+                        var addressVal = $"{address.TownName} {address.StreetName}" +
                         $" {address.StreetNumber}";
-                    
-                    <option value="@address.Id">@addressVal</option>
-                }
-            </select>
+
+                        <option value="@address.Id">@addressVal</option>
+                    }
+                </select>
+            </div>
             <span asp-validation-for="AddressId"></span>
         </div>
-        <button type="submit">Edit Firm</button>
+        <button type="submit" id="editFirmBtn">Edit Firm</button>
     </form>
 </div>
 
