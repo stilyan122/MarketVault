@@ -1892,6 +1892,70 @@
     margin-top: 1em;
 }
 
+.bankDetailsContainer {
+    background: hsla(29, 82%, 64%, 1);
+    background: linear-gradient(270deg, hsla(29, 82%, 64%, 1) 0%, hsla(29, 91%, 55%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(29, 82%, 64%, 1) 0%, hsla(29, 91%, 55%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(29, 82%, 64%, 1) 0%, hsla(29, 91%, 55%, 1) 100%);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    border-radius: 12px;
+    padding: 2em;
+    font-family: "Capriola", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.bankDetailsContainer .bankDetailsDiv {
+    display: flex;
+    margin: 3em;
+    background-color: #fad6b4;
+    padding: 0.4em;
+    font-family: "Capriola", sans-serif;
+    border-radius: 8px;
+}
+
+.bankDetailsContainer div label {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.bankDetailsContainer div h4 {
+    margin-left: auto;
+}
+
+.bankDetailsContainer div div {
+    margin: 0;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#detailsBankBtns {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#backToAllBanksBtn,
+#homePageInBanksBtn {
+    border-radius: 8px;
+    background-color: #fad6b4;
+    text-decoration: none;
+    padding: 1em;
+    margin: 1em;
+    border: 1px solid black;
+    color: #db791d;
+    font-weight: 500;
+}
+
+#backToAllBanksBtn:hover,
+#homePageInBanksBtn:hover {
+    background-color: #cf731b;
+    color: white;
+}
+
 /* Address */
 
 .addAddressContainer {

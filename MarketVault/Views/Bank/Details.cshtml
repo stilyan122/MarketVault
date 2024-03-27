@@ -7,21 +7,23 @@
 <link rel="stylesheet" href="~/css/nomenclatures..css" />
 
 <div class="bankDetailsContainer">
-    <div>
+    <div class="bankDetailsDiv">
         <label asp-for="Name">Bank name</label>
         <h4>@Model.Name</h4>
     </div>
 
-    <div>
+    <div class="bankDetailsDiv">
         <label asp-for="Address">Bank address</label>
         <h4>@Model.Address</h4>
     </div>
 
-    <a asp-controller="Bank" asp-action="All">
-        Back to all banks
-    </a>
+    <div id="detailsBankBtns">
+        <a asp-controller="Bank" asp-action="All" id="backToAllBanksBtn">
+            Back to all banks
+        </a>
 
-    <a asp-controller="Home" asp-action="Index">
-        Home page
-    </a>
+        <a asp-controller="Home" asp-action="Index" id="homePageInBanksBtn">
+            Home page
+        </a>
+    </div>
 </div>
