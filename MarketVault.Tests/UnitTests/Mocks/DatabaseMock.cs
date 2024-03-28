@@ -14,7 +14,7 @@
             {
                 var dbContextOptions = new
                     DbContextOptionsBuilder<ApplicationDbContext>()
-                    .UseInMemoryDatabase("MarketVaultDb" + DateTime.Now)
+                    .UseInMemoryDatabase("MarketVaultDb" + DateTime.Now.Ticks)
                     .Options;
 
                 return new ApplicationDbContext(dbContextOptions);
