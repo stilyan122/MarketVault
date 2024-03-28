@@ -18,12 +18,20 @@
         private readonly IRepository<ItemGroup> repository = null!;
 
         /// <summary>
-        /// Default constructor, injection of Item Group repository (DI)
+        /// Product service
+        /// </summary>
+        private readonly IProductService productService = null!;
+
+        /// <summary>
+        /// Default constructor, injection of Item Group repository and product service (DI)
         /// </summary>
         /// <param name="repository">Item Group repository</param>
-        public ItemGroupService(IRepository<ItemGroup> repository)
+        /// <param name="productService">IProductService</param>
+        public ItemGroupService(IRepository<ItemGroup> repository,
+            IProductService productService)
         {
             this.repository = repository;
+            this.productService = productService;
         }
 
         /// <summary>
@@ -130,6 +138,13 @@
                 ?? throw new EntityNotFoundException("Item group not found");
 
             entity.IsActive = false;
+
+            var products = await this.productService.GetAllAsync();
+            foreach (ProductServiceModel product in products
+                .Where(p => p.ItemGroupId == itemGroup.Id))
+            {
+                await this.productService.DeleteAsync(product);
+            }
 
             await this.repository.SaveChangesAsync();
         }

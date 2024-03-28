@@ -4,21 +4,25 @@
     ViewBag.Title = "Delete bank";
 }
 
-<div class="editBankContainer">
+<link rel="stylesheet" href="~/css/nomenclatures..css" />
+
+<div class="deleteBankContainer">
     <form asp-action="DeletePost"
           asp-controller="Bank"
           id="deleteBankForm"
           method="post"
           asp-route-id="@Model.Id">
-        <div>
+        <div class="deleteBankInfoContainer">
             <label asp-for="Name">Bank name</label>
             <h4>@Model.Name</h4>
         </div>
-        <div>
+        <div class="deleteBankInfoContainer">
             <label asp-for="Address">Bank address</label>
             <h4>@Model.Address</h4>
         </div>
 
-        <button type="submit">Delete Bank</button>
+        <div class="submitBankDeleteBtnContainer">
+            <button type="submit">Delete Bank</button>
+        </div>
     </form>
 </div>
