@@ -7,6 +7,7 @@
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Infrastructure.Data.Models;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Logging;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -23,15 +24,24 @@
         private readonly IProductService productService = null!;
 
         /// <summary>
-        /// Default constructor, injection of Item Group repository and product service (DI)
+        /// Logger
+        /// </summary>
+        private readonly ILogger<ItemGroupService> logger = null!;
+
+        /// <summary>
+        /// Default constructor, injection of Item Group repository, product service and logger (DI)
         /// </summary>
         /// <param name="repository">Item Group repository</param>
         /// <param name="productService">IProductService</param>
-        public ItemGroupService(IRepository<ItemGroup> repository,
-            IProductService productService)
+        /// <param name="logger">Logger</param>
+        public ItemGroupService(
+            IRepository<ItemGroup> repository,
+            IProductService productService,
+            ILogger<ItemGroupService> logger)
         {
             this.repository = repository;
             this.productService = productService;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -40,6 +50,8 @@
         /// <returns>Task<IEnumerable<ItemGroupServiceModel>></returns>
         public async Task<IEnumerable<ItemGroupServiceModel>> GetAllAsync()
         {
+            logger.LogInformation("All async method in item group service invoked.");
+
             return await this.repository
                 .All()
                 .AsNoTracking()
@@ -54,10 +66,14 @@
         public IQueryable<ItemGroupServiceModel> GetAllByPredicateAsync
             (string sortType, string value)
         {
+            logger.LogInformation("All by predicate async method in item group service invoked.");
+
             var entities = this.repository
-                .AllReadOnly()
+                .AllAsReadOnly()
                 .AsNoTracking()
                 .ProjectToItemGroupServiceModel();
+
+            logger.LogWarning("Potential exception to be thrown.");
 
             try
             {
@@ -91,6 +107,8 @@
             string sortType, string value,
             int pageSize, int pageNumber)
         {
+            logger.LogInformation("All by predicate paged async method in item group service invoked.");
+
             var entities = this.GetAllByPredicateAsync(sortType, value);
 
             return await entities
@@ -105,8 +123,10 @@
         /// <param name="sortType">Sort type used to sort them</param>
         /// <param name="value">Sort value</param>
         /// <returns>Task<int></returns>
-        public async Task<int> GetPredicatedCount(string sortType, string value)
+        public async Task<int> GetPredicatedCountAsync(string sortType, string value)
         {
+            logger.LogInformation("Get predicated count async method in item group service invoked.");
+
             return await this.GetAllByPredicateAsync(sortType, value)
                 .CountAsync();
         }
@@ -118,6 +138,8 @@
         /// <returns>(void)</returns>
         public async Task AddAsync(ItemGroupServiceModel itemGroup)
         {
+            logger.LogInformation("Add async method in item group service invoked.");
+
             var entity = ConvertToEntityModel(itemGroup);
 
             await this.repository.AddAsync(entity);
@@ -130,6 +152,10 @@
         /// <returns>(void)</returns>
         public async Task DeleteAsync(ItemGroupServiceModel itemGroup)
         {
+            logger.LogInformation("Delete async method in item group service invoked.");
+
+            logger.LogWarning("Potential entity not found exception to be thrown.");
+
             var entity = await this.repository
                 .All()
                 .UseIncludeItemGroupStatements()
@@ -156,6 +182,10 @@
         /// <returns>Task<ItemGroupServiceModel></returns>
         public async Task<ItemGroupServiceModel> GetByIdAsync(int id)
         {
+            logger.LogInformation("Get by id async method in item group service invoked.");
+
+            logger.LogWarning("Potential entity not found exception to be thrown.");
+
             var entity = await this.repository
                 .All()
                 .UseIncludeItemGroupStatements()
@@ -199,6 +229,10 @@
         /// <returns>(void)</returns>
         public async Task UpdateAsync(ItemGroupServiceModel itemGroup)
         {
+            logger.LogInformation("Update async method in item group service invoked.");
+
+            logger.LogWarning("Potential entity not found exception to be thrown.");
+
             var entity = await this.repository
                 .All()
                 .UseIncludeItemGroupStatements()

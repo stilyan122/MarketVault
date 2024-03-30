@@ -7,6 +7,7 @@
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Infrastructure.Data.Models;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Logging;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -21,12 +22,21 @@
         private readonly IRepository<CounterParty> repository = null!;
 
         /// <summary>
-        /// Default constructor, injection of Counter Party repository (DI)
+        /// Logger
+        /// </summary>
+        private readonly ILogger<CounterPartyService> logger = null!;
+
+        /// <summary>
+        /// Default constructor, injection of Counter Party repository and logger (DI)
         /// </summary>
         /// <param name="repository">Counter Party repository</param>
-        public CounterPartyService(IRepository<CounterParty> repository)
+        /// <param name="logger">Logger</param>
+        public CounterPartyService(
+            IRepository<CounterParty> repository,
+            ILogger<CounterPartyService> logger)
         {
             this.repository = repository;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -36,6 +46,8 @@
         /// <returns>(void)</returns>
         public async Task AddAsync(CounterPartyServiceModel counterParty)
         {
+            logger.LogInformation("Add async method in counter party service invoked.");
+
             var entity = new CounterParty()
             {
                 BankId = counterParty.BankId,
@@ -57,6 +69,10 @@
         /// <returns>(void)</returns>
         public async Task DeleteAsync(CounterPartyServiceModel counterParty)
         {
+            logger.LogInformation("Delete async method in counter party service invoked.");
+
+            logger.LogWarning("Potential entity not found exception to be thrown.");
+
             var entity = await this.repository
                 .All()
                 .UseIncludeCounterPartyStatements()
@@ -75,6 +91,8 @@
         /// <returns>Task<IEnumerable<CounterPartyServiceModel>></returns>
         public async Task<IEnumerable<CounterPartyServiceModel>> GetAllAsync()
         {
+            logger.LogInformation("All async method in counter party service invoked.");
+
             var entities = await this.repository
                 .All()
                 .UseIncludeCounterPartyStatements()
@@ -104,8 +122,10 @@
         public IQueryable<CounterPartyServiceModel> GetAllByPredicateAsync
             (string sortType, string value)
         {
+            logger.LogInformation("All by predicate async method in counter party service invoked.");
+
             var entities = this.repository
-                .AllReadOnly()
+                .AllAsReadOnly()
                 .AsNoTracking()
                 .ProjectToCounterPartyServiceModel();
 
@@ -143,6 +163,8 @@
             string sortType, string value,
             int pageSize, int pageNumber)
         {
+            logger.LogInformation("All by predicate paged async method in counter party service invoked.");
+
             var entities = this.GetAllByPredicateAsync(sortType, value);
 
             return await entities
@@ -158,6 +180,10 @@
         /// <returns>Task<CounterPartyServiceModel></returns>
         public async Task<CounterPartyServiceModel> GetByIdAsync(int id)
         {
+            logger.LogInformation("Get by id async method in counter party service invoked.");
+
+            logger.LogWarning("Potential entity not found exception to be thrown.");
+
             var entity = await this.repository
                 .All()
                 .UseIncludeCounterPartyStatements()
@@ -188,8 +214,10 @@
         /// <param name="sortType">Sort type used to sort them</param>
         /// <param name="value">Sort value</param>
         /// <returns>Task<int></returns>
-        public async Task<int> GetPredicatedCount(string sortType, string value)
+        public async Task<int> GetPredicatedCountAsync(string sortType, string value)
         {
+            logger.LogInformation("Get predicated count async method in counter party service invoked.");
+
             return await this.GetAllByPredicateAsync(sortType, value)
                 .CountAsync();
         }
@@ -201,6 +229,10 @@
         /// <returns>(void)</returns>
         public async Task UpdateAsync(CounterPartyServiceModel counterParty)
         {
+            logger.LogInformation("All async method in counter party service invoked.");
+
+            logger.LogWarning("Potential entity not found exception to be thrown.");
+
             var entity = await this.repository
                 .All()
                 .UseIncludeCounterPartyStatements()

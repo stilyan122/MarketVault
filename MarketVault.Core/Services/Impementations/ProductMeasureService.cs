@@ -4,6 +4,7 @@
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Infrastructure.Data.Models;
+    using Microsoft.Extensions.Logging;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -17,12 +18,21 @@
         private readonly IRepository<ProductMeasure> repository = null!;
 
         /// <summary>
-        /// Default constructor, injection of ProductMeasure repository (DI)
+        /// Logger
+        /// </summary>
+        private readonly ILogger<ProductMeasureService> logger = null!;
+
+        /// <summary>
+        /// Default constructor, injection of ProductMeasure repository and logger (DI)
         /// </summary>
         /// <param name="repository">ProductMeasure repository</param>
-        public ProductMeasureService(IRepository<ProductMeasure> repository)
+        /// <param name="logger">Logger</param>
+        public ProductMeasureService(
+            IRepository<ProductMeasure> repository,
+            ILogger<ProductMeasureService> logger)
         {
             this.repository = repository;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -32,6 +42,8 @@
         /// <returns>(void)</returns>
         public async Task AddAsync(ProductMeasureServiceModel productMeasure)
         {
+            logger.LogInformation("Add async method in product measure service invoked.");
+
             var entity = new ProductMeasure()
             {
                 MeasureId = productMeasure.MeasureId,

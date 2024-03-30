@@ -1,0 +1,44 @@
+﻿@model ProductOperationModel;
+
+@{
+    ViewBag.Title = "Add product to operation";
+}
+
+<div>
+    <form
+        id="addProductToOperationForm"
+          asp-action="AddProductToOperationPost"
+          asp-controller="Operation">
+
+        <div>
+            <div>
+                <label asp-for="Quantity">Product quantity</label>
+                <input asp-for="Quantity" />
+            </div>
+            <span asp-validation-for="Quantity"></span>
+        </div>
+
+        <div>
+            <div>
+                <label asp-for="SalePrice">Product sale price</label>
+                <input asp-for="SalePrice" value="@Model.SalePrice" />
+            </div>
+            <span asp-validation-for="SalePrice"></span>
+        </div>
+
+        <div>
+            <div>
+                <label asp-for="PurchasePrice">Product purchase price</label>
+                <input asp-for="PurchasePrice" value="@Model.PurchasePrice" />
+            </div>
+            <span asp-validation-for="PurchasePrice"></span>
+        </div>
+
+        <button type="submit" id="addProductToOperationSubmitBtn">Add product</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

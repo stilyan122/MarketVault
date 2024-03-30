@@ -153,7 +153,7 @@
                 .ToList();
 
             int recsCount = await this.service
-                .GetPredicatedCount(searchSortType, searchQuery);
+                .GetPredicatedCountAsync(searchSortType, searchQuery);
 
             var pager = new Pager(recsCount, pages, pageSize)
             {

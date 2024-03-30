@@ -38,7 +38,7 @@
         /// <param name="sortType">Sort type used to sort them</param>
         /// <param name="value">Sort value</param>
         /// <returns>Task<int></returns>
-        public Task<int> GetPredicatedCount(string sortType, string value);
+        public Task<int> GetPredicatedCountAsync(string sortType, string value);
 
         /// <summary>
         /// Asynchronous method to get a product by a given id
