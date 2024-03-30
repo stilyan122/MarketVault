@@ -101,7 +101,7 @@
 
             services.ConfigureApplicationCookie(options =>
             {
-                options.AccessDeniedPath = "/Home/Error403";
+                options.AccessDeniedPath = "/Home/Error/403";
             });
 
             return services;

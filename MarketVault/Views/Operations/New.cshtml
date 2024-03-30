@@ -1,0 +1,44 @@
+﻿@model OperationFormModel
+
+@{
+    ViewBag.Title = "Choose type of operation";
+}
+
+<div class="chooseOperationContainer">
+    <form 
+        id="chooseOperationForm"
+        asp-action="AddNewOperation"
+        asp-controller="Operation">
+        <div>
+            <div>
+                <label asp-for="CounterPartyId">Select counter party</label>
+                <select asp-for="CounterPartyId">
+                    <option disabled selected value="">Select Counter Party...</option>
+                    @foreach (CounterPartyViewModel counterParty in Model.CounterParties)
+                    {
+                        <option value="@counterParty.Id">@counterParty.Name</option>
+                    }
+                </select>
+            </div>
+            <span asp-validation-for="CounterPartyId"></span>
+        </div>
+
+        <div>
+            <div>
+                <label asp-for="DocumentTypeId">Select document type</label>
+                <select asp-for="DocumentTypeId">
+                    <option disabled selected value="">Select Document Type...</option>
+                    @foreach (DocumentTypeViewModel documentType in Model.DocumentTypes)
+                    {
+                        <option value="@documentType.Id">@documentType.Name</option>
+                    }
+                </select>
+            </div>
+            <span asp-validation-for="DocumentTypeId"></span>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

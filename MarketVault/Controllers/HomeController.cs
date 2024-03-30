@@ -121,7 +121,7 @@
         /// </summary>
         /// <param name="statusCode"></param>
         /// <returns></returns>
-        public IActionResult Error(int statusCode)
+        public IActionResult Error(int statusCode = 0)
         {
             if (statusCode == 404)
             {
@@ -135,8 +135,10 @@
             {
                 return View("Error403");
             }
-
-            return View();
+            else
+            {
+                return View("ErrorUnexpected");
+            }
         }
     }
 }
