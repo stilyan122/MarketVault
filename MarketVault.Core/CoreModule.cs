@@ -7,6 +7,7 @@
     using MarketVault.Core.Services.Impementations;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Data;
+    using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
@@ -45,6 +46,8 @@
                 options
                 .Filters
                 .Add(new AutoValidateAntiforgeryTokenAttribute()));
+
+            services.AddResponseCompression();
 
             return services;
         }

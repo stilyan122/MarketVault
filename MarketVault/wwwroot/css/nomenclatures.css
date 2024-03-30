@@ -1,46 +1,64 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Capriola&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+﻿@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Capriola&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+
+/* Global */
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+button,
+a {
+    cursor: pointer;
+}
 
 /* Counter party */
 
 .addCounterPartyContainer {
     background: hsla(205, 43%, 80%, 1);
-    background: linear-gradient(180deg, hsla(205, 43%, 80%, 1) 0%, hsla(231, 75%, 87%, 1) 89%, hsla(240, 100%, 90%, 1) 100%);
+    background: linear-gradient( 180deg, hsla(205, 43%, 80%, 1) 0%, hsla(231, 75%, 87%, 1) 89%, hsla(240, 100%, 90%, 1) 100% );
     padding: 48px;
     border-radius: 12px;
     height: 100%;
     margin-top: 4.809%;
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
 }
 
 .addCounterPartyContainer form {
-    display: flex;
-    flex-direction: column;
-    font-size: 24px;
-    gap: 4px;
-    text-align: right;
-}
+        display: flex;
+        flex-direction: column;
+        font-size: 24px;
+        gap: 4px;
+        text-align: right;
+    }
 
 .addCounterPartyContainer span {
-    color: #c90016;
-    text-align: center;
-    margin-top: 12px;
-}
+        color: #c90016;
+        text-align: center;
+        margin-top: 12px;
+    }
 
 .addCounterPartyContainer form div div {
-    display: flex;
-}
+        display: flex;
+    }
 
 .addCounterPartyContainer form div div input,
 .addCounterPartyContainer form div div select {
-    border-radius: 4px;
-    padding: 4px;
-    animation: displayFormTags 2s ease 0s 1 normal forwards;
-    margin-left: auto;
-}
+            border-radius: 4px;
+            padding: 4px;
+            animation: displayFormTags 2s ease 0s 1 normal forwards;
+            margin-left: auto;
+        }
 
 #addCounterPartyBtn {
     align-self: center;
@@ -48,13 +66,13 @@
     border-radius: 8px;
     margin-top: 50px;
     border: none;
-    background-color: #9ABED8;
+    background-color: #9abed8;
     color: white;
 }
 
 #addCounterPartyBtn:hover {
-    animation: addCounterPartyShake 2s ease 0s 1 normal forwards;
-}
+        animation: addCounterPartyShake 2s ease 0s 1 normal forwards;
+    }
 
 .counterPartyContainer .counterPartyComponentContainer div {
     display: grid;
@@ -65,26 +83,26 @@
 }
 
 .counterPartyContainer .counterPartyComponentContainer div p {
-    width: 100%;
-}
+        width: 100%;
+    }
 
 .counterPartyViewContainer {
     padding: 3em;
     border-radius: 14px;
     background: hsla(29, 100%, 85%, 1);
-    background: linear-gradient(270deg, hsla(29, 100%, 85%, 1) 46%, hsla(118, 45%, 67%, 1) 100%);
-    background: -moz-linear-gradient(270deg, hsla(29, 100%, 85%, 1) 46%, hsla(118, 45%, 67%, 1) 100%);
-    background: -webkit-linear-gradient(270deg, hsla(29, 100%, 85%, 1) 46%, hsla(118, 45%, 67%, 1) 100%);
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    background: linear-gradient( 270deg, hsla(29, 100%, 85%, 1) 46%, hsla(118, 45%, 67%, 1) 100% );
+    background: -moz-linear-gradient( 270deg, hsla(29, 100%, 85%, 1) 46%, hsla(118, 45%, 67%, 1) 100% );
+    background: -webkit-linear-gradient( 270deg, hsla(29, 100%, 85%, 1) 46%, hsla(118, 45%, 67%, 1) 100% );
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
 }
 
 .counterPartyViewContainer a:hover {
-    color: black;
-}
+        color: black;
+    }
 
 @keyframes addCounterPartyShake {
     0%, 100% {
@@ -162,8 +180,8 @@
 }
 
 #showAllCounterPartiesBtn:hover {
-    background-color: #0c422a;
-}
+        background-color: #0c422a;
+    }
 
 #searchCounterPartyBtn {
     padding: 0.2em 0.5em;
@@ -174,8 +192,8 @@
 }
 
 #searchCounterPartyBtn:hover {
-    background-color: #126942;
-}
+        background-color: #126942;
+    }
 
 #counterPartyDetailsBtn {
     background-color: #f0bc89;
@@ -190,8 +208,8 @@
 }
 
 #counterPartyDetailsBtn:hover {
-    background-color: #ffdebf;
-}
+        background-color: #ffdebf;
+    }
 
 #counterPartyEditBtn {
     background-color: #f0bc89;
@@ -206,8 +224,8 @@
 }
 
 #counterPartyEditBtn:hover {
-    background-color: #ffdebf;
-}
+        background-color: #ffdebf;
+    }
 
 #counterPartyDeleteBtn {
     background-color: #f0bc89;
@@ -222,8 +240,8 @@
 }
 
 #counterPartyDeleteBtn:hover {
-    background-color: #ffdebf;
-}
+        background-color: #ffdebf;
+    }
 
 .notFoundCounterPartiesBtn {
     color: #f0e2e1;
@@ -234,12 +252,12 @@
 
 .counterPartyDetailsContainer {
     background: hsla(125, 85%, 65%, 1);
-    background: linear-gradient(270deg, hsla(125, 85%, 65%, 1) 0%, hsla(125, 63%, 45%, 1) 100%);
-    background: -moz-linear-gradient(270deg, hsla(125, 85%, 65%, 1) 0%, hsla(125, 63%, 45%, 1) 100%);
-    background: -webkit-linear-gradient(270deg, hsla(125, 85%, 65%, 1) 0%, hsla(125, 63%, 45%, 1) 100%);
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    background: linear-gradient( 270deg, hsla(125, 85%, 65%, 1) 0%, hsla(125, 63%, 45%, 1) 100% );
+    background: -moz-linear-gradient( 270deg, hsla(125, 85%, 65%, 1) 0%, hsla(125, 63%, 45%, 1) 100% );
+    background: -webkit-linear-gradient( 270deg, hsla(125, 85%, 65%, 1) 0%, hsla(125, 63%, 45%, 1) 100% );
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
     border-radius: 12px;
     padding: 2em;
     font-family: "Capriola", sans-serif;
@@ -248,74 +266,74 @@
 }
 
 .counterPartyDetailsContainer .counterPartyDetailsDiv {
-    display: flex;
-    margin: 3em;
-    background-color: #a7faae;
-    padding: 0.4em;
-    font-family: "Capriola", sans-serif;
-    border-radius: 8px;
-}
+        display: flex;
+        margin: 3em;
+        background-color: #a7faae;
+        padding: 0.4em;
+        font-family: "Capriola", sans-serif;
+        border-radius: 8px;
+    }
 
 .counterPartyDetailsContainer div label {
-    font-size: 1.4em;
-    font-weight: bold;
-}
+        font-size: 1.4em;
+        font-weight: bold;
+    }
 
 .counterPartyDetailsContainer div h4 {
-    margin-left: auto;
-}
+        margin-left: auto;
+    }
 
 .counterPartyDetailsContainer div p {
-    margin-left: auto;
-    font-size: 1.4em;
-    font-weight: 600;
-}
+        margin-left: auto;
+        font-size: 1.4em;
+        font-weight: 600;
+    }
 
 .counterPartyDetailsContainer div div {
-    margin: 0;
-    margin-left: auto;
-    display: flex;
-    flex-direction: column;
-}
+        margin: 0;
+        margin-left: auto;
+        display: flex;
+        flex-direction: column;
+    }
 
 .editCounterPartyContainer {
     background: hsla(205, 43%, 80%, 1);
-    background: linear-gradient(180deg, hsla(205, 43%, 80%, 1) 0%, hsla(231, 75%, 87%, 1) 89%, hsla(240, 100%, 90%, 1) 100%);
+    background: linear-gradient( 180deg, hsla(205, 43%, 80%, 1) 0%, hsla(231, 75%, 87%, 1) 89%, hsla(240, 100%, 90%, 1) 100% );
     padding: 48px;
     border-radius: 12px;
     height: 100%;
     margin-top: 4.809%;
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
 }
 
 .editCounterPartyContainer form {
-    display: flex;
-    flex-direction: column;
-    font-size: 24px;
-    gap: 4px;
-    text-align: right;
-}
+        display: flex;
+        flex-direction: column;
+        font-size: 24px;
+        gap: 4px;
+        text-align: right;
+    }
 
 .editCounterPartyContainer span {
-    color: #c90016;
-    text-align: center;
-    margin-top: 12px;
-}
+        color: #c90016;
+        text-align: center;
+        margin-top: 12px;
+    }
 
 .editCounterPartyContainer form div div {
-    display: flex;
-}
+        display: flex;
+    }
 
 .editCounterPartyContainer form div div input,
 .editCounterPartyContainer form div div select {
-    border-radius: 4px;
-    padding: 4px;
-    animation: displayFormTags 2s ease 0s 1 normal forwards;
-    margin-left: auto;
-    width: 20em;
-}
+            border-radius: 4px;
+            padding: 4px;
+            animation: displayFormTags 2s ease 0s 1 normal forwards;
+            margin-left: auto;
+            width: 20em;
+        }
 
 #editCounterPartyBtn {
     align-self: center;
@@ -323,13 +341,13 @@
     border-radius: 8px;
     margin-top: 50px;
     border: none;
-    background-color: #9ABED8;
+    background-color: #9abed8;
     color: white;
 }
 
 #editCounterPartyBtn:hover {
-    animation: editCounterPartyShake 2s ease 0s 1 normal forwards;
-}
+        animation: editCounterPartyShake 2s ease 0s 1 normal forwards;
+    }
 
 @keyframes editCounterPartyShake {
     0%, 100% {
@@ -388,57 +406,57 @@
 
 #backToAllCounterPartiesBtn:hover,
 #homePageInCounterPartiesBtn:hover {
-    background-color: #127019;
-    color: white;
-}
+        background-color: #127019;
+        color: white;
+    }
 
 .deleteCounterPartyContainer {
     background: hsla(60, 100%, 49%, 1);
-    background: linear-gradient(270deg, hsla(60, 100%, 49%, 1) 0%, hsla(88, 62%, 45%, 1) 67%);
-    background: -moz-linear-gradient(270deg, hsla(60, 100%, 49%, 1) 0%, hsla(88, 62%, 45%, 1) 67%);
-    background: -webkit-linear-gradient(270deg, hsla(60, 100%, 49%, 1) 0%, hsla(88, 62%, 45%, 1) 67%);
+    background: linear-gradient( 270deg, hsla(60, 100%, 49%, 1) 0%, hsla(88, 62%, 45%, 1) 67% );
+    background: -moz-linear-gradient( 270deg, hsla(60, 100%, 49%, 1) 0%, hsla(88, 62%, 45%, 1) 67% );
+    background: -webkit-linear-gradient( 270deg, hsla(60, 100%, 49%, 1) 0%, hsla(88, 62%, 45%, 1) 67% );
     padding: 20px;
     border-radius: 12px;
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
     font-family: "Oswald", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
 }
 
 .deleteCounterPartyContainer .deleteCounterPartyInfoContainer {
-    display: flex;
-    margin-top: 1.5em;
-    background-color: white;
-    padding: 1em;
-    border-radius: 12px;
-    margin: 1em;
-}
+        display: flex;
+        margin-top: 1.5em;
+        background-color: white;
+        padding: 1em;
+        border-radius: 12px;
+        margin: 1em;
+    }
 
 .deleteCounterPartyContainer .deleteCounterPartyInfoContainer label {
-    margin-right: auto;
-    font-size: 1.5em;
-    font-weight: 900;
-}
+            margin-right: auto;
+            font-size: 1.5em;
+            font-weight: 900;
+        }
 
 .deleteCounterPartyContainer .deleteCounterPartyInfoContainer h4 {
-    font-size: 1.5em;
-    font-weight: 400;
-    margin: 0;
-    width: 40%;
-    word-wrap: break-word;
-    margin-right: 3em;
-}
+            font-size: 1.5em;
+            font-weight: 400;
+            margin: 0;
+            width: 40%;
+            word-wrap: break-word;
+            margin-right: 3em;
+        }
 
 .deleteCounterPartyContainer .deleteCounterPartyInfoContainer p {
-    font-size: 1.5em;
-}
+            font-size: 1.5em;
+        }
 
 .deleteCounterPartyContainer .deleteCounterPartyInfoContainer div {
-    margin-right: 3em;
-    display: block;
-}
+            margin-right: 3em;
+            display: block;
+        }
 
 .submitCounterPartyDeleteBtnContainer {
     background-color: none;
@@ -447,19 +465,19 @@
 }
 
 .submitCounterPartyDeleteBtnContainer button {
-    font-size: 1.8em;
-    background-color: #d6d602;
-    color: white;
-    border-radius: 8px;
-    border: none;
-    padding: 8px;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-}
+        font-size: 1.8em;
+        background-color: #d6d602;
+        color: white;
+        border-radius: 8px;
+        border: none;
+        padding: 8px;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
 
 .submitCounterPartyDeleteBtnContainer button:hover {
-    background-color: #a6a602;
-}
+            background-color: #a6a602;
+        }
 
 /* Product */
 
@@ -476,7 +494,206 @@
 }
 
 .productContainer .productComponentContainer div p {
-    width: 20%;
+        width: 20%;
+    }
+
+.productsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    margin-top: 2em;
+}
+
+.productContainer {
+    background-color: white;
+    padding: 1.4em;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.productContainerFirst {
+    font-weight: 700;
+    color: white;
+    background-color: #8f183e;
+}
+
+#showAllProductsBtn {
+    background-color: #8f183e;
+    text-decoration: none;
+    color: white;
+    border: 1px solid #4d0e22;
+    font-weight: 500;
+    padding: 0.5em 1em;
+    border-radius: 0.4em;
+    animation: displayButtonsRight 2s ease 0s 1 normal forwards;
+}
+
+#showAllProductsBtn:hover {
+        background-color: #630f2a;
+    }
+
+#searchProductBtn {
+    padding: 0.2em 0.5em;
+    background-color: #ba003c;
+    border: 0.01em solid black;
+    border-radius: 0.3em;
+    color: white;
+}
+
+#searchProductBtn:hover {
+        background-color: #6e0023;
+    }
+
+#productDetailsBtn {
+    background-color: #b7ebff;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#productDetailsBtn:hover {
+        background-color: #5ed1ff;
+    }
+
+#productEditBtn {
+    background-color: #b7ebff;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#productEditBtn:hover {
+        background-color: #5ed1ff;
+    }
+
+#productDeleteBtn {
+    background-color: #b7ebff;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#productDeleteBtn:hover {
+        background-color: #5ed1ff;
+    }
+
+.productViewContainer {
+    padding: 3em;
+    border-radius: 14px;
+    background: hsla(346, 62%, 51%, 1);
+    background: linear-gradient( 270deg, hsla(346, 62%, 51%, 1) 0%, hsla(326, 74%, 40%, 1) 92% );
+    background: -moz-linear-gradient( 270deg, hsla(346, 62%, 51%, 1) 0%, hsla(326, 74%, 40%, 1) 92% );
+    background: -webkit-linear-gradient( 270deg, hsla(346, 62%, 51%, 1) 0%, hsla(326, 74%, 40%, 1) 92% );
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.productViewContainer a:hover {
+        color: black;
+    }
+
+.paginatorList {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 2em 0;
+}
+
+.paginatorLi {
+    background-color: white;
+    border: 1px solid black;
+    border-right: none;
+    cursor: pointer;
+    height: 2.4em;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 2;
+}
+
+.paginatorLi:first-child {
+        border-left: 1px solid black;
+    }
+
+.paginatorA {
+    text-decoration: none;
+    color: black;
+    padding: 1.2em;
+}
+
+#paginatorFirst a,
+#paginatorLast a,
+#paginatorNext a,
+#paginatorPrevious a {
+    color: #e7f9ff;
+    font-weight: 500;
+}
+
+.paginatorLi:hover {
+    background-color: #c1c3c4;
+}
+
+.active {
+    background-color: #ba003c;
+}
+
+.active a {
+        color: white;
+    }
+
+.active:hover {
+        background-color: #8f183e;
+    }
+
+.active a:hover {
+        color: white;
+    }
+
+#paginatorFirst,
+#paginatorLast {
+    background-color: #6495ed;
+}
+
+#paginatorFirst:hover,
+#paginatorLast:hover {
+        background-color: #4c71b5;
+    }
+
+#paginatorNext:hover,
+#paginatorPrevious:hover {
+    background-color: #378ba7;
+}
+
+#paginatorNext,
+#paginatorPrevious {
+    background-color: #54d4ff;
+}
+
+#paginatorFirst {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+#paginatorLast {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
 }
 
 .productsContainer {
@@ -511,8 +728,8 @@
 }
 
 #showAllProductsBtn:hover {
-    background-color: #630f2a;
-}
+        background-color: #630f2a;
+    }
 
 #searchProductBtn {
     padding: 0.2em 0.5em;
@@ -523,11 +740,11 @@
 }
 
 #searchProductBtn:hover {
-    background-color: #6E0023;
-}
+        background-color: #6e0023;
+    }
 
 #productDetailsBtn {
-    background-color: #B7EBFF;
+    background-color: #b7ebff;
     text-decoration: none;
     margin: 8px;
     font-size: 1em;
@@ -539,11 +756,11 @@
 }
 
 #productDetailsBtn:hover {
-    background-color: #5ED1FF;
-}
+        background-color: #5ed1ff;
+    }
 
 #productEditBtn {
-    background-color: #B7EBFF;
+    background-color: #b7ebff;
     text-decoration: none;
     margin: 8px;
     font-size: 1em;
@@ -555,11 +772,11 @@
 }
 
 #productEditBtn:hover {
-    background-color: #5ED1FF;
-}
+        background-color: #5ed1ff;
+    }
 
 #productDeleteBtn {
-    background-color: #B7EBFF;
+    background-color: #b7ebff;
     text-decoration: none;
     margin: 8px;
     font-size: 1em;
@@ -571,250 +788,51 @@
 }
 
 #productDeleteBtn:hover {
-    background-color: #5ED1FF;
-}
-
-.productViewContainer {
-    padding: 3em;
-    border-radius: 14px;
-    background: hsla(346, 62%, 51%, 1);
-    background: linear-gradient(270deg, hsla(346, 62%, 51%, 1) 0%, hsla(326, 74%, 40%, 1) 92%);
-    background: -moz-linear-gradient(270deg, hsla(346, 62%, 51%, 1) 0%, hsla(326, 74%, 40%, 1) 92%);
-    background: -webkit-linear-gradient(270deg, hsla(346, 62%, 51%, 1) 0%, hsla(326, 74%, 40%, 1) 92%);
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    font-family: "Open Sans", sans-serif;
-    font-optical-sizing: auto;
-}
-
-.productViewContainer a:hover {
-    color: black;
-}
-
-.paginatorList {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    margin: 2em 0;
-}
-
-.paginatorLi {
-    background-color: white;
-    border: 1px solid black;
-    border-right: none;
-    cursor: pointer;
-    height: 2.4em;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 2;
-}
-
-.paginatorLi:first-child {
-    border-left: 1px solid black;
-}
-
-.paginatorA {
-    text-decoration: none;
-    color: black;
-    padding: 1.2em;
-}
-
-#paginatorFirst a,
-#paginatorLast a,
-#paginatorNext a,
-#paginatorPrevious a {
-    color: #E7F9FF;
-    font-weight: 500;
-}
-
-.paginatorLi:hover {
-    background-color: #C1C3C4;
-}
-
-.active {
-    background-color: #ba003c;
-}
-
-.active a{
-    color: white;
-}
-
-.active:hover{
-    background-color: #8f183e;
-}
-
-.active a:hover{
-    color:white;
-}
-
-#paginatorFirst,
-#paginatorLast {
-    background-color: #6495ed;
-}
-
-#paginatorFirst:hover,
-#paginatorLast:hover{
-    background-color: #4C71B5;
-}
-
-#paginatorNext:hover,
-#paginatorPrevious:hover {
-    background-color: #378BA7;
-}
-
-#paginatorNext,
-#paginatorPrevious {
-    background-color: #54D4FF;
-}
-
-#paginatorFirst{
-    border-top-left-radius: 12px;
-    border-bottom-left-radius: 12px;
-}
-
-#paginatorLast{
-    border-top-right-radius: 12px;
-    border-bottom-right-radius: 12px;
-}
-
-.productsContainer{
-    display: flex;
-    flex-direction: column;
-    gap: 0.3em;
-    margin-top: 2em;
-}
-
-.productContainer {
-    background-color: white;
-    padding: 1.4em;
-    text-align: center;
-    border-radius: 12px;
-}
-
-.productContainerFirst {
-    font-weight: 700;
-    color: white;
-    background-color: #8f183e;
-}
-
-#showAllProductsBtn {
-    background-color: #8f183e;
-    text-decoration: none;
-    color: white;
-    border: 1px solid #4d0e22;
-    font-weight: 500;
-    padding: 0.5em 1em;
-    border-radius: 0.4em;
-    animation: displayButtonsRight 2s ease 0s 1 normal forwards;
-}
-
-#showAllProductsBtn:hover{
-    background-color: #630f2a;
-}
-
-#searchProductBtn {
-    padding: 0.2em 0.5em;
-    background-color: #ba003c;
-    border: 0.01em solid black;
-    border-radius: 0.3em;
-    color: white;
-}
-
-#searchProductBtn:hover{
-    background-color: #6E0023;
-}
-
-#productDetailsBtn {
-    background-color: #B7EBFF;
-    text-decoration: none;
-    margin: 8px;
-    font-size: 1em;
-    text-align: center;
-    border: 1px solid black;
-    color: black;
-    border-radius: 4px;
-    padding: 3px;
-}
-
-#productDetailsBtn:hover {
-    background-color: #5ED1FF;
-}
-
-#productEditBtn {
-    background-color: #B7EBFF;
-    text-decoration: none;
-    margin: 8px;
-    font-size: 1em;
-    text-align: center;
-    border: 1px solid black;
-    color: black;
-    border-radius: 4px;
-    padding: 3px;
-}
-
-#productEditBtn:hover{
-    background-color: #5ED1FF;
-}
-
-#productDeleteBtn {
-    background-color: #B7EBFF;
-    text-decoration: none;
-    margin: 8px;
-    font-size: 1em;
-    text-align: center;
-    border: 1px solid black;
-    color: black;
-    border-radius: 4px;
-    padding: 3px;
-}
-
-#productDeleteBtn:hover{
-    background-color: #5ED1FF;
-}
+        background-color: #5ed1ff;
+    }
 
 .addProductContainer {
     background: hsla(50, 87%, 85%, 1);
-    background: linear-gradient(270deg, hsla(50, 87%, 85%, 1) 0%, hsla(49, 82%, 74%, 1) 100%);
-    background: -moz-linear-gradient(270deg, hsla(50, 87%, 85%, 1) 0%, hsla(49, 82%, 74%, 1) 100%);
-    background: -webkit-linear-gradient(270deg, hsla(50, 87%, 85%, 1) 0%, hsla(49, 82%, 74%, 1) 100%);
+    background: linear-gradient( 270deg, hsla(50, 87%, 85%, 1) 0%, hsla(49, 82%, 74%, 1) 100% );
+    background: -moz-linear-gradient( 270deg, hsla(50, 87%, 85%, 1) 0%, hsla(49, 82%, 74%, 1) 100% );
+    background: -webkit-linear-gradient( 270deg, hsla(50, 87%, 85%, 1) 0%, hsla(49, 82%, 74%, 1) 100% );
     padding: 24px;
     border-radius: 12px;
     height: 100%;
     margin-top: 4.809%;
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
 }
 
 .addProductContainer form {
-    display: flex;
-    flex-direction: column;
-    font-size: 24px;
-    gap: 4px;
-    text-align: right;
-}
+        display: flex;
+        flex-direction: column;
+        font-size: 24px;
+        gap: 4px;
+        text-align: right;
+    }
 
 .addProductContainer span {
-    color: #c90016;
-    text-align: center;
-    margin-top: 12px;
-}
+        color: #c90016;
+        text-align: center;
+        margin-top: 12px;
+    }
 
 .addProductContainer form div div {
-    display: flex;
-}
+        display: flex;
+    }
 
 .addProductContainer form div div input,
 .addProductContainer form div div textarea,
 .addProductContainer form div div select {
-    border-radius: 4px;
-    padding: 4px;
-    animation: displayProductFormTags 2s ease 0s 1 normal forwards;
-    margin-left: auto;
-    border: 2px solid black;
-    width: 20em;
-}
+            border-radius: 4px;
+            padding: 4px;
+            animation: displayProductFormTags 2s ease 0s 1 normal forwards;
+            margin-left: auto;
+            border: 2px solid black;
+            width: 20em;
+        }
 
 #addProductBtn {
     align-self: center;
@@ -827,8 +845,8 @@
 }
 
 #addProductBtn:hover {
-    animation: addProductShake 2s ease 0s 1 normal forwards;
-}
+        animation: addProductShake 2s ease 0s 1 normal forwards;
+    }
 
 @keyframes addProductShake {
     0%, 100% {
@@ -869,12 +887,12 @@
 
 .productDetailsContainer {
     background: hsla(285, 100%, 50%, 1);
-    background: linear-gradient(270deg, hsla(285, 100%, 50%, 1) 0%, hsla(285, 100%, 38%, 1) 100%);
-    background: -moz-linear-gradient(270deg, hsla(285, 100%, 50%, 1) 0%, hsla(285, 100%, 38%, 1) 100%);
-    background: -webkit-linear-gradient(270deg, hsla(285, 100%, 50%, 1) 0%, hsla(285, 100%, 38%, 1) 100%);
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    background: linear-gradient( 270deg, hsla(285, 100%, 50%, 1) 0%, hsla(285, 100%, 38%, 1) 100% );
+    background: -moz-linear-gradient( 270deg, hsla(285, 100%, 50%, 1) 0%, hsla(285, 100%, 38%, 1) 100% );
+    background: -webkit-linear-gradient( 270deg, hsla(285, 100%, 50%, 1) 0%, hsla(285, 100%, 38%, 1) 100% );
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
     border-radius: 12px;
     padding: 2em;
     font-family: "Capriola", sans-serif;
@@ -883,35 +901,35 @@
 }
 
 .productDetailsContainer .productDetailsDiv {
-    display: flex;
-    margin: 3em;
-    background-color: #f0c2ff;
-    padding: 0.4em;
-    font-family: "Capriola", sans-serif;
-    border-radius: 8px;
-}
+        display: flex;
+        margin: 3em;
+        background-color: #f0c2ff;
+        padding: 0.4em;
+        font-family: "Capriola", sans-serif;
+        border-radius: 8px;
+    }
 
-.productDetailsContainer div label{
-    font-size: 1.4em;
-    font-weight: bold;
-}
+.productDetailsContainer div label {
+        font-size: 1.4em;
+        font-weight: bold;
+    }
 
-.productDetailsContainer div h4{
-    margin-left: auto;
-}
+.productDetailsContainer div h4 {
+        margin-left: auto;
+    }
 
-.productDetailsContainer div p{
-    margin-left: auto;
-    font-size: 1.4em;
-    font-weight: 600;
-}
+.productDetailsContainer div p {
+        margin-left: auto;
+        font-size: 1.4em;
+        font-weight: 600;
+    }
 
 .productDetailsContainer div div {
-    margin: 0;
-    margin-left: auto;
-    display: flex;
-    flex-direction: column;
-}
+        margin: 0;
+        margin-left: auto;
+        display: flex;
+        flex-direction: column;
+    }
 
 #detailsProductBtns {
     margin: auto;
@@ -932,57 +950,57 @@
 }
 
 #backToAllProductsBtn:hover,
-#homePageInProductsBtn:hover{
-    background-color: purple;
-    color: white;
-}
+#homePageInProductsBtn:hover {
+        background-color: purple;
+        color: white;
+    }
 
 .editProductContainer {
     background: hsla(50, 87%, 85%, 1);
-    background: linear-gradient(270deg, hsla(50, 87%, 85%, 1) 0%, hsla(49, 82%, 74%, 1) 100%);
-    background: -moz-linear-gradient(270deg, hsla(50, 87%, 85%, 1) 0%, hsla(49, 82%, 74%, 1) 100%);
-    background: -webkit-linear-gradient(270deg, hsla(50, 87%, 85%, 1) 0%, hsla(49, 82%, 74%, 1) 100%);
+    background: linear-gradient( 270deg, hsla(50, 87%, 85%, 1) 0%, hsla(49, 82%, 74%, 1) 100% );
+    background: -moz-linear-gradient( 270deg, hsla(50, 87%, 85%, 1) 0%, hsla(49, 82%, 74%, 1) 100% );
+    background: -webkit-linear-gradient( 270deg, hsla(50, 87%, 85%, 1) 0%, hsla(49, 82%, 74%, 1) 100% );
     padding: 24px;
     border-radius: 12px;
     height: 100%;
     margin-top: 4.809%;
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
 }
 
 .editProductContainer form {
-    display: flex;
-    flex-direction: column;
-    font-size: 24px;
-    gap: 4px;
-    text-align: right;
-}
+        display: flex;
+        flex-direction: column;
+        font-size: 24px;
+        gap: 4px;
+        text-align: right;
+    }
 
 .editProductContainer span {
-    color: #c90016;
-    text-align: center;
-    margin-top: 12px;
-}
+        color: #c90016;
+        text-align: center;
+        margin-top: 12px;
+    }
 
 .editProductContainer form div div {
-    display: flex;
-}
+        display: flex;
+    }
 
 .editProductContainer form div div input,
 .editProductContainer form div div textarea,
 .editProductContainer form div div select {
-    border-radius: 4px;
-    padding: 4px;
-    animation: displayProductFormTags 2s ease 0s 1 normal forwards;
-    margin-left: auto;
-    border: 2px solid black;
-    width: 20em;
-}
+            border-radius: 4px;
+            padding: 4px;
+            animation: displayProductFormTags 2s ease 0s 1 normal forwards;
+            margin-left: auto;
+            border: 2px solid black;
+            width: 20em;
+        }
 
-.editProductContainer .productDescriptionDiv div input{
-    height: 2em;
-}
+.editProductContainer .productDescriptionDiv div input {
+        height: 2em;
+    }
 
 #editProductBtn {
     align-self: center;
@@ -995,8 +1013,8 @@
 }
 
 #editProductBtn:hover {
-    animation: editProductShake 2s ease 0s 1 normal forwards;
-}
+        animation: editProductShake 2s ease 0s 1 normal forwards;
+    }
 
 @keyframes editProductShake {
     0%, 100% {
@@ -1044,20 +1062,20 @@
 
 .deleteProductContainer {
     background: hsla(274, 87%, 65%, 1);
-    background: linear-gradient(270deg, hsla(274, 87%, 65%, 1) 0%, hsla(190, 64%, 54%, 1) 100%);
-    background: -moz-linear-gradient(270deg, hsla(274, 87%, 65%, 1) 0%, hsla(190, 64%, 54%, 1) 100%);
-    background: -webkit-linear-gradient(270deg, hsla(274, 87%, 65%, 1) 0%, hsla(190, 64%, 54%, 1) 100%);
+    background: linear-gradient( 270deg, hsla(274, 87%, 65%, 1) 0%, hsla(190, 64%, 54%, 1) 100% );
+    background: -moz-linear-gradient( 270deg, hsla(274, 87%, 65%, 1) 0%, hsla(190, 64%, 54%, 1) 100% );
+    background: -webkit-linear-gradient( 270deg, hsla(274, 87%, 65%, 1) 0%, hsla(190, 64%, 54%, 1) 100% );
     padding: 20px;
     border-radius: 12px;
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
     font-family: "Oswald", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
 }
 
-.container{
+.container {
     margin: auto;
 }
 
@@ -1071,28 +1089,28 @@
 }
 
 .deleteProductContainer .deleteProductInfoContainer label {
-    margin-right: auto;
-    font-size: 1.5em;
-    font-weight: 900;
-}
+        margin-right: auto;
+        font-size: 1.5em;
+        font-weight: 900;
+    }
 
 .deleteProductContainer .deleteProductInfoContainer h4 {
-    font-size: 1.5em;
-    font-weight: 400;
-    margin: 0;
-    width: 40%;
-    word-wrap: break-word;
-    margin-right: 3em;
-}
+        font-size: 1.5em;
+        font-weight: 400;
+        margin: 0;
+        width: 40%;
+        word-wrap: break-word;
+        margin-right: 3em;
+    }
 
 .deleteProductContainer .deleteProductInfoContainer p {
-    font-size: 1.5em;
-}
+        font-size: 1.5em;
+    }
 
-.deleteProductContainer .deleteProductInfoContainer div{
-    margin-right: 3em;
-    display: block;
-}
+.deleteProductContainer .deleteProductInfoContainer div {
+        margin-right: 3em;
+        display: block;
+    }
 
 .submitProductDeleteBtnContainer {
     background-color: none;
@@ -1101,21 +1119,21 @@
 }
 
 .submitProductDeleteBtnContainer button {
-    font-size: 1.8em;
-    background-color: #B159F3;
-    color: white;
-    border-radius: 8px;
-    border: none;
-    padding: 8px;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-}
+        font-size: 1.8em;
+        background-color: #b159f3;
+        color: white;
+        border-radius: 8px;
+        border: none;
+        padding: 8px;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
 
 .submitProductDeleteBtnContainer button:hover {
-    background-color: #963fd9;
-}
+            background-color: #963fd9;
+        }
 
-#barcodesDivContainer{
+#barcodesDivContainer {
     background-color: red;
 }
 
@@ -1160,16 +1178,16 @@
 
 .addFirmContainer {
     background: hsla(285, 90%, 81%, 1);
-    background: linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
-    background: -moz-linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
-    background: -webkit-linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
+    background: linear-gradient( 270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100% );
+    background: -moz-linear-gradient( 270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100% );
+    background: -webkit-linear-gradient( 270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100% );
     padding: 24px;
     border-radius: 12px;
     height: 100%;
     margin-top: 4.809%;
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
 }
 
 .addFirmContainer form {
@@ -1264,12 +1282,12 @@
     padding: 3em;
     border-radius: 14px;
     background: hsla(0, 81%, 86%, 1);
-    background: linear-gradient(270deg, hsla(0, 81%, 86%, 1) 33%, hsla(157, 100%, 79%, 1) 85%);
-    background: -moz-linear-gradient(270deg, hsla(0, 81%, 86%, 1) 33%, hsla(157, 100%, 79%, 1) 85%);
-    background: -webkit-linear-gradient(270deg, hsla(0, 81%, 86%, 1) 33%, hsla(157, 100%, 79%, 1) 85%);
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    background: linear-gradient( 270deg, hsla(0, 81%, 86%, 1) 33%, hsla(157, 100%, 79%, 1) 85% );
+    background: -moz-linear-gradient( 270deg, hsla(0, 81%, 86%, 1) 33%, hsla(157, 100%, 79%, 1) 85% );
+    background: -webkit-linear-gradient( 270deg, hsla(0, 81%, 86%, 1) 33%, hsla(157, 100%, 79%, 1) 85% );
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
 }
@@ -1354,8 +1372,8 @@
 }
 
 #showAllFirmsBtn:hover {
-    background-color: #3b6656;
-}
+        background-color: #3b6656;
+    }
 
 #searchFirmBtn {
     padding: 0.2em 0.5em;
@@ -1366,8 +1384,8 @@
 }
 
 #searchFirmBtn:hover {
-    background-color: #61ab8f;
-}
+        background-color: #61ab8f;
+    }
 
 #firmEditBtn {
     background-color: #fcdcdc;
@@ -1382,8 +1400,8 @@
 }
 
 #firmEditBtn:hover {
-    background-color: #F8BEBE;
-}
+        background-color: #f8bebe;
+    }
 
 #firmDeleteBtn {
     background-color: #fcdcdc;
@@ -1398,8 +1416,8 @@
 }
 
 #firmDeleteBtn:hover {
-    background-color: #F8BEBE;
-}
+        background-color: #f8bebe;
+    }
 
 #firmDetailsBtn {
     background-color: #fcdcdc;
@@ -1414,8 +1432,8 @@
 }
 
 #firmDetailsBtn:hover {
-    background-color: #F8BEBE;
-}
+        background-color: #f8bebe;
+    }
 
 .notFoundFirmsBtn {
     color: #faeceb;
@@ -1426,12 +1444,12 @@
 
 .firmDetailsContainer {
     background: hsla(259, 96%, 74%, 1);
-    background: linear-gradient(270deg, hsla(259, 96%, 74%, 1) 0%, hsla(263, 95%, 59%, 1) 100%);
-    background: -moz-linear-gradient(270deg, hsla(259, 96%, 74%, 1) 0%, hsla(263, 95%, 59%, 1) 100%);
-    background: -webkit-linear-gradient(270deg, hsla(259, 96%, 74%, 1) 0%, hsla(263, 95%, 59%, 1) 100%);
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    background: linear-gradient( 270deg, hsla(259, 96%, 74%, 1) 0%, hsla(263, 95%, 59%, 1) 100% );
+    background: -moz-linear-gradient( 270deg, hsla(259, 96%, 74%, 1) 0%, hsla(263, 95%, 59%, 1) 100% );
+    background: -webkit-linear-gradient( 270deg, hsla(259, 96%, 74%, 1) 0%, hsla(263, 95%, 59%, 1) 100% );
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
     border-radius: 12px;
     padding: 2em;
     font-family: "Capriola", sans-serif;
@@ -1440,35 +1458,35 @@
 }
 
 .firmDetailsContainer .firmDetailsDiv {
-    display: flex;
-    margin: 3em;
-    background-color: #e1d4fc;
-    padding: 0.4em;
-    font-family: "Capriola", sans-serif;
-    border-radius: 8px;
-}
+        display: flex;
+        margin: 3em;
+        background-color: #e1d4fc;
+        padding: 0.4em;
+        font-family: "Capriola", sans-serif;
+        border-radius: 8px;
+    }
 
 .firmDetailsContainer div label {
-    font-size: 1.4em;
-    font-weight: bold;
-}
+        font-size: 1.4em;
+        font-weight: bold;
+    }
 
 .firmDetailsContainer div h4 {
-    margin-left: auto;
-}
+        margin-left: auto;
+    }
 
 .firmDetailsContainer div p {
-    margin-left: auto;
-    font-size: 1.4em;
-    font-weight: 600;
-}
+        margin-left: auto;
+        font-size: 1.4em;
+        font-weight: 600;
+    }
 
 .firmDetailsContainer div div {
-    margin: 0;
-    margin-left: auto;
-    display: flex;
-    flex-direction: column;
-}
+        margin: 0;
+        margin-left: auto;
+        display: flex;
+        flex-direction: column;
+    }
 
 #detailsFirmBtns {
     margin: auto;
@@ -1490,56 +1508,56 @@
 
 #backToAllFirmsBtn:hover,
 #homePageInFirmsBtn:hover {
-    background-color: #5d35b0;
-    color: white;
-}
+        background-color: #5d35b0;
+        color: white;
+    }
 
 .editFirmContainer {
     background: hsla(285, 90%, 81%, 1);
-    background: linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
-    background: -moz-linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
-    background: -webkit-linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
+    background: linear-gradient( 270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100% );
+    background: -moz-linear-gradient( 270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100% );
+    background: -webkit-linear-gradient( 270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100% );
     padding: 24px;
     border-radius: 12px;
     height: 100%;
     margin-top: 4.809%;
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
 }
 
 .editFirmContainer form {
-    display: flex;
-    flex-direction: column;
-    font-size: 24px;
-    gap: 4px;
-    text-align: right;
-}
+        display: flex;
+        flex-direction: column;
+        font-size: 24px;
+        gap: 4px;
+        text-align: right;
+    }
 
 .editFirmContainer span {
-    color: #c90016;
-    text-align: center;
-    margin-top: 12px;
-}
+        color: #c90016;
+        text-align: center;
+        margin-top: 12px;
+    }
 
 .editFirmContainer form div div {
-    display: flex;
-}
+        display: flex;
+    }
 
 .editFirmContainer form div div input,
 .editFirmContainer form div div textarea,
 .editFirmContainer form div div select {
-    border-radius: 4px;
-    padding: 4px;
-    animation: displayFirmFormTags 2s ease 0s 1 normal forwards;
-    margin-left: auto;
-    border: 2px solid black;
-    width: 20em;
-}
+            border-radius: 4px;
+            padding: 4px;
+            animation: displayFirmFormTags 2s ease 0s 1 normal forwards;
+            margin-left: auto;
+            border: 2px solid black;
+            width: 20em;
+        }
 
 .editFirmContainer .firmDescriptionDiv div input {
-    height: 2em;
-}
+        height: 2em;
+ }
 
 #editFirmBtn {
     align-self: center;
@@ -1552,56 +1570,56 @@
 }
 
 #editFirmBtn:hover {
-    animation: editProductShake 2s ease 0s 1 normal forwards;
-}
+        animation: editProductShake 2s ease 0s 1 normal forwards;
+    }
 
 .deleteFirmContainer {
     background: hsla(51, 100%, 81%, 1);
-    background: linear-gradient(270deg, hsla(51, 100%, 81%, 1) 0%, hsla(0, 3%, 77%, 1) 91%);
-    background: -moz-linear-gradient(270deg, hsla(51, 100%, 81%, 1) 0%, hsla(0, 3%, 77%, 1) 91%);
-    background: -webkit-linear-gradient(270deg, hsla(51, 100%, 81%, 1) 0%, hsla(0, 3%, 77%, 1) 91%);
+    background: linear-gradient( 270deg, hsla(51, 100%, 81%, 1) 0%, hsla(0, 3%, 77%, 1) 91% );
+    background: -moz-linear-gradient( 270deg, hsla(51, 100%, 81%, 1) 0%, hsla(0, 3%, 77%, 1) 91% );
+    background: -webkit-linear-gradient( 270deg, hsla(51, 100%, 81%, 1) 0%, hsla(0, 3%, 77%, 1) 91% );
     padding: 20px;
     border-radius: 12px;
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
     font-family: "Oswald", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
 }
 
 .deleteFirmContainer .deleteFirmInfoContainer {
-    display: flex;
-    margin-top: 1.5em;
-    background-color: white;
-    padding: 1em;
-    border-radius: 12px;
-    margin: 1em;
-}
+        display: flex;
+        margin-top: 1.5em;
+        background-color: white;
+        padding: 1em;
+        border-radius: 12px;
+        margin: 1em;
+    }
 
 .deleteFirmContainer .deleteFirmInfoContainer label {
-    margin-right: auto;
-    font-size: 1.5em;
-    font-weight: 900;
-}
+            margin-right: auto;
+            font-size: 1.5em;
+            font-weight: 900;
+        }
 
 .deleteFirmContainer .deleteFirmInfoContainer h4 {
-    font-size: 1.5em;
-    font-weight: 400;
-    margin: 0;
-    width: 40%;
-    word-wrap: break-word;
-    margin-right: 3em;
-}
+            font-size: 1.5em;
+            font-weight: 400;
+            margin: 0;
+            width: 40%;
+            word-wrap: break-word;
+            margin-right: 3em;
+        }
 
 .deleteFirmContainer .deleteFirmInfoContainer p {
-    font-size: 1.5em;
-}
+            font-size: 1.5em;
+        }
 
 .deleteFirmContainer .deleteFirmInfoContainer div {
-    margin-right: 3em;
-    display: block;
-}
+            margin-right: 3em;
+            display: block;
+        }
 
 .submitFirmDeleteBtnContainer {
     background-color: none;
@@ -1610,61 +1628,61 @@
 }
 
 .submitFirmDeleteBtnContainer button {
-    font-size: 1.8em;
-    background-color: #faeb8e;
-    color: white;
-    border-radius: 8px;
-    border: none;
-    padding: 8px;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-}
+        font-size: 1.8em;
+        background-color: #faeb8e;
+        color: white;
+        border-radius: 8px;
+        border: none;
+        padding: 8px;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
 
 .submitFirmDeleteBtnContainer button:hover {
-    background-color: #ada04c;
-}
+            background-color: #ada04c;
+        }
 
 /* Bank */
 
 .addBankContainer {
     background: hsla(29, 100%, 84%, 1);
-    background: linear-gradient(270deg, hsla(29, 100%, 84%, 1) 0%, hsla(29, 86%, 72%, 1) 100%);
-    background: -moz-linear-gradient(270deg, hsla(29, 100%, 84%, 1) 0%, hsla(29, 86%, 72%, 1) 100%);
-    background: -webkit-linear-gradient(270deg, hsla(29, 100%, 84%, 1) 0%, hsla(29, 86%, 72%, 1) 100%);
+    background: linear-gradient( 270deg, hsla(29, 100%, 84%, 1) 0%, hsla(29, 86%, 72%, 1) 100% );
+    background: -moz-linear-gradient( 270deg, hsla(29, 100%, 84%, 1) 0%, hsla(29, 86%, 72%, 1) 100% );
+    background: -webkit-linear-gradient( 270deg, hsla(29, 100%, 84%, 1) 0%, hsla(29, 86%, 72%, 1) 100% );
     padding: 24px;
     border-radius: 12px;
     height: 100%;
     margin-top: 4.809%;
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
 }
 
 .addBankContainer form {
-    display: flex;
-    flex-direction: column;
-    font-size: 24px;
-    gap: 4px;
-    text-align: right;
-}
+        display: flex;
+        flex-direction: column;
+        font-size: 24px;
+        gap: 4px;
+        text-align: right;
+    }
 
 .addBankContainer span {
-    color: #c90016;
-    text-align: center;
-    margin-top: 12px;
-}
+        color: #c90016;
+        text-align: center;
+        margin-top: 12px;
+    }
 
 .addBankContainer form div div {
-    display: flex;
-}
+        display: flex;
+    }
 
 .addBankContainer form div div input,
 .addBankContainer form div div select {
-    border-radius: 4px;
-    padding: 4px;
-    animation: displayBankFormTags 2s ease 0s 1 normal forwards;
-    margin-left: auto;
-}
+            border-radius: 4px;
+            padding: 4px;
+            animation: displayBankFormTags 2s ease 0s 1 normal forwards;
+            margin-left: auto;
+        }
 
 #addBankBtn {
     align-self: center;
@@ -1677,8 +1695,8 @@
 }
 
 #addBankBtn:hover {
-    animation: addBankShake 2s ease 0s 1 normal forwards;
-}
+        animation: addBankShake 2s ease 0s 1 normal forwards;
+    }
 
 @keyframes addBankShake {
     0%, 100% {
@@ -1725,26 +1743,26 @@
 }
 
 .bankContainer .bankComponentContainer div p {
-    width: 20%;
-}
+        width: 20%;
+    }
 
 .bankViewContainer {
     padding: 3em;
     border-radius: 14px;
     background: hsla(0, 100%, 61%, 1);
-    background: linear-gradient(90deg, hsla(0, 100%, 61%, 1) 0%, hsla(31, 100%, 69%, 1) 57%);
-    background: -moz-linear-gradient(90deg, hsla(0, 100%, 61%, 1) 0%, hsla(31, 100%, 69%, 1) 57%);
-    background: -webkit-linear-gradient(90deg, hsla(0, 100%, 61%, 1) 0%, hsla(31, 100%, 69%, 1) 57%);
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    background: linear-gradient( 90deg, hsla(0, 100%, 61%, 1) 0%, hsla(31, 100%, 69%, 1) 57% );
+    background: -moz-linear-gradient( 90deg, hsla(0, 100%, 61%, 1) 0%, hsla(31, 100%, 69%, 1) 57% );
+    background: -webkit-linear-gradient( 90deg, hsla(0, 100%, 61%, 1) 0%, hsla(31, 100%, 69%, 1) 57% );
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
 }
 
 .bankViewContainer a:hover {
-    color: black;
-}
+        color: black;
+    }
 
 @keyframes addBankShake {
     0%, 100% {
@@ -1822,8 +1840,8 @@
 }
 
 #showAllBanksBtn:hover {
-    background-color: #872222;
-}
+        background-color: #872222;
+    }
 
 #searchBankBtn {
     padding: 0.2em 0.5em;
@@ -1834,8 +1852,8 @@
 }
 
 #searchBankBtn:hover {
-    background-color: #ad2b2b;
-}
+        background-color: #ad2b2b;
+    }
 
 #bankEditBtn {
     background-color: #ffdbb5;
@@ -1850,8 +1868,8 @@
 }
 
 #bankEditBtn:hover {
-    background-color: #ffc07d;
-}
+        background-color: #ffc07d;
+    }
 
 #bankDeleteBtn {
     background-color: #ffdbb5;
@@ -1866,8 +1884,8 @@
 }
 
 #bankDeleteBtn:hover {
-    background-color: #ffc07d;
-}
+        background-color: #ffc07d;
+    }
 
 #bankDetailsBtn {
     background-color: #ffdbb5;
@@ -1882,8 +1900,8 @@
 }
 
 #bankDetailsBtn:hover {
-    background-color: #ffc07d;
-}
+        background-color: #ffc07d;
+    }
 
 .notFoundBanksBtn {
     color: #faeceb;
@@ -1894,12 +1912,12 @@
 
 .bankDetailsContainer {
     background: hsla(29, 82%, 64%, 1);
-    background: linear-gradient(270deg, hsla(29, 82%, 64%, 1) 0%, hsla(29, 91%, 55%, 1) 100%);
-    background: -moz-linear-gradient(270deg, hsla(29, 82%, 64%, 1) 0%, hsla(29, 91%, 55%, 1) 100%);
-    background: -webkit-linear-gradient(270deg, hsla(29, 82%, 64%, 1) 0%, hsla(29, 91%, 55%, 1) 100%);
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    background: linear-gradient( 270deg, hsla(29, 82%, 64%, 1) 0%, hsla(29, 91%, 55%, 1) 100% );
+    background: -moz-linear-gradient( 270deg, hsla(29, 82%, 64%, 1) 0%, hsla(29, 91%, 55%, 1) 100% );
+    background: -webkit-linear-gradient( 270deg, hsla(29, 82%, 64%, 1) 0%, hsla(29, 91%, 55%, 1) 100% );
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
     border-radius: 12px;
     padding: 2em;
     font-family: "Capriola", sans-serif;
@@ -1908,29 +1926,29 @@
 }
 
 .bankDetailsContainer .bankDetailsDiv {
-    display: flex;
-    margin: 3em;
-    background-color: #fad6b4;
-    padding: 0.4em;
-    font-family: "Capriola", sans-serif;
-    border-radius: 8px;
-}
+        display: flex;
+        margin: 3em;
+        background-color: #fad6b4;
+        padding: 0.4em;
+        font-family: "Capriola", sans-serif;
+        border-radius: 8px;
+    }
 
 .bankDetailsContainer div label {
-    font-size: 1.4em;
-    font-weight: bold;
-}
+        font-size: 1.4em;
+        font-weight: bold;
+    }
 
 .bankDetailsContainer div h4 {
-    margin-left: auto;
-}
+        margin-left: auto;
+    }
 
 .bankDetailsContainer div div {
-    margin: 0;
-    margin-left: auto;
-    display: flex;
-    flex-direction: column;
-}
+        margin: 0;
+        margin-left: auto;
+        display: flex;
+        flex-direction: column;
+    }
 
 #detailsBankBtns {
     margin: auto;
@@ -1952,50 +1970,50 @@
 
 #backToAllBanksBtn:hover,
 #homePageInBanksBtn:hover {
-    background-color: #cf731b;
-    color: white;
-}
+        background-color: #cf731b;
+        color: white;
+    }
 
 .editBankContainer {
     background: hsla(29, 100%, 84%, 1);
-    background: linear-gradient(270deg, hsla(29, 100%, 84%, 1) 0%, hsla(29, 86%, 72%, 1) 100%);
-    background: -moz-linear-gradient(270deg, hsla(29, 100%, 84%, 1) 0%, hsla(29, 86%, 72%, 1) 100%);
-    background: -webkit-linear-gradient(270deg, hsla(29, 100%, 84%, 1) 0%, hsla(29, 86%, 72%, 1) 100%);
+    background: linear-gradient( 270deg, hsla(29, 100%, 84%, 1) 0%, hsla(29, 86%, 72%, 1) 100% );
+    background: -moz-linear-gradient( 270deg, hsla(29, 100%, 84%, 1) 0%, hsla(29, 86%, 72%, 1) 100% );
+    background: -webkit-linear-gradient( 270deg, hsla(29, 100%, 84%, 1) 0%, hsla(29, 86%, 72%, 1) 100% );
     padding: 48px;
     border-radius: 12px;
     height: 100%;
     margin-top: 4.809%;
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
 }
 
 .editBankContainer form {
-    display: flex;
-    flex-direction: column;
-    font-size: 24px;
-    gap: 4px;
-    text-align: right;
-}
+        display: flex;
+        flex-direction: column;
+        font-size: 24px;
+        gap: 4px;
+        text-align: right;
+    }
 
 .editBankContainer span {
-    color: #c90016;
-    text-align: center;
-    margin-top: 12px;
-}
+        color: #c90016;
+        text-align: center;
+        margin-top: 12px;
+    }
 
 .editBankContainer form div div {
-    display: flex;
-}
+        display: flex;
+    }
 
 .editBankContainer form div div input,
 .editBankContainer form div div select {
-    border-radius: 4px;
-    padding: 4px;
-    animation: displayBankFormTags 2s ease 0s 1 normal forwards;
-    margin-left: auto;
-    width: 20em;
-}
+            border-radius: 4px;
+            padding: 4px;
+            animation: displayBankFormTags 2s ease 0s 1 normal forwards;
+            margin-left: auto;
+            width: 20em;
+        }
 
 #editBankBtn {
     align-self: center;
@@ -2008,8 +2026,8 @@
 }
 
 #editBankBtn:hover {
-    animation: editBankShake 2s ease 0s 1 normal forwards;
-}
+        animation: editBankShake 2s ease 0s 1 normal forwards;
+    }
 
 @keyframes editBankShake {
     0%, 100% {
@@ -2050,51 +2068,51 @@
 
 .deleteBankContainer {
     background: hsla(56, 90%, 73%, 1);
-    background: linear-gradient(270deg, hsla(56, 90%, 73%, 1) 22%, hsla(245, 92%, 63%, 1) 100%);
-    background: -moz-linear-gradient(270deg, hsla(56, 90%, 73%, 1) 22%, hsla(245, 92%, 63%, 1) 100%);
-    background: -webkit-linear-gradient(270deg, hsla(56, 90%, 73%, 1) 22%, hsla(245, 92%, 63%, 1) 100%);
+    background: linear-gradient( 270deg, hsla(56, 90%, 73%, 1) 22%, hsla(245, 92%, 63%, 1) 100% );
+    background: -moz-linear-gradient( 270deg, hsla(56, 90%, 73%, 1) 22%, hsla(245, 92%, 63%, 1) 100% );
+    background: -webkit-linear-gradient( 270deg, hsla(56, 90%, 73%, 1) 22%, hsla(245, 92%, 63%, 1) 100% );
     padding: 20px;
     border-radius: 12px;
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
     font-family: "Oswald", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
 }
 
 .deleteBankContainer .deleteBankInfoContainer {
-    display: flex;
-    margin-top: 1.5em;
-    background-color: white;
-    padding: 1em;
-    border-radius: 12px;
-    margin: 1em;
-}
+        display: flex;
+        margin-top: 1.5em;
+        background-color: white;
+        padding: 1em;
+        border-radius: 12px;
+        margin: 1em;
+    }
 
 .deleteBankContainer .deleteBankInfoContainer label {
-    margin-right: auto;
-    font-size: 1.5em;
-    font-weight: 900;
-}
+            margin-right: auto;
+            font-size: 1.5em;
+            font-weight: 900;
+        }
 
 .deleteBankContainer .deleteBankInfoContainer h4 {
-    font-size: 1.5em;
-    font-weight: 400;
-    margin: 0;
-    width: 40%;
-    word-wrap: break-word;
-    margin-right: 3em;
-}
+            font-size: 1.5em;
+            font-weight: 400;
+            margin: 0;
+            width: 40%;
+            word-wrap: break-word;
+            margin-right: 3em;
+        }
 
 .deleteBankContainer .deleteBankInfoContainer p {
-    font-size: 1.5em;
-}
+            font-size: 1.5em;
+        }
 
 .deleteBankContainer .deleteBankInfoContainer div {
-    margin-right: 3em;
-    display: block;
-}
+            margin-right: 3em;
+            display: block;
+        }
 
 .submitBankDeleteBtnContainer {
     background-color: none;
@@ -2103,61 +2121,61 @@
 }
 
 .submitBankDeleteBtnContainer button {
-    font-size: 1.8em;
-    background-color: #e8dd46;
-    color: white;
-    border-radius: 8px;
-    border: none;
-    padding: 8px;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-}
+        font-size: 1.8em;
+        background-color: #e8dd46;
+        color: white;
+        border-radius: 8px;
+        border: none;
+        padding: 8px;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
 
 .submitBankDeleteBtnContainer button:hover {
-    background-color: #b5ac36;
-}
+            background-color: #b5ac36;
+        }
 
 /* Address */
 
 .addAddressContainer {
     background: hsla(285, 90%, 81%, 1);
-    background: linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
-    background: -moz-linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
-    background: -webkit-linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
+    background: linear-gradient( 270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100% );
+    background: -moz-linear-gradient( 270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100% );
+    background: -webkit-linear-gradient( 270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100% );
     padding: 24px;
     border-radius: 12px;
     height: 100%;
     margin-top: 4.809%;
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
 }
 
 .addAddressContainer form {
-    display: flex;
-    flex-direction: column;
-    font-size: 24px;
-    gap: 4px;
-    text-align: right;
-}
+        display: flex;
+        flex-direction: column;
+        font-size: 24px;
+        gap: 4px;
+        text-align: right;
+    }
 
 .addAddressContainer span {
-    color: #c90016;
-    text-align: center;
-    margin-top: 12px;
-}
+        color: #c90016;
+        text-align: center;
+        margin-top: 12px;
+    }
 
 .addAddressContainer form div div {
-    display: flex;
-}
+        display: flex;
+    }
 
 .addAddressContainer form div div input,
 .addAddressContainer form div div select {
-    border-radius: 4px;
-    padding: 4px;
-    animation: displayAddressFormTags 2s ease 0s 1 normal forwards;
-    margin-left: auto;
-}
+            border-radius: 4px;
+            padding: 4px;
+            animation: displayAddressFormTags 2s ease 0s 1 normal forwards;
+            margin-left: auto;
+        }
 
 #addAddressBtn {
     align-self: center;
@@ -2170,8 +2188,8 @@
 }
 
 #addAddressBtn:hover {
-    animation: addAddressShake 2s ease 0s 1 normal forwards;
-}
+        animation: addAddressShake 2s ease 0s 1 normal forwards;
+    }
 
 @keyframes addAddressShake {
     0%, 100% {
@@ -2218,26 +2236,26 @@
 }
 
 .addressContainer .addressComponentContainer div p {
-    width: 20%;
-}
+        width: 20%;
+    }
 
 .addressViewContainer {
     padding: 3em;
     border-radius: 14px;
     background: hsla(178, 100%, 85%, 1);
-    background: linear-gradient(90deg, hsla(178, 100%, 85%, 1) 0%, hsla(63, 89%, 82%, 1) 73%);
-    background: -moz-linear-gradient(90deg, hsla(178, 100%, 85%, 1) 0%, hsla(63, 89%, 82%, 1) 73%);
-    background: -webkit-linear-gradient(90deg, hsla(178, 100%, 85%, 1) 0%, hsla(63, 89%, 82%, 1) 73%);
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    background: linear-gradient( 90deg, hsla(178, 100%, 85%, 1) 0%, hsla(63, 89%, 82%, 1) 73% );
+    background: -moz-linear-gradient( 90deg, hsla(178, 100%, 85%, 1) 0%, hsla(63, 89%, 82%, 1) 73% );
+    background: -webkit-linear-gradient( 90deg, hsla(178, 100%, 85%, 1) 0%, hsla(63, 89%, 82%, 1) 73% );
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
 }
 
 .addressViewContainer a:hover {
-    color: black;
-}
+        color: black;
+    }
 
 @keyframes addAddressShake {
     0%, 100% {
@@ -2315,8 +2333,8 @@
 }
 
 #showAllAddressesBtn:hover {
-    background-color: #173d3c;
-}
+        background-color: #173d3c;
+    }
 
 #searchAddressBtn {
     padding: 0.2em 0.5em;
@@ -2327,8 +2345,8 @@
 }
 
 #searchAddressBtn:hover {
-    background-color: #36918f;
-}
+        background-color: #36918f;
+    }
 
 #addressEditBtn {
     background-color: #fffacd;
@@ -2343,8 +2361,8 @@
 }
 
 #addressEditBtn:hover {
-    background-color: #faf09b;
-}
+        background-color: #faf09b;
+    }
 
 #addressDeleteBtn {
     background-color: #fffacd;
@@ -2359,8 +2377,8 @@
 }
 
 #addressDeleteBtn:hover {
-    background-color: #faf09b;
-}
+        background-color: #faf09b;
+    }
 
 .notFoundAddresesBtn {
     color: #fff8f7;
@@ -2371,16 +2389,16 @@
 
 .editAddressContainer {
     background: hsla(285, 90%, 81%, 1);
-    background: linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
-    background: -moz-linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
-    background: -webkit-linear-gradient(270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100%);
+    background: linear-gradient( 270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100% );
+    background: -moz-linear-gradient( 270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100% );
+    background: -webkit-linear-gradient( 270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100% );
     padding: 48px;
     border-radius: 12px;
     height: 100%;
     margin-top: 4.809%;
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
 }
 
 .editAddressContainer form {
@@ -2463,14 +2481,14 @@
 
 .deleteAddressContainer {
     background: hsla(26, 95%, 60%, 1);
-    background: linear-gradient(270deg, hsla(26, 95%, 60%, 1) 0%, hsla(326, 94%, 65%, 1) 100%);
-    background: -moz-linear-gradient(270deg, hsla(26, 95%, 60%, 1) 0%, hsla(326, 94%, 65%, 1) 100%);
-    background: -webkit-linear-gradient(270deg, hsla(26, 95%, 60%, 1) 0%, hsla(326, 94%, 65%, 1) 100%);
+    background: linear-gradient( 270deg, hsla(26, 95%, 60%, 1) 0%, hsla(326, 94%, 65%, 1) 100% );
+    background: -moz-linear-gradient( 270deg, hsla(26, 95%, 60%, 1) 0%, hsla(326, 94%, 65%, 1) 100% );
+    background: -webkit-linear-gradient( 270deg, hsla(26, 95%, 60%, 1) 0%, hsla(326, 94%, 65%, 1) 100% );
     padding: 20px;
     border-radius: 12px;
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
     font-family: "Oswald", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -2516,62 +2534,62 @@
 }
 
 .submitAddressDeleteBtnContainer button {
-    font-size: 1.8em;
-    background-color: #FA8C39;
-    color: white;
-    border-radius: 8px;
-    border: none;
-    padding: 8px;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-}
+        font-size: 1.8em;
+        background-color: #fa8c39;
+        color: white;
+        border-radius: 8px;
+        border: none;
+        padding: 8px;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
 
 .submitAddressDeleteBtnContainer button:hover {
-    background-color: #c26d2d;
-}
+            background-color: #c26d2d;
+        }
 
 /* Item group */
 
 .addItemGroupContainer {
     background: hsla(352, 57%, 53%, 1);
-    background: linear-gradient(270deg, hsla(352, 57%, 53%, 1) 0%, hsla(352, 63%, 45%, 1) 100%);
-    background: -moz-linear-gradient(270deg, hsla(352, 57%, 53%, 1) 0%, hsla(352, 63%, 45%, 1) 100%);
-    background: -webkit-linear-gradient(270deg, hsla(352, 57%, 53%, 1) 0%, hsla(352, 63%, 45%, 1) 100%);
+    background: linear-gradient( 270deg, hsla(352, 57%, 53%, 1) 0%, hsla(352, 63%, 45%, 1) 100% );
+    background: -moz-linear-gradient( 270deg, hsla(352, 57%, 53%, 1) 0%, hsla(352, 63%, 45%, 1) 100% );
+    background: -webkit-linear-gradient( 270deg, hsla(352, 57%, 53%, 1) 0%, hsla(352, 63%, 45%, 1) 100% );
     padding: 24px;
     border-radius: 12px;
     height: 100%;
     margin-top: 4.809%;
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
     color: white;
 }
 
 .addItemGroupContainer form {
-    display: flex;
-    flex-direction: column;
-    font-size: 24px;
-    gap: 4px;
-    text-align: right;
-}
+        display: flex;
+        flex-direction: column;
+        font-size: 24px;
+        gap: 4px;
+        text-align: right;
+    }
 
 .addItemGroupContainer span {
-    color: white;
-    text-align: center;
-    margin-top: 12px;
-}
+        color: white;
+        text-align: center;
+        margin-top: 12px;
+    }
 
 .addItemGroupContainer form div div {
-    display: flex;
-}
+        display: flex;
+    }
 
 .addItemGroupContainer form div div input,
 .addItemGroupContainer form div div select {
-    border-radius: 4px;
-    padding: 4px;
-    animation: displayItemGroupFormTags 2s ease 0s 1 normal forwards;
-    margin-left: auto;
-}
+            border-radius: 4px;
+            padding: 4px;
+            animation: displayItemGroupFormTags 2s ease 0s 1 normal forwards;
+            margin-left: auto;
+        }
 
 #addItemGroupBtn {
     align-self: center;
@@ -2579,13 +2597,13 @@
     border-radius: 8px;
     margin-top: 50px;
     border: none;
-    background-color: #FC8494;
+    background-color: #fc8494;
     color: white;
 }
 
 #addItemGroupBtn:hover {
-    animation: addItemGroupShake 2s ease 0s 1 normal forwards;
-}
+        animation: addItemGroupShake 2s ease 0s 1 normal forwards;
+    }
 
 @keyframes addItemGroupShake {
     0%, 100% {
@@ -2639,12 +2657,12 @@
     padding: 3em;
     border-radius: 14px;
     background: hsla(131, 77%, 76%, 1);
-    background: linear-gradient(270deg, hsla(131, 77%, 76%, 1) 33%, hsla(240, 96%, 71%, 1) 100%);
-    background: -moz-linear-gradient(270deg, hsla(131, 77%, 76%, 1) 33%, hsla(240, 96%, 71%, 1) 100%);
-    background: -webkit-linear-gradient(270deg, hsla(131, 77%, 76%, 1) 33%, hsla(240, 96%, 71%, 1) 100%);
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    background: linear-gradient( 270deg, hsla(131, 77%, 76%, 1) 33%, hsla(240, 96%, 71%, 1) 100% );
+    background: -moz-linear-gradient( 270deg, hsla(131, 77%, 76%, 1) 33%, hsla(240, 96%, 71%, 1) 100% );
+    background: -webkit-linear-gradient( 270deg, hsla(131, 77%, 76%, 1) 33%, hsla(240, 96%, 71%, 1) 100% );
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
 }
@@ -2741,8 +2759,8 @@
 }
 
 #searchItemGroupBtn:hover {
-     background-color:  #4b4bab;
-}
+        background-color: #4b4bab;
+    }
 
 #itemGroupEditBtn {
     background-color: #cbf7d4;
@@ -2757,8 +2775,8 @@
 }
 
 #itemGroupEditBtn:hover {
-    background-color: #a8e6b4;
-}
+        background-color: #a8e6b4;
+    }
 
 #itemGroupDeleteBtn {
     background-color: #cbf7d4;
@@ -2773,8 +2791,8 @@
 }
 
 #itemGroupDeleteBtn:hover {
-    background-color: #a8e6b4;
-}
+        background-color: #a8e6b4;
+    }
 
 #itemGroupDetailsBtn {
     background-color: #ffdbb5;
@@ -2797,16 +2815,16 @@
 
 .editItemGroupContainer {
     background: hsla(352, 57%, 53%, 1);
-    background: linear-gradient(270deg, hsla(352, 57%, 53%, 1) 0%, hsla(352, 63%, 45%, 1) 100%);
-    background: -moz-linear-gradient(270deg, hsla(352, 57%, 53%, 1) 0%, hsla(352, 63%, 45%, 1) 100%);
-    background: -webkit-linear-gradient(270deg, hsla(352, 57%, 53%, 1) 0%, hsla(352, 63%, 45%, 1) 100%);
+    background: linear-gradient( 270deg, hsla(352, 57%, 53%, 1) 0%, hsla(352, 63%, 45%, 1) 100% );
+    background: -moz-linear-gradient( 270deg, hsla(352, 57%, 53%, 1) 0%, hsla(352, 63%, 45%, 1) 100% );
+    background: -webkit-linear-gradient( 270deg, hsla(352, 57%, 53%, 1) 0%, hsla(352, 63%, 45%, 1) 100% );
     padding: 48px;
     border-radius: 12px;
     height: 100%;
     margin-top: 4.809%;
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
     color: white;
 }
 
@@ -2819,14 +2837,14 @@
     }
 
 .editItemGroupContainer span {
-    color: white;
-    text-align: center;
-    margin-top: 12px;
-}
+        color: white;
+        text-align: center;
+        margin-top: 12px;
+    }
 
 .editItemGroupContainer form div div {
         display: flex;
-}
+    }
 
 .editItemGroupContainer form div div input,
 .editItemGroupContainer form div div select {
@@ -2843,7 +2861,7 @@
     border-radius: 8px;
     margin-top: 50px;
     border: none;
-    background-color: #FC8494;
+    background-color: #fc8494;
     color: white;
 }
 
@@ -2853,51 +2871,51 @@
 
 .deleteItemGroupContainer {
     background: hsla(300, 90%, 70%, 1);
-    background: linear-gradient(270deg, hsla(300, 90%, 70%, 1) 0%, hsla(125, 100%, 79%, 1) 100%);
-    background: -moz-linear-gradient(270deg, hsla(300, 90%, 70%, 1) 0%, hsla(125, 100%, 79%, 1) 100%);
-    background: -webkit-linear-gradient(270deg, hsla(300, 90%, 70%, 1) 0%, hsla(125, 100%, 79%, 1) 100%);
+    background: linear-gradient( 270deg, hsla(300, 90%, 70%, 1) 0%, hsla(125, 100%, 79%, 1) 100% );
+    background: -moz-linear-gradient( 270deg, hsla(300, 90%, 70%, 1) 0%, hsla(125, 100%, 79%, 1) 100% );
+    background: -webkit-linear-gradient( 270deg, hsla(300, 90%, 70%, 1) 0%, hsla(125, 100%, 79%, 1) 100% );
     padding: 20px;
     border-radius: 12px;
-    -webkit-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
-    box-shadow: 1px 5px 39px -1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
     font-family: "Oswald", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
 }
 
 .deleteItemGroupContainer .deleteItemGroupInfoContainer {
-    display: flex;
-    margin-top: 1.5em;
-    background-color: white;
-    padding: 1em;
-    border-radius: 12px;
-    margin: 1em;
-}
+        display: flex;
+        margin-top: 1.5em;
+        background-color: white;
+        padding: 1em;
+        border-radius: 12px;
+        margin: 1em;
+    }
 
 .deleteItemGroupContainer .deleteItemGroupInfoContainer label {
-    margin-right: auto;
-    font-size: 1.5em;
-    font-weight: 900;
-}
+            margin-right: auto;
+            font-size: 1.5em;
+            font-weight: 900;
+        }
 
 .deleteItemGroupContainer .deleteItemGroupInfoContainer h4 {
-    font-size: 1.5em;
-    font-weight: 400;
-    margin: 0;
-    width: 40%;
-    word-wrap: break-word;
-    margin-right: 3em;
-}
+            font-size: 1.5em;
+            font-weight: 400;
+            margin: 0;
+            width: 40%;
+            word-wrap: break-word;
+            margin-right: 3em;
+        }
 
 .deleteItemGroupContainer .deleteItemGroupInfoContainer p {
-    font-size: 1.5em;
-}
+            font-size: 1.5em;
+        }
 
 .deleteItemGroupContainer .deleteItemGroupInfoContainer div {
-    margin-right: 3em;
-    display: block;
-}
+            margin-right: 3em;
+            display: block;
+        }
 
 .submitItemGroupDeleteBtnContainer {
     background-color: none;
@@ -2906,19 +2924,19 @@
 }
 
 .submitItemGroupDeleteBtnContainer button {
-    font-size: 1.8em;
-    background-color: #F76CF7;
-    color: white;
-    border-radius: 8px;
-    border: none;
-    padding: 8px;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-}
+        font-size: 1.8em;
+        background-color: #f76cf7;
+        color: white;
+        border-radius: 8px;
+        border: none;
+        padding: 8px;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
 
 .submitItemGroupDeleteBtnContainer button:hover {
-    background-color: #d962d9;
-}
+            background-color: #d962d9;
+        }
 
 /* Pop Up product menu */
 
@@ -2948,4 +2966,13 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     background-color: #e5dfda;
     flex: 1;
+}
+
+.barcodes {
+    display: flex;
+    justify-content: space-between;
+}
+
+#barcodesDivContainer {
+    max-width: 20em;
 }

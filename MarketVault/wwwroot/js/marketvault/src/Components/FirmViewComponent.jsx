@@ -6,7 +6,7 @@ class FirmViewComponent extends React.Component {
                     {this.props.name}
                 </p>
                 <p className="firmPhoneNumber">
-                    {this.props.phoneNumber}
+                    {this.props.phoneNumber.replace('&#x2B;1', '+')}
                 </p>
                 <p className="firmEmail">
                     {this.props.email}
