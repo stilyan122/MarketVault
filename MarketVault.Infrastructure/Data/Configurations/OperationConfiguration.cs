@@ -25,7 +25,8 @@
                     TotalPurchasePriceWithoutVAT = 58.33M,
                     TotalPurchasePriceWithVAT = 70.00M,
                     CounterPartyId = 1,
-                    DocumentTypeId = 1
+                    DocumentTypeId = 1,
+                    UserId = "1db5c825-2f5e-4646-98dc-52bf094f9bf6"
                 },
                 new Operation()
                 {
@@ -35,7 +36,8 @@
                     TotalPurchasePriceWithoutVAT = 41.67M,
                     TotalPurchasePriceWithVAT = 50.00M,
                     CounterPartyId = 2,
-                    DocumentTypeId = 1
+                    DocumentTypeId = 1,
+                    UserId = "1db5c825-2f5e-4646-98dc-52bf094f9bf6"
                 },
                 new Operation()
                 {
@@ -45,7 +47,8 @@
                     TotalPurchasePriceWithoutVAT = 33.33M,
                     TotalPurchasePriceWithVAT = 40.00M,
                     CounterPartyId = 3,
-                    DocumentTypeId = 2
+                    DocumentTypeId = 2,
+                    UserId = "1db5c825-2f5e-4646-98dc-52bf094f9bf6"
                 },
                 new Operation()
                 {
@@ -55,7 +58,8 @@
                     TotalPurchasePriceWithoutVAT = 83.33M,
                     TotalPurchasePriceWithVAT = 100.00M,
                     CounterPartyId = 4,
-                    DocumentTypeId = 2
+                    DocumentTypeId = 2,
+                    UserId = "7bc64720-42fc-4617-bdfa-a7eb00e7e9de"
                 },
                 new Operation()
                 {
@@ -65,7 +69,8 @@
                     TotalPurchasePriceWithoutVAT = 125.00M,
                     TotalPurchasePriceWithVAT = 150.00M,
                     CounterPartyId = 5,
-                    DocumentTypeId = 1
+                    DocumentTypeId = 1,
+                    UserId = "7bc64720-42fc-4617-bdfa-a7eb00e7e9de"
                 },
             };
 

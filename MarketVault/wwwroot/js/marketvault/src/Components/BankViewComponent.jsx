@@ -3,7 +3,7 @@ class BankViewComponent extends React.Component {
         return (
             <div>
                 <p className="bankName">
-                    {this.props.name}
+                    {this.props.name.replace('&amp;', '&')}
                 </p>
                 <p className="bankAddress">
                     {this.props.address}

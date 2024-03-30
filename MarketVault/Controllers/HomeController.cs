@@ -61,7 +61,8 @@
                     var user = new IdentityUser
                     {
                         UserName = "admin@example.com",
-                        Email = "admin@example.com"
+                        Email = "admin@example.com",
+                        Id = "1db5c825-2f5e-4646-98dc-52bf094f9bf6"
                     };
                     var result = await userService.CreateUserAsync(user, "admin");
                     if (result.Succeeded)
@@ -78,7 +79,8 @@
                     var user = new IdentityUser
                     {
                         UserName = "worker@example.com",
-                        Email = "worker@example.com"
+                        Email = "worker@example.com",
+                        Id = "7bc64720-42fc-4617-bdfa-a7eb00e7e9de"
                     };
                     var result = await userService.CreateUserAsync(user, "worker");
                     if (result.Succeeded)
@@ -95,7 +97,8 @@
                     var user = new IdentityUser
                     {
                         UserName = "user@example.com",
-                        Email = "user@example.com"
+                        Email = "user@example.com",
+                        Id = "6041532e-28d8-48d3-ba2f-72a04f7abd42"
                     };
                     var result = await userService.CreateUserAsync(user, "user");
                     if (result.Succeeded)

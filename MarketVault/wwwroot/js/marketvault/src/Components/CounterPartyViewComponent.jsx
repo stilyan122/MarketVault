@@ -12,7 +12,7 @@ class CounterPartyViewComponent extends React.Component {
                     {this.props.valueAddedTaxLawId}
                 </p>
                 <p className="counterPartyBankName">
-                    {this.props.bankName}
+                    {this.props.bankName.replace('&amp;', '&')}
                 </p>
                 <p className="counterPartyBankCode">
                     {this.props.bankCode}

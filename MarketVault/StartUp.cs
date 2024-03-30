@@ -48,6 +48,8 @@ namespace MarketVault
 
             app.UseStaticFiles();
 
+            app.UseResponseCompression();
+
             app.UseRouting();
 
             app.UseAuthentication();

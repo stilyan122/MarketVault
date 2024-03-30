@@ -1,5 +1,6 @@
 ﻿namespace MarketVault.Infrastructure.Data.Models
 {
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -72,6 +73,16 @@
         /// </summary>
         [Comment("DateTime when made")]
         public DateTime DateMade { get; set; } = DateTime.Now;
+
+        /// <summary>
+        /// User id - person who did the operation
+        /// </summary>
+        public string UserId { get; set; } = string.Empty;
+
+        /// <summary>
+        /// User entity
+        /// </summary>
+        public IdentityUser User { get; set; } = null!;
 
         /// <summary>
         /// Collection with entities from the mapping table - ProductsOperations
