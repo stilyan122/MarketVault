@@ -5,6 +5,7 @@
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Infrastructure.Data.Models;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Logging;
 
     /// <summary>
     /// Document Type service
@@ -17,12 +18,21 @@
         private readonly IRepository<DocumentType> repository = null!;
 
         /// <summary>
-        /// Default constructor, injection of Document Type repository (DI)
+        /// Logger
+        /// </summary>
+        private readonly ILogger<DocumentTypeService> logger = null!;
+
+        /// <summary>
+        /// Default constructor, injection of Document Type repository and logger (DI)
         /// </summary>
         /// <param name="repository">Document type repository</param>
-        public DocumentTypeService(IRepository<DocumentType> repository)
+        /// <param name="logger">Logger</param>
+        public DocumentTypeService(
+            IRepository<DocumentType> repository,
+            ILogger<DocumentTypeService> logger)
         {
             this.repository = repository;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -31,6 +41,8 @@
         /// <returns>Task<IEnumerable<DocumentTypeServiceModel>></returns>
         public async Task<IEnumerable<DocumentTypeServiceModel>> GetAllAsync()
         {
+            logger.LogInformation("All async method in document type service invoked.");
+
             return await this.repository
                 .All()
                 .Select(dt => new DocumentTypeServiceModel

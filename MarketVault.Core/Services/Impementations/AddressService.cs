@@ -7,6 +7,7 @@
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Infrastructure.Data.Models;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Logging;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -21,12 +22,20 @@
         private readonly IRepository<Address> repository = null!;
 
         /// <summary>
-        /// Default constructor, injection of Address repository (DI)
+        /// Logger
+        /// </summary>
+        private readonly ILogger<AddressService> logger = null!;
+
+        /// <summary>
+        /// Default constructor, injection of Address repository and logger (DI)
         /// </summary>
         /// <param name="repository">Address repository</param>
-        public AddressService(IRepository<Address> repository)
+        /// <param name="logger">Logger</param>
+        public AddressService(IRepository<Address> repository,
+            ILogger<AddressService> logger)
         {
             this.repository = repository;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -35,6 +44,8 @@
         /// <returns>Task<IEnumerable<AddressServiceModel>></returns>
         public async Task<IEnumerable<AddressServiceModel>> GetAllAsync()
         {
+            logger.LogInformation("All async method in address service invoked.");
+
             return await this.repository
                 .All()
                 .AsNoTracking()
@@ -49,10 +60,14 @@
         public IQueryable<AddressServiceModel> GetAllByPredicateAsync
             (string sortType, string value)
         {
+            logger.LogInformation("All by predicate async method in address service invoked.");
+
             var entities = this.repository
-                .AllReadOnly()
+                .AllAsReadOnly()
                 .AsNoTracking()
                 .ProjectToAddressServiceModel();
+
+            logger.LogWarning("Potential exception to be thrown.");
 
             try
             {
@@ -86,6 +101,7 @@
             string sortType, string value,
             int pageSize, int pageNumber)
         {
+            logger.LogInformation("All by predicate paged async method in address service invoked.");
             var entities = this.GetAllByPredicateAsync(sortType, value);
 
             return await entities
@@ -101,6 +117,10 @@
         /// <returns>Task<AddressServiceModel></returns>
         public async Task<AddressServiceModel> GetByIdAsync(int id)
         {
+            logger.LogInformation("Get by id async method in address service invoked.");
+
+            logger.LogWarning("Potential entity not found exception to be thrown.");
+
             var entity = await this.repository
                 .All()
                 .UseIncludeAddressStatements()
@@ -125,8 +145,10 @@
         /// <param name="sortType">Sort type used to sort them</param>
         /// <param name="value">Sort value</param>
         /// <returns>Task<int></returns>
-        public async Task<int> GetPredicatedCount(string sortType, string value)
+        public async Task<int> GetPredicatedCountAsync(string sortType, string value)
         {
+            logger.LogInformation("Predicated count async method in address service invoked.");
+
             return await this.GetAllByPredicateAsync(sortType, value)
                 .CountAsync();
         }
@@ -138,6 +160,8 @@
         /// <returns>(void)</returns>
         public async Task AddAsync(AddressServiceModel address)
         {
+            logger.LogInformation("Add async method in address service invoked.");
+
             var entity = new Address()
             {
                 StreetName = address.StreetName,
@@ -155,6 +179,10 @@
         /// <returns>(void)</returns>
         public async Task DeleteAsync(AddressServiceModel address)
         {
+            logger.LogInformation("Delete async method in address service invoked.");
+
+            logger.LogWarning("Potential entity not found exception to be thrown.");
+
             var entity = await this.repository
                 .All()
                 .UseIncludeAddressStatements()
@@ -174,6 +202,10 @@
         /// <returns>(void)</returns>
         public async Task UpdateAsync(AddressServiceModel address)
         {
+            logger.LogInformation("Update async method in address service invoked.");
+
+            logger.LogWarning("Potential entity not found exception to be thrown.");
+
             var entity = await this.repository
                 .All()
                 .UseIncludeAddressStatements()

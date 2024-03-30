@@ -7,6 +7,7 @@
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Infrastructure.Data.Models;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Logging;
 
     /// <summary>
     /// Product service
@@ -24,15 +25,23 @@
         private readonly IProductMeasureService productMeasureService = null!;
 
         /// <summary>
-        /// Default constructor, injection of Product repository (DI)
+        /// Logger
+        /// </summary>
+        private readonly ILogger<ProductService> logger = null!;
+
+        /// <summary>
+        /// Default constructor, injection of Product repository and logger (DI)
         /// </summary>
         /// <param name="repository">Product repository</param>
         /// <param name="productMeasureService">IProductMeasureService</param>
+        /// <param name="logger">Logger</param>
         public ProductService(IRepository<Product> repository,
-            IProductMeasureService productMeasureService)
+            IProductMeasureService productMeasureService,
+            ILogger<ProductService> logger)
         {
             this.repository = repository;
             this.productMeasureService = productMeasureService;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -41,6 +50,8 @@
         /// <returns>Task<IEnumerable<ProductServiceModel>></returns>
         public async Task<IEnumerable<ProductServiceModel>> GetAllAsync()
         {
+            logger.LogInformation("All async method in product service invoked.");
+
             var entities = await this.repository
                 .All()
                 .ProjectToProductServiceModel()
@@ -56,10 +67,14 @@
         public IQueryable<ProductServiceModel> GetAllByPredicateAsync
             (string sortType, string value)
         {
+            logger.LogInformation("All by predicate async method in product service invoked.");
+
             var entities = this.repository
-                .AllReadOnly()
+                .AllAsReadOnly()
                 .AsNoTracking()
                 .ProjectToProductServiceModel();
+
+            logger.LogWarning("Potential exception to be thrown");
 
             try
             {
@@ -102,6 +117,8 @@
             string sortType, string value,
             int pageSize, int pageNumber)
         {
+            logger.LogInformation("All by predicate paged async method in product service invoked.");
+
             var entities = this.GetAllByPredicateAsync(sortType, value);
 
             return await entities
@@ -116,8 +133,10 @@
         /// <param name="sortType">Sort type used to sort them</param>
         /// <param name="value">Sort value</param>
         /// <returns>Task<int></returns>
-        public async Task<int> GetPredicatedCount(string sortType, string value)
+        public async Task<int> GetPredicatedCountAsync(string sortType, string value)
         {
+            logger.LogInformation("Predicated count async method in product service invoked.");
+
             return await this.GetAllByPredicateAsync(sortType, value)
                 .CountAsync();
         }
@@ -129,6 +148,8 @@
         /// <returns>(void)</returns>
         public async Task AddAsync(ProductServiceModel product)
         {
+            logger.LogInformation("Add async method in product service invoked.");
+
             var entity = ConvertToEntityModel(product);
 
             await this.repository.AddAsync(entity);
@@ -154,6 +175,10 @@
         /// <returns>(void)</returns>
         public async Task DeleteAsync(ProductServiceModel product)
         {
+            logger.LogInformation("Delete async method in product service invoked.");
+
+            logger.LogWarning("Potential entity not found exception to be thrown.");
+
             var entity = await this.repository
                 .All()
                 .UseIncludeProductStatements()
@@ -173,6 +198,10 @@
         /// <returns>Task<ProductServiceModel></returns>
         public async Task<ProductServiceModel> GetByIdAsync(int id)
         {
+            logger.LogInformation("Get by id async method in product service invoked.");
+
+            logger.LogWarning("Potential entity not found exception to be thrown.");
+
             var entity = await this.repository
                 .All()
                 .UseIncludeProductStatements()
@@ -211,6 +240,10 @@
         /// <returns>(void)</returns>
         public async Task UpdateAsync(ProductServiceModel product)
         {
+            logger.LogInformation("Update async method in product service invoked.");
+
+            logger.LogWarning("Potential entity not found exception to be thrown.");
+
             var entity = await this.repository
                 .All()
                 .UseIncludeProductStatements()

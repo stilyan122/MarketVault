@@ -52,6 +52,13 @@
                                         <option value="Option6">Add an address</option>
                                     </select>
                                 </li>
+
+                                <li class="nav-item">
+                                    <select id="selectOption3" class="nav-link text-dark">
+                                        <option disabled selected value="">Operations</option>
+                                        <option value="Option1">Add operation</option>
+                                    </select>
+                                </li>
                             }
                         }
                     </ul>
@@ -105,5 +112,12 @@
         } else if (optionValue === "Option6") {
             window.location.href = "/Address/Add";
         }
+    });
+
+    document.getElementById("selectOption3").addEventListener("change", function () {
+        var optionValue = this.value;
+        if (optionValue === "Option1") {
+            window.location.href = "/Operation/New";
+        } 
     });
 </script>

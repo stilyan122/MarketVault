@@ -16,8 +16,13 @@
         public decimal Quantity { get; set; }
 
         /// <summary>
-        /// Model price
+        /// Model sale price
         /// </summary>
-        public decimal Price { get; set; } 
+        public decimal SalePrice { get; set; }
+
+        /// <summary>
+        /// Model purchase price
+        /// </summary>
+        public decimal PurchasePrice { get; set; }
     }
 }

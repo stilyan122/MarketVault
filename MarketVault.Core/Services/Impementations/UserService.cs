@@ -3,6 +3,7 @@
     using MarketVault.Core.Exceptions;
     using MarketVault.Core.Services.Interfaces;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.Extensions.Logging;
 
     /// <summary>
     /// UserService
@@ -12,23 +13,32 @@
         /// <summary>
         /// User manager
         /// </summary>
-        private readonly UserManager<IdentityUser> userManager;
+        private readonly UserManager<IdentityUser> userManager = null!;
 
         /// <summary>
         /// Role manager
         /// </summary>
-        private readonly RoleManager<IdentityRole> roleManager;
+        private readonly RoleManager<IdentityRole> roleManager = null!;
 
         /// <summary>
-        /// Constructor, injecting managers (DI)
+        /// Logger
+        /// </summary>
+        private readonly ILogger<UserService> logger = null!;
+
+        /// <summary>
+        /// Constructor, injecting managers and logger (DI)
         /// </summary>
         /// <param name="userManager">UserManager</param>
         /// <param name="roleManager">RoleManager</param>
-        public UserService(UserManager<IdentityUser> userManager,
-            RoleManager<IdentityRole> roleManager)
+        /// <param name="logger">Logger</param>
+        public UserService(
+            UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole> roleManager,
+            ILogger<UserService> logger)
         {
             this.roleManager = roleManager;
             this.userManager = userManager;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -38,6 +48,8 @@
         /// <returns>(void)</returns>
         public async Task CreateRoleAsync(IdentityRole role)
         {
+            logger.LogInformation("Create role async method in user service invoked.");
+
             await this.roleManager.CreateAsync(role);
         }
 
@@ -49,6 +61,10 @@
         /// <returns>Task<bool></returns>
         public async Task<bool> IsInRoleAsync(string[] roles, string userId)
         {
+            logger.LogInformation("Is in role async method in user service invoked.");
+
+            logger.LogWarning("Potential user not found exceptions to be thrown.");
+
             if (userId == null)
             {
                 throw new UserNotFoundException("No such user found!");
@@ -82,6 +98,8 @@
         /// <returns>Task<bool></returns>
         public Task<bool> RoleExistsAsync(string role)
         {
+            logger.LogInformation("Role exists async method in user service invoked.");
+
             return this.roleManager.RoleExistsAsync(role);
         }
 
@@ -92,6 +110,8 @@
         /// <returns>(void)</returns>
         public async Task UpdateRoleAsync(IdentityRole role)
         {
+            logger.LogInformation("Update role async method in user service invoked.");
+
             await this.roleManager.UpdateAsync(role);
         }
 
@@ -102,6 +122,8 @@
         /// <returns>Task<IdentityUser></returns>
         public async Task<IdentityUser> FindUserByEmailAsync(string email)
         {
+            logger.LogInformation("Find user by email async method in user service invoked.");
+
             return await this.userManager.FindByEmailAsync(email);
         }
 
@@ -114,6 +136,8 @@
         public async Task<IdentityResult> CreateUserAsync(IdentityUser user, 
             string password)
         {
+            logger.LogInformation("Create user async method in user service invoked.");
+
             var result = await this.userManager.CreateAsync(user, password);
 
             return result;
@@ -126,6 +150,8 @@
         /// <returns>(void)</returns>
         public async Task UpdateUserAsync(IdentityUser user)
         {
+            logger.LogInformation("Update user async method in user service invoked.");
+
             await this.userManager.UpdateAsync(user);
         }
 
@@ -137,6 +163,8 @@
         /// <returns></returns>
         public async Task AddUserToRoleAsync(IdentityUser user, string role)
         {
+            logger.LogInformation("Add user to role async method in user service invoked.");
+
             await this.userManager.AddToRoleAsync(user, role);
         }
     }

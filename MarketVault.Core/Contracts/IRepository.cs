@@ -17,7 +17,7 @@
         /// Asynchronous method for getting all entities as read-only
         /// </summary>
         /// <returns>IQueryable<TEntity></returns>
-        IQueryable<TEntity> AllReadOnly();
+        IQueryable<TEntity> AllAsReadOnly();
 
         /// <summary>
         /// Add entity method (Asynchronous)

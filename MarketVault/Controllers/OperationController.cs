@@ -1,10 +1,10 @@
 ﻿namespace MarketVault.Controllers
 {
     using MarketVault.Core.Services.Interfaces;
-    using MarketVault.Models.Address;
     using MarketVault.Models.CounterParty;
     using MarketVault.Models.DocumentType;
     using MarketVault.Models.Operation;
+    using MarketVault.Models.Product;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
@@ -32,7 +32,7 @@
         /// <summary>
         /// Logger
         /// </summary>
-        private readonly Logger<OperationController> logger;
+        //private readonly Logger<OperationController> logger;
 
         /// <summary>
         /// Constructor injecting logger and services
@@ -42,23 +42,32 @@
         /// <param name="counterPartyService">ICounterPartyService</param>
         /// <param name="documentTypeService">IDocumentTypeService</param>
         public OperationController(
-            Logger<OperationController> logger,
+            //Logger<OperationController> logger,
             IOperationService service,
             ICounterPartyService counterPartyService,
             IDocumentTypeService documentTypeService)
         {
             this.counterPartyService = counterPartyService;
-            this.logger = logger;
+            //this.logger = logger;
             this.service = service;
             this.documentTypeService = documentTypeService;
         }
 
+        /// <summary>
+        /// Default index method
+        /// </summary>
+        /// <returns>IActionResult</returns>
         [Authorize(Roles = "Admin,Worker")]
         public IActionResult Index()
         {
             return View("New");
         }
 
+        /// <summary>
+        /// Method for adding a new operation (Asynchronous, GET)
+        /// </summary>
+        /// <returns>Task<IActionResult></returns>
+        [HttpGet]
         [Authorize(Roles = "Admin,Worker")]
         public async Task<IActionResult> New()
         {
@@ -71,6 +80,13 @@
             return View(model);
         }
 
+        /// <summary>
+        /// Method for adding a new operation (Asynchronous, POST)
+        /// </summary>
+        /// <param name="model">OperationFormModel</param>
+        /// <returns>Task<IActionResult></returns>
+        [HttpGet]
+        [Authorize(Roles = "Admin,Worker")]
         public async Task<IActionResult> 
             AddNewOperation(OperationFormModel model)
         {
@@ -86,6 +102,43 @@
             }
 
             return View("SuccessfullyAdded");
+        }
+
+        /// <summary>
+        /// Method for adding a product to operation (GET)
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Authorize(Roles = "Admin,Worker")]
+        public IActionResult AddProductToOperation([FromQuery] OperationFormModel 
+            operationFormModel)
+        {
+            
+            TempData["CurrentOperation"] = operationFormModel;
+
+            var model = new ProductOperationModel()
+            {
+            };
+
+            return View(model);
+        }
+        /// <summary>
+        /// Method for adding a product to operation (POST)
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [Authorize(Roles = "Admin,Worker")]
+        public IActionResult AddProductToOperationPost(ProductOperationModel
+            model)
+        {
+            var operationFormModel = TempData.Peek("CurrentOperation") 
+                as OperationFormModel;
+            
+            operationFormModel?.Products.ToList().Add(model);
+
+            TempData["CurrentOperation"] = operationFormModel;
+
+            return View("New", operationFormModel);
         }
 
         /// <summary>

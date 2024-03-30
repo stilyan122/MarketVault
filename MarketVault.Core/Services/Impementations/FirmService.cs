@@ -7,6 +7,7 @@
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Infrastructure.Data.Models;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Logging;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -26,14 +27,22 @@
         private readonly ICounterPartyService counterPartyService = null!;
 
         /// <summary>
-        /// Default constructor, injection of Firm repository and service (DI)
+        /// Logger
+        /// </summary>
+        private readonly ILogger<FirmService> logger = null!;
+
+        /// <summary>
+        /// Default constructor, injection of Firm repository, service and logger (DI)
         /// </summary>
         /// <param name="repository">Firm repository</param>
+        /// <param name="logger">Logger</param>
         public FirmService(IRepository<Firm> repository,
-            ICounterPartyService counterPartyService)
+            ICounterPartyService counterPartyService,
+            ILogger<FirmService> logger)
         {
             this.repository = repository;
             this.counterPartyService = counterPartyService;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -42,6 +51,8 @@
         /// <returns>Task<IEnumerable<FirmServiceModel>></returns>
         public async Task<IEnumerable<FirmServiceModel>> GetAllAsync()
         {
+            logger.LogInformation("All async method in firm service invoked.");
+
             return await this.repository
                 .All()
                 .AsNoTracking()
@@ -56,10 +67,14 @@
         public IQueryable<FirmServiceModel> GetAllByPredicateAsync
             (string sortType, string value)
         {
+            logger.LogInformation("All async method in firm service invoked.");
+
             var entities = this.repository
-                .AllReadOnly()
+                .AllAsReadOnly()
                 .AsNoTracking()
                 .ProjectToFirmServiceModel();
+
+            logger.LogWarning("Potential exception to be thrown.");
 
             try
             {
@@ -99,6 +114,8 @@
             string sortType, string value,
             int pageSize, int pageNumber)
         {
+            logger.LogInformation("All by predicate paged async method in firm service invoked.");
+
             var entities = this.GetAllByPredicateAsync(sortType, value);
 
             return await entities
@@ -114,6 +131,10 @@
         /// <returns>Task<FirmServiceModel></returns>
         public async Task<FirmServiceModel> GetByIdAsync(int id)
         {
+            logger.LogInformation("Get by id async method in firm service invoked.");
+
+            logger.LogWarning("Potential entity not found exception to be thrown.");
+
             var entity = await this.repository
                 .All()
                 .UseIncludeFirmStatements()
@@ -141,8 +162,10 @@
         /// <param name="sortType">Sort type used to sort them</param>
         /// <param name="value">Sort value</param>
         /// <returns>Task<int></returns>
-        public async Task<int> GetPredicatedCount(string sortType, string value)
+        public async Task<int> GetPredicatedCountAsync(string sortType, string value)
         {
+            logger.LogInformation("Get predicated count async method in firm service invoked.");
+
             return await this.GetAllByPredicateAsync(sortType, value)
                 .CountAsync();
         }
@@ -154,6 +177,8 @@
         /// <returns>(void)</returns>
         public async Task AddAsync(FirmServiceModel firm)
         {
+            logger.LogInformation("Add async method in firm service invoked.");
+
             var entity = new Firm()
             {
                AddressId = firm.AddressId,
@@ -173,6 +198,10 @@
         /// <returns>(void)</returns>
         public async Task DeleteAsync(FirmServiceModel firm)
         {
+            logger.LogInformation("Delete async method in firm service invoked.");
+
+            logger.LogWarning("Potential entity not found exception to be thrown.");
+
             var entity = await this.repository
                .All()
                .UseIncludeFirmStatements()
@@ -199,6 +228,10 @@
         /// <returns></returns>
         public async Task DeleteRangeAsync(IEnumerable<FirmServiceModel> firms)
         {
+            logger.LogInformation("Delete range async method in firm service invoked.");
+
+            logger.LogWarning("Potential entity not found exception to be thrown.");
+
             foreach (FirmServiceModel firm in firms)
             {
                 var entity = await this.repository
@@ -228,6 +261,10 @@
         /// <returns>(void)</returns>
         public async Task UpdateAsync(FirmServiceModel firm)
         {
+            logger.LogInformation("Update async method in firm service invoked.");
+
+            logger.LogWarning("Potential entity not found exception to be thrown.");
+
             var entity = await this.repository
                 .All()
                 .UseIncludeFirmStatements()

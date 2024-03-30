@@ -6,9 +6,7 @@
 
 <div class="chooseOperationContainer">
     <form 
-        id="chooseOperationForm"
-        asp-action="AddNewOperation"
-        asp-controller="Operation">
+        id="chooseOperationForm">
         <div>
             <div>
                 <label asp-for="CounterPartyId">Select counter party</label>
@@ -36,9 +34,40 @@
             </div>
             <span asp-validation-for="DocumentTypeId"></span>
         </div>
+
+        <button id="addNewProductToOperationBtn"
+        >   
+            Add New Product
+        </button>
+
+        <button id="addNewOperationBtn"
+            >
+            Add Operation
+        </button>
     </form>
 </div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+
+<script>
+    var newProductBtn = document.getElementById('addNewProductToOperationBtn');
+    var newOperationBtn = document.getElementById('addNewOperationBtn');
+    var form = document.getElementById('chooseOperationForm');
+
+    newProductBtn.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        form.setAttribute('action', '/Operation/AddProductToOperation');
+        form.setAttribute('method', 'get');
+        form.submit();
+    });
+
+    newOperationBtn.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        form.setAttribute('asp-action', '/Operation/AddNewOperation');
+    });
+
+</script>

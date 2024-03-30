@@ -40,7 +40,8 @@
             .AddScoped<IFirmService, FirmService>()
             .AddScoped<IAddressService, AddressService>()
             .AddScoped<IUserService, UserService>()
-            .AddScoped<IOperationService, OperationService>();
+            .AddScoped<IOperationService, OperationService>()
+            .AddScoped<IDocumentTypeService, DocumentTypeService>();
 
             services.AddMvc(options =>
                 options
