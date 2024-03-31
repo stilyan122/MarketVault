@@ -28,6 +28,11 @@
         private readonly ICounterPartyService counterPartyService;
 
         /// <summary>
+        /// Product service
+        /// </summary>
+        private readonly IProductService productService;
+
+        /// <summary>
         /// Product operation service
         /// </summary>
         private readonly IProductOperationService productOperationService;
@@ -50,18 +55,21 @@
         /// <param name="counterPartyService">ICounterPartyService</param>
         /// <param name="documentTypeService">IDocumentTypeService</param>
         /// <param name="productOperationService">IProductOperationService</param>
+        /// <param name="productService">IProductService</param>
         public OperationController(
-            Logger<OperationController> logger,
+            ILogger<OperationController> logger,
             IOperationService service,
             ICounterPartyService counterPartyService,
             IDocumentTypeService documentTypeService,
-            IProductOperationService productOperationService)
+            IProductOperationService productOperationService,
+            IProductService productService)
         {
             this.counterPartyService = counterPartyService;
             this.logger = logger;
             this.service = service;
             this.documentTypeService = documentTypeService;
             this.productOperationService = productOperationService;
+            this.productService = productService;
         }
 
         /// <summary>
@@ -96,7 +104,7 @@
         /// </summary>
         /// <param name="model">OperationFormModel</param>
         /// <returns>Task<IActionResult></returns>
-        [HttpGet]
+        [HttpPost]
         [Authorize(Roles = "Admin,Worker")]
         public async Task<IActionResult> 
             AddNewOperation(OperationFormModel model)
@@ -126,18 +134,18 @@
                 UserId = User.Id()
             };
 
-            await this.service.AddAsync(serviceModel);
+            //await this.service.AddAsync(serviceModel);
 
-            foreach (ProductOperationModel pom in model.Products)
-            {
-                var productOperation = new ProductOperationServiceModel()
-                {
-                    OperationId = model.Id,
-                    ProductId = pom.Id
-                };
+            //foreach (ProductOperationModel pom in model.Products)
+            //{
+            //    var productOperation = new ProductOperationServiceModel()
+            //    {
+            //        OperationId = model.Id,
+            //        ProductId = pom.Id
+            //    };
 
-                await this.productOperationService.AddAsync(productOperation);
-            }
+            //    await this.productOperationService.AddAsync(productOperation);
+            //}
 
             return View("SuccessfullyAdded");
         }
@@ -147,14 +155,9 @@
         /// </summary>
         /// <returns></returns>
         [Authorize(Roles = "Admin,Worker")]
-        public IActionResult AddProductToOperation(OperationFormModel 
+        public async Task<IActionResult> AddProductToOperation(OperationFormModel 
             operationFormModel)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(operationFormModel);
-            }
-
             var tempDataModel = new OperationTempDataModel()
             {
                 DocumentTypeId = operationFormModel.DocumentTypeId,
@@ -174,6 +177,7 @@
 
             var model = new ProductOperationModel()
             {
+                Products = await this.GetProducts(),
             };
 
             return View(model);
@@ -188,6 +192,12 @@
             AddProductToOperationPost(ProductOperationModel
             model)
         {
+            if (!ModelState.IsValid)
+            {
+                model.Products = await this.GetProducts();
+                return View(model);
+            }
+
             var operationTempDataModel = JsonConvert
                 .DeserializeObject
                 <OperationTempDataModel>(
@@ -244,6 +254,38 @@
                 });
 
             return documentTypeViewModels;
+        }
+
+        /// <summary>
+        /// Private method for accessing products in app (used in actions)
+        /// </summary>
+        /// <returns>Task<IEnumerable<ProductDetailsViewModel>></returns>
+        private async Task<IEnumerable<ProductDetailsViewModel>> GetProducts()
+        {
+            var productServiceModels = await this.productService
+                 .GetAllAsync();
+
+            var productViewModels = productServiceModels
+                .Select(psm => new ProductDetailsViewModel
+                {
+                    Id = psm.Id,
+                    DateAdded = psm.DateAdded,
+                    DateModified = psm.DateModified,
+                    Description = psm.Description,
+                    Barcodes = psm.Barcodes.Select(b => b.Value),
+                    ArticleNumber = psm.ArticleNumber,
+                    Name = psm.Name,
+                    NomenclatureNumber = psm.NomenclatureNumber, 
+                    CashRegisterName = psm.CashRegisterName,
+                    CodeForScales = psm.CodeForScales,
+                    ItemGroupName = psm.ItemGroup.Name,
+                    Measure = psm.Measure.Name,
+                    PurchasePrice = psm.PurchasePrice,
+                    Quantity = psm.Quantity,
+                    SalePrice = psm.SalePrice
+                });
+
+            return productViewModels;
         }
     }
 }

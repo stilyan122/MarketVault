@@ -18,13 +18,13 @@
         /// <summary>
         /// Model document type id
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Document Type is required!")]
         public int DocumentTypeId { get; set; }
 
         /// <summary>
         /// Model counter party id
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Counter Party is required!")]
         public int CounterPartyId { get; set; }
 
         /// <summary>
