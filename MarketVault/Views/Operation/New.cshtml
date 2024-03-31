@@ -1,5 +1,8 @@
 ﻿@model OperationFormModel
 
+@using System.Text.Json;
+@using System.Text.Json.Serialization;
+
 @{
     ViewBag.Title = "Choose type of operation";
 }
@@ -35,6 +38,29 @@
             <span asp-validation-for="DocumentTypeId"></span>
         </div>
 
+        <div>
+            <label asp-for="Products">Products</label>
+            @if (Model.Products.Count == 0)
+            {
+                <div>None</div>
+            }
+            else
+            {
+                @for (int i = 0; i < Model.Products.Count; i++)
+                {
+                    <input type="hidden" asp-for="ProductsJson" name="ProductsJson" 
+                    id="@i"
+                           value="@JsonSerializer.Serialize(Model.Products[i], new JsonSerializerOptions()
+                       {
+                            ReferenceHandler = ReferenceHandler.IgnoreCycles
+                       })" />
+
+                    <input disabled value="@Model.Products[i].SalePrice"/>
+                    <input disabled value="@Model.Products[i].PurchasePrice"/>
+                }
+            }
+        </div>
+
         <button id="addNewProductToOperationBtn"
         >   
             Add New Product
@@ -67,7 +93,9 @@
     newOperationBtn.addEventListener('click', function (event) {
         event.preventDefault();
 
-        form.setAttribute('asp-action', '/Operation/AddNewOperation');
+        form.setAttribute('action', '/Operation/AddNewOperation');
+        form.setAttribute('method', 'get');
+        form.submit();
     });
 
 </script>
