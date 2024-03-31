@@ -2,6 +2,7 @@
 {
     using MarketVault.Core;
     using MarketVault.Core.Exceptions;
+    using MarketVault.Core.Extensions;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Models.ItemGroup;
@@ -11,6 +12,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System;
+    using System.Web;
     using static MarketVault.Infrastructure.Constants
         .DataConstants.BarcodeConstants;
 
@@ -71,6 +73,7 @@
         /// <summary>
         /// Action for all products in app (Asynchronous)
         /// </summary>
+        /// <param name="pages">Pager pages</param>
         /// <returns>Task<IActionResult></returns>
         public async Task<IActionResult> All(int pages = 1)
         {
@@ -79,19 +82,23 @@
 
             var viewModels = serviceModels
                 .Select(sm => new ProductViewModel()
-            {
-                Id = sm.Id,
-                DateAdded = sm.DateAdded,
-                CashRegisterName = sm.CashRegisterName,
-                DateModified = sm.DateModified,
-                CodeForScales = sm.CodeForScales,
-                ItemGroupName = sm.ItemGroup.Name,
-                Measure = sm.Measure.Name,
-                Name = sm.Name,
-                PurchasePrice = sm.PurchasePrice,
-                Quantity = sm.Quantity,
-                SalePrice = sm.SalePrice
-            })
+                {
+                    Id = sm.Id,
+                    DateAdded = sm.DateAdded,
+                    CashRegisterName = sm.CashRegisterName,
+                    DateModified = sm.DateModified,
+                    CodeForScales = sm.CodeForScales,
+                    ItemGroupName = sm.ItemGroup.Name,
+                    Measure = sm.Measure.Name,
+                    Name = sm.Name,
+                    PurchasePrice = sm.PurchasePrice,
+                    Quantity = sm.Quantity,
+                    SalePrice = sm.SalePrice,
+                    Information = sm.DateAdded.ToString().Substring(0, 4) +
+                    sm.Name.Substring(0, 5) + sm.Measure.Name +
+                    sm.SalePrice.ToString().Substring(0, 1)
+                    + sm.CashRegisterName.Substring(0, 3)
+                })
                 .ToList();
 
             const int pageSize = 10;
@@ -121,9 +128,15 @@
             return View(data);
         }
 
+        
+        
         /// <summary>
         /// Action for filtering products (Asynchronous)
         /// </summary>
+        /// <param name="searchSortType">Search sort type</param>
+        /// <param name="searchViewName">View name for searching</param>
+        /// <param name="searchQuery">Search query</param>
+        /// <param name="pages">Pager pages</param>
         /// <returns>Task<IActionResult></returns>
         public async Task<IActionResult> SearchProducts(
                 string searchSortType,
@@ -195,6 +208,8 @@
             return View(searchViewName, viewModels);
         }
 
+        
+        
         /// <summary>
         /// Action for adding a product in app (Asynchronous, GET)
         /// </summary>
@@ -214,6 +229,8 @@
             return View(formModel);
         }
 
+        
+        
         /// <summary>
         /// Action for adding a product in app (Asynchronous, POST)
         /// </summary>
@@ -250,14 +267,17 @@
             return RedirectToAction("All");
         }
 
+        
+        
         /// <summary>
         /// Action for editing a product by id in app (Asynchronous, GET)
         /// </summary>
         /// <param name="id">Id to use for update</param>
+        /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
         [Authorize(Roles = "Admin,Worker")]
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(string id, string details)
         {
             try
             {
@@ -281,7 +301,17 @@
                     Measures = await this.GetMeasures(),
                     PurchasePrice = entity.PurchasePrice.ToString(),
                     SalePrice = entity.SalePrice.ToString(),
+                    Information = entity.DateAdded.ToString().Substring(0, 4) +
+                    entity.Name.Substring(0, 5) + entity.Measure.Name +
+                    entity.SalePrice.ToString().Substring(0, 1)
+                    + entity.CashRegisterName.Substring(0, 3)
                 };
+
+                if (viewModel.GetDetails() != details)
+                {
+                    logger.LogError("Bad request - Product/Edit - (GET)");
+                    return BadRequest();
+                }
 
                 return View(viewModel);
             }
@@ -292,12 +322,14 @@
             }
         }
 
+        
+        
         /// <summary>
         /// Action for editing a product by id in app (Asynchronous, POST)
         /// </summary>
         /// <param name="id">Id to use for element</param>
         /// <param name="model">Form model to use</param>
-        /// <returns>Task<IActionResult></returns>
+        /// <returns>Task<IActionResult></returns> 
         [HttpPost]
         [Authorize(Roles = "Admin,Worker")]
         public async Task<IActionResult> Edit(string id, ProductFormModel model)
@@ -338,14 +370,17 @@
             return RedirectToAction("All");
         }
 
+       
+        
         /// <summary>
         /// Action for deleting a product by id in app (Asynchronous, Get)
         /// </summary>
         /// <param name="id">Id to use for element</param>
+        /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
         [Authorize(Roles = "Admin,Worker")]
-        public async Task<IActionResult> DeleteGet(string id)
+        public async Task<IActionResult> Delete(string id, string details)
         {
             try
             {
@@ -370,8 +405,18 @@
                     Measure = entity.Measure.Name,
                     PurchasePrice = entity.PurchasePrice,
                     SalePrice = entity.SalePrice,
-                    Barcodes = entity.Barcodes.Select(b => b.Value)
+                    Barcodes = entity.Barcodes.Select(b => b.Value),
+                    Information = entity.DateAdded.ToString().Substring(0, 4) +
+                    entity.Name.Substring(0, 5) + entity.Measure.Name +
+                    entity.SalePrice.ToString().Substring(0, 1)
+                    + entity.CashRegisterName.Substring(0, 3)
                 };
+
+                if (viewModel.GetDetails() != details)
+                {
+                    logger.LogError("Bad request - Product/Delete - (GET)");
+                    return BadRequest();
+                }
 
                 return View("Delete", viewModel);
             }
@@ -386,12 +431,14 @@
         /// Action for deleting a product by id in app (Asynchronous, POST)
         /// </summary>
         /// <param name="id">Id to use for element</param>
+        /// <param name="model">ProductDeleteFormModel</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
         [Authorize(Roles = "Admin,Worker")]
-        public async Task<IActionResult> DeletePost(string id)
+        public async Task<IActionResult> Delete(string id, 
+            ProductDeleteFormModel model)
         {
-            if (!int.TryParse(id, out int parsed))
+            if (model == null || !int.TryParse(id, out int parsed))
             {
                 logger.LogError("Bad request - Product/Delete - (POST)");
                 return BadRequest();
@@ -399,26 +446,26 @@
 
             try
             {
-                var model = await this.service.GetByIdAsync(parsed);
+                var oldServiceModel = await this.service.GetByIdAsync(parsed);
 
                 var serviceModel = new ProductServiceModel()
                 {
                     Id = parsed,
                     DateModified = DateTime.Now,
-                    Description = model.Description,
-                    ItemGroupId = model.ItemGroupId,
-                    MeasureId = model.MeasureId,
-                    Name = model.Name,
-                    CashRegisterName = model.CashRegisterName,
-                    PurchasePrice = model.PurchasePrice,
-                    SalePrice = model.SalePrice,
-                    CodeForScales = model.CodeForScales,
-                    ArticleNumber = model.ArticleNumber,
-                    NomenclatureNumber = model.NomenclatureNumber,
-                    DateAdded = model.DateAdded,
-                    ItemGroup = model.ItemGroup,
-                    Measure = model.Measure,
-                    Quantity = model.Quantity
+                    Description = oldServiceModel.Description,
+                    ItemGroupId = oldServiceModel.ItemGroupId,
+                    MeasureId = oldServiceModel.MeasureId,
+                    Name = oldServiceModel.Name,
+                    CashRegisterName = oldServiceModel.CashRegisterName,
+                    PurchasePrice = oldServiceModel.PurchasePrice,
+                    SalePrice = oldServiceModel.SalePrice,
+                    CodeForScales = oldServiceModel.CodeForScales,
+                    ArticleNumber = oldServiceModel.ArticleNumber,
+                    NomenclatureNumber = oldServiceModel.NomenclatureNumber,
+                    DateAdded = oldServiceModel.DateAdded,
+                    ItemGroup = oldServiceModel.ItemGroup,
+                    Measure = oldServiceModel.Measure,
+                    Quantity = oldServiceModel.Quantity
                 };
 
                 await this.service.DeleteAsync(serviceModel);
@@ -432,12 +479,15 @@
             return RedirectToAction("All");
         }
 
+       
+        
         /// <summary>
         /// Action for checking product details (Asynchronous)
         /// </summary>
         /// <param name="id">Id to use</param>
+        /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(string id, string details)
         {
             try
             {
@@ -465,7 +515,17 @@
                     Barcodes = entity.Barcodes.Select(b => b.Value).ToList(),
                     PurchasePrice = entity.PurchasePrice,
                     SalePrice = entity.SalePrice,
+                    Information = entity.DateAdded.ToString().Substring(0, 4) +
+                    entity.Name.Substring(0, 5) + entity.Measure.Name +
+                    entity.SalePrice.ToString().Substring(0, 1)
+                    + entity.CashRegisterName.Substring(0, 3)
                 };
+
+                if (HttpUtility.UrlEncode(viewModel.Information) != details)
+                {
+                    logger.LogError("Bad request - Product/Details");
+                    return BadRequest();
+                }
 
                 return View(viewModel);
             }
@@ -495,6 +555,8 @@
             return measuresViewModels;
         }
 
+       
+        
         /// <summary>
         /// Private method for accessing item groups in app (used in actions)
         /// </summary>
@@ -514,6 +576,8 @@
             return itemGroupViewModels;
         }
 
+     
+        
         /// <summary>
         /// Private help method to determine whether a string is null, whitespace or empty
         /// </summary>

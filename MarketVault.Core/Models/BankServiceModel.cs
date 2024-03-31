@@ -1,5 +1,6 @@
 ﻿namespace MarketVault.Core.Models
 {
+    using MarketVault.Core.Contracts;
     using MarketVault.Infrastructure.Data.Models;
 
     /// <summary>

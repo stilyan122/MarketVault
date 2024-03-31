@@ -114,18 +114,22 @@
                     <div class="productsButtons">
                         <a 
                             id="productDetailsBtn"
-                            asp-controller="Product" asp-action="Details" asp-route-id="@product.Id">
+                            asp-controller="Product" asp-action="Details" 
+                            asp-route-id="@product.Id"
+                            asp-route-details="@product.GetDetails()">
                             Details
                         </a>
                         @if (await service.IsInRoleAsync(new string[] { "Admin", "Worker" },
                        User.Id()))
                         {
                             <a id="productEditBtn"
-                               asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id">
+                               asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id"
+                               asp-route-details="@product.GetDetails()">
                                 Edit
                             </a>
                             <a id="productDeleteBtn"
-                               asp-controller="Product" asp-action="DeleteGet" asp-route-id="@product.Id">
+                               asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id"
+                               asp-route-details="@product.GetDetails()">
                                 Delete
                             </a>
                         }

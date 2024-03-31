@@ -1,16 +1,17 @@
 ﻿namespace MarketVault.Models.Firm
 {
+    using MarketVault.Core.Contracts;
+    using MarketVault.Models.Address;
     using System.ComponentModel.DataAnnotations;
     using static MarketVault.Infrastructure.Constants
-        .DataConstants.FirmConstants;
-    using static MarketVault.Infrastructure.Constants
         .DataConstants.ExceptionMessagesConstants;
-    using MarketVault.Models.Address;
+    using static MarketVault.Infrastructure.Constants
+        .DataConstants.FirmConstants;
 
     /// <summary>
     /// Firm form model
     /// </summary>
-    public class FirmFormModel
+    public class FirmFormModel : IUrlDetailModel
     {
         /// <summary>
         /// Firm name
@@ -58,5 +59,10 @@
         /// </summary>
         public IEnumerable<AddressViewModel> Addresses { get; set; } =
             new List<AddressViewModel>();
+
+        /// <summary>
+        /// Model Information - for URL
+        /// </summary>
+        public string Information { get; set; } = string.Empty;
     }
 }

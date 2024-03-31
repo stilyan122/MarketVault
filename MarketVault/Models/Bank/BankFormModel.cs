@@ -1,16 +1,17 @@
 ﻿namespace MarketVault.Models.Bank
 {
+    using MarketVault.Core.Contracts;
+    using MarketVault.Models.Address;
     using System.ComponentModel.DataAnnotations;
     using static MarketVault.Infrastructure.Constants
         .DataConstants.BankConstants;
     using static MarketVault.Infrastructure.Constants
         .DataConstants.ExceptionMessagesConstants;
-    using MarketVault.Models.Address;
 
     /// <summary>
     /// Bank form model
     /// </summary>
-    public class BankFormModel
+    public class BankFormModel : IUrlDetailModel
     {
         /// <summary>
         /// Bank name
@@ -32,5 +33,10 @@
         /// </summary>
         public IEnumerable<AddressViewModel> Addresses { get; set; } =
             new List<AddressViewModel>();
+
+        /// <summary>
+        /// Model Information - for URL
+        /// </summary>
+        public string Information { get; set; } = string.Empty;
     }
 }

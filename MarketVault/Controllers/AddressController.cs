@@ -1,14 +1,14 @@
 ﻿namespace MarketVault.Controllers
 {
-    using MarketVault.Core.Models;
     using MarketVault.Core;
+    using MarketVault.Core.Exceptions;
+    using MarketVault.Core.Extensions;
+    using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
-    using MarketVault.Models.Bank;
+    using MarketVault.Models.Address;
     using MarketVault.Models.Search;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using MarketVault.Models.Address;
-    using MarketVault.Core.Exceptions;
 
     /// <summary>
     /// Address Controller (Authorized)
@@ -67,6 +67,7 @@
         /// <summary>
         /// Action for all addresses in app (Asynchronous)
         /// </summary>
+        /// <param name="pages">Pager pages</param>
         /// <returns>Task<IActionResult></returns>
         public async Task<IActionResult> All(int pages = 1)
         {
@@ -79,7 +80,9 @@
                     Id = sm.Id,
                     StreetName = sm.StreetName,
                     StreetNumber = sm.StreetNumber,
-                    TownName = sm.TownName
+                    TownName = sm.TownName,
+                    Information = sm.StreetName.Substring(0, 3) + " " +
+                    sm.StreetNumber + sm.TownName.Substring(0, 4)
                 })
                 .ToList();
 
@@ -113,6 +116,10 @@
         /// <summary>
         /// Action for filtering addresses (Asynchronous)
         /// </summary>
+        /// <param name="searchSortType">Search sort type</param>
+        /// <param name="searchViewName">View name for search</param>
+        /// <param name="searchQuery">Search query</param>
+        /// <param name="pages">Pager pages</param>
         /// <returns>Task<IActionResult></returns>
         public async Task<IActionResult> SearchAddresses(
                 string searchSortType,
@@ -222,10 +229,11 @@
         /// Action for editing an address by id in app (Asynchronous, GET)
         /// </summary>
         /// <param name="id">Id to use for update</param>
+        /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
         [Authorize(Roles = "Admin,Worker")]
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(string id, string details)
         {
             try
             {
@@ -241,8 +249,16 @@
                 {
                     StreetName = entity.StreetName,
                     StreetNumber = entity.StreetNumber,
-                    TownName = entity.TownName
+                    TownName = entity.TownName,
+                    Information = entity.StreetName.Substring(0, 3) + " " +
+                    entity.StreetNumber + entity.TownName.Substring(0, 4)
                 };
+
+                if (viewModel.GetDetails() != details)
+                {
+                    logger.LogError("Bad request - Address/Edit - (GET)");
+                    return BadRequest();
+                }
 
                 return View(viewModel);
             }
@@ -297,10 +313,11 @@
         /// Action for deleting an address by id in app (Asynchronous, Get)
         /// </summary>
         /// <param name="id">Id to use for element</param>
+        /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
         [Authorize(Roles = "Admin,Worker")]
-        public async Task<IActionResult> DeleteGet(string id)
+        public async Task<IActionResult> Delete(string id, string details)
         {
             try
             {
@@ -317,8 +334,16 @@
                     Id = parsed,
                     StreetName = entity.StreetName,
                     StreetNumber = entity.StreetNumber,
-                    TownName = entity.TownName
+                    TownName = entity.TownName,
+                    Information = entity.StreetName.Substring(0, 3) + " " +
+                    entity.StreetNumber + entity.TownName.Substring(0, 4)
                 };
+
+                if (viewModel.GetDetails() != details)
+                {
+                    logger.LogError("Bad request - Address/Delete - (GET)");
+                    return BadRequest();
+                }
 
                 return View("Delete", viewModel);
             }
@@ -333,12 +358,14 @@
         /// Action for deleting an address by id in app (Asynchronous, POST)
         /// </summary>
         /// <param name="id">Id to use for element</param>
+        /// <param name="model">AddressDeleteFormModel</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
         [Authorize(Roles = "Admin,Worker")]
-        public async Task<IActionResult> DeletePost(string id)
+        public async Task<IActionResult> Delete(string id, 
+            AddressDeleteFormModel model)
         {
-            if (!int.TryParse(id, out int parsed))
+            if (model == null || !int.TryParse(id, out int parsed))
             {
                 logger.LogError("Bad request - Address/Delete - (POST)");
                 return BadRequest();
@@ -346,14 +373,14 @@
 
             try
             {
-                var model = await this.service.GetByIdAsync(parsed);
+                var oldServiceModel = await this.service.GetByIdAsync(parsed);
 
                 var serviceModel = new AddressServiceModel()
                 {
                     Id = parsed,
-                    StreetName = model.StreetName,
-                    StreetNumber= model.StreetNumber,
-                    TownName = model.TownName
+                    StreetName = oldServiceModel.StreetName,
+                    StreetNumber= oldServiceModel.StreetNumber,
+                    TownName = oldServiceModel.TownName
                 };
 
                 await this.service.DeleteAsync(serviceModel);

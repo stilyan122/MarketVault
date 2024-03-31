@@ -1,9 +1,11 @@
 ﻿namespace MarketVault.Models.Address
 {
+    using MarketVault.Core.Contracts;
+
     /// <summary>
     /// Address view model
     /// </summary>
-    public class AddressViewModel
+    public class AddressViewModel : IUrlDetailModel
     {
         /// <summary>
         /// Address id
@@ -24,5 +26,10 @@
         /// Address street number
         /// </summary>
         public string StreetNumber { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Model Information - for URL
+        /// </summary>
+        public string Information { get; set; } = string.Empty;
     }
 }

@@ -1,9 +1,11 @@
 ﻿namespace MarketVault.Models.ItemGroup
 {
+    using MarketVault.Core.Contracts;
+
     /// <summary>
     /// Item group delete form model
     /// </summary>
-    public class ItemGroupDeleteFormModel
+    public class ItemGroupDeleteFormModel : IUrlDetailModel
     {
         /// <summary>
         /// Item group id
@@ -19,5 +21,10 @@
         /// Item group products count
         /// </summary>
         public int ProductsCount { get; set; }
+
+        /// <summary>
+        /// Model Information - for URL
+        /// </summary>
+        public string Information { get; set; } = string.Empty;
     }
 }

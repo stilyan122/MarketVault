@@ -108,18 +108,23 @@
 
                     <div class="counterPartyButtons">
                         <a id="counterPartyDetailsBtn"
-                           asp-controller="CounterParty" asp-action="Details" asp-route-id="@counterParty.Id">
+                           asp-controller="CounterParty" 
+                           asp-action="Details" 
+                           asp-route-id="@counterParty.Id"
+                           asp-route-details="@counterParty.GetDetails()">
                             Details
                         </a>
                         @if (await service.IsInRoleAsync(new string[] { "Admin", "Worker" },
                        User.Id()))
                         {
                             <a id="counterPartyEditBtn"
-                               asp-controller="CounterParty" asp-action="Edit" asp-route-id="@counterParty.Id">
+                               asp-controller="CounterParty" asp-action="Edit" asp-route-id="@counterParty.Id"
+                               asp-route-details="@counterParty.GetDetails()">
                                 Edit
                             </a>
                             <a id="counterPartyDeleteBtn"
-                               asp-controller="CounterParty" asp-action="DeleteGet" asp-route-id="@counterParty.Id">
+                               asp-controller="CounterParty" asp-action="Delete" asp-route-id="@counterParty.Id"
+                               asp-route-details="@counterParty.GetDetails()">
                                 Delete
                             </a>
                         }

@@ -1,9 +1,11 @@
 ﻿namespace MarketVault.Models.Bank
 {
+    using MarketVault.Core.Contracts;
+
     /// <summary>
     /// Bank View Model
     /// </summary>
-    public class BankViewModel
+    public class BankViewModel : IUrlDetailModel
     {
         /// <summary>
         /// Bank id
@@ -34,5 +36,10 @@
         /// Bank address street number
         /// </summary>
         public string StreetNumber { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Model Information - for URL
+        /// </summary>
+        public string Information { get; set; } = string.Empty;
     }
 }

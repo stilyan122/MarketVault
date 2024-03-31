@@ -108,18 +108,21 @@
 
                     <div class="firmButtons">
                         <a id="firmDetailsBtn"
-                           asp-controller="Firm" asp-action="Details" asp-route-id="@firm.Id">
+                           asp-controller="Firm" asp-action="Details" asp-route-id="@firm.Id"
+                           asp-route-details="@firm.GetDetails()">
                             Details
                         </a>
                         @if (await service.IsInRoleAsync(new string[] { "Admin", "Worker" },
                        User.Id()))
                         {
                             <a id="firmEditBtn"
-                               asp-controller="Firm" asp-action="Edit" asp-route-id="@firm.Id">
+                               asp-controller="Firm" asp-action="Edit" asp-route-id="@firm.Id"
+                               asp-route-details="@firm.GetDetails()">
                                 Edit
                             </a>
                             <a id="firmDeleteBtn"
-                               asp-controller="Firm" asp-action="DeleteGet" asp-route-id="@firm.Id">
+                               asp-controller="Firm" asp-action="Delete" asp-route-id="@firm.Id"
+                               asp-route-details="@firm.GetDetails()">
                                 Delete
                             </a>
                         }

@@ -2,15 +2,16 @@
 {
     using MarketVault.Core;
     using MarketVault.Core.Exceptions;
+    using MarketVault.Core.Extensions;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Models.Bank;
     using MarketVault.Models.CounterParty;
     using MarketVault.Models.Firm;
-    using MarketVault.Models.Product;
     using MarketVault.Models.Search;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using System.Web;
 
     /// <summary>
     /// Counter Party Controller (Authorized)
@@ -69,6 +70,7 @@
         /// <summary>
         /// Action for all counter parties in app (Asynchronous)
         /// </summary>
+        /// <param name="pages">Pager pages</param>
         /// <returns>Task<IActionResult></returns>
         public async Task<IActionResult> All(int pages = 1)
         {
@@ -85,7 +87,9 @@
                     Id = sm.Id,
                     Name = sm.Name,
                     ValueAddedTaxLawId = sm.ValueAddedTaxLawId,
-                    VATNumber = sm.VATNumber
+                    VATNumber = sm.VATNumber,
+                    Information = sm.Name + "-" + sm.Firm.Name.Substring(0, 3) +
+                    sm.Bank.Name.Substring(0, 2) + sm.VATNumber
                 })
                 .ToList();
 
@@ -119,6 +123,10 @@
         /// <summary>
         /// Action for filtering counter parties (Asynchronous)
         /// </summary>
+        /// <param name="searchSortType">Sort type for searching</param>
+        /// <param name="searchViewName">View name for searching</param>
+        /// <param name="searchQuery">Search Query</param>
+        /// <param name="pages">Pager pages</param>
         /// <returns>Task<IActionResult></returns>
         public async Task<IActionResult> SearchCounterParties(
                 string searchSortType,
@@ -240,10 +248,11 @@
         /// Action for editing a counter party by id in app (Asynchronous, GET)
         /// </summary>
         /// <param name="id">Id to use for update</param>
+        /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
         [Authorize(Roles = "Admin,Worker")]
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(string id, string details)
         {
             try
             {
@@ -265,8 +274,16 @@
                     Banks = await this.GetBanks(),
                     Name = entity.Name,
                     ValueAddedTaxLawId = entity.ValueAddedTaxLawId,
-                    VATNumber = entity.VATNumber
+                    VATNumber = entity.VATNumber,
+                    Information = entity.Name + "-" + entity.Firm.Name.Substring(0, 3) +
+                    entity.Bank.Name.Substring(0, 2) + entity.VATNumber
                 };
+
+                if (viewModel.GetDetails() != details)
+                {
+                    logger.LogError("Bad request - CounterParty/Edit - (GET)");
+                    return BadRequest();
+                }
 
                 return View(viewModel);
             }
@@ -285,7 +302,8 @@
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
         [Authorize(Roles = "Admin,Worker")]
-        public async Task<IActionResult> Edit(string id, CounterPartyFormModel model)
+        public async Task<IActionResult> Edit(string id,
+            CounterPartyFormModel model)
         {
             if (model == null ||
                 !int.TryParse(id, out int parsed))
@@ -325,10 +343,11 @@
         /// Action for deleting a counter party by id in app (Asynchronous, Get)
         /// </summary>
         /// <param name="id">Id to use for element</param>
+        /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
         [Authorize(Roles = "Admin,Worker")]
-        public async Task<IActionResult> DeleteGet(string id)
+        public async Task<IActionResult> Delete(string id, string details)
         {
             try
             {
@@ -355,8 +374,16 @@
                     BankIBAN = entity.BankIBAN,
                     ValueAddedTaxLawId = entity.ValueAddedTaxLawId,
                     VATNumber = entity.VATNumber,
-                    BankName = entity.Bank.Name
+                    BankName = entity.Bank.Name,
+                    Information = entity.Name + "-" + entity.Firm.Name.Substring(0, 3) +
+                    entity.Bank.Name.Substring(0, 2) + entity.VATNumber
                 };
+
+                if (viewModel.GetDetails() != details)
+                {
+                    logger.LogError("Bad request - CounterParty/Delete - (GET)");
+                    return BadRequest();
+                }
 
                 return View("Delete", viewModel);
             }
@@ -371,12 +398,14 @@
         /// Action for deleting a product by id in app (Asynchronous, POST)
         /// </summary>
         /// <param name="id">Id to use for element</param>
+        /// <param name="model">Model</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
         [Authorize(Roles = "Admin,Worker")]
-        public async Task<IActionResult> DeletePost(string id)
+        public async Task<IActionResult> Delete(string id, 
+            CounterPartyDeleteFormModel model)
         {
-            if (!int.TryParse(id, out int parsed))
+            if (model == null || !int.TryParse(id, out int parsed))
             {
                 logger.LogError("Bad request - CounterParty/Delete - (POST)");
                 return BadRequest();
@@ -384,17 +413,17 @@
 
             try
             {
-                var model = await this.service.GetByIdAsync(parsed);
+                var oldserviceModel = await this.service.GetByIdAsync(parsed);
 
                 var serviceModel = new CounterPartyServiceModel()
                 {
                     Id = parsed,
-                    BankCode = model.BankCode,
-                    FirmId = model.FirmId,
-                    BankId = model.BankId,
-                    BankIBAN = model.BankIBAN,
-                    VATNumber = model.VATNumber,
-                    ValueAddedTaxLawId = model.ValueAddedTaxLawId
+                    BankCode = oldserviceModel.BankCode,
+                    FirmId = oldserviceModel.FirmId,
+                    BankId = oldserviceModel.BankId,
+                    BankIBAN = oldserviceModel.BankIBAN,
+                    VATNumber = oldserviceModel.VATNumber,
+                    ValueAddedTaxLawId = oldserviceModel.ValueAddedTaxLawId
                 };
 
                 await this.service.DeleteAsync(serviceModel);
@@ -413,7 +442,7 @@
         /// </summary>
         /// <param name="id">Id to use</param>
         /// <returns>Task<IActionResult></returns>
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(string id, string details)
         {
             try
             {
@@ -444,8 +473,16 @@
                     BankAddress = $"{bankAddress.TownName} {bankAddress.StreetName} " +
                     $"{bankAddress.StreetNumber}",
                     ValueAddedTaxLawId = entity.ValueAddedTaxLawId,
-                    VATNumber = entity.VATNumber
+                    VATNumber = entity.VATNumber,
+                    Information = entity.Name + "-" + entity.Firm.Name.Substring(0, 3) +
+                    entity.Bank.Name.Substring(0, 2) + entity.VATNumber
                 };
+
+                if (HttpUtility.UrlEncode(viewModel.Information) != details)
+                {
+                    logger.LogError("Bad request - CounterParty/Details");
+                    return BadRequest();
+                }
 
                 return View(viewModel);
             }

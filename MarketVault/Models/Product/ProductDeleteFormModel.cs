@@ -1,9 +1,11 @@
 ﻿namespace MarketVault.Models.Product
 {
+    using MarketVault.Core.Contracts;
+
     /// <summary>
     /// Product delete form model
     /// </summary>
-    public class ProductDeleteFormModel
+    public class ProductDeleteFormModel : IUrlDetailModel
     {
         /// <summary>
         /// Product id
@@ -65,5 +67,10 @@
         /// </summary>
         public IEnumerable<string> Barcodes { get; set; } =
             new List<string>();
+
+        /// <summary>
+        /// Model Information - for URL
+        /// </summary>
+        public string Information { get; set; } = string.Empty;
     }
 }

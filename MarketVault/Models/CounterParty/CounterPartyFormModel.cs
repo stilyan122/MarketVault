@@ -1,5 +1,6 @@
 ﻿namespace MarketVault.Models.CounterParty
 {
+    using MarketVault.Core.Contracts;
     using MarketVault.Infrastructure.ValidationAttributes;
     using MarketVault.Models.Bank;
     using MarketVault.Models.Firm;
@@ -12,7 +13,7 @@
     /// <summary>
     /// Counter party form model
     /// </summary>
-    public class CounterPartyFormModel
+    public class CounterPartyFormModel : IUrlDetailModel
     {
         /// <summary>
         /// Counter party name
@@ -80,5 +81,10 @@
         /// </summary>
         public IEnumerable<FirmViewModel> Firms { get; set; }
              = new List<FirmViewModel>();
+
+        /// <summary>
+        /// Model Information - for URL
+        /// </summary>
+        public string Information { get; set; } = string.Empty;
     }
 }

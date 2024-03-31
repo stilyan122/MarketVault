@@ -127,11 +127,9 @@
             .ApplyConfiguration(new CounterPartyConfiguration())
             .ApplyConfiguration(new ItemGroupConfiguration())
             .ApplyConfiguration(new MeasureConfiguration())
-            .ApplyConfiguration(new OperationConfiguration())
             .ApplyConfiguration(new ProductConfiguration())
             .ApplyConfiguration(new BarcodeConfiguration())
-            .ApplyConfiguration(new ProductMeasureConfiguration())
-            .ApplyConfiguration(new ProductOperationConfiguration());
+            .ApplyConfiguration(new ProductMeasureConfiguration());
         }
     }
 }

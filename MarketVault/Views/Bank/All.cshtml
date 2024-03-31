@@ -102,18 +102,22 @@
 
                     <div class="bankButtons">
                         <a id="bankDetailsBtn"
-                           asp-controller="Bank" asp-action="Details" asp-route-id="@bank.Id">
+                           asp-controller="Bank" asp-action="Details" asp-route-id="@bank.Id"
+                           asp-route-details="@bank.GetDetails()">
                             Details
                         </a>
                         @if (await service.IsInRoleAsync(new string[] { "Admin", "Worker" }, 
                                             User.Id()))
                         {
                             <a id="bankEditBtn"
-                               asp-controller="Bank" asp-action="Edit" asp-route-id="@bank.Id">
+                               asp-controller="Bank" asp-action="Edit" asp-route-id="@bank.Id"
+                               asp-route-details="@bank.GetDetails()">
                                 Edit
                             </a>
                             <a id="bankDeleteBtn"
-                               asp-controller="Bank" asp-action="DeleteGet" asp-route-id="@bank.Id">
+                               asp-controller="Bank" asp-action="Delete"
+                               asp-route-id="@bank.Id"
+                               asp-route-details="@bank.GetDetails()">
                                 Delete
                             </a>
                         }
