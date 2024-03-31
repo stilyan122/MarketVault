@@ -7,8 +7,24 @@
 <div>
     <form
         id="addProductToOperationForm"
-          asp-action="AddProductToOperationPost"
-          asp-controller="Operation">
+        asp-action="AddProductToOperationPost"
+        asp-controller="Operation"
+        method="post">
+
+        <div>
+            <div>
+                <label asp-for="Id">Select product</label>
+                <select asp-for="Id">
+                    <option disabled selected value="">Select product...</option>
+                    @foreach (ProductDetailsViewModel product in Model.Products)
+                    {
+                        <option value="@product.Id">@product.NomenclatureNumber @product.Name</option>
+                    }
+                </select>
+            </div>
+            <span asp-validation-for="Id"></span>
+        </div>
+
         <div>
             <div>
                 <label asp-for="Quantity">Product quantity</label>

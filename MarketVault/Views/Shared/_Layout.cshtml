@@ -97,27 +97,31 @@
         }
     });
 
-    document.getElementById("selectOption2").addEventListener("change", function () {
-        var optionValue = this.value;
-        if (optionValue === "Option1") {
-            window.location.href = "/Product/Add";
-        } else if (optionValue === "Option2") {
-            window.location.href = "/CounterParty/Add";
-        } else if (optionValue === "Option3") {
-            window.location.href = "/ItemGroup/Add";
-        } else if (optionValue === "Option4") {
-            window.location.href = "/Firm/Add";
-        } else if (optionValue === "Option5") {
-            window.location.href = "/Bank/Add";
-        } else if (optionValue === "Option6") {
-            window.location.href = "/Address/Add";
-        }
-    });
+    if (document.getElementById("selectOption2") != undefined) { 
+        document.getElementById("selectOption2").addEventListener("change", function () {
+            var optionValue = this.value;
+            if (optionValue === "Option1") {
+                window.location.href = "/Product/Add";
+            } else if (optionValue === "Option2") {
+                window.location.href = "/CounterParty/Add";
+            } else if (optionValue === "Option3") {
+                window.location.href = "/ItemGroup/Add";
+            } else if (optionValue === "Option4") {
+                window.location.href = "/Firm/Add";
+            } else if (optionValue === "Option5") {
+                window.location.href = "/Bank/Add";
+            } else if (optionValue === "Option6") {
+                window.location.href = "/Address/Add";
+            }
+        });
+    }
 
-    document.getElementById("selectOption3").addEventListener("change", function () {
-        var optionValue = this.value;
-        if (optionValue === "Option1") {
-            window.location.href = "/Operation/New";
-        } 
-    });
+    if (document.getElementById("selectOption3") != undefined) {
+        document.getElementById("selectOption3").addEventListener("change", function () {
+            var optionValue = this.value;
+            if (optionValue === "Option1") {
+                window.location.href = "/Operation/New";
+            }
+        });
+    }
 </script>

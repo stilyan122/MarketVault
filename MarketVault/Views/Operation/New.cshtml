@@ -10,6 +10,9 @@
 <div class="chooseOperationContainer">
     <form 
         id="chooseOperationForm">
+
+        @Html.AntiForgeryToken()
+
         <div>
             <div>
                 <label asp-for="CounterPartyId">Select counter party</label>
@@ -50,10 +53,7 @@
                 {
                     <input type="hidden" asp-for="ProductsJson" name="ProductsJson" 
                     id="@i"
-                           value="@JsonSerializer.Serialize(Model.Products[i], new JsonSerializerOptions()
-                       {
-                            ReferenceHandler = ReferenceHandler.IgnoreCycles
-                       })" />
+                           value="@JsonSerializer.Serialize(Model.Products[i])" />
 
                     <input disabled value="@Model.Products[i].SalePrice"/>
                     <input disabled value="@Model.Products[i].PurchasePrice"/>
@@ -73,10 +73,6 @@
     </form>
 </div>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
-
 <script>
     var newProductBtn = document.getElementById('addNewProductToOperationBtn');
     var newOperationBtn = document.getElementById('addNewOperationBtn');
@@ -87,15 +83,23 @@
 
         form.setAttribute('action', '/Operation/AddProductToOperation');
         form.setAttribute('method', 'get');
-        form.submit();
+        if (form.reportValidity()) {
+            form.submit();
+        }
     });
 
     newOperationBtn.addEventListener('click', function (event) {
         event.preventDefault();
 
         form.setAttribute('action', '/Operation/AddNewOperation');
-        form.setAttribute('method', 'get');
-        form.submit();
+        form.setAttribute('method', 'post');
+        if (form.reportValidity()) {
+            form.submit();
+        }
     });
 
 </script>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
