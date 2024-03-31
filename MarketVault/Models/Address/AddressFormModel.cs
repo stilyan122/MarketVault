@@ -1,6 +1,6 @@
 ﻿namespace MarketVault.Models.Address
 {
-
+    using MarketVault.Core.Contracts;
     using System.ComponentModel.DataAnnotations;
     using static MarketVault.Infrastructure.Constants
         .DataConstants.AddressConstants;
@@ -10,7 +10,7 @@
     /// <summary>
     /// Address form model
     /// </summary>
-    public class AddressFormModel
+    public class AddressFormModel : IUrlDetailModel
     {
         /// <summary>
         /// Address town name
@@ -38,5 +38,10 @@
             MinimumLength = StreetNumberMinValue,
             ErrorMessage = AddressStreetNumberLengthExceptionMessage)]
         public string StreetNumber { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Model Information - for URL
+        /// </summary>
+        public string Information { get; set; } = string.Empty;
     }
 }

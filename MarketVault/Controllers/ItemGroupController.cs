@@ -2,6 +2,7 @@
 {
     using MarketVault.Core;
     using MarketVault.Core.Exceptions;
+    using MarketVault.Core.Extensions;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Models.ItemGroup;
@@ -50,6 +51,7 @@
         /// <summary>
         /// Action for all item groups in app (Asynchronous)
         /// </summary>
+        /// <param name="pages">Pager pages</param>
         /// <returns>Task<IActionResult></returns>
         public async Task<IActionResult> All(int pages = 1)
         {
@@ -61,7 +63,8 @@
                 {
                     Id = sm.Id,
                     Name = sm.Name,
-                    ProductsCount = sm.Products.Count()
+                    ProductsCount = sm.Products.Count(),
+                    Information = sm.Name + " " + sm.Products.Count()
                 })
                 .ToList();
 
@@ -95,6 +98,10 @@
         /// <summary>
         /// Action for filtering item groups (Asynchronous)
         /// </summary>
+        /// <param name="searchSortType">Search sort type</param>
+        /// <param name="searchViewName">Search view name</param>
+        /// <param name="searchQuery">Search query</param>
+        /// <param name="pages">Pager pages</param>
         /// <returns>Task<IActionResult></returns>
         public async Task<IActionResult> SearchItemGroups(
                 string searchSortType,
@@ -201,10 +208,11 @@
         /// Action for editing an item group by id in app (Asynchronous, GET)
         /// </summary>
         /// <param name="id">Id to use for update</param>
+        /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
         [Authorize(Roles = "Admin,Worker")]
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(string id, string details)
         {
             try
             {
@@ -218,8 +226,15 @@
 
                 var viewModel = new ItemGroupFormModel()
                 {
-                    Name = entity.Name
+                    Name = entity.Name,
+                    Information = entity.Name + " " + entity.Products.Count()
                 };
+
+                if (viewModel.GetDetails() != details)
+                {
+                    logger.LogError("Bad request - ItemGroup/Edit - (GET)");
+                    return BadRequest();
+                }
 
                 return View(viewModel);
             }
@@ -272,10 +287,11 @@
         /// Action for deleting an item group by id in app (Asynchronous, Get)
         /// </summary>
         /// <param name="id">Id to use for element</param>
+        /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
         [Authorize(Roles = "Admin,Worker")]
-        public async Task<IActionResult> DeleteGet(string id)
+        public async Task<IActionResult> Delete(string id, string details)
         {
             try
             {
@@ -291,8 +307,15 @@
                 {
                     Id = parsed,
                     Name = entity.Name,
-                    ProductsCount = entity.Products.Count()
+                    ProductsCount = entity.Products.Count(),
+                    Information = entity.Name + " " + entity.Products.Count()
                 };
+
+                if (viewModel.GetDetails() != details)
+                {
+                    logger.LogError("Bad request - ItemGroup/Delete - (GET)");
+                    return BadRequest();
+                }
 
                 return View("Delete", viewModel);
             }
@@ -307,12 +330,14 @@
         /// Action for deleting an item group by id in app (Asynchronous, POST)
         /// </summary>
         /// <param name="id">Id to use for element</param>
+        /// <param name="model">ItemGroupDeleteFormModel</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
         [Authorize(Roles = "Admin,Worker")]
-        public async Task<IActionResult> DeletePost(string id)
+        public async Task<IActionResult> Delete(string id, 
+            ItemGroupDeleteFormModel model)
         {
-            if (!int.TryParse(id, out int parsed))
+            if (model == null || !int.TryParse(id, out int parsed))
             {
                 logger.LogError("Bad request - ItemGroup/Delete - (POST)");
                 return BadRequest();
@@ -320,12 +345,12 @@
 
             try
             {
-                var model = await this.service.GetByIdAsync(parsed);
+                var oldServiceModel = await this.service.GetByIdAsync(parsed);
 
                 var serviceModel = new ItemGroupServiceModel()
                 {
                     Id = parsed,
-                    Name = model.Name
+                    Name = oldServiceModel.Name
                 };
 
                 await this.service.DeleteAsync(serviceModel);

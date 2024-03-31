@@ -1,9 +1,11 @@
 ﻿namespace MarketVault.Models.Firm
 {
+    using MarketVault.Core.Contracts;
+
     /// <summary>
     /// Firm View Model
     /// </summary>
-    public class FirmViewModel
+    public class FirmViewModel : IUrlDetailModel
     {
         /// <summary>
         /// Firm id
@@ -49,5 +51,10 @@
         /// Firm address street number
         /// </summary>
         public string StreetNumber { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Model Information - for URL
+        /// </summary>
+        public string Information { get; set; } = string.Empty;
     }
 }

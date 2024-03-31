@@ -7,11 +7,12 @@
         .DataConstants.ExceptionMessagesConstants;
     using MarketVault.Models.ItemGroup;
     using MarketVault.Models.Measure;
+    using MarketVault.Core.Contracts;
 
     /// <summary>
     /// Product form model
     /// </summary>
-    public class ProductFormModel
+    public class ProductFormModel : IUrlDetailModel
     {
         /// <summary>
         /// Product name
@@ -105,5 +106,10 @@
         /// </summary>
         public List<string> Barcodes { get; set; }
             = new List<string>();
+
+        /// <summary>
+        /// Model Information - for URL
+        /// </summary>
+        public string Information { get; set; } = string.Empty;
     }
 }

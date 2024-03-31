@@ -1,9 +1,11 @@
 ﻿namespace MarketVault.Models.Firm
 {
+    using MarketVault.Core.Contracts;
+
     /// <summary>
     /// Firm delete form model
     /// </summary>
-    public class FirmDeleteFormModel
+    public class FirmDeleteFormModel : IUrlDetailModel
     {
         /// <summary>
         /// Firm id
@@ -34,5 +36,10 @@
         /// Firm address
         /// </summary>
         public string Address { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Model Information - for URL
+        /// </summary>
+        public string Information { get; set; } = string.Empty;
     }
 }

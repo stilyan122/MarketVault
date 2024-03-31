@@ -1,6 +1,7 @@
 namespace MarketVault
 {
     using MarketVault.Core;
+    using MarketVault.Core.Extensions;
     using React.AspNet;
 
     /// <summary>
@@ -35,16 +36,8 @@ namespace MarketVault
             }
 
             app.UseHttpsRedirection();
-            app.UseReact(config => 
-            {
-                config
-                .AddScript("~/js/marketvault/src/Components/ProductViewComponent.jsx")
-                .AddScript("~/js/marketvault/src/Components/CounterPartyViewComponent.jsx")
-                .AddScript("~/js/marketvault/src/Components/FirmViewComponent.jsx")
-                .AddScript("~/js/marketvault/src/Components/BankViewComponent.jsx")
-                .AddScript("~/js/marketvault/src/Components/ItemGroupViewComponent.jsx")
-                .AddScript("~/js/marketvault/src/Components/AddressViewComponent.jsx");
-            });
+
+            app.UseReactComponents();
 
             app.UseStaticFiles();
 
@@ -55,10 +48,7 @@ namespace MarketVault
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
-            app.MapRazorPages();
+            app.UseEndPoints();
 
             app.Run();
         }

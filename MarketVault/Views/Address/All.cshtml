@@ -101,11 +101,13 @@
                     {
                         <div class="addressButtons">
                             <a id="addressEditBtn"
-                               asp-controller="Address" asp-action="Edit" asp-route-id="@address.Id">
+                               asp-controller="Address" asp-action="Edit" asp-route-id="@address.Id"
+                               asp-route-details="@address.GetDetails()">
                                 Edit
                             </a>
                             <a id="addressDeleteBtn"
-                               asp-controller="Address" asp-action="DeleteGet" asp-route-id="@address.Id">
+                               asp-controller="Address" asp-action="Delete" asp-route-id="@address.Id"
+                                asp-route-details="@address.GetDetails()">
                                 Delete
                             </a>
                         </div>

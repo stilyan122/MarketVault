@@ -1,9 +1,11 @@
 ﻿namespace MarketVault.Models.Bank
 {
+    using MarketVault.Core.Contracts;
+
     /// <summary>
     /// Bank delete form model
     /// </summary>
-    public class BankDeleteFormModel
+    public class BankDeleteFormModel : IUrlDetailModel
     {
         /// <summary>
         /// Bank id
@@ -19,5 +21,10 @@
         /// Bank address
         /// </summary>
         public string Address { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Model Information - for URL
+        /// </summary>
+        public string Information { get; set; } = string.Empty;
     }
 }

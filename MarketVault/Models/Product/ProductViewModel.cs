@@ -1,9 +1,11 @@
 ﻿namespace MarketVault.Models.Product
 {
+    using MarketVault.Core.Contracts;
+
     /// <summary>
     /// Product view model
     /// </summary>
-    public class ProductViewModel
+    public class ProductViewModel : IUrlDetailModel
     {
         /// <summary>
         /// Product id
@@ -59,5 +61,10 @@
         /// Product measure value
         /// </summary>
         public string Measure { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Model Information - for URL
+        /// </summary>
+        public string Information { get; set; } = string.Empty;
     }
 }

@@ -2,6 +2,7 @@
 {
     using MarketVault.Core;
     using MarketVault.Core.Exceptions;
+    using MarketVault.Core.Extensions;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Models.Address;
@@ -9,6 +10,7 @@
     using MarketVault.Models.Search;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using System.Web;
 
     /// <summary>
     /// Counter Party Controller (Authorized)
@@ -59,6 +61,7 @@
         /// <summary>
         /// Action for all firms in app (Asynchronous)
         /// </summary>
+        /// <param name="pages">Pager pages</param>
         /// <returns>Task<IActionResult></returns>
         public async Task<IActionResult> All(int pages = 1)
         {
@@ -76,7 +79,9 @@
                     ResponsiblePersonName = sm.ResponsiblePersonName,
                     StreetName = sm.Address.StreetName,
                     StreetNumber = sm.Address.StreetNumber,
-                    TownName = sm.Address.TownName
+                    TownName = sm.Address.TownName,
+                    Information = sm.Email.Substring(0, 2) + sm.PhoneNumber.Substring(5)
+                    + sm.Address.StreetNumber + sm.Address.StreetName.Substring(0, 5)
                 })
                 .ToList();
 
@@ -110,6 +115,10 @@
         /// <summary>
         /// Action for filtering firms (Asynchronous)
         /// </summary>
+        /// <param name="searchSortType">Search sort type</param>
+        /// <param name="searchViewName">View name for searching</param>
+        /// <param name="searchQuery">Search query</param>
+        /// <param name="pages">Pager pages</param>
         /// <returns>Task<IActionResult></returns>
         public async Task<IActionResult> SearchFirms(
                 string searchSortType,
@@ -228,10 +237,11 @@
         /// Action for editing a firm by id in app (Asynchronous, GET)
         /// </summary>
         /// <param name="id">Id to use for update</param>
+        /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
         [Authorize(Roles = "Admin,Worker")]
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(string id, string details)
         {
             try
             {
@@ -250,8 +260,16 @@
                     Addresses = await this.GetAddresses(),
                     Name = entity.Name,
                     PhoneNumber = entity.PhoneNumber,
-                    ResponsiblePersonName = entity.ResponsiblePersonName
+                    ResponsiblePersonName = entity.ResponsiblePersonName,
+                    Information = entity.Email.Substring(0, 2) + entity.PhoneNumber.Substring(5)
+                    + entity.Address.StreetNumber + entity.Address.StreetName.Substring(0, 5)
                 };
+
+                if (viewModel.GetDetails() != details)
+                {
+                    logger.LogError("Bad request - Firm/Edit - (GET)");
+                    return BadRequest();
+                }
 
                 return View(viewModel);
             }
@@ -308,10 +326,11 @@
         /// Action for deleting a firm by id in app (Asynchronous, Get)
         /// </summary>
         /// <param name="id">Id to use for element</param>
+        /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
         [Authorize(Roles = "Admin,Worker")]
-        public async Task<IActionResult> DeleteGet(string id)
+        public async Task<IActionResult> Delete(string id, string details)
         {
             try
             {
@@ -333,8 +352,16 @@
                     Email = entity.Email,
                     Name = entity.Name,
                     PhoneNumber = entity.PhoneNumber,
-                    ResponsiblePersonName = entity.ResponsiblePersonName
+                    ResponsiblePersonName = entity.ResponsiblePersonName,
+                    Information = entity.Email.Substring(0, 2) + entity.PhoneNumber.Substring(5)
+                    + entity.Address.StreetNumber + entity.Address.StreetName.Substring(0, 5)
                 };
+
+                if (viewModel.GetDetails() != details)
+                {
+                    logger.LogError("Bad request - Firm/Delete - (GET)");
+                    return BadRequest();
+                }
 
                 return View("Delete", viewModel);
             }
@@ -349,12 +376,13 @@
         /// Action for deleting a firm by id in app (Asynchronous, POST)
         /// </summary>
         /// <param name="id">Id to use for element</param>
+        /// <param name="model">FirmDeleteFormModel</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
         [Authorize(Roles = "Admin,Worker")]
-        public async Task<IActionResult> DeletePost(string id)
+        public async Task<IActionResult> Delete(string id, FirmDeleteFormModel model)
         {
-            if (!int.TryParse(id, out int parsed))
+            if (model == null || !int.TryParse(id, out int parsed))
             {
                 logger.LogError("Bad request - Firm/Delete - (POST)");
                 return BadRequest();
@@ -362,16 +390,16 @@
 
             try
             {
-                var model = await this.service.GetByIdAsync(parsed);
+                var oldServiceModel = await this.service.GetByIdAsync(parsed);
 
                 var serviceModel = new FirmServiceModel()
                 {
                     Id = parsed,
-                    AddressId = model.AddressId,
-                    Email = model.Email,
-                    Name = model.Name,
-                    PhoneNumber = model.PhoneNumber,
-                    ResponsiblePersonName = model.ResponsiblePersonName
+                    AddressId = oldServiceModel.AddressId,
+                    Email = oldServiceModel.Email,
+                    Name = oldServiceModel.Name,
+                    PhoneNumber = oldServiceModel.PhoneNumber,
+                    ResponsiblePersonName = oldServiceModel.ResponsiblePersonName
                 };
 
                 await this.service.DeleteAsync(serviceModel);
@@ -389,8 +417,9 @@
         /// Action for checking firm details (Asynchronous)
         /// </summary>
         /// <param name="id">Id to use</param>
+        /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(string id, string details)
         {
             try
             {
@@ -412,8 +441,16 @@
                     Id = entity.Id,
                     Name = entity.Name,
                     PhoneNumber = entity.PhoneNumber,
-                    ResponsiblePersonName = entity.ResponsiblePersonName
+                    ResponsiblePersonName = entity.ResponsiblePersonName,
+                    Information = entity.Email.Substring(0, 2) + entity.PhoneNumber.Substring(5)
+                    + entity.Address.StreetNumber + entity.Address.StreetName.Substring(0, 5)
                 };
+
+                if (HttpUtility.UrlEncode(viewModel.Information) != details)
+                {
+                    logger.LogError("Bad request - Firm/Details");
+                    return BadRequest();
+                }
 
                 return View(viewModel);
             }

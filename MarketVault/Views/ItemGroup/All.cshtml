@@ -100,11 +100,13 @@
                     {
                         <div class="itemGroupButtons">
                             <a id="itemGroupEditBtn"
-                               asp-controller="ItemGroup" asp-action="Edit" asp-route-id="@itemGroup.Id">
+                               asp-controller="ItemGroup" asp-action="Edit" asp-route-id="@itemGroup.Id"
+                               asp-route-details="@itemGroup.GetDetails()">
                                 Edit
                             </a>
                             <a id="itemGroupDeleteBtn"
-                               asp-controller="ItemGroup" asp-action="DeleteGet" asp-route-id="@itemGroup.Id">
+                               asp-controller="ItemGroup" asp-action="Delete" asp-route-id="@itemGroup.Id"
+                               asp-route-details="@itemGroup.GetDetails()">
                                 Delete
                             </a>
                         </div>

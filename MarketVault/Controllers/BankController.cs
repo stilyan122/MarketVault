@@ -2,6 +2,7 @@
 {
     using MarketVault.Core;
     using MarketVault.Core.Exceptions;
+    using MarketVault.Core.Extensions;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Models.Address;
@@ -59,6 +60,7 @@
         /// <summary>
         /// Action for all banks in app (Asynchronous)
         /// </summary>
+        /// <param name="pages">Pager pages</param>
         /// <returns>Task<IActionResult></returns>
         public async Task<IActionResult> All(int pages = 1)
         {
@@ -73,7 +75,9 @@
                     Name = sm.Name,
                     TownName = sm.Address.TownName,
                     StreetName = sm.Address.StreetName,
-                    StreetNumber = sm.Address.StreetNumber
+                    StreetNumber = sm.Address.StreetNumber,
+                    Information = sm.Name + "-" + sm.Address.TownName.Substring(0, 3)
+                    + sm.Address.StreetNumber + sm.Address.StreetName.Substring(0, 5)
                 })
                 .ToList();
 
@@ -107,6 +111,10 @@
         /// <summary>
         /// Action for filtering banks (Asynchronous)
         /// </summary>
+        /// <param name="searchSortType">Search sort type</param>
+        /// <param name="searchViewName">View name for searching</param>
+        /// <param name="searchQuery">Search query</param>
+        /// <param name="pages">Pager pages</param>
         /// <returns>Task<IActionResult></returns>
         public async Task<IActionResult> SearchBanks(
                 string searchSortType,
@@ -219,10 +227,11 @@
         /// Action for editing a bank by id in app (Asynchronous, GET)
         /// </summary>
         /// <param name="id">Id to use for update</param>
+        /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
         [Authorize(Roles = "Admin,Worker")]
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(string id, string details)
         {
             try
             {
@@ -238,8 +247,16 @@
                 {
                     AddressId = entity.AddressId,
                     Addresses = await this.GetAddresses(),
-                    Name = entity.Name
+                    Name = entity.Name,
+                    Information = entity.Name + "-" + entity.Address.TownName.Substring(0, 3)
+                    + entity.Address.StreetNumber + entity.Address.StreetName.Substring(0, 5)
                 };
+
+                if (details != viewModel.GetDetails())
+                {
+                    logger.LogError("Bad request - Bank/Edit - (GET)");
+                    return BadRequest();
+                }
 
                 return View(viewModel);
             }
@@ -293,10 +310,11 @@
         /// Action for deleting a bank by id in app (Asynchronous, Get)
         /// </summary>
         /// <param name="id">Id to use for element</param>
+        /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
         [Authorize(Roles = "Admin,Worker")]
-        public async Task<IActionResult> DeleteGet(string id)
+        public async Task<IActionResult> Delete(string id, string details)
         {
             try
             {
@@ -315,10 +333,18 @@
                     Id = parsed,
                     Address = $"{address.TownName} {address.StreetName} " +
                     $"{address.StreetNumber}",
-                    Name = entity.Name
+                    Name = entity.Name,
+                    Information = entity.Name + "-" + entity.Address.TownName.Substring(0, 3)
+                    + entity.Address.StreetNumber + entity.Address.StreetName.Substring(0, 5)
                 };
 
-                return View("Delete", viewModel);
+                if (viewModel.GetDetails() != details)
+                {
+                    logger.LogError("Bad request - Bank/Delete - (GET)");
+                    return BadRequest();
+                }
+
+                return View(viewModel);
             }
             catch (EntityNotFoundException exc)
             {
@@ -331,12 +357,14 @@
         /// Action for deleting a bank by id in app (Asynchronous, POST)
         /// </summary>
         /// <param name="id">Id to use for element</param>
+        /// <param name="model">BankDeleteFormModel</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
         [Authorize(Roles = "Admin,Worker")]
-        public async Task<IActionResult> DeletePost(string id)
+        public async Task<IActionResult> Delete(string id, 
+            BankDeleteFormModel model)
         {
-            if (!int.TryParse(id, out int parsed))
+            if (model == null || !int.TryParse(id, out int parsed))
             {
                 logger.LogError("Bad request - Bank/Delete - (POST)");
                 return BadRequest();
@@ -344,13 +372,13 @@
 
             try
             {
-                var model = await this.service.GetByIdAsync(parsed);
+                var oldServiceModel = await this.service.GetByIdAsync(parsed);
 
                 var serviceModel = new BankServiceModel()
                 {
                     Id = parsed,
-                    AddressId = model.AddressId,
-                    Name = model.Name
+                    AddressId = oldServiceModel.AddressId,
+                    Name = oldServiceModel.Name,
                 };
 
                 await this.service.DeleteAsync(serviceModel);
@@ -368,8 +396,10 @@
         /// Action for bank details (Asynchronous)
         /// </summary>
         /// <param name="id">Id to use</param>
+        /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(string id, 
+            string details)
         {
             try
             {
@@ -388,8 +418,17 @@
                     Address = $"{address.TownName} {address.StreetName}" +
                     $" {address.StreetNumber}",
                     Id = entity.Id,
-                    Name = entity.Name
+                    Name = entity.Name,
+                    Information = entity.Name + "-" + entity.Address.TownName.Substring(0, 3)
+                    + entity.Address.StreetNumber + entity.Address.StreetName.Substring(0, 5)
                 };
+
+
+                if (viewModel.GetDetails() != details)
+                {
+                    logger.LogError("Bad request - Bank/Details");
+                    return BadRequest();
+                }
 
                 return View(viewModel);
             }

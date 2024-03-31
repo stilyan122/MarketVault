@@ -1,9 +1,11 @@
 ﻿namespace MarketVault.Models.CounterParty
 {
+    using MarketVault.Core.Contracts;
+
     /// <summary>
     /// Counter party delete form model
     /// </summary>
-    public class CounterPartyDeleteFormModel
+    public class CounterPartyDeleteFormModel : IUrlDetailModel
     {
         /// <summary>
         /// Counter party id
@@ -48,6 +50,11 @@
         /// <summary>
         /// Counter party firm address
         /// </summary>
-        public string FirmAddress { get; set; } = string.Empty;  
+        public string FirmAddress { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Model Information - for URL
+        /// </summary>
+        public string Information { get; set; } = string.Empty;
     }
 }
