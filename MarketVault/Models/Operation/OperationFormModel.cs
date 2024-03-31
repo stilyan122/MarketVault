@@ -3,6 +3,7 @@
     using MarketVault.Models.CounterParty;
     using MarketVault.Models.DocumentType;
     using MarketVault.Models.Product;
+    using System.ComponentModel.DataAnnotations;
 
     /// <summary>
     /// Operation form model
@@ -10,20 +11,33 @@
     public class OperationFormModel
     {
         /// <summary>
+        /// Model id
+        /// </summary>
+        public int Id { get; set; }
+
+        /// <summary>
         /// Model document type id
         /// </summary>
+        [Required]
         public int DocumentTypeId { get; set; }
 
         /// <summary>
         /// Model counter party id
         /// </summary>
+        [Required]
         public int CounterPartyId { get; set; }
 
         /// <summary>
         /// Model collection of products
         /// </summary>
-        public IEnumerable<ProductOperationModel> Products { get; set; }
+        public List<ProductOperationModel> Products { get; set; }
             = new List<ProductOperationModel>();
+
+        /// <summary>
+        /// Model collection of JSON products
+        /// </summary>
+        public List<string> ProductsJson { get; set; }
+            = new List<string>();
 
         /// <summary>
         /// Model collection of counter parties

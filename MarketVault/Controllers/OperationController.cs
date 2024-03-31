@@ -1,5 +1,7 @@
 ﻿namespace MarketVault.Controllers
 {
+    using MarketVault.Core.Extensions;
+    using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Models.CounterParty;
     using MarketVault.Models.DocumentType;
@@ -7,6 +9,7 @@
     using MarketVault.Models.Product;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Item Group Controller (Authorized)
@@ -25,6 +28,11 @@
         private readonly ICounterPartyService counterPartyService;
 
         /// <summary>
+        /// Product operation service
+        /// </summary>
+        private readonly IProductOperationService productOperationService;
+
+        /// <summary>
         /// Document type service
         /// </summary>
         private readonly IDocumentTypeService documentTypeService;
@@ -32,7 +40,7 @@
         /// <summary>
         /// Logger
         /// </summary>
-        //private readonly Logger<OperationController> logger;
+        private readonly ILogger<OperationController> logger;
 
         /// <summary>
         /// Constructor injecting logger and services
@@ -41,16 +49,19 @@
         /// <param name="service">IOperationService</param>
         /// <param name="counterPartyService">ICounterPartyService</param>
         /// <param name="documentTypeService">IDocumentTypeService</param>
+        /// <param name="productOperationService">IProductOperationService</param>
         public OperationController(
-            //Logger<OperationController> logger,
+            Logger<OperationController> logger,
             IOperationService service,
             ICounterPartyService counterPartyService,
-            IDocumentTypeService documentTypeService)
+            IDocumentTypeService documentTypeService,
+            IProductOperationService productOperationService)
         {
             this.counterPartyService = counterPartyService;
-            //this.logger = logger;
+            this.logger = logger;
             this.service = service;
             this.documentTypeService = documentTypeService;
+            this.productOperationService = productOperationService;
         }
 
         /// <summary>
@@ -101,6 +112,33 @@
                 return View("New", model);
             }
 
+            var serviceModel = new OperationServiceModel()
+            {
+                DateMade = DateTime.Now,
+                DocumentTypeId = model.DocumentTypeId,
+                CounterPartyId = model.CounterPartyId,
+                TotalPurchasePriceWithoutVAT = model.Products.Sum(p => p.PurchasePrice),
+                TotalPurchasePriceWithVAT = model.Products.Sum(p => p.PurchasePrice +
+                0.20M * p.PurchasePrice),
+                TotalSalePriceWithoutVAT = model.Products.Sum(p => p.SalePrice),
+                TotalSalePriceWithVAT = model.Products.Sum(p => p.SalePrice +
+                0.20M * p.SalePrice),
+                UserId = User.Id()
+            };
+
+            await this.service.AddAsync(serviceModel);
+
+            foreach (ProductOperationModel pom in model.Products)
+            {
+                var productOperation = new ProductOperationServiceModel()
+                {
+                    OperationId = model.Id,
+                    ProductId = pom.Id
+                };
+
+                await this.productOperationService.AddAsync(productOperation);
+            }
+
             return View("SuccessfullyAdded");
         }
 
@@ -108,13 +146,31 @@
         /// Method for adding a product to operation (GET)
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
         [Authorize(Roles = "Admin,Worker")]
-        public IActionResult AddProductToOperation([FromQuery] OperationFormModel 
+        public IActionResult AddProductToOperation(OperationFormModel 
             operationFormModel)
         {
-            
-            TempData["CurrentOperation"] = operationFormModel;
+            if (!ModelState.IsValid)
+            {
+                return View(operationFormModel);
+            }
+
+            var tempDataModel = new OperationTempDataModel()
+            {
+                DocumentTypeId = operationFormModel.DocumentTypeId,
+                CounterPartyId = operationFormModel.CounterPartyId,
+                Products = new List<ProductOperationModel>()
+            };
+
+            foreach (string json in operationFormModel.ProductsJson)
+            {
+                tempDataModel.Products.Add(JsonConvert
+                    .DeserializeObject<ProductOperationModel>(json) ?? 
+                    new ProductOperationModel());
+            }
+
+            this.TempData["OperationTempDataModel"] = JsonConvert
+                .SerializeObject(tempDataModel);
 
             var model = new ProductOperationModel()
             {
@@ -128,15 +184,26 @@
         /// <returns></returns>
         [HttpPost]
         [Authorize(Roles = "Admin,Worker")]
-        public IActionResult AddProductToOperationPost(ProductOperationModel
+        public async Task<IActionResult> 
+            AddProductToOperationPost(ProductOperationModel
             model)
         {
-            var operationFormModel = TempData.Peek("CurrentOperation") 
-                as OperationFormModel;
-            
-            operationFormModel?.Products.ToList().Add(model);
+            var operationTempDataModel = JsonConvert
+                .DeserializeObject
+                <OperationTempDataModel>(
+                TempData.Peek("OperationTempDataModel")?.ToString() ?? "");
 
-            TempData["CurrentOperation"] = operationFormModel;
+            operationTempDataModel?.Products.Add(model);
+
+            var operationFormModel = new OperationFormModel()
+            {
+                CounterPartyId = operationTempDataModel?.CounterPartyId ?? 0,
+                CounterParties = await this.GetCounterParties(),
+                DocumentTypeId = operationTempDataModel?.DocumentTypeId ?? 0,
+                DocumentTypes = await this.GetDocumentTypes(),
+                Products = operationTempDataModel?.Products?.ToList() ??
+                new List<ProductOperationModel>()
+            };
 
             return View("New", operationFormModel);
         }

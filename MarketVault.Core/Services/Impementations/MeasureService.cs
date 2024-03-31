@@ -25,7 +25,7 @@
         private readonly ILogger<MeasureService> logger = null!;
 
         /// <summary>
-        /// Default constructor, injection of Measure repository (DI)
+        /// Default constructor, injection of Measure repository and logger (DI)
         /// </summary>
         /// <param name="repository">Measure repository</param>
         /// <param name="logger">Logger</param>
