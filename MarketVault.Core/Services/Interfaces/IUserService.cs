@@ -1,5 +1,6 @@
 ﻿namespace MarketVault.Core.Services.Interfaces
 {
+    using MarketVault.Infrastructure.Data.Models;
     using Microsoft.AspNetCore.Identity;
 
     /// <summary>
@@ -39,31 +40,38 @@
         /// <summary>
         /// Method to create a given user (Asynchronous)
         /// </summary>
-        /// <param name="user">IdentityUser</param>
+        /// <param name="user">ApplicationUser</param>
         /// <param name="password">User password</param>
         /// <returns>Task<IdentityResult></returns>
-        public Task<IdentityResult> CreateUserAsync(IdentityUser user, string password);
+        public Task<IdentityResult> CreateUserAsync(ApplicationUser user, string password);
 
         /// <summary>
         /// Method to update a given user (Asynchronous)
         /// </summary>
-        /// <param name="user">IdentityUser</param>
+        /// <param name="user">ApplicationUser</param>
         /// <returns>(void)</returns>
-        public Task UpdateUserAsync(IdentityUser user);
+        public Task UpdateUserAsync(ApplicationUser user);
 
         /// <summary>
         /// Method to add a user to a role (Asynchronous)
         /// </summary>
-        /// <param name="user">IdentityUser</param>
+        /// <param name="user">ApplicationUser</param>
         /// <param name="role">Role</param>
         /// <returns></returns>
-        public Task AddUserToRoleAsync(IdentityUser user, string role);
+        public Task AddUserToRoleAsync(ApplicationUser user, string role);
 
         /// <summary>
         /// Method to find and return a user by email (Asynchronous)
         /// </summary>
         /// <param name="email">Email to search for</param>
-        /// <returns>Task<IdentityUser></returns>
-        public Task<IdentityUser> FindUserByEmailAsync(string email);
+        /// <returns>Task<ApplicationUser></returns>
+        public Task<ApplicationUser> FindUserByEmailAsync(string email);
+
+        /// <summary>
+        /// Method to get user full name (Asynchronous)
+        /// </summary>
+        /// <param name="userId">User id</param>
+        /// <returns>Task<string></returns>
+        public Task<string> GetUserFullNameAsync(string userId);
     }
 }

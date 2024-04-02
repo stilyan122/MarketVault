@@ -66,6 +66,6 @@
         /// <summary>
         /// Service model creator - user
         /// </summary>
-        public IdentityUser User { get; set; } = null!;
+        public ApplicationUser User { get; set; } = null!;
     }
 }

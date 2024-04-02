@@ -2,13 +2,15 @@
 {
     using MarketVault.Infrastructure.Data.Configurations;
     using MarketVault.Infrastructure.Data.Models;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
     /// <summary>
     /// App DB Context
     /// </summary>
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, 
+        IdentityRole, string>
     {
         /// <summary>
         /// Default DB Context Constructor
