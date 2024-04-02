@@ -82,7 +82,7 @@
         /// <summary>
         /// User entity
         /// </summary>
-        public IdentityUser User { get; set; } = null!;
+        public ApplicationUser User { get; set; } = null!;
 
         /// <summary>
         /// Collection with entities from the mapping table - ProductsOperations

@@ -1,4 +1,6 @@
-﻿namespace MarketVault.Core
+﻿using MarketVault.Infrastructure.Data.Models;
+
+namespace MarketVault.Core
 {
     using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
     using JavaScriptEngineSwitcher.V8;
@@ -86,7 +88,7 @@
         /// <returns></returns>
         public static IServiceCollection AddIdentityServices(this IServiceCollection services)
         {
-            services.AddDefaultIdentity<IdentityUser>(options =>
+            services.AddDefaultIdentity<ApplicationUser>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = false;
                 options.Password.RequireDigit = false;

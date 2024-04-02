@@ -40,6 +40,9 @@
             public const int NumberMinValue = 0;
             public const int NumberMaxValue = 9999;
 
+            public const string NumberMinPriceValue = "0";
+            public const string NumberMaxPriceValue = "9999";
+
             public const int NumberMinLength = 2;
             public const int NumberMaxLength = 10;
 
@@ -125,6 +128,18 @@
         }
 
         /// <summary>
+        /// Constants for application user entity
+        /// </summary>
+        public static class UserConstants
+        {
+            public const int FirstNameMaxLength = 30;
+            public const int FirstNameMinLength = 1;
+
+            public const int LastNameMaxLength = 30;
+            public const int LastNameMinLength = 1;
+        }
+
+        /// <summary>
         /// Constants for exception messages
         /// </summary>
         public static class ExceptionMessagesConstants
@@ -170,6 +185,12 @@
 
             public const string ProductSalePriceFormatExceptioMessage
                = "Invalid sale price format.";
+
+            public const string ProductPurchasePriceLengthExceptioMessage
+               = "Invalid length of field purchase price! Must be between {2} and {1}.";
+
+            public const string ProductSalePriceLengthExceptioMessage
+               = "Invalid length of field sale price! Must be between {2} and {1}.";
 
 
             public const string CounterPartyNameRequiredExceptionMessage
@@ -285,6 +306,22 @@
                = "Field for address street number is required!";
             public const string AddressStreetNumberLengthExceptionMessage
                 = "Length of field address street number must be between {2} " +
+                "and {1} characters long!";
+
+
+
+
+
+            public const string FirstNameRequiredExceptionMessage
+               = "Field for first name is required!";
+            public const string FirstNameLengthExceptionMessage
+                = "Length of field first name must be between {2} " +
+                "and {1} characters long!";
+
+            public const string LastNameRequiredExceptionMessage
+               = "Field for last name is required!";
+            public const string LastNameLengthExceptionMessage
+                = "Length of field last name must be between {2} " +
                 "and {1} characters long!";
         }
     }

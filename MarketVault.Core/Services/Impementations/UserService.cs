@@ -2,6 +2,7 @@
 {
     using MarketVault.Core.Exceptions;
     using MarketVault.Core.Services.Interfaces;
+    using MarketVault.Infrastructure.Data.Models;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.Logging;
 
@@ -13,7 +14,7 @@
         /// <summary>
         /// User manager
         /// </summary>
-        private readonly UserManager<IdentityUser> userManager = null!;
+        private readonly UserManager<ApplicationUser> userManager = null!;
 
         /// <summary>
         /// Role manager
@@ -32,7 +33,7 @@
         /// <param name="roleManager">RoleManager</param>
         /// <param name="logger">Logger</param>
         public UserService(
-            UserManager<IdentityUser> userManager,
+            UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager,
             ILogger<UserService> logger)
         {
@@ -119,8 +120,8 @@
         /// Method to find and return a user by email (Asynchronous)
         /// </summary>
         /// <param name="email">Email to search for</param>
-        /// <returns>Task<IdentityUser></returns>
-        public async Task<IdentityUser> FindUserByEmailAsync(string email)
+        /// <returns>Task<ApplicationUser></returns>
+        public async Task<ApplicationUser> FindUserByEmailAsync(string email)
         {
             logger.LogInformation("Find user by email async method in user service invoked.");
 
@@ -130,10 +131,10 @@
         /// <summary>
         /// Method to create a given user (Asynchronous)
         /// </summary>
-        /// <param name="user">IdentityUser</param>
+        /// <param name="user">ApplicationUser</param>
         /// <param name="password">User password</param>
         /// <returns>Task<IdentityResult></returns>
-        public async Task<IdentityResult> CreateUserAsync(IdentityUser user, 
+        public async Task<IdentityResult> CreateUserAsync(ApplicationUser user, 
             string password)
         {
             logger.LogInformation("Create user async method in user service invoked.");
@@ -146,9 +147,9 @@
         /// <summary>
         /// Method to update a given user (Asynchronous)
         /// </summary>
-        /// <param name="user">IdentityUser</param>
+        /// <param name="user">ApplicationUser</param>
         /// <returns>(void)</returns>
-        public async Task UpdateUserAsync(IdentityUser user)
+        public async Task UpdateUserAsync(ApplicationUser user)
         {
             logger.LogInformation("Update user async method in user service invoked.");
 
@@ -158,14 +159,31 @@
         /// <summary>
         /// Method to add a user to a role (Asynchronous)
         /// </summary>
-        /// <param name="user">IdentityUser</param>
+        /// <param name="user">ApplicationUser</param>
         /// <param name="role">Role</param>
         /// <returns></returns>
-        public async Task AddUserToRoleAsync(IdentityUser user, string role)
+        public async Task AddUserToRoleAsync(ApplicationUser user, string role)
         {
             logger.LogInformation("Add user to role async method in user service invoked.");
 
             await this.userManager.AddToRoleAsync(user, role);
+        }
+
+        /// <summary>
+        /// Method to get user full name (Asynchronous)
+        /// </summary>
+        /// <param name="userId">User id</param>
+        /// <returns>Task<string></returns>
+        public async Task<string> GetUserFullNameAsync(string userId)
+        {
+            var user = await this.userManager.FindByIdAsync(userId);
+            
+            if (String.IsNullOrEmpty(user.FirstName) || string.IsNullOrEmpty(user.LastName))
+            {
+                return "Na";
+            }
+
+            return user.FirstName + " " + user.LastName;
         }
     }
 }

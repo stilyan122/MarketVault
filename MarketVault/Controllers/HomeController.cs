@@ -2,6 +2,7 @@
 {
     using MarketVault.Core.Exceptions;
     using MarketVault.Core.Services.Interfaces;
+    using MarketVault.Infrastructure.Data.Models;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
@@ -58,11 +59,13 @@
                 var adminUser = await userService.FindUserByEmailAsync("admin@example.com");
                 if (adminUser == null)
                 {
-                    var user = new IdentityUser
+                    var user = new ApplicationUser
                     {
                         UserName = "admin@example.com",
                         Email = "admin@example.com",
-                        Id = "1db5c825-2f5e-4646-98dc-52bf094f9bf6"
+                        Id = "1db5c825-2f5e-4646-98dc-52bf094f9bf6",
+                        FirstName = "Admin",
+                        LastName = "Admin"
                     };
                     var result = await userService.CreateUserAsync(user, "admin");
                     if (result.Succeeded)
@@ -76,11 +79,13 @@
                 var workerUser = await userService.FindUserByEmailAsync("worker@example.com");
                 if (workerUser == null)
                 {
-                    var user = new IdentityUser
+                    var user = new ApplicationUser
                     {
                         UserName = "worker@example.com",
                         Email = "worker@example.com",
-                        Id = "7bc64720-42fc-4617-bdfa-a7eb00e7e9de"
+                        Id = "7bc64720-42fc-4617-bdfa-a7eb00e7e9de",
+                        FirstName = "Worker",
+                        LastName = "Worker"
                     };
                     var result = await userService.CreateUserAsync(user, "worker");
                     if (result.Succeeded)
@@ -94,11 +99,13 @@
                 var userUser = await userService.FindUserByEmailAsync("user@example.com");
                 if (userUser == null)
                 {
-                    var user = new IdentityUser
+                    var user = new ApplicationUser
                     {
                         UserName = "user@example.com",
                         Email = "user@example.com",
-                        Id = "6041532e-28d8-48d3-ba2f-72a04f7abd42"
+                        Id = "6041532e-28d8-48d3-ba2f-72a04f7abd42",
+                        FirstName = "User",
+                        LastName = "User"
                     };
                     var result = await userService.CreateUserAsync(user, "user");
                     if (result.Succeeded)

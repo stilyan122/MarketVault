@@ -255,8 +255,8 @@
                 DateModified = DateTime.Now,
                 Description = model.Description,
                 CodeForScales = model.CodeForScales,
-                PurchasePrice = decimal.Parse(model.PurchasePrice),
-                SalePrice = decimal.Parse(model.SalePrice),
+                PurchasePrice = model.PurchasePrice,
+                SalePrice = model.SalePrice,
                 Quantity = 0,
                 ItemGroupId = model.ItemGroupId,
                 MeasureId = model.MeasureId
@@ -299,8 +299,8 @@
                     ItemGroups = await this.GetItemGroups(),
                     MeasureId = entity.MeasureId,
                     Measures = await this.GetMeasures(),
-                    PurchasePrice = entity.PurchasePrice.ToString(),
-                    SalePrice = entity.SalePrice.ToString(),
+                    PurchasePrice = entity.PurchasePrice,
+                    SalePrice = entity.SalePrice,
                     Information = entity.DateAdded.ToString().Substring(0, 4) +
                     entity.Name.Substring(0, 5) + entity.Measure.Name +
                     entity.SalePrice.ToString().Substring(0, 1)
@@ -360,8 +360,8 @@
                 MeasureId = model.MeasureId,
                 Name = model.Name,
                 CashRegisterName = model.CashRegisterName,
-                PurchasePrice = decimal.Parse(model.PurchasePrice),
-                SalePrice = decimal.Parse(model.SalePrice),
+                PurchasePrice = model.PurchasePrice,
+                SalePrice = model.SalePrice,
                 CodeForScales = model.CodeForScales
             };
 
