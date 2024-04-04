@@ -14,6 +14,12 @@
         Task<IEnumerable<FirmServiceModel>> GetAllAsync();
 
         /// <summary>
+        /// Get firms count (Asynchronous)
+        /// </summary>
+        /// <returns>Task<int></returns>
+        public Task<int> GetCountAsync();
+
+        /// <summary>
         /// Get all firms that match a condition as IQueryable
         /// </summary>
         /// <returns>IQueryable<FirmServiceModel></returns>

@@ -124,6 +124,15 @@
         }
 
         /// <summary>
+        /// Method for FAQ page
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult FAQ()
+        {
+            return View();
+        }
+
+        /// <summary>
         /// Error
         /// </summary>
         /// <param name="statusCode"></param>

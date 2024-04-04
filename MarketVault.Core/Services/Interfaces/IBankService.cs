@@ -14,6 +14,12 @@
         Task<IEnumerable<BankServiceModel>> GetAllAsync();
 
         /// <summary>
+        /// Get banks count (Asynchronous)
+        /// </summary>
+        /// <returns>Task<int></returns>
+        public Task<int> GetCountAsync();
+
+        /// <summary>
         /// Get all banks that match a condition as IQueryable
         /// </summary>
         /// <returns>IQueryable<FirmServiceModel></returns>

@@ -4,6 +4,7 @@
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Infrastructure.Data.Models;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Logging;
 
     /// <summary>
@@ -52,6 +53,15 @@
             logger.LogInformation("Create role async method in user service invoked.");
 
             await this.roleManager.CreateAsync(role);
+        }
+
+        /// <summary>
+        /// Get users count (Asynchronous)
+        /// </summary>
+        /// <returns>Task<int></returns>
+        public async Task<int> GetUsersCountAsync()
+        {
+            return await this.userManager.Users.CountAsync();
         }
 
         /// <summary>
@@ -183,7 +193,10 @@
                 return "Na";
             }
 
-            return user.FirstName + " " + user.LastName;
+            var roles = await this.userManager.GetRolesAsync(user);
+            var role = roles.First();
+
+            return user.FirstName + " " + user.LastName + $" ({role})";
         }
     }
 }

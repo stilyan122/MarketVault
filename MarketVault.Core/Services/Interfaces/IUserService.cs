@@ -24,6 +24,12 @@
         public Task<bool> RoleExistsAsync(string role);
 
         /// <summary>
+        /// Get users count (Asynchronous)
+        /// </summary>
+        /// <returns>Task<int></returns>
+        public Task<int> GetUsersCountAsync();
+
+        /// <summary>
         /// Method to create a given role (Asynchronous)
         /// </summary>
         /// <param name="role">IdentityRole</param>

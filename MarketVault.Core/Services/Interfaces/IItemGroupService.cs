@@ -21,6 +21,12 @@
             (string sortType, string value);
 
         /// <summary>
+        /// Get item groups count (Asynchronous)
+        /// </summary>
+        /// <returns>Task<int></returns>
+        public Task<int> GetCountAsync();
+
+        /// <summary>
         /// Get matching item groups paginated (Asynchronous)
         /// </summary>
         /// <param name="sortType">Sort type used to sort them</param>

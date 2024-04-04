@@ -14,6 +14,12 @@
         public Task<IEnumerable<AddressServiceModel>> GetAllAsync();
 
         /// <summary>
+        /// Get addresses count (Asynchronous)
+        /// </summary>
+        /// <returns>Task<int></returns>
+        public Task<int> GetCountAsync();
+
+        /// <summary>
         /// Get all addresses that match a condition as IQueryable
         /// </summary>
         /// <returns>IQueryable<AddressServiceModel></returns>
