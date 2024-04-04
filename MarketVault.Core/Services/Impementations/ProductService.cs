@@ -61,6 +61,15 @@
         }
 
         /// <summary>
+        /// Get products count (Asynchronous)
+        /// </summary>
+        /// <returns>Task<int></returns>
+        public async Task<int> GetCountAsync()
+        {
+            return await this.repository.AllAsReadOnly().CountAsync();
+        }
+
+        /// <summary>
         /// Get all products that match a condition as IQueryable
         /// </summary>
         /// <returns>IQueryable<ProductServiceModel></returns>

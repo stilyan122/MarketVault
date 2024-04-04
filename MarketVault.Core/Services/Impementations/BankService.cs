@@ -59,6 +59,15 @@
         }
 
         /// <summary>
+        /// Get banks count (Asynchronous)
+        /// </summary>
+        /// <returns>Task<int></returns>
+        public async Task<int> GetCountAsync()
+        {
+            return await this.repository.AllAsReadOnly().CountAsync();
+        }
+
+        /// <summary>
         /// Get all banks that match a condition as IQueryable
         /// </summary>
         /// <returns>IQueryable<FirmServiceModel></returns>

@@ -11,6 +11,9 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Item group service
+    /// </summary>
     public class ItemGroupService : IItemGroupService
     {
         /// <summary>
@@ -57,6 +60,15 @@
                 .AsNoTracking()
                 .ProjectToItemGroupServiceModel()
                 .ToListAsync();
+        }
+
+        /// <summary>
+        /// Get item groups count (Asynchronous)
+        /// </summary>
+        /// <returns>Task<int></returns>
+        public async Task<int> GetCountAsync()
+        {
+            return await this.repository.AllAsReadOnly().CountAsync();
         }
 
         /// <summary>
