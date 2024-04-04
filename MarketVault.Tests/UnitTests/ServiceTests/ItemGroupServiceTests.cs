@@ -14,39 +14,49 @@
     using NUnit.Framework;
 
     /// <summary>
-    /// Counter Party Service test class
-    /// </summary
+    /// Item Group Service tests class
+    /// </summary>
     [TestFixture]
-    public class CounterPartyServiceTests : UnitTestBase
+    public class ItemGroupServiceTests : UnitTestBase
     {
         /// <summary>
-        /// Firm Service
+        /// Item Group Service
         /// </summary>
-        private ICounterPartyService service = null!;
+        private IItemGroupService service = null!;
 
         /// <summary>
         /// Repository
         /// </summary>
-        private IRepository<CounterParty> repository = null!;
+        private IRepository<ItemGroup> repository = null!;
+
+        /// <summary>
+        /// Product Service
+        /// </summary>
+        private IProductService productService = null!;
 
         /// <summary>
         /// SetUp method
         /// </summary>
         [SetUp]
-        public void SetUp()
+        public void Setup()
         {
             var mockRepositoryLogger =
-                new Mock<ILogger<Repository<CounterParty>>>();
+                new Mock<ILogger<Repository<ItemGroup>>>();
 
             var mockServiceLogger =
-                new Mock<ILogger<CounterPartyService>>();
+                new Mock<ILogger<ItemGroupService>>();
 
             this.context = DatabaseMock.Mock;
 
-            this.repository = new Repository<CounterParty>(context,
+
+            this.repository = new Repository<ItemGroup>(context,
                 mockRepositoryLogger.Object);
 
-            this.service = new CounterPartyService(repository,
+            this.productService = new Mock<IProductService>()
+                .Object;
+
+            this.service = new ItemGroupService(repository,
+                productService,
                 mockServiceLogger.Object);
         }
 
@@ -57,29 +67,29 @@
         [Test]
         public async Task AddAsync_ShouldWorkProperly()
         {
-            var invalidCounterParty = await this.repository.GetByIdAsync(1);
+            var invalidItemGroup = await this.repository.GetByIdAsync(1);
 
-            var counterPartyBeforeAdding = this.repository.All().Count();
+            var itemGroupBeforeAdding = this.repository.All().Count();
 
             await this.SeedData();
 
-            var counterPartysAfterAdding = this.repository.All().Count();
+            var itemGroupsAfterAdding = this.repository.All().Count();
 
-            var addedCounterParty1 = await this.repository.GetByIdAsync(1);
-            var addedCounterParty2 = await this.repository.GetByIdAsync(2);
+            var addedItemGroup1 = await this.repository.GetByIdAsync(1);
+            var addedItemGroup2 = await this.repository.GetByIdAsync(2);
 
             Assert.Multiple(() =>
             {
-                Assert.That(counterPartyBeforeAdding,
-                Is.EqualTo(counterPartysAfterAdding - 2));
+                Assert.That(itemGroupBeforeAdding,
+                Is.EqualTo(itemGroupsAfterAdding - 2));
 
-                Assert.That(invalidCounterParty,
+                Assert.That(invalidItemGroup,
                     Is.EqualTo(null));
 
-                Assert.That(addedCounterParty1?.Id,
+                Assert.That(addedItemGroup1?.Id,
                     Is.EqualTo(1));
 
-                Assert.That(addedCounterParty2?.Id,
+                Assert.That(addedItemGroup2?.Id,
                     Is.EqualTo(2));
             });
         }
@@ -93,12 +103,12 @@
         {
             await this.SeedData();
 
-            var validCounterParty = await this.service.GetByIdAsync(1);
+            var validItemGroup = await this.service.GetByIdAsync(1);
 
             Assert.Multiple(() =>
             {
                 Assert.That(1,
-                    Is.EqualTo(validCounterParty.Id));
+                    Is.EqualTo(validItemGroup.Id));
 
                 Assert.ThrowsAsync<EntityNotFoundException>(() =>
                 {
@@ -154,19 +164,19 @@
             await this.SeedData();
 
             var all1 = await this.service
-                .GetAllByPredicateAsync("Name", "CounterParty1")
+                .GetAllByPredicateAsync("Name", "ItemGroup1")
                 .ToListAsync();
 
             var all2 = await this.service
-                .GetAllByPredicateAsync("Name", "FalseCounterParty")
+                .GetAllByPredicateAsync("Name", "FalseItemGroup")
                 .ToListAsync();
 
             var all3 = await this.service
-                .GetAllByPredicateAsync("False False", "some counterParty name...")
+                .GetAllByPredicateAsync("False False", "some itemGroup name...")
                 .ToListAsync();
 
             var all4 = await this.service
-                .GetAllByPredicateAsync("Name", "CounterParty")
+                .GetAllByPredicateAsync("Name", "ItemGroup")
                 .ToListAsync();
 
             Assert.Multiple(() =>
@@ -190,7 +200,7 @@
             var allBefore = await this.service.GetAllAsync();
             var countBefore = allBefore.Count();
 
-            await this.service.DeleteAsync(new CounterPartyServiceModel()
+            await this.service.DeleteAsync(new ItemGroupServiceModel()
             {
                 Id = 1
             });
@@ -198,7 +208,7 @@
             var allAfter = await this.service.GetAllAsync();
             var countAfter = allAfter.Count();
 
-            var invalidModel = new CounterPartyServiceModel()
+            var invalidModel = new ItemGroupServiceModel()
             {
                 Id = 1000,
                 Name = "FAKE"
@@ -224,31 +234,21 @@
         [Test]
         public async Task UpdateAsync_ShouldWorkProperly()
         {
-            var nameBefore = "CounterParty1";
-            var bankCodeBefore = "BankCode1";
-            var bankIBANBefore = "BankIBAN1";
-            var vadtliBefore = "VATLI1";
-            var VATNumberBefore = "VATNumber1";
+            var nameBefore = "ItemGroup1";
 
             await this.SeedData();
 
-            var newModel = new CounterPartyServiceModel()
+            var newModel = new ItemGroupServiceModel()
             {
                 Id = 1,
-                Name = "new",
-                FirmId = 1,
-                BankId = 1,
-                BankCode = "new",
-                BankIBAN = "new",
-                ValueAddedTaxLawId = "new",
-                VATNumber = "new"
+                Name = "new"
             };
 
             await this.service.UpdateAsync(newModel);
 
             var updated = await this.service.GetByIdAsync(1);
 
-            var invalidModel = new CounterPartyServiceModel()
+            var invalidModel = new ItemGroupServiceModel()
             {
                 Id = 1000,
                 Name = "fake"
@@ -257,15 +257,7 @@
             Assert.Multiple(() =>
             {
                 Assert.That(nameBefore != newModel.Name);
-                Assert.That(bankCodeBefore != newModel.BankCode);
-                Assert.That(bankIBANBefore != newModel.BankIBAN);
-                Assert.That(vadtliBefore != newModel.ValueAddedTaxLawId);
-                Assert.That(VATNumberBefore != newModel.VATNumber);
                 Assert.That(updated.Name == newModel.Name);
-                Assert.That(updated.BankCode == newModel.BankCode);
-                Assert.That(updated.BankIBAN == newModel.BankIBAN);
-                Assert.That(updated.ValueAddedTaxLawId == newModel.ValueAddedTaxLawId);
-                Assert.That(updated.VATNumber == newModel.VATNumber);
                 Assert.ThrowsAsync<EntityNotFoundException>(() =>
                 {
                     return this.service.UpdateAsync(invalidModel);
@@ -279,80 +271,19 @@
         /// <returns>(void)</returns>
         private async Task SeedData()
         {
-            var counterParty1 = new CounterParty()
+            var itemGroup1 = new ItemGroup()
             {
                 Id = 1,
-                Name = "CounterParty1",
-                BankCode = "BankCode1",
-                BankIBAN = "BankIBAN1",
-                BankId = 1,
-                FirmId = 1,
-                ValueAddedTaxLawId = "VATLI1",
-                VATNumber = "VATNumber1"
+                Name = "ItemGroup1"
             };
-            var counterParty2 = new CounterParty()
+            var itemGroup2 = new ItemGroup()
             {
                 Id = 2,
-                Name = "CounterParty2",
-                BankCode = "BankCode2",
-                BankIBAN = "BankIBAN2",
-                BankId = 1,
-                FirmId = 1,
-                ValueAddedTaxLawId = "VATLI2",
-                VATNumber = "VATNumber2"
+                Name = "ItemGroup2"
             };
 
-            var address1 = new Address()
-            {
-                Id = 1,
-                StreetName = "TestStreet1",
-                StreetNumber = "TestNumber1",
-                TownName = "TestTown1"
-            };
-            var address2 = new Address()
-            {
-                Id = 2,
-                StreetName = "TestStreet2",
-                StreetNumber = "TestNumber2",
-                TownName = "TestTown2"
-            };
-
-            var firm1 = new Firm()
-            {
-                Id = 1,
-                Name = "Firm1",
-                AddressId = 1
-            };
-            var firm2 = new Firm()
-            {
-                Id = 2,
-                Name = "Firm2",
-                AddressId = 2
-            };
-
-            var bank1 = new Bank()
-            {
-                Id = 1,
-                Name = "Bank1",
-                AddressId = 1
-            };
-            var bank2 = new Bank()
-            {
-                Id = 2,
-                Name = "Bank2",
-                AddressId = 2
-            };
-
-            await this.context.Addresses.AddAsync(address1);
-            await this.context.Addresses.AddAsync(address2);
-            await this.context.Firms.AddAsync(firm1);
-            await this.context.Firms.AddAsync(firm2);
-            await this.context.Banks.AddAsync(bank1);
-            await this.context.Banks.AddAsync(bank2);
-            await this.context.SaveChangesAsync();
-
-            await this.repository.AddAsync(counterParty1);
-            await this.repository.AddAsync(counterParty2);
+            await this.repository.AddAsync(itemGroup1);
+            await this.repository.AddAsync(itemGroup2);
         }
     }
 }

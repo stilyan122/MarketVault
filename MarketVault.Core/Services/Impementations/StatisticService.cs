@@ -4,6 +4,9 @@
     using MarketVault.Core.Services.Interfaces;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Statistic Service class
+    /// </summary>
     public class StatisticService : IStatisticService
     {
         /// <summary>
