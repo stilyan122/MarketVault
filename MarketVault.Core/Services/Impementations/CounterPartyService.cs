@@ -86,6 +86,15 @@
         }
 
         /// <summary>
+        /// Get counter parties count (Asynchronous)
+        /// </summary>
+        /// <returns>Task<int></returns>
+        public async Task<int> GetCountAsync()
+        {
+            return await this.repository.AllAsReadOnly().CountAsync();
+        }
+
+        /// <summary>
         /// Get all counter parties method (Asynchronous)
         /// </summary>
         /// <returns>Task<IEnumerable<CounterPartyServiceModel>></returns>

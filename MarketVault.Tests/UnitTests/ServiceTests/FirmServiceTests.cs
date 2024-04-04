@@ -1,13 +1,11 @@
 ﻿namespace MarketVault.Tests.UnitTests.ServiceTests
 {
-    using Castle.Core.Logging;
     using MarketVault.Core.Contracts;
     using MarketVault.Core.Exceptions;
     using MarketVault.Core.Implementations;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Impementations;
     using MarketVault.Core.Services.Interfaces;
-    using MarketVault.Data;
     using MarketVault.Infrastructure.Data.Models;
     using MarketVault.Tests.UnitTests.Mocks;
     using Microsoft.EntityFrameworkCore;
@@ -16,20 +14,25 @@
     using NUnit.Framework;
 
     /// <summary>
-    /// Address Service tests class
+    /// Firm Service tests class
     /// </summary>
     [TestFixture]
-    public class AddressServiceTests : UnitTestBase
+    public class FirmServiceTests : UnitTestBase
     {
         /// <summary>
-        /// Address Service
+        /// Firm Service
         /// </summary>
-        private IAddressService service = null!;
+        private IFirmService service = null!;
 
         /// <summary>
         /// Repository
         /// </summary>
-        private IRepository<Address> repository = null!;
+        private IRepository<Firm> repository = null!;
+
+        /// <summary>
+        /// Counter Party Service
+        /// </summary>
+        private ICounterPartyService counterPartyService = null!;
 
         /// <summary>
         /// SetUp method
@@ -37,18 +40,22 @@
         [SetUp]
         public void Setup()
         {
-            var mockRepositoryLogger = 
-                new Mock<ILogger<Repository<Address>>>();
+            var mockRepositoryLogger =
+                new Mock<ILogger<Repository<Firm>>>();
 
             var mockServiceLogger =
-                new Mock<ILogger<AddressService>>();
+                new Mock<ILogger<FirmService>>();
 
             this.context = DatabaseMock.Mock;
 
-            this.repository = new Repository<Address>(context,
+            this.repository = new Repository<Firm>(context,
                 mockRepositoryLogger.Object);
 
-            this.service = new AddressService(repository,
+            this.counterPartyService = new Mock<ICounterPartyService>()
+                .Object;
+
+            this.service = new FirmService(repository,
+                this.counterPartyService,
                 mockServiceLogger.Object);
         }
 
@@ -59,29 +66,29 @@
         [Test]
         public async Task AddAsync_ShouldWorkProperly()
         {
-            var invalidAddress = await this.repository.GetByIdAsync(1);
+            var invalidFirm = await this.repository.GetByIdAsync(1);
 
-            var addressesBeforeAdding = this.repository.All().Count();
+            var firmBeforeAdding = this.repository.All().Count();
 
             await this.SeedData();
 
-            var addressesAfterAdding = this.repository.All().Count();
+            var firmsAfterAdding = this.repository.All().Count();
 
-            var addedAddress1 = await this.repository.GetByIdAsync(1);
-            var addedAddress2 = await this.repository.GetByIdAsync(2);
+            var addedFirm1 = await this.repository.GetByIdAsync(1);
+            var addedFirm2 = await this.repository.GetByIdAsync(2);
 
             Assert.Multiple(() =>
             {
-                Assert.That(addressesBeforeAdding,
-                Is.EqualTo(addressesAfterAdding - 2));
+                Assert.That(firmBeforeAdding,
+                Is.EqualTo(firmsAfterAdding - 2));
 
-                Assert.That(invalidAddress,
+                Assert.That(invalidFirm,
                     Is.EqualTo(null));
 
-                Assert.That(addedAddress1?.Id,
+                Assert.That(addedFirm1?.Id,
                     Is.EqualTo(1));
 
-                Assert.That(addedAddress2?.Id,
+                Assert.That(addedFirm2?.Id,
                     Is.EqualTo(2));
             });
         }
@@ -95,12 +102,12 @@
         {
             await this.SeedData();
 
-            var validAddress = await this.service.GetByIdAsync(1);
+            var validFirm = await this.service.GetByIdAsync(1);
 
             Assert.Multiple(() =>
             {
                 Assert.That(1,
-                    Is.EqualTo(validAddress.Id));
+                    Is.EqualTo(validFirm.Id));
 
                 Assert.ThrowsAsync<EntityNotFoundException>(() =>
                 {
@@ -135,14 +142,14 @@
         [Test]
         public async Task GetCountAsync_ShouldWorkProperly()
         {
-            Assert.That(await 
-                this.service.GetCountAsync(), 
+            Assert.That(await
+                this.service.GetCountAsync(),
                 Is.EqualTo(0));
 
             await this.SeedData();
 
-            Assert.That(await 
-                this.service.GetCountAsync(), 
+            Assert.That(await
+                this.service.GetCountAsync(),
                 Is.EqualTo(2));
         }
 
@@ -156,19 +163,19 @@
             await this.SeedData();
 
             var all1 = await this.service
-                .GetAllByPredicateAsync("Town Name", "TestTown1")
+                .GetAllByPredicateAsync("Name", "Firm1")
                 .ToListAsync();
 
             var all2 = await this.service
-                .GetAllByPredicateAsync("Town Name", "FalseTown")
+                .GetAllByPredicateAsync("Name", "FalseFirm")
                 .ToListAsync();
 
             var all3 = await this.service
-                .GetAllByPredicateAsync("False False", "some town name...")
+                .GetAllByPredicateAsync("False False", "some firm name...")
                 .ToListAsync();
 
             var all4 = await this.service
-                .GetAllByPredicateAsync("Town Name", "Town")
+                .GetAllByPredicateAsync("Name", "Firm")
                 .ToListAsync();
 
             Assert.Multiple(() =>
@@ -192,20 +199,18 @@
             var allBefore = await this.service.GetAllAsync();
             var countBefore = allBefore.Count();
 
-            await this.service.DeleteAsync(new AddressServiceModel()
+            await this.service.DeleteAsync(new FirmServiceModel()
             {
                 Id = 1
-            }); 
+            });
 
             var allAfter = await this.service.GetAllAsync();
             var countAfter = allAfter.Count();
 
-            var invalidModel = new AddressServiceModel()
+            var invalidModel = new FirmServiceModel()
             {
                 Id = 1000,
-                StreetName = "fake",
-                StreetNumber = "fake",
-                TownName = "fake"
+                Name = "FAKE"
             };
 
             Assert.Multiple(() =>
@@ -228,40 +233,31 @@
         [Test]
         public async Task UpdateAsync_ShouldWorkProperly()
         {
-            var townNameBefore = "TestTown1";
-            var streetNameBefore = "TestStreet1";
-            var streetNumberBefore = "TestNumber1";
+            var nameBefore = "Firm1";
 
             await this.SeedData();
 
-            var newModel = new AddressServiceModel()
+            var newModel = new FirmServiceModel()
             {
                 Id = 1,
-                StreetName = "new",
-                StreetNumber = "new",
-                TownName = "new"
+                Name = "new",
+                AddressId = 1
             };
 
-            await service.UpdateAsync(newModel);
+            await this.service.UpdateAsync(newModel);
 
-            var updated = await service.GetByIdAsync(newModel.Id);
+            var updated = await this.service.GetByIdAsync(1);
 
-            var invalidModel = new AddressServiceModel()
+            var invalidModel = new FirmServiceModel()
             {
                 Id = 1000,
-                StreetName = "fake",
-                StreetNumber = "fake",
-                TownName = "fake"
+                Name = "fake"
             };
 
             Assert.Multiple(() =>
             {
-                Assert.That(streetNameBefore != newModel.StreetName);
-                Assert.That(streetNumberBefore != newModel.StreetNumber);
-                Assert.That(townNameBefore != newModel.TownName);
-                Assert.That(updated.StreetName == newModel.StreetName);
-                Assert.That(updated.StreetNumber == newModel.StreetNumber);
-                Assert.That(updated.TownName == newModel.TownName);
+                Assert.That(nameBefore != newModel.Name);
+                Assert.That(updated.Name == newModel.Name);
                 Assert.ThrowsAsync<EntityNotFoundException>(() =>
                 {
                     return this.service.UpdateAsync(invalidModel);
@@ -275,6 +271,19 @@
         /// <returns>(void)</returns>
         private async Task SeedData()
         {
+            var firm1 = new Firm()
+            {
+                Id = 1,
+                Name = "Firm1",
+                AddressId = 1
+            };
+            var firm2 = new Firm()
+            {
+                Id = 2,
+                Name = "Firm2",
+                AddressId = 2
+            };
+
             var address1 = new Address()
             {
                 Id = 1,
@@ -290,8 +299,12 @@
                 TownName = "TestTown2"
             };
 
-            await this.repository.AddAsync(address1);
-            await this.repository.AddAsync(address2);
+            await this.context.Addresses.AddAsync(address1);
+            await this.context.Addresses.AddAsync(address2);
+            await this.context.SaveChangesAsync();
+
+            await this.repository.AddAsync(firm1);
+            await this.repository.AddAsync(firm2);
         }
     }
 }

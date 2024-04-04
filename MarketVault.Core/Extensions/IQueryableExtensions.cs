@@ -142,7 +142,7 @@
         /// <returns>IQueryable<BankServiceModel></returns>
         public static IQueryable<BankServiceModel>
             ProjectToBankServiceModel(this IQueryable<Bank> queryble)
-        {
+        { 
             return queryble
                 .UseIncludeBankStatements()
                 .Select(e => new BankServiceModel()
