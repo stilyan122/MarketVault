@@ -33,6 +33,12 @@
             int pageSize, int pageNumber);
 
         /// <summary>
+        /// Get counter parties count (Asynchronous)
+        /// </summary>
+        /// <returns>Task<int></returns>
+        public Task<int> GetCountAsync();
+
+        /// <summary>
         /// Get a counter party by a given id (Asynchronous)
         /// </summary>
         /// <param name="id">Id to get</param>

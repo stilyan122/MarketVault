@@ -52,8 +52,7 @@
             logger.LogInformation("All async method in bank service invoked.");
 
             return await this.repository
-                .All()
-                .AsNoTracking()
+                .AllAsReadOnly()
                 .ProjectToBankServiceModel()
                 .ToListAsync();
         }

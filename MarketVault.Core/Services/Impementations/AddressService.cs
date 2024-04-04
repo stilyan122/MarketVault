@@ -47,8 +47,7 @@
             logger.LogInformation("All async method in address service invoked.");
 
             return await this.repository
-                .All()
-                .AsNoTracking()
+                .AllAsReadOnly()
                 .ProjectToAddressServiceModel()
                 .ToListAsync();
         }
