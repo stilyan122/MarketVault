@@ -20,7 +20,7 @@
     public class CounterPartyServiceTests : UnitTestBase
     {
         /// <summary>
-        /// Firm Service
+        /// Counter Party Service
         /// </summary>
         private ICounterPartyService service = null!;
 
@@ -59,19 +59,19 @@
         {
             var invalidCounterParty = await this.repository.GetByIdAsync(1);
 
-            var counterPartyBeforeAdding = this.repository.All().Count();
+            var counterPartiesBeforeAdding = this.repository.All().Count();
 
             await this.SeedData();
 
-            var counterPartysAfterAdding = this.repository.All().Count();
+            var counterPartiesAfterAdding = this.repository.All().Count();
 
             var addedCounterParty1 = await this.repository.GetByIdAsync(1);
             var addedCounterParty2 = await this.repository.GetByIdAsync(2);
 
             Assert.Multiple(() =>
             {
-                Assert.That(counterPartyBeforeAdding,
-                Is.EqualTo(counterPartysAfterAdding - 2));
+                Assert.That(counterPartiesBeforeAdding,
+                Is.EqualTo(counterPartiesAfterAdding - 2));
 
                 Assert.That(invalidCounterParty,
                     Is.EqualTo(null));
@@ -345,10 +345,13 @@
 
             await this.context.Addresses.AddAsync(address1);
             await this.context.Addresses.AddAsync(address2);
+
             await this.context.Firms.AddAsync(firm1);
             await this.context.Firms.AddAsync(firm2);
+
             await this.context.Banks.AddAsync(bank1);
             await this.context.Banks.AddAsync(bank2);
+
             await this.context.SaveChangesAsync();
 
             await this.repository.AddAsync(counterParty1);
