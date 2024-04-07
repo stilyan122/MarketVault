@@ -2,12 +2,13 @@
 {
     using Microsoft.AspNetCore.Identity;
     using System.ComponentModel.DataAnnotations;
-    using static MarketVault.Infrastructure.Constants.DataConstants.UserConstants;
+    using static MarketVault.Infrastructure.Constants
+        .DataConstants.UserConstants;
 
     /// <summary>
     /// Application user - custom user class
     /// </summary>
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser : IdentityUser<string>
     {
         /// <summary>
         /// User first name

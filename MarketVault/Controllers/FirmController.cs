@@ -15,8 +15,7 @@
     /// <summary>
     /// Counter Party Controller (Authorized)
     /// </summary>
-    [Authorize]
-    public class FirmController : Controller
+    public class FirmController : BaseController
     {
         /// <summary>
         /// Firm Service

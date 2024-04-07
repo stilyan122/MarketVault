@@ -1,7 +1,6 @@
 ﻿namespace MarketVault.Core.Models
 {
     using MarketVault.Infrastructure.Data.Models;
-    using Microsoft.AspNetCore.Identity;
 
     /// <summary>
     /// Service model used for Operation entity

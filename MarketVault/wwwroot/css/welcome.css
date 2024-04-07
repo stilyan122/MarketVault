@@ -8,16 +8,6 @@ body {
     align-items: center;
 }
 
-body header{
-    width: 100%;
-}
-
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
 .welcomeContainer {
     background: hsla(216, 37%, 55%, 1);
     background: linear-gradient(180deg, hsla(216, 37%, 55%, 1) 0%, hsla(350, 51%, 46%, 1) 100%);

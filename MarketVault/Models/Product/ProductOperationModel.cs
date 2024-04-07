@@ -1,6 +1,10 @@
 ﻿namespace MarketVault.Models.Product
 {
     using System.ComponentModel.DataAnnotations;
+    using static MarketVault.Infrastructure.Constants
+        .DataConstants.ProductConstants;
+    using static MarketVault.Infrastructure.Constants
+        .DataConstants.ExceptionMessagesConstants;
 
     /// <summary>
     /// Product operation model
@@ -20,15 +24,31 @@
         public decimal Quantity { get; set; }
 
         /// <summary>
-        /// Model sale price
+        /// Product sale price
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = ProductSalePriceRequiredExceptionMessage)]
+        [Range(
+            typeof(decimal),
+            NumberMinPriceValue,
+            NumberMaxPriceValue,
+            ErrorMessage = ProductSalePriceRangeExceptionMessage,
+            ConvertValueInInvariantCulture = true)]
+        [RegularExpression(PriceFormat,
+            ErrorMessage = ProductSalePriceFormatExceptioMessage)]
         public decimal SalePrice { get; set; }
 
         /// <summary>
-        /// Model purchase price
+        /// Product purchase price
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = ProductPurchasePriceRequiredExceptionMessage)]
+        [Range(
+            typeof(decimal),
+            NumberMinPriceValue,
+            NumberMaxPriceValue,
+            ErrorMessage = ProductPurchasePriceRangeExceptionMessage,
+            ConvertValueInInvariantCulture = true)]
+        [RegularExpression(PriceFormat,
+            ErrorMessage = ProductPurchasePriceFormatExceptioMessage)]
         public decimal PurchasePrice { get; set; }
 
         /// <summary>

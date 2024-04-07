@@ -1,27 +1,44 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<ApplicationUser> signInManager
-@inject UserManager<ApplicationUser> userManager
 @inject IUserService userService
 
+@{
+    bool isLoggedIn = false;
+
+    if (User?.Identity?.IsAuthenticated ?? false)
+    {
+        if (!await userService.IsInRoleAsync(new string[] { "User" }, User.Id()))
+        {
+            var user = await this.userService.FindUserByIdAsync(User.Id());
+            await userService.AddUserToRoleAsync(user, "User");
+        }
+        isLoggedIn = true;
+    }
+}
+
 <ul class="navbar-nav">
-@if (signInManager.IsSignedIn(User))
+@if (isLoggedIn)
 {
-    <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @await userService.GetUserFullNameAsync(User.Id())!</a>
+    <li>
+        <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @await userService.GetUserFullNameAsync(User.Id())!</a>
     </li>
-    <li class="nav-item">
-        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+    <li>
+        <form asp-area="Identity" asp-page="/Account/Logout" 
+        asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button type="submit">Logout</button>
         </form>
     </li>
 }
 else
 {
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    <li>
+        <form asp-area="Identity" asp-page="/Account/Register">
+            <button type="submit">Register</button>
+        </form>
     </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    <li>
+        <form asp-area="Identity" asp-page="/Account/Login">
+            <button type="submit" class="loginBtn">Login</button>
+        </form>
     </li>
 }
 </ul>

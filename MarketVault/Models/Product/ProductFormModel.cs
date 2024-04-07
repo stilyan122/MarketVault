@@ -47,7 +47,7 @@
             NumberMaxPriceValue,
             ErrorMessage = ProductSalePriceRangeExceptionMessage,
             ConvertValueInInvariantCulture = true)]
-        [RegularExpression(@"^\d+(\.\d+)?(,\d+)?$",
+        [RegularExpression(PriceFormat,
             ErrorMessage = ProductSalePriceFormatExceptioMessage)]
         public decimal SalePrice { get; set; }
 
@@ -61,7 +61,8 @@
             NumberMaxPriceValue,
             ErrorMessage = ProductPurchasePriceRangeExceptionMessage,
             ConvertValueInInvariantCulture = true)]
-        [RegularExpression(@"^\d+(\.\d+)?(,\d+)?$", ErrorMessage = ProductPurchasePriceFormatExceptioMessage)]
+        [RegularExpression(PriceFormat,
+            ErrorMessage = ProductPurchasePriceFormatExceptioMessage)]
         public decimal PurchasePrice { get; set; }
 
         /// <summary>

@@ -1,23 +1,26 @@
 ﻿@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Capriola&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 /* Global */
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+p, h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+*{
+    box-sizing: border-box;
 }
 
 button,
 a {
     cursor: pointer;
+}
+
+body{
+    background-color: #ffffff;
 }
 
 /* Counter party */
@@ -2971,4 +2974,98 @@ a {
 
 #barcodesDivContainer {
     max-width: 20em;
+}
+
+/* Default page */
+
+.layoutHeader {
+    overflow: hidden;
+    width: 100%;
+    height: 5em;
+    font-family: "Rubik", sans-serif;
+    font-size: 1.2em;
+    position: relative;
+}
+
+.layoutHeader select{
+    padding: 3px;
+}
+
+.layoutHeader button{
+    padding: 8px;
+    border-radius: 8px;
+    margin-top: -1em;
+    color: #af3b50;
+    border: 0.5px solid black;
+}
+
+.layoutHeader button:hover{
+    background-color:  #af3b50;
+    color: white;
+    border: 0.5px solid white;
+}
+
+.layoutHeader select,
+.layoutHeader button {
+     font-size: 1em;
+     margin-left: 0.8em;
+}
+
+.layoutHeader div div a{
+    text-decoration: none;
+    color: #af3b50;
+    font-style: italic;
+    border-bottom: 1px solid #af3b50;
+}
+
+.layoutHeader nav {
+    height: 5em;
+}
+
+.layoutHeader nav > div{
+    display: flex;
+    width: 100%;
+    height: 5em;
+    overflow: hidden;
+}
+
+.layoutHeader nav div > a{
+    text-decoration: none;
+    color: red;
+    font-size: 1.3em;
+    background: url('/marketvault_logo.png');
+    height: 5em;
+    display: inline-block;
+    width: 10%;
+    margin-left: 0.5%;
+    background-size: cover;
+    background-position: center;
+}
+
+.layoutHeader nav div div{
+   display: flex;
+}
+
+.navbar-nav {
+    position: absolute;
+    right: 0.5em;
+    top: 2.5em;
+}
+
+.layoutHeader nav div div ul:nth-child(2) {
+    list-style: none;
+    display: flex;
+    gap: 5px;
+    margin-top: auto;
+}
+
+.linksUl {
+    gap: 20px;
+    list-style: none;
+    display: flex;
+    margin-top: auto;
+}
+
+.loginBtn{
+    margin-right: 2em;
 }

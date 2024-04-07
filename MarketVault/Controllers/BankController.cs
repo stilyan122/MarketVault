@@ -14,8 +14,7 @@
     /// <summary>
     /// Bank Controller (Authorized)
     /// </summary>
-    [Authorize]
-    public class BankController : Controller
+    public class BankController : BaseController
     {
         /// <summary>
         /// Bank Service

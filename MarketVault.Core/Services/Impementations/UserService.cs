@@ -47,12 +47,12 @@
         /// Method to create a given role (Asynchronous)
         /// </summary>
         /// <param name="role">IdentityRole</param>
-        /// <returns>(void)</returns>
-        public async Task CreateRoleAsync(IdentityRole role)
+        /// <returns>Task<IdentityResult> </returns>
+        public async Task<IdentityResult> CreateRoleAsync(IdentityRole role)
         {
             logger.LogInformation("Create role async method in user service invoked.");
 
-            await this.roleManager.CreateAsync(role);
+            return await this.roleManager.CreateAsync(role);
         }
 
         /// <summary>
@@ -118,12 +118,12 @@
         /// Method to update a given role (Asynchronous)
         /// </summary>
         /// <param name="role">IdentityRole</param>
-        /// <returns>(void)</returns>
-        public async Task UpdateRoleAsync(IdentityRole role)
+        /// <returns>Task<IdentityResult> </returns>
+        public async Task<IdentityResult> UpdateRoleAsync(IdentityRole role)
         {
             logger.LogInformation("Update role async method in user service invoked.");
 
-            await this.roleManager.UpdateAsync(role);
+            return await this.roleManager.UpdateAsync(role);
         }
 
         /// <summary>
@@ -136,6 +136,16 @@
             logger.LogInformation("Find user by email async method in user service invoked.");
 
             return await this.userManager.FindByEmailAsync(email);
+        }
+
+        /// <summary>
+        /// Method to find and return a user by id (Asynchronous)
+        /// </summary>
+        /// <param name="id">Id to search for</param>
+        /// <returns>Task<ApplicationUser></returns>
+        public async Task<ApplicationUser> FindUserByIdAsync(string id)
+        {
+            return await this.userManager.FindByIdAsync(id);
         }
 
         /// <summary>
@@ -158,12 +168,12 @@
         /// Method to update a given user (Asynchronous)
         /// </summary>
         /// <param name="user">ApplicationUser</param>
-        /// <returns>(void)</returns>
-        public async Task UpdateUserAsync(ApplicationUser user)
+        /// <returns>Task<IdentityResult> </returns>
+        public async Task<IdentityResult> UpdateUserAsync(ApplicationUser user)
         {
             logger.LogInformation("Update user async method in user service invoked.");
 
-            await this.userManager.UpdateAsync(user);
+            return await this.userManager.UpdateAsync(user);
         }
 
         /// <summary>
@@ -171,12 +181,12 @@
         /// </summary>
         /// <param name="user">ApplicationUser</param>
         /// <param name="role">Role</param>
-        /// <returns></returns>
-        public async Task AddUserToRoleAsync(ApplicationUser user, string role)
+        /// <returns>Task<IdentityResult> </returns>
+        public async Task<IdentityResult> AddUserToRoleAsync(ApplicationUser user, string role)
         {
             logger.LogInformation("Add user to role async method in user service invoked.");
 
-            await this.userManager.AddToRoleAsync(user, role);
+            return await this.userManager.AddToRoleAsync(user, role);
         }
 
         /// <summary>

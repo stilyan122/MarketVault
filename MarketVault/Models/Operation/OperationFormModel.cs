@@ -19,13 +19,13 @@
         /// Model document type id
         /// </summary>
         [Required(ErrorMessage = "Document Type is required!")]
-        public int DocumentTypeId { get; set; }
+        public int? DocumentTypeId { get; set; }
 
         /// <summary>
         /// Model counter party id
         /// </summary>
         [Required(ErrorMessage = "Counter Party is required!")]
-        public int CounterPartyId { get; set; }
+        public int? CounterPartyId { get; set; }
 
         /// <summary>
         /// Model collection of products

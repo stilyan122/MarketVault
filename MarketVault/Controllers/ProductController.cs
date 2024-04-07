@@ -19,8 +19,7 @@
     /// <summary>
     /// Product Controller (Authorized)
     /// </summary>
-    [Authorize]
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         /// <summary>
         /// Product Service

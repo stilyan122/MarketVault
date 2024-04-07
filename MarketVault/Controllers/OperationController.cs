@@ -14,8 +14,7 @@
     /// <summary>
     /// Item Group Controller (Authorized)
     /// </summary>
-    [Authorize]
-    public class OperationController : Controller
+    public class OperationController : BaseController
     {
         /// <summary>
         /// IOperation service
@@ -31,11 +30,6 @@
         /// Product service
         /// </summary>
         private readonly IProductService productService;
-
-        /// <summary>
-        /// Product operation service
-        /// </summary>
-        private readonly IProductOperationService productOperationService;
 
         /// <summary>
         /// Document type service
@@ -54,21 +48,18 @@
         /// <param name="service">IOperationService</param>
         /// <param name="counterPartyService">ICounterPartyService</param>
         /// <param name="documentTypeService">IDocumentTypeService</param>
-        /// <param name="productOperationService">IProductOperationService</param>
         /// <param name="productService">IProductService</param>
         public OperationController(
             ILogger<OperationController> logger,
             IOperationService service,
             ICounterPartyService counterPartyService,
             IDocumentTypeService documentTypeService,
-            IProductOperationService productOperationService,
             IProductService productService)
         {
             this.counterPartyService = counterPartyService;
             this.logger = logger;
             this.service = service;
             this.documentTypeService = documentTypeService;
-            this.productOperationService = productOperationService;
             this.productService = productService;
         }
 
@@ -114,8 +105,16 @@
                 model = new OperationFormModel()
                 {
                     CounterParties = await this.GetCounterParties(),
-                    DocumentTypes = await this.GetDocumentTypes()
+                    DocumentTypes = await this.GetDocumentTypes(),
+                    ProductsJson = model.ProductsJson
                 };
+
+                foreach (string json in model.ProductsJson)
+                {
+                    model.Products.Add(JsonConvert
+                        .DeserializeObject<ProductOperationModel>(json) ??
+                        new ProductOperationModel());
+                }
 
                 return View("New", model);
             }
@@ -123,8 +122,8 @@
             var serviceModel = new OperationServiceModel()
             {
                 DateMade = DateTime.Now,
-                DocumentTypeId = model.DocumentTypeId,
-                CounterPartyId = model.CounterPartyId,
+                DocumentTypeId = model.DocumentTypeId ?? 0,
+                CounterPartyId = model.CounterPartyId ?? 0,
                 TotalPurchasePriceWithoutVAT = model.Products.Sum(p => p.PurchasePrice),
                 TotalPurchasePriceWithVAT = model.Products.Sum(p => p.PurchasePrice +
                 0.20M * p.PurchasePrice),
@@ -134,18 +133,38 @@
                 UserId = User.Id()
             };
 
-            //await this.service.AddAsync(serviceModel);
+            foreach (string json in model.ProductsJson)
+            {
+                model.Products.Add(JsonConvert
+                    .DeserializeObject<ProductOperationModel>(json) ??
+                    new ProductOperationModel());
+            }
 
-            //foreach (ProductOperationModel pom in model.Products)
-            //{
-            //    var productOperation = new ProductOperationServiceModel()
-            //    {
-            //        OperationId = model.Id,
-            //        ProductId = pom.Id
-            //    };
+            serviceModel.TotalPurchasePriceWithoutVAT =
+                model.Products.Sum(p => p.PurchasePrice);
+            serviceModel.TotalPurchasePriceWithVAT =
+                model.Products.Sum(p => p.PurchasePrice + 0.20M * p.PurchasePrice);
 
-            //    await this.productOperationService.AddAsync(productOperation);
-            //}
+            serviceModel.TotalSalePriceWithoutVAT =
+                model.Products.Sum(p => p.SalePrice);
+            serviceModel.TotalSalePriceWithVAT =
+                model.Products.Sum(p => p.SalePrice + 0.20M * p.SalePrice);
+
+            var productOperationServiceModel = new ProductOperationServiceModel()
+            {
+                DocumentTypeId = model.DocumentTypeId,
+                CounterPartyId = model.CounterPartyId,
+                Products = model.Products.Select(p => new ProductForOperationServiceModel(){
+                    Id = p.Id,
+                    PurchasePrice = p.PurchasePrice,
+                    Quantity = p.Quantity,
+                    SalePrice = p.SalePrice
+                })
+                .ToList(),
+                ProductsJson = model.ProductsJson
+            };
+
+            await this.service.AddAsync(serviceModel, productOperationServiceModel);
 
             return View("SuccessfullyAdded");
         }
@@ -160,8 +179,8 @@
         {
             var tempDataModel = new OperationTempDataModel()
             {
-                DocumentTypeId = operationFormModel.DocumentTypeId,
-                CounterPartyId = operationFormModel.CounterPartyId,
+                DocumentTypeId = operationFormModel.DocumentTypeId ?? 0,
+                CounterPartyId = operationFormModel.CounterPartyId ?? 0,
                 Products = new List<ProductOperationModel>()
             };
 
@@ -182,6 +201,7 @@
 
             return View(model);
         }
+
         /// <summary>
         /// Method for adding a product to operation (POST)
         /// </summary>

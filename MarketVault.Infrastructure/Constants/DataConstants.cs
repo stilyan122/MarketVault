@@ -54,6 +54,8 @@
 
             public const int DescriptionMinLength = 10;
             public const int DescriptionMaxLength = 200;
+
+            public const string PriceFormat = @"^\d+(\.\d+)?(,\d+)?$";
         }
         
         /// <summary>
