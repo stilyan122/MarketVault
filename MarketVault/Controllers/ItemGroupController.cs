@@ -13,8 +13,7 @@
     /// <summary>
     /// Item Group Controller (Authorized)
     /// </summary>
-    [Authorize]
-    public class ItemGroupController : Controller
+    public class ItemGroupController : BaseController
     {
         /// <summary>
         /// Item Group Service

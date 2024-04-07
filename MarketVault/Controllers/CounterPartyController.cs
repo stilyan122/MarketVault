@@ -16,8 +16,7 @@
     /// <summary>
     /// Counter Party Controller (Authorized)
     /// </summary>
-    [Authorize]
-    public class CounterPartyController : Controller
+    public class CounterPartyController : BaseController
     {
         /// <summary>
         /// Counter Party Service

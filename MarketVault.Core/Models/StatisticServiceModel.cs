@@ -31,6 +31,11 @@
         public int TotalItemGroups { get; set; }
 
         /// <summary>
+        /// Service model total counter parties
+        /// </summary>
+        public int TotalCounterParties { get; set; }
+
+        /// <summary>
         /// Service model total users
         /// </summary>
         public int TotalUsers { get; set; }

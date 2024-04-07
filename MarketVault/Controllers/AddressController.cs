@@ -13,8 +13,7 @@
     /// <summary>
     /// Address Controller (Authorized)
     /// </summary>
-    [Authorize]
-    public class AddressController : Controller
+    public class AddressController : BaseController
     {
         /// <summary>
         /// Address Service

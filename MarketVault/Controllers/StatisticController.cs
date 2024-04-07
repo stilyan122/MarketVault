@@ -7,7 +7,7 @@
     /// <summary>
     /// Statistic controller
     /// </summary>
-    public class StatisticController : Controller
+    public class StatisticController : BaseController
     {
         /// <summary>
         /// Statistic service

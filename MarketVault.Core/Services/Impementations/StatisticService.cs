@@ -35,6 +35,11 @@
         private readonly IProductService productService;
 
         /// <summary>
+        /// Counter party service
+        /// </summary>
+        private readonly ICounterPartyService counterPartyService;
+
+        /// <summary>
         /// User service
         /// </summary>
         private readonly IUserService userService;
@@ -48,13 +53,15 @@
         /// <param name="itemGroupService">IItemGroupService</param>
         /// <param name="productService">IProductService</param>
         /// <param name="userService">IUserService</param>
+        /// <param name="counterPartyService">ICounterPartyService</param>
         public StatisticService(
             IAddressService addressService, 
             IBankService bankService, 
             IFirmService firmService, 
             IItemGroupService itemGroupService, 
             IProductService productService, 
-            IUserService userService)
+            IUserService userService,
+            ICounterPartyService counterPartyService)
         {
             this.addressService = addressService;
             this.bankService = bankService;
@@ -62,6 +69,7 @@
             this.itemGroupService = itemGroupService;
             this.productService = productService;
             this.userService = userService;
+            this.counterPartyService = counterPartyService;
         }
 
         /// <summary>
@@ -77,7 +85,8 @@
                 TotalFirms = await firmService.GetCountAsync(),
                 TotalItemGroups = await itemGroupService.GetCountAsync(),
                 TotalProducts = await productService.GetCountAsync(),
-                TotalUsers = await userService.GetUsersCountAsync()
+                TotalUsers = await userService.GetUsersCountAsync(),
+                TotalCounterParties = await counterPartyService.GetCountAsync()
             };
         }
     }

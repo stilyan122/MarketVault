@@ -33,15 +33,15 @@
         /// Method to create a given role (Asynchronous)
         /// </summary>
         /// <param name="role">IdentityRole</param>
-        /// <returns>(void)</returns>
-        public Task CreateRoleAsync(IdentityRole role);
+        /// <returns>Task<IdentityResult> </returns>
+        public Task<IdentityResult> CreateRoleAsync(IdentityRole role);
 
         /// <summary>
         /// Method to update a given role (Asynchronous)
         /// </summary>
         /// <param name="role">IdentityRole</param>
-        /// <returns>(void)</returns>
-        public Task UpdateRoleAsync(IdentityRole role);
+        /// <returns>Task<IdentityResult> </returns>
+        public Task<IdentityResult> UpdateRoleAsync(IdentityRole role);
 
         /// <summary>
         /// Method to create a given user (Asynchronous)
@@ -55,16 +55,16 @@
         /// Method to update a given user (Asynchronous)
         /// </summary>
         /// <param name="user">ApplicationUser</param>
-        /// <returns>(void)</returns>
-        public Task UpdateUserAsync(ApplicationUser user);
+        /// <returns>Task<IdentityResult> </returns>
+        public Task<IdentityResult> UpdateUserAsync(ApplicationUser user);
 
         /// <summary>
         /// Method to add a user to a role (Asynchronous)
         /// </summary>
         /// <param name="user">ApplicationUser</param>
         /// <param name="role">Role</param>
-        /// <returns></returns>
-        public Task AddUserToRoleAsync(ApplicationUser user, string role);
+        /// <returns>Task<IdentityResult> </returns>
+        public Task<IdentityResult> AddUserToRoleAsync(ApplicationUser user, string role);
 
         /// <summary>
         /// Method to find and return a user by email (Asynchronous)
@@ -72,6 +72,13 @@
         /// <param name="email">Email to search for</param>
         /// <returns>Task<ApplicationUser></returns>
         public Task<ApplicationUser> FindUserByEmailAsync(string email);
+
+        /// <summary>
+        /// Method to find and return a user by id (Asynchronous)
+        /// </summary>
+        /// <param name="id">Id to search for</param>
+        /// <returns>Task<ApplicationUser></returns>
+        public Task<ApplicationUser> FindUserByIdAsync(string id);
 
         /// <summary>
         /// Method to get user full name (Asynchronous)

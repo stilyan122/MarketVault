@@ -1,5 +1,19 @@
 ﻿@inject IUserService service
 
+@{
+    bool isLoggedIn = false;
+
+    if (User?.Identity?.IsAuthenticated ?? false)
+    {
+        if (!await service.IsInRoleAsync(new string[] { "User" }, User.Id()))
+        {
+            var user = await this.service.FindUserByIdAsync(User.Id());
+            await service.AddUserToRoleAsync(user, "User");
+        }
+        isLoggedIn = true;
+    }
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,12 +31,20 @@
     <header class="layoutHeader">
         <nav>
             <div>
-                <img src="~/marketvault_logo.png" />
-                <a asp-area="" asp-controller="Home" asp-action="Index">MarketVault</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index"></a>
                 <div>
-                    <ul>
+                    <ul class="linksUl">
                         <li>
                             <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li>
+                            <a asp-area=""
+                               asp-controller="Statistic" asp-action="Statistics">Statistics</a>
+                        </li>
+
+                        <li>
+                            <a asp-area=""
+                               asp-controller="Home" asp-action="FAQ">FAQ</a>
                         </li>
                         <li>
                             <select id="selectOption">
@@ -60,16 +82,6 @@
                                 </li>
                             }
                         }
-
-                        <li>
-                            <a asp-area=""
-                               asp-controller="Statistic" asp-action="Statistics">Statistics</a>
-                        </li>
-
-                        <li>
-                            <a asp-area="" 
-                            asp-controller="Home" asp-action="FAQ">FAQ</a>
-                        </li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
