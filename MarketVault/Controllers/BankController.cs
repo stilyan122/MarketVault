@@ -10,6 +10,8 @@
     using MarketVault.Models.Search;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using static MarketVault.Infrastructure
+       .Constants.DataConstants.RoleConstants;
 
     /// <summary>
     /// Bank Controller (Authorized)
@@ -185,7 +187,7 @@
         /// </summary>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Add()
         {
             var formModel = new BankFormModel()
@@ -202,7 +204,7 @@
         /// <param name="model">BankFormModel - model to add</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Add(BankFormModel model)
         {
             if (!ModelState.IsValid)
@@ -229,7 +231,7 @@
         /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Edit(string id, string details)
         {
             try
@@ -273,7 +275,7 @@
         /// <param name="model">Form model to use</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Edit(string id, BankFormModel model)
         {
             if (model == null ||
@@ -312,7 +314,7 @@
         /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Delete(string id, string details)
         {
             try
@@ -359,7 +361,7 @@
         /// <param name="model">BankDeleteFormModel</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Delete(string id, 
             BankDeleteFormModel model)
         {

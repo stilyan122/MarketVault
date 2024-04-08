@@ -326,5 +326,14 @@
                 = "Length of field last name must be between {2} " +
                 "and {1} characters long!";
         }
+
+        /// <summary>
+        /// Constants for roles
+        /// </summary>
+        public static class RoleConstants
+        {
+            public const string WorkerAndAdminRoles = "Worker,Admin";
+            public const string AdminRole = "Admin";
+        }
     }
 }

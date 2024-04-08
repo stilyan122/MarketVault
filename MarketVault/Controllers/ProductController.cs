@@ -15,6 +15,8 @@
     using System.Web;
     using static MarketVault.Infrastructure.Constants
         .DataConstants.BarcodeConstants;
+    using static MarketVault.Infrastructure
+      .Constants.DataConstants.RoleConstants;
 
     /// <summary>
     /// Product Controller (Authorized)
@@ -125,9 +127,7 @@
             this.ViewBag.Pager = pager;
 
             return View(data);
-        }
-
-        
+        }  
         
         /// <summary>
         /// Action for filtering products (Asynchronous)
@@ -214,7 +214,7 @@
         /// </summary>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Add()
         {
             var formModel = new ProductFormModel
@@ -228,15 +228,13 @@
             return View(formModel);
         }
 
-        
-        
         /// <summary>
         /// Action for adding a product in app (Asynchronous, POST)
         /// </summary>
         /// <param name="model">ProductFormModel - model to add</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Add(ProductFormModel model)
         {
             if (!ModelState.IsValid)
@@ -265,8 +263,6 @@
 
             return RedirectToAction("All");
         }
-
-        
         
         /// <summary>
         /// Action for editing a product by id in app (Asynchronous, GET)
@@ -275,7 +271,7 @@
         /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Edit(string id, string details)
         {
             try
@@ -320,8 +316,6 @@
                 return NotFound();
             }
         }
-
-        
         
         /// <summary>
         /// Action for editing a product by id in app (Asynchronous, POST)
@@ -330,7 +324,7 @@
         /// <param name="model">Form model to use</param>
         /// <returns>Task<IActionResult></returns> 
         [HttpPost]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Edit(string id, ProductFormModel model)
         {
             if (model == null || 
@@ -369,8 +363,6 @@
             return RedirectToAction("All");
         }
 
-       
-        
         /// <summary>
         /// Action for deleting a product by id in app (Asynchronous, Get)
         /// </summary>
@@ -378,7 +370,7 @@
         /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Delete(string id, string details)
         {
             try
@@ -433,7 +425,7 @@
         /// <param name="model">ProductDeleteFormModel</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Delete(string id, 
             ProductDeleteFormModel model)
         {

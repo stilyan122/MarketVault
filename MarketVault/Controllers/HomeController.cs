@@ -3,13 +3,14 @@
     using MarketVault.Core.Exceptions;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Infrastructure.Data.Models;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
     /// <summary>
     /// Home Controller - default controller
     /// </summary>
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         /// <summary>
         /// Logger
@@ -38,6 +39,7 @@
         /// Default action which leads to home page
         /// </summary>
         /// <returns></returns>
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             try
