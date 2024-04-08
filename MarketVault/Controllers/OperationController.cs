@@ -10,6 +10,8 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Newtonsoft.Json;
+    using static MarketVault.Infrastructure
+       .Constants.DataConstants.RoleConstants;
 
     /// <summary>
     /// Item Group Controller (Authorized)
@@ -67,9 +69,10 @@
         /// Default index method
         /// </summary>
         /// <returns>IActionResult</returns>
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public IActionResult Index()
         {
+            logger.LogInformation("Operation/Index action invoked.");
             return View("New");
         }
 
@@ -78,7 +81,7 @@
         /// </summary>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> New()
         {
             var model = new OperationFormModel()
@@ -96,7 +99,7 @@
         /// <param name="model">OperationFormModel</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> 
             AddNewOperation(OperationFormModel model)
         {
@@ -173,7 +176,7 @@
         /// Method for adding a product to operation (GET)
         /// </summary>
         /// <returns></returns>
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> AddProductToOperation(OperationFormModel 
             operationFormModel)
         {
@@ -207,7 +210,7 @@
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> 
             AddProductToOperationPost(ProductOperationModel
             model)

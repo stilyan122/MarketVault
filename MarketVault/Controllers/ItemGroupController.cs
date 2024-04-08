@@ -9,6 +9,8 @@
     using MarketVault.Models.Search;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using static MarketVault.Infrastructure
+       .Constants.DataConstants.RoleConstants;
 
     /// <summary>
     /// Item Group Controller (Authorized)
@@ -169,7 +171,7 @@
         /// </summary>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public IActionResult Add()
         {
             var formModel = new ItemGroupFormModel
@@ -185,7 +187,7 @@
         /// <param name="model">ItemGroupFormModel - model to add</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Add(ItemGroupFormModel model)
         {
             if (!ModelState.IsValid)
@@ -210,7 +212,7 @@
         /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Edit(string id, string details)
         {
             try
@@ -251,7 +253,7 @@
         /// <param name="model">Form model to use</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Edit(string id, ItemGroupFormModel model)
         {
             if (model == null ||
@@ -289,7 +291,7 @@
         /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Delete(string id, string details)
         {
             try
@@ -332,7 +334,7 @@
         /// <param name="model">ItemGroupDeleteFormModel</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Delete(string id, 
             ItemGroupDeleteFormModel model)
         {

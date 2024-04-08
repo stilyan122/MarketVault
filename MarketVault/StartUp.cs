@@ -2,7 +2,6 @@ namespace MarketVault
 {
     using MarketVault.Core;
     using MarketVault.Core.Extensions;
-    using React.AspNet;
 
     /// <summary>
     /// Start point of the app

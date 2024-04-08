@@ -12,6 +12,8 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System.Web;
+    using static MarketVault.Infrastructure
+       .Constants.DataConstants.RoleConstants;
 
     /// <summary>
     /// Counter Party Controller (Authorized)
@@ -199,7 +201,7 @@
         /// </summary>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Add()
         {
             var formModel = new CounterPartyFormModel()
@@ -217,7 +219,7 @@
         /// <param name="model">CounterPartyFormModel - model to add</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Add(CounterPartyFormModel model)
         {
             if (!ModelState.IsValid)
@@ -250,7 +252,7 @@
         /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Edit(string id, string details)
         {
             try
@@ -300,7 +302,7 @@
         /// <param name="model">Form model to use</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Edit(string id,
             CounterPartyFormModel model)
         {
@@ -345,7 +347,7 @@
         /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Delete(string id, string details)
         {
             try
@@ -400,7 +402,7 @@
         /// <param name="model">Model</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Delete(string id, 
             CounterPartyDeleteFormModel model)
         {

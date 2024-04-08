@@ -1,0 +1,67 @@
+﻿@inject IUserService service
+
+@{
+    bool isLoggedIn = false;
+
+    if (User?.Identity?.IsAuthenticated ?? false)
+    {
+        if (!await service.IsInRoleAsync(new string[] { "User" }, User.Id()))
+        {
+            var user = await this.service.FindUserByIdAsync(User.Id());
+            await service.AddUserToRoleAsync(user, "User");
+        }
+        isLoggedIn = true;
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MarketVault</title>
+    <link rel="icon" type="image/x-icon" href="~/marketvault_logo.png" />
+    <link rel="stylesheet" href="~/css/nomenclatures.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/errors.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/welcome.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/searchPanel.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/faq.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="layoutHeader">
+        <nav>
+            <div>
+                @if (isLoggedIn)
+                {
+                    <a asp-area="" asp-controller="Home" asp-action="Index"></a>
+                    <div>
+                        <ul class="linksUl">
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li>
+                                <a asp-area=""
+                                   asp-controller="Statistic" asp-action="Statistics">Statistics</a>
+                            </li>
+                            <li>
+                                <a>
+                                </a>
+                            </li>
+                        </ul>
+                        <partial name="_AdminPartial" />
+                    </div>
+                }
+            </div>
+        </nav>
+    </header>
+    <h3 class="adminTitle">This area is for administrators! Welcome, admin!</h3>
+    <div class="container">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

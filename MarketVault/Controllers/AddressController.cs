@@ -9,6 +9,8 @@
     using MarketVault.Models.Search;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using static MarketVault.Infrastructure
+        .Constants.DataConstants.RoleConstants;
 
     /// <summary>
     /// Address Controller (Authorized)
@@ -188,7 +190,7 @@
         /// </summary>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public IActionResult Add()
         {
             var formModel = new AddressFormModel()
@@ -204,7 +206,7 @@
         /// <param name="model">AddressFormModel - model to add</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Add(AddressFormModel model)
         {
             if (!ModelState.IsValid)
@@ -231,7 +233,7 @@
         /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Edit(string id, string details)
         {
             try
@@ -275,7 +277,7 @@
         /// <param name="model">Form model to use</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Edit(string id, AddressFormModel model)
         {
             if (model == null ||
@@ -315,7 +317,7 @@
         /// <param name="details">Details</param>
         /// <returns>Task<IActionResult></returns>
         [HttpGet]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Delete(string id, string details)
         {
             try
@@ -360,7 +362,7 @@
         /// <param name="model">AddressDeleteFormModel</param>
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
-        [Authorize(Roles = "Admin,Worker")]
+        [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> Delete(string id, 
             AddressDeleteFormModel model)
         {

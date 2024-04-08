@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Capriola&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* Global */
 
@@ -19,8 +20,19 @@ a {
     cursor: pointer;
 }
 
+html, body {
+    height: 100%;
+}
+
 body{
     background-color: #ffffff;
+}
+
+.container{
+    width: 80%;
+    height: 100%;
+    margin: 0 20em;
+    margin-bottom: 20em;
 }
 
 /* Counter party */
@@ -35,6 +47,7 @@ body{
     -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
     -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
     box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    font-family: "Noto Sans", sans-serif;
 }
 
 .addCounterPartyContainer form {
@@ -801,6 +814,7 @@ body{
     background: -webkit-linear-gradient( 270deg, hsla(50, 87%, 85%, 1) 0%, hsla(49, 82%, 74%, 1) 100% );
     padding: 24px;
     border-radius: 12px;
+    font-family: "Noto Sans", sans-serif;
     height: 100%;
     margin-top: 4.809%;
     -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
@@ -1181,6 +1195,7 @@ body{
     background: -moz-linear-gradient( 270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100% );
     background: -webkit-linear-gradient( 270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100% );
     padding: 24px;
+    font-family: "Noto Sans", sans-serif;
     border-radius: 12px;
     height: 100%;
     margin-top: 4.809%;
@@ -1649,6 +1664,7 @@ body{
     background: -moz-linear-gradient( 270deg, hsla(29, 100%, 84%, 1) 0%, hsla(29, 86%, 72%, 1) 100% );
     background: -webkit-linear-gradient( 270deg, hsla(29, 100%, 84%, 1) 0%, hsla(29, 86%, 72%, 1) 100% );
     padding: 24px;
+    font-family: "Noto Sans", sans-serif;
     border-radius: 12px;
     height: 100%;
     margin-top: 4.809%;
@@ -1658,12 +1674,12 @@ body{
 }
 
 .addBankContainer form {
-        display: flex;
-        flex-direction: column;
-        font-size: 24px;
-        gap: 4px;
-        text-align: right;
-    }
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    gap: 4px;
+    text-align: right;
+}
 
 .addBankContainer span {
         color: #c90016;
@@ -2137,12 +2153,13 @@ body{
 /* Address */
 
 .addAddressContainer {
-    background: hsla(285, 90%, 81%, 1);
-    background: linear-gradient( 270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100% );
-    background: -moz-linear-gradient( 270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100% );
-    background: -webkit-linear-gradient( 270deg, hsla(285, 90%, 81%, 1) 0%, hsla(285, 92%, 64%, 1) 100% );
+    background: hsla(235, 86%, 65%, 1);
+    background: linear-gradient(90deg, hsla(235, 86%, 65%, 1) 0%, hsla(235, 79%, 65%, 1) 100%);
+    background: -moz-linear-gradient(90deg, hsla(235, 86%, 65%, 1) 0%, hsla(235, 79%, 65%, 1) 100%);
+    background: -webkit-linear-gradient(90deg, hsla(235, 86%, 65%, 1) 0%, hsla(235, 79%, 65%, 1) 100%);
     padding: 24px;
     border-radius: 12px;
+    font-family: "Noto Sans", sans-serif;
     height: 100%;
     margin-top: 4.809%;
     -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
@@ -2182,7 +2199,7 @@ body{
     border-radius: 8px;
     margin-top: 50px;
     border: none;
-    background-color: #9932cc;
+    background-color: #444dbd;
     color: white;
 }
 
@@ -2556,6 +2573,7 @@ body{
     background: -webkit-linear-gradient( 270deg, hsla(352, 57%, 53%, 1) 0%, hsla(352, 63%, 45%, 1) 100% );
     padding: 24px;
     border-radius: 12px;
+    font-family: "Noto Sans", sans-serif;
     height: 100%;
     margin-top: 4.809%;
     -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
@@ -2979,9 +2997,8 @@ body{
 /* Default page */
 
 .layoutHeader {
-    overflow: hidden;
     width: 100%;
-    height: 5em;
+    height: 20em;
     font-family: "Rubik", sans-serif;
     font-size: 1.2em;
     position: relative;
@@ -3068,4 +3085,53 @@ body{
 
 .loginBtn{
     margin-right: 2em;
+}
+
+/* Register page */
+
+/* Login page */
+
+/* Operation */
+
+.chooseOperationContainer {
+    background-color: #FAF1A5;
+    width: 100%;
+    height: 100%;
+    padding: 3em;
+    font-size: 2em;
+    border-radius: 12px;
+    -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
+    margin-top: 1em;
+}
+
+.chooseOperationContainer #chooseOperationForm div div{
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    margin: 1em 0;
+}
+
+.addOperationBtns{
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.addOperationBtns button{
+    background-color: #911d25;
+    color: white;
+    padding: 0.5em;
+    border-radius: 8px;
+    border: none;
+}
+
+/* Admin Area */
+
+.adminTitle{
+    color: red;
+    height: 2em;
+    margin-top: 2em;
+    overflow: visible;
 }
