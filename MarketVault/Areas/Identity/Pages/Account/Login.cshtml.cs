@@ -1,6 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-#nullable disable
+﻿#nullable disable
 namespace MarketVault.Areas.Identity.Pages.Account
 {
     using MarketVault.Infrastructure.Data.Models;
@@ -8,14 +6,18 @@ namespace MarketVault.Areas.Identity.Pages.Account
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using System.ComponentModel.DataAnnotations;
+    using static MarketVault.Infrastructure.Constants.DataConstants.RoleConstants;
 
     public class LoginModel : PageModel
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager)
+        public LoginModel(SignInManager<ApplicationUser> signInManager,
+            UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
         }
 
         [BindProperty]
@@ -69,6 +71,12 @@ namespace MarketVault.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
+                    var user = await _userManager.FindByEmailAsync(Input.Email);
+                    if (await this._userManager.IsInRoleAsync(user, AdminRole))
+                    {
+                        return RedirectToAction("Index", "Admin", new {area = AdminRole});
+                    }
+
                     return LocalRedirect(returnUrl);
                 }
                 else
