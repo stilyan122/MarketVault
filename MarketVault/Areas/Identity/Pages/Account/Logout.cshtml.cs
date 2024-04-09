@@ -6,21 +6,33 @@ namespace MarketVault.Areas.Identity.Pages.Account
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
 
+    /// <summary>
+    /// Log out model
+    /// </summary>
     public class LogoutModel : PageModel
     {
+        /// <summary>
+        /// Sign in manager
+        /// </summary>
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly ILogger<LogoutModel> _logger;
 
-        public LogoutModel(SignInManager<ApplicationUser> signInManager, ILogger<LogoutModel> logger)
+        /// <summary>
+        /// Default constructor, injection of manager
+        /// </summary>
+        /// <param name="signInManager">Sign in manager</param>
+        public LogoutModel(SignInManager<ApplicationUser> signInManager)
         {
             _signInManager = signInManager;
-            _logger = logger;
         }
 
+        /// <summary>
+        /// On post method (Asynchronous)
+        /// </summary>
+        /// <param name="returnUrl">Return URL</param>
+        /// <returns></returns>
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
             await _signInManager.SignOutAsync();
-            _logger.LogInformation("User logged out.");
             if (returnUrl != null)
             {
                 return LocalRedirect(returnUrl);

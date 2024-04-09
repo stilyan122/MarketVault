@@ -205,9 +205,7 @@
             this.ViewBag.Searcher = searcher; 
 
             return View(searchViewName, viewModels);
-        }
-
-        
+        } 
         
         /// <summary>
         /// Action for adding a product in app (Asynchronous, GET)
@@ -469,8 +467,6 @@
 
             return RedirectToAction("All");
         }
-
-       
         
         /// <summary>
         /// Action for checking product details (Asynchronous)
@@ -545,9 +541,7 @@
 
             return measuresViewModels;
         }
-
-       
-        
+     
         /// <summary>
         /// Private method for accessing item groups in app (used in actions)
         /// </summary>
@@ -567,8 +561,6 @@
             return itemGroupViewModels;
         }
 
-     
-        
         /// <summary>
         /// Private help method to determine whether a string is null, whitespace or empty
         /// </summary>

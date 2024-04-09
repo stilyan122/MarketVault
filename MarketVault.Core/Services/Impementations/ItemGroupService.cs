@@ -87,22 +87,13 @@
 
             logger.LogWarning("Potential exception to be thrown.");
 
-            try
+            entities = sortType switch
             {
-                entities = sortType switch
-                {
-                    "Name" => entities.Where(e => e.Name.ToLower().Contains(value.ToLower())),
-                    "Products Count" when int.TryParse(value, out var productsCount) =>
-                        entities.Where(e => e.Products.Count() == productsCount),
-                    _ => entities.Where(e => e.Id == 0)
-                };
-
-                return entities;
-            }
-            catch (Exception)
-            {
-                entities = entities.Where(e => e.Id == 0);
-            }
+                "Name" => entities.Where(e => e.Name.ToLower().Contains(value.ToLower())),
+                "Products Count" when int.TryParse(value, out var productsCount) =>
+                    entities.Where(e => e.Products.Count() == productsCount),
+                _ => entities.Where(e => e.Id == 0)
+            };
 
             return entities;
         }

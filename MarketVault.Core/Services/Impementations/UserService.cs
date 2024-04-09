@@ -65,6 +65,17 @@
         }
 
         /// <summary>
+        /// Method to get all users
+        /// </summary>
+        /// <returns>Task<IEnumerable<ApplicationUser>></returns>
+        public async Task<IEnumerable<ApplicationUser>> GetAllUsersAsync()
+        {
+            var users = await this.userManager.Users.ToListAsync();
+
+            return users;
+        }
+
+        /// <summary>
         /// Method to check if a given user by id is in role(s) (Asynchronous)
         /// </summary>
         /// <param name="roles">The roles to check</param>

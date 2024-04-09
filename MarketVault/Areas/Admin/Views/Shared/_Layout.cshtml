@@ -33,18 +33,32 @@
             <div>
                 @if (isLoggedIn)
                 {
-                    <a asp-area="" asp-controller="Home" asp-action="Index"></a>
                     <div>
                         <ul class="linksUl">
                             <li>
-                                <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a asp-area="" asp-controller="Home"
+                                asp-action="Index">Home</a>
                             </li>
                             <li>
-                                <a asp-area=""
-                                   asp-controller="Statistic" asp-action="Statistics">Statistics</a>
+                                <a asp-area="Admin"
+                                   asp-controller="Statistic" 
+                                   asp-action="Statistics">Statistics</a>
                             </li>
                             <li>
-                                <a>
+                                <a
+                                    asp-area=""
+                                    asp-action="Index"
+                                    asp-controller="Home"
+                                    asp-route-isAdminForPublicInterface="true">
+                                    Public Interface
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    asp-area="Admin"
+                                    asp-controller="Admin"
+                                    asp-action="GetAllUsers">
+                                    All Users
                                 </a>
                             </li>
                         </ul>

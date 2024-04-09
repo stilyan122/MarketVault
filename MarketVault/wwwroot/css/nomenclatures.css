@@ -3,6 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 /* Global */
 
@@ -3089,10 +3090,107 @@ body{
 
 /* Register page */
 
+.registerContainer {
+    font-family: "Nunito", sans-serif;
+    background: hsla(120, 100%, 76%, 1);
+    background: linear-gradient(270deg, hsla(120, 100%, 76%, 1) 0%, hsla(131, 57%, 58%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(120, 100%, 76%, 1) 0%, hsla(131, 57%, 58%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(120, 100%, 76%, 1) 0%, hsla(131, 57%, 58%, 1) 100%);
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 1em;
+    margin-bottom: 20em;
+}
+
+.registerContainer input {
+    font-size: 1em;
+}
+
+.registerContainer form div div {
+    margin-top: 1em;
+    display: flex;
+    gap: 0.5em;
+    justify-content: center;
+}
+
+.registerContainer form h2 {
+    margin-bottom: 2em;
+}
+
+#registerSubmit {
+    background-color: #f7eb6f;
+    border-radius: 8px;
+    margin-top: 2em;
+    font-size: 1em;
+    padding: 0.4em 0.6em;
+}
+
+#registerSubmit:hover {
+    background-color: #c9c05b;
+}
+
+.registerContainer span {
+    color: #b50000;
+    font-weight: 600;
+}
+
 /* Login page */
 
-/* Operation */
+.logInContainer {
+    font-family: "Nunito", sans-serif;
+    background: hsla(120, 100%, 76%, 1);
+    background: linear-gradient(270deg, hsla(120, 100%, 76%, 1) 0%, hsla(131, 57%, 58%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(120, 100%, 76%, 1) 0%, hsla(131, 57%, 58%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(120, 100%, 76%, 1) 0%, hsla(131, 57%, 58%, 1) 100%);
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
 
+.logInContainer input{
+    font-size: 1em;
+}
+
+.logInContainer form div div{
+    margin-top: 1em;
+    display: flex;
+    gap: 0.5em;
+    justify-content: center;
+}
+
+.logInContainer form h2{
+    margin-bottom: 2em;
+}
+
+#login-submit {
+    background-color: #f7eb6f;
+    border-radius: 8px;
+    margin-top: 2em;
+    font-size: 1em;
+    padding: 0.4em 0.6em;
+}
+
+#login-submit:hover{
+    background-color: #c9c05b;
+}
+
+.inputLogInContainer span {
+    color: #b50000;
+    font-weight: 600;
+}
+
+/* Operation */
 .chooseOperationContainer {
     background-color: #FAF1A5;
     width: 100%;

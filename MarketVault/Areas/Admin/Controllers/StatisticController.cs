@@ -1,4 +1,4 @@
-﻿namespace MarketVault.Controllers
+﻿namespace MarketVault.Areas.Admin.Controllers
 {
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Models.Statistic;
@@ -7,7 +7,7 @@
     /// <summary>
     /// Statistic controller
     /// </summary>
-    public class StatisticController : BaseController
+    public class StatisticController : AdminBaseController
     {
         /// <summary>
         /// Statistic service
@@ -25,7 +25,7 @@
         /// <param name="service">IStatisticService</param>
         /// <param name="logger">Logger</param>
         public StatisticController(
-            IStatisticService service, 
+            IStatisticService service,
             ILogger<StatisticController> logger)
         {
             this.service = service;
@@ -38,6 +38,7 @@
         /// <returns>IActionResult</returns>
         public IActionResult Index()
         {
+            logger.LogInformation("Statistic/Index method invoked.");
             return RedirectToAction("Statistics");
         }
 
@@ -47,7 +48,9 @@
         /// <returns>Task<IActionResult></returns>
         public async Task<IActionResult> Statistics()
         {
-            var serviceModel = await this.service.GetStatisticServiceModelAsync();
+            logger.LogInformation("Statistic/Statistics method invoked.");
+
+            var serviceModel = await service.GetStatisticServiceModelAsync();
 
             var viewModel = new StatisticViewModel()
             {
