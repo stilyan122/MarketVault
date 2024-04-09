@@ -1,11 +1,14 @@
 ﻿namespace MarketVault.Controllers
 {
     using MarketVault.Core.Exceptions;
+    using MarketVault.Core.Extensions;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Infrastructure.Data.Models;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using static MarketVault.Infrastructure.Constants.DataConstants
+        .RoleConstants;
 
     /// <summary>
     /// Home Controller - default controller
@@ -38,14 +41,28 @@
         /// <summary>
         /// Default action which leads to home page
         /// </summary>
-        /// <returns></returns>
+        /// <param name="isAdminForPublicInterface">Bool flag to keep if the admin comes from a admin area</param>
+        /// <returns>Task<IActionResult></returns>
         [AllowAnonymous]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(bool isAdminForPublicInterface = false)
         {
+            logger.LogInformation("Home/Index action has been invoked.");
+
+            if ((this.User?.Identity?.IsAuthenticated ?? false) && 
+                isAdminForPublicInterface == false)
+            {
+                if (await this.userService
+                .IsInRoleAsync(new string[] { AdminRole },
+                User.Id()))
+                {
+                    return RedirectToAction("Index", AdminRole, new { area = AdminRole });
+                }
+            }
+
             try
             {
                 // Create roles
-                string[] roleNames = { "Admin", "User", "Worker" };
+                string[] roleNames = { AdminRole, "User", "Worker" };
                 foreach (var roleName in roleNames)
                 {
                     var roleExists = await userService.RoleExistsAsync(roleName);
@@ -66,13 +83,13 @@
                         UserName = "admin@example.com",
                         Email = "admin@example.com",
                         Id = "1db5c825-2f5e-4646-98dc-52bf094f9bf6",
-                        FirstName = "Admin",
-                        LastName = "Admin"
+                        FirstName = AdminRole,
+                        LastName = AdminRole
                     };
                     var result = await userService.CreateUserAsync(user, "admin");
                     if (result.Succeeded)
                     {
-                        await userService.AddUserToRoleAsync(user, "Admin");
+                        await userService.AddUserToRoleAsync(user, AdminRole);
                     }
                     await userService.UpdateUserAsync(user);
                 }
@@ -128,9 +145,11 @@
         /// <summary>
         /// Method for FAQ page
         /// </summary>
-        /// <returns></returns>
+        /// <returns>IActionResult</returns>
+        [AllowAnonymous]
         public IActionResult FAQ()
         {
+            logger.LogInformation("Home/FAQ action has been invoked.");
             return View();
         }
 
@@ -138,9 +157,11 @@
         /// Error
         /// </summary>
         /// <param name="statusCode"></param>
-        /// <returns></returns>
+        /// <returns>IActionResult</returns>
         public IActionResult Error(int statusCode = 0)
         {
+            logger.LogError($"An error has been thrown. Status code provided: {statusCode}", statusCode);
+
             if (statusCode == 404)
             {
                 return View("Error404");

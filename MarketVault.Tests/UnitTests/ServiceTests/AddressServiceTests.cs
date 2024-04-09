@@ -70,6 +70,19 @@
             var addedAddress1 = await this.repository.GetByIdAsync(1);
             var addedAddress2 = await this.repository.GetByIdAsync(2);
 
+            var newAddress = new AddressServiceModel()
+            {
+                StreetName = "NewStreetName",
+                StreetNumber = "NewStreetNumber",
+                TownName = "NewTownName"
+            };
+
+            await this.service.AddAsync(newAddress);
+
+            var newCount = await this.repository
+                .All()
+                .CountAsync();
+
             Assert.Multiple(() =>
             {
                 Assert.That(addressesBeforeAdding,
@@ -83,7 +96,50 @@
 
                 Assert.That(addedAddress2?.Id,
                     Is.EqualTo(2));
+
+                Assert.That(newCount,
+                    Is.EqualTo(3));
             });
+        }
+
+        /// <summary>
+        /// Get predicated count async test methods
+        /// </summary>
+        /// <returns>(void)</returns>
+        [Test]
+        public async Task GetPredicatedCountAsync_ShouldWorkProperly()
+        {
+            await this.SeedData();
+
+            var allCount = await this.service
+                .GetPredicatedCountAsync("Street Name",
+                "Test");
+
+            var invalidCount = await this.service
+                .GetPredicatedCountAsync("Street Name",
+                "Invalid");
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(allCount, Is.EqualTo(2));
+                Assert.That(invalidCount, Is.EqualTo(0));
+            });
+        }
+
+        /// <summary>
+        /// Get all by predicate paged async test methods
+        /// </summary>
+        /// <returns>(void)</returns>
+        [Test]
+        public async Task GetAllByPredicatePagedAsync_ShouldWorkProperly()
+        {
+            await this.SeedData();
+
+            var all1 = await this.service
+                .GetAllByPredicatePagedAsync("Street Name", "Test",
+                2, 1);
+
+            Assert.That(all1.Count() == 2);
         }
 
         /// <summary>
@@ -171,12 +227,22 @@
                 .GetAllByPredicateAsync("Town Name", "Town")
                 .ToListAsync();
 
+            var all5 = await this.service
+                .GetAllByPredicateAsync("Street Name", "Test")
+                .ToListAsync();
+
+            var all6 = await this.service
+               .GetAllByPredicateAsync("Street Number", "Test")
+               .ToListAsync();
+
             Assert.Multiple(() =>
             {
                 Assert.That(all1.Count == 1);
                 Assert.That(all2.Count == 0);
                 Assert.That(all3.Count == 0);
                 Assert.That(all4.Count == 2);
+                Assert.That(all5.Count == 2);
+                Assert.That(all6.Count == 2);
             });
         }
 

@@ -139,6 +139,9 @@
 
             public const int LastNameMaxLength = 30;
             public const int LastNameMinLength = 1;
+
+            public const int PasswordMaxLength = 100;
+            public const int PasswordMinLength = 6;
         }
 
         /// <summary>
@@ -315,16 +318,22 @@
 
 
             public const string FirstNameRequiredExceptionMessage
-               = "Field for first name is required!";
+               = "The First Name field is required.";
             public const string FirstNameLengthExceptionMessage
                 = "Length of field first name must be between {2} " +
                 "and {1} characters long!";
 
             public const string LastNameRequiredExceptionMessage
-               = "Field for last name is required!";
+               = "The Last Name field is required.";
             public const string LastNameLengthExceptionMessage
                 = "Length of field last name must be between {2} " +
                 "and {1} characters long!";
+
+            public const string PasswordLengthExceptionMessage =
+                 "The {0} must be at least {2} and at max {1} characters long.";
+
+            public const string ConfirmPasswordLengthExceptionMessage =
+                "The password and confirmation password do not match.";
         }
 
         /// <summary>

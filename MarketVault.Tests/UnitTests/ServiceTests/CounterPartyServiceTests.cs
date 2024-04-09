@@ -68,6 +68,23 @@
             var addedCounterParty1 = await this.repository.GetByIdAsync(1);
             var addedCounterParty2 = await this.repository.GetByIdAsync(2);
 
+            var newCounterParty = new CounterPartyServiceModel()
+            {
+                BankCode = "NewBankCode",
+                BankIBAN = "NewBankIBAN",
+                BankId = 1,
+                FirmId = 2,
+                Name = "NewBank",
+                ValueAddedTaxLawId = "NewVATLI",
+                VATNumber = "NewVATNumber"
+            };
+
+            await this.service.AddAsync(newCounterParty);
+
+            var newCount = await this.repository
+                .All()
+                .CountAsync();
+
             Assert.Multiple(() =>
             {
                 Assert.That(counterPartiesBeforeAdding,
@@ -81,6 +98,8 @@
 
                 Assert.That(addedCounterParty2?.Id,
                     Is.EqualTo(2));
+
+                Assert.That(newCount, Is.EqualTo(3));
             });
         }
 
@@ -169,13 +188,73 @@
                 .GetAllByPredicateAsync("Name", "CounterParty")
                 .ToListAsync();
 
+            var all5 = await this.service
+                .GetAllByPredicateAsync("Bank Code", "BankCode2")
+                .ToListAsync();
+
+            var all6 = await this.service
+                .GetAllByPredicateAsync("Bank IBAN", "BankIBAN")
+                .ToListAsync();
+
+            var all7 = await this.service
+                .GetAllByPredicateAsync("Firm Name", "Firm")
+                .ToListAsync();
+
+            var all8 = await this.service
+                .GetAllByPredicateAsync("Bank Name", "Bank2")
+                .ToListAsync();
+
             Assert.Multiple(() =>
             {
                 Assert.That(all1.Count == 1);
                 Assert.That(all2.Count == 0);
                 Assert.That(all3.Count == 0);
                 Assert.That(all4.Count == 2);
+                Assert.That(all5.Count == 1);
+                Assert.That(all6.Count == 2);
+                Assert.That(all7.Count == 2);
+                Assert.That(all8.Count == 1);
             });
+        }
+
+        /// <summary>
+        /// Get predicated count async test methods
+        /// </summary>
+        /// <returns>(void)</returns>
+        [Test]
+        public async Task GetPredicatedCountAsync_ShouldWorkProperly()
+        {
+            await this.SeedData();
+
+            var allCount = await this.service
+                .GetPredicatedCountAsync("Name",
+                "CounterParty");
+
+            var invalidCount = await this.service
+                .GetPredicatedCountAsync("Name",
+                "Invalid");
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(allCount, Is.EqualTo(2));
+                Assert.That(invalidCount, Is.EqualTo(0));
+            });
+        }
+
+        /// <summary>
+        /// Get all by predicate paged async test methods
+        /// </summary>
+        /// <returns>(void)</returns>
+        [Test]
+        public async Task GetAllByPredicatePagedAsync_ShouldWorkProperly()
+        {
+            await this.SeedData();
+
+            var all1 = await this.service
+                .GetAllByPredicatePagedAsync("Name", "Counter",
+                2, 1);
+
+            Assert.That(all1.Count() == 2);
         }
 
         /// <summary>
@@ -296,8 +375,8 @@
                 Name = "CounterParty2",
                 BankCode = "BankCode2",
                 BankIBAN = "BankIBAN2",
-                BankId = 1,
-                FirmId = 1,
+                BankId = 2,
+                FirmId = 2,
                 ValueAddedTaxLawId = "VATLI2",
                 VATNumber = "VATNumber2"
             };

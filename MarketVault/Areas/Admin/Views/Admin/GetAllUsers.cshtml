@@ -1,0 +1,49 @@
+﻿@model IEnumerable<UserViewModel>
+
+@{
+    ViewBag.Title = "All users";
+
+    Pager pager = new Pager();
+
+    int pageNo = 0;
+
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+    else
+    {
+        pager.Action = "GetAllUsers";
+        pager.Controller = "Admin";
+    }
+}
+<div>
+    @if (pager.TotalPages != 1)
+    {
+        <partial name="_PagerPartial" model="@pager" />
+    }
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>FirstName</td>
+            <td>LastName</td>
+            <td>Email</td>
+            <td>Role</td>
+        </tr>
+        @foreach (UserViewModel user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@user.Email</td>
+                <td>@user.Role</td>
+            </tr>
+        }
+    </table>
+    @if (pager.TotalPages != 1)
+    {
+        <partial name="_PagerPartial" model="@pager" />
+    }
+</div>

@@ -41,19 +41,28 @@
                             <a asp-area=""
                                asp-controller="Home" asp-action="FAQ">FAQ</a>
                         </li>
-                        <li>
-                            <select id="selectOption">
-                                <option disabled selected value="">Nomenclatures</option>
-                                <option value="Option1">Products</option>
-                                <option value="Option2">Counter Parties</option>
-                                <option value="Option3">Item Groups</option>
-                                <option value="Option4">Firms</option>
-                                <option value="Option5">Banks</option>
-                                <option value="Option6">Addresses</option>
-                            </select>
-                        </li>
                         @if (isLoggedIn)
                         {
+                            if (await service.IsInRoleAsync(new string[] { "Admin" },
+                            User?.Id() ?? "0"))
+                            {
+                                <a asp-area="Admin"
+                                   asp-action="Index"
+                                   asp-controller="Admin">
+                                    Admin Area
+                                </a>
+                            }
+                            <li>
+                                <select id="selectOption">
+                                    <option disabled selected value="">Nomenclatures</option>
+                                    <option value="Option1">Products</option>
+                                    <option value="Option2">Counter Parties</option>
+                                    <option value="Option3">Item Groups</option>
+                                    <option value="Option4">Firms</option>
+                                    <option value="Option5">Banks</option>
+                                    <option value="Option6">Addresses</option>
+                                </select>
+                            </li>
                             if (await service.IsInRoleAsync(new string[] { "Admin", "Worker" },
                             User?.Id() ?? "0"))
                             {

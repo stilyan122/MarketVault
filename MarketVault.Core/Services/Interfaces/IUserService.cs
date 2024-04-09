@@ -81,6 +81,12 @@
         public Task<ApplicationUser> FindUserByIdAsync(string id);
 
         /// <summary>
+        /// Method to get all users
+        /// </summary>
+        /// <returns>Task<IEnumerable<ApplicationUser>></returns>
+        public Task<IEnumerable<ApplicationUser>> GetAllUsersAsync();
+
+        /// <summary>
         /// Method to get user full name (Asynchronous)
         /// </summary>
         /// <param name="userId">User id</param>

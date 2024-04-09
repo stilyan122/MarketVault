@@ -76,25 +76,16 @@
                 .ProjectToAddressServiceModel();
 
             logger.LogWarning("Potential exception to be thrown.");
+                
+            entities = sortType switch
+             {
+                 "Town Name" => entities.Where(e => e.TownName.ToLower().Contains(value.ToLower())),
+                 "Street Name" => entities.Where(e => e.StreetName.ToLower().Contains(value.ToLower())),
+                 "Street Number" => entities.Where(e => e.StreetNumber.ToLower().Contains(value.ToLower())),
+                 _ => entities.Where(e => e.Id == 0)
+             };
 
-            try
-            {
-                entities = sortType switch
-                {
-                    "Town Name" => entities.Where(e => e.TownName.ToLower().Contains(value.ToLower())),
-                    "Street Name" => entities.Where(e => e.StreetName.ToLower().Contains(value.ToLower())),
-                    "Street Number" => entities.Where(e => e.StreetNumber.ToLower().Contains(value.ToLower())),
-                    _ => entities.Where(e => e.Id == 0)
-                };
-
-                return entities;
-            }
-            catch (Exception)
-            {
-                entities = entities.Where(e => e.Id == 0);
-            }
-
-            return entities;
+             return entities;
         }
 
         /// <summary>

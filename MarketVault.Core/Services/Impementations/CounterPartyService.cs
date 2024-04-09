@@ -138,24 +138,15 @@
                 .AsNoTracking()
                 .ProjectToCounterPartyServiceModel();
 
-            try
+            entities = sortType switch
             {
-                entities = sortType switch
-                {
-                    "Name" => entities.Where(e => e.Name.ToLower().Contains(value.ToLower())),
-                    "Bank Code" => entities.Where(e => e.BankCode.ToLower().Contains(value.ToLower())),
-                    "Bank IBAN" => entities.Where(e => e.BankIBAN.ToLower().Contains(value.ToLower())),
-                    "Bank Name" => entities.Where(e => e.Bank.Name.ToLower().Contains(value.ToLower())),
-                    "Firm Name" => entities.Where(e => e.Firm.Name.ToLower().Contains(value.ToLower())),
-                    _ => entities.Where(e => e.Id == 0)
-                };
-
-                return entities;
-            }
-            catch (Exception)
-            {
-                entities = entities.Where(e => e.Id == 0);
-            }
+                "Name" => entities.Where(e => e.Name.ToLower().Contains(value.ToLower())),
+                "Bank Code" => entities.Where(e => e.BankCode.ToLower().Contains(value.ToLower())),
+                "Bank IBAN" => entities.Where(e => e.BankIBAN.ToLower().Contains(value.ToLower())),
+                "Bank Name" => entities.Where(e => e.Bank.Name.ToLower().Contains(value.ToLower())),
+                "Firm Name" => entities.Where(e => e.Firm.Name.ToLower().Contains(value.ToLower())),
+                _ => entities.Where(e => e.Id == 0)
+            };
 
             return entities;
         }
@@ -174,7 +165,8 @@
         {
             logger.LogInformation("All by predicate paged async method in counter party service invoked.");
 
-            var entities = this.GetAllByPredicateAsync(sortType, value);
+            var entities = this.
+                GetAllByPredicateAsync(sortType, value);
 
             return await entities
                     .Skip((pageNumber - 1) * pageSize)

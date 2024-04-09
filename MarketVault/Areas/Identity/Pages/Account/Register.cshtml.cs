@@ -9,8 +9,6 @@ namespace MarketVault.Areas.Identity.Pages.Account
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
-    using Microsoft.Extensions.Logging;
-    using System.Threading;
     using System.Threading.Tasks;
     using static MarketVault.Infrastructure.Constants.DataConstants.ExceptionMessagesConstants;
     using static MarketVault.Infrastructure.Constants.DataConstants.UserConstants;
@@ -20,9 +18,21 @@ namespace MarketVault.Areas.Identity.Pages.Account
     /// </summary>
     public class RegisterModel : PageModel
     {
+        /// <summary>
+        /// Sign in manager
+        /// </summary>
         private readonly SignInManager<ApplicationUser> _signInManager;
+
+        /// <summary>
+        /// User manager
+        /// </summary>
         private readonly UserManager<ApplicationUser> _userManager;
 
+        /// <summary>
+        /// Default constructor, injection of managers
+        /// </summary>
+        /// <param name="userManager">User manager</param>
+        /// <param name="signInManager">Sign in manager</param>
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager)
@@ -31,29 +41,54 @@ namespace MarketVault.Areas.Identity.Pages.Account
             _signInManager = signInManager;
         }
 
+        /// <summary>
+        /// Input model property
+        /// </summary>
         [BindProperty]
         public InputModel Input { get; set; }
 
+        /// <summary>
+        /// Return URL property
+        /// </summary>
         public string ReturnUrl { get; set; }
 
+        /// <summary>
+        /// Input model class
+        /// </summary>
         public class InputModel
         { 
+            /// <summary>
+            /// Input model email
+            /// </summary>
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
+            /// <summary>
+            /// Input model password
+            /// </summary>
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(PasswordMaxLength, 
+                ErrorMessage = 
+                PasswordLengthExceptionMessage, 
+                MinimumLength = PasswordMinLength)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
 
+            /// <summary>
+            /// Input model confirm password
+            /// </summary>
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Compare("Password",
+                ErrorMessage = ConfirmPasswordLengthExceptionMessage)]
             public string ConfirmPassword { get; set; }
 
+            /// <summary>
+            /// Input model first name
+            /// </summary>
             [Required(ErrorMessage = FirstNameRequiredExceptionMessage)]
             [DataType(DataType.Text)]
             [Display(Name = "First name")]
@@ -62,6 +97,9 @@ namespace MarketVault.Areas.Identity.Pages.Account
                 ErrorMessage = FirstNameLengthExceptionMessage)]
             public string FirstName { get; set; }
 
+            /// <summary>
+            /// Input model last name
+            /// </summary>
             [Required(ErrorMessage = LastNameRequiredExceptionMessage)]
             [DataType(DataType.Text)]
             [Display(Name = "Last name")]
@@ -71,12 +109,20 @@ namespace MarketVault.Areas.Identity.Pages.Account
             public string LastName { get; set; }
         }
 
-
+        /// <summary>
+        /// On get async method (Void)
+        /// </summary>
+        /// <param name="returnUrl"></param>
         public void OnGetAsync(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
         }
 
+        /// <summary>
+        /// On post async method (Asynchronous)
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
