@@ -109,7 +109,8 @@
                 {
                     CounterParties = await this.GetCounterParties(),
                     DocumentTypes = await this.GetDocumentTypes(),
-                    ProductsJson = model.ProductsJson
+                    ProductsJson = model.ProductsJson,
+                    Products = model.Products
                 };
 
                 for (int i = 0; i < model.ProductsJson.Count; i++)
@@ -124,8 +125,11 @@
                     productModel.PurchasePrice = product.PurchasePrice;
                     productModel.SalePrice = product.SalePrice;
                     productModel.Quantity = product.Quantity;
-                    model.Products.Add(product);
+                    model.Products[i] = productModel;
                 }
+
+                this.TempData["OperationTempDataModel"] = JsonConvert
+                .SerializeObject(model);
 
                 return View("New", model);
             }
@@ -250,7 +254,9 @@
             if (!ModelState.IsValid || product == null)
             {
                 model.Products = await this.GetProducts();
-                return View(model);
+                this.TempData["OperationTempDataModel"] = JsonConvert
+                .SerializeObject(model);
+                return View("AddProductToOperation", model);
             }
 
             var operationTempDataModel = JsonConvert
