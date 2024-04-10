@@ -112,11 +112,19 @@
                     ProductsJson = model.ProductsJson
                 };
 
-                foreach (string json in model.ProductsJson)
+                for (int i = 0; i < model.ProductsJson.Count; i++)
                 {
-                    model.Products.Add(JsonConvert
-                        .DeserializeObject<ProductOperationModel>(json) ??
-                        new ProductOperationModel());
+                    var product = model.Products[i];
+                    var json = model.ProductsJson[i];
+
+                    var productModel = JsonConvert
+                            .DeserializeObject<ProductOperationModel>(json) ??
+                            new ProductOperationModel();
+
+                    productModel.PurchasePrice = product.PurchasePrice;
+                    productModel.SalePrice = product.SalePrice;
+                    productModel.Quantity = product.Quantity;
+                    model.Products.Add(product);
                 }
 
                 return View("New", model);
@@ -127,20 +135,33 @@
                 DateMade = DateTime.Now,
                 DocumentTypeId = model.DocumentTypeId ?? 0,
                 CounterPartyId = model.CounterPartyId ?? 0,
-                TotalPurchasePriceWithoutVAT = model.Products.Sum(p => p.PurchasePrice),
-                TotalPurchasePriceWithVAT = model.Products.Sum(p => p.PurchasePrice +
-                0.20M * p.PurchasePrice),
-                TotalSalePriceWithoutVAT = model.Products.Sum(p => p.SalePrice),
-                TotalSalePriceWithVAT = model.Products.Sum(p => p.SalePrice +
-                0.20M * p.SalePrice),
                 UserId = User.Id()
             };
 
-            foreach (string json in model.ProductsJson)
+            for (int i = 0; i < model.ProductsJson.Count; i++)
             {
-                model.Products.Add(JsonConvert
-                    .DeserializeObject<ProductOperationModel>(json) ??
-                    new ProductOperationModel());
+                var product = model.Products[i];
+                var json = model.ProductsJson[i];
+
+                var productModel = JsonConvert
+                        .DeserializeObject<ProductOperationModel>(json) ??
+                        new ProductOperationModel();
+
+                var dbProduct = await this.productService.GetByIdAsync(productModel.Id);
+
+                if (model.DocumentTypeId == 1 || model.DocumentTypeId == 2)
+                {
+                    dbProduct.Quantity += product.Quantity;
+                }
+                else
+                {
+                    dbProduct.Quantity -= product.Quantity;
+                }
+
+                dbProduct.SalePrice = product.SalePrice;
+                dbProduct.PurchasePrice = product.PurchasePrice;
+
+                await this.productService.UpdateAsync(dbProduct);
             }
 
             serviceModel.TotalPurchasePriceWithoutVAT =
@@ -153,11 +174,19 @@
             serviceModel.TotalSalePriceWithVAT =
                 model.Products.Sum(p => p.SalePrice + 0.20M * p.SalePrice);
 
+            var products = new List<ProductOperationModel>();
+
+            model.ProductsJson.ForEach(json =>
+            {
+                products.Add(JsonConvert
+                        .DeserializeObject<ProductOperationModel>(json) ?? new ProductOperationModel());
+            });
+
             var productOperationServiceModel = new ProductOperationServiceModel()
             {
                 DocumentTypeId = model.DocumentTypeId,
                 CounterPartyId = model.CounterPartyId,
-                Products = model.Products.Select(p => new ProductForOperationServiceModel(){
+                Products = products.Select(p => new ProductForOperationServiceModel(){
                     Id = p.Id,
                     PurchasePrice = p.PurchasePrice,
                     Quantity = p.Quantity,
@@ -215,7 +244,10 @@
             AddProductToOperationPost(ProductOperationModel
             model)
         {
-            if (!ModelState.IsValid)
+            var products = await this.GetProducts();
+            var product = products.FirstOrDefault(p => p.Id == model.Id);
+
+            if (!ModelState.IsValid || product == null)
             {
                 model.Products = await this.GetProducts();
                 return View(model);
@@ -225,6 +257,20 @@
                 .DeserializeObject
                 <OperationTempDataModel>(
                 TempData.Peek("OperationTempDataModel")?.ToString() ?? "");
+
+            if (operationTempDataModel?.DocumentTypeId == 3 ||
+                operationTempDataModel?.DocumentTypeId == 4)
+            {
+                if (model.Quantity > products.First(p => p.Id == model.Id).Quantity)
+                {
+                    return View("AddProductToOperation", model);
+                }
+            }
+
+            model.CashRegisterName = product.CashRegisterName;
+            model.Name = product.Name;
+            model.PurchasePrice = product.PurchasePrice;
+            model.SalePrice = product.SalePrice;
 
             operationTempDataModel?.Products.Add(model);
 

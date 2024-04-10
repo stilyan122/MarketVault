@@ -49,15 +49,34 @@
             }
             else
             {
-                @for (int i = 0; i < Model.Products.Count; i++)
-                {
-                    <input type="hidden" asp-for="ProductsJson" name="ProductsJson" 
-                    id="@i"
-                           value="@JsonSerializer.Serialize(Model.Products[i])" />
+                <div class="newOperationCurrentProductContainer">
+                    <p>Product Name</p>
+                    <p>Product Cash Register Name</p>
+                    <p>Product Sale Price</p>
+                    <p>Product Purchase Price</p>
+                    <p>Product Quantity</p>
+                </div>
+                <div class="newOperationProductsContainer">
+                    @for (int i = 0; i < Model.Products.Count; i++)
+                    {
+                        <input type="hidden" asp-for="ProductsJson" name="ProductsJson"
+                               id="@i"
+                               value="@JsonSerializer.Serialize(Model.Products[i])" />
 
-                    <input disabled value="@Model.Products[i].SalePrice"/>
-                    <input disabled value="@Model.Products[i].PurchasePrice"/>
-                }
+                        <div class="newOperationCurrentProductContainer">
+                            <input asp-for="Products[i].Name" disabled value="@Model.Products[i].Name" />
+                            <span asp-validation-for="Products[i].Name"></span>
+                            <input asp-for="Products[i].CashRegisterName" disabled value="@Model.Products[i].CashRegisterName" />
+                            <span asp-validation-for="Products[i].CashRegisterName"></span>
+                            <input asp-for="Products[i].SalePrice" value="@Model.Products[i].SalePrice" />
+                            <span asp-validation-for="Products[i].SalePrice"></span>
+                            <input asp-for="Products[i].PurchasePrice"  value="@Model.Products[i].PurchasePrice" />
+                            <span asp-validation-for="Products[i].PurchasePrice"></span>
+                            <input asp-for="Products[i].Quantity" value="@Model.Products[i].Quantity" />
+                            <span asp-validation-for="Products[i].Quantity"></span>
+                        </div>
+                    }
+                </div>
             }
         </div>
 
