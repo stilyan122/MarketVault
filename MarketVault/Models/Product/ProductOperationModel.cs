@@ -24,6 +24,16 @@
         public decimal Quantity { get; set; }
 
         /// <summary>
+        /// Model name
+        /// </summary>
+        public string Name { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Model cash register name
+        /// </summary>
+        public string CashRegisterName { get; set; } = string.Empty;
+
+        /// <summary>
         /// Product sale price
         /// </summary>
         [Required(ErrorMessage = ProductSalePriceRequiredExceptionMessage)]
