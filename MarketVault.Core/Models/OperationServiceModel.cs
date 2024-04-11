@@ -23,6 +23,11 @@
         public DocumentType DocumentType { get; set; } = null!;
 
         /// <summary>
+        /// Service model products count
+        /// </summary>
+        public int ProductsCount { get; set; }
+
+        /// <summary>
         /// Service model counter party id
         /// </summary>
         public int CounterPartyId { get; set; }

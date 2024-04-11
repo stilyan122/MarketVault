@@ -84,6 +84,7 @@
         [Authorize(Roles = WorkerAndAdminRoles)]
         public async Task<IActionResult> New()
         {
+            logger.LogInformation("Operation/New action ivnoked.");
             var model = new OperationFormModel()
             {
                 CounterParties = await this.GetCounterParties(),
@@ -103,6 +104,7 @@
         public async Task<IActionResult> 
             AddNewOperation(OperationFormModel model)
         {
+            logger.LogInformation("Operation/AddNewOperation action ivnoked (GET).");
             if (!ModelState.IsValid)
             {
                 model = new OperationFormModel()
@@ -169,14 +171,16 @@
             }
 
             serviceModel.TotalPurchasePriceWithoutVAT =
-                model.Products.Sum(p => p.PurchasePrice);
+                model.Products.Sum(p => p.PurchasePrice * p.Quantity);
             serviceModel.TotalPurchasePriceWithVAT =
-                model.Products.Sum(p => p.PurchasePrice + 0.20M * p.PurchasePrice);
+                model.Products.Sum(p => p.PurchasePrice * p.Quantity + 0.20M * p.PurchasePrice 
+                * p.Quantity);
 
             serviceModel.TotalSalePriceWithoutVAT =
-                model.Products.Sum(p => p.SalePrice);
+                model.Products.Sum(p => p.SalePrice * p.Quantity);
             serviceModel.TotalSalePriceWithVAT =
-                model.Products.Sum(p => p.SalePrice + 0.20M * p.SalePrice);
+                model.Products.Sum(p => p.SalePrice * p.Quantity + 0.20M * p.SalePrice
+                 * p.Quantity);
 
             var products = new List<ProductOperationModel>();
 
@@ -213,6 +217,7 @@
         public async Task<IActionResult> AddProductToOperation(OperationFormModel 
             operationFormModel)
         {
+            logger.LogInformation("Operation/AddProductToOperation action ivnoked.");
             var tempDataModel = new OperationTempDataModel()
             {
                 DocumentTypeId = operationFormModel.DocumentTypeId ?? 0,
@@ -248,6 +253,8 @@
             AddProductToOperationPost(ProductOperationModel
             model)
         {
+            logger.LogInformation("Operation/AddNewOperation action ivnoked (POST).");
+
             var products = await this.GetProducts();
             var product = products.FirstOrDefault(p => p.Id == model.Id);
 
@@ -294,11 +301,45 @@
         }
 
         /// <summary>
+        /// Method for accessing user operations
+        /// </summary>
+        /// <returns>Task<IActionResult></returns>
+        public async Task<IActionResult>
+            GetYourOperations()
+        {
+            logger.LogInformation("Operation/GetYourOperations action ivnoked.");
+
+            if (String.IsNullOrEmpty(User.Id()))
+            {
+                return BadRequest();
+            }
+
+            var serviceModels = await this.service.GetUserOperations(User.Id());
+
+            var viewModels = serviceModels.Select(sm => new OperationViewModel()
+            {
+                Id = sm.Id,
+                DateMade = DateTime.UtcNow,
+                DocumentType = sm.DocumentType.Name,
+                CounterParty = sm.CounterParty.Name,
+                ProductsCount = sm.ProductsCount,
+                TotalPurchasePriceWithoutVAT = sm.TotalPurchasePriceWithoutVAT,
+                TotalPurchasePriceWithVAT = sm.TotalPurchasePriceWithVAT,
+                TotalSalePriceWithoutVAT = sm.TotalSalePriceWithoutVAT,
+                TotalSalePriceWithVAT = sm.TotalSalePriceWithVAT,
+                UserId = User.Id()
+            });
+
+            return View(viewModels);
+        }
+
+        /// <summary>
         /// Private method for accessing counter parties in app (used in actions)
         /// </summary>
         /// <returns>Task<IEnumerable<CounterPartyViewModel>></returns>
         private async Task<IEnumerable<CounterPartyViewModel>> GetCounterParties()
         {
+            logger.LogInformation("Operation/GetCounterParties action ivnoked.");
             var counterPartyServiceModels = await this.counterPartyService
                  .GetAllAsync();
 
@@ -318,6 +359,7 @@
         /// <returns>Task<IEnumerable<DocumentTypeViewModel>></returns>
         private async Task<IEnumerable<DocumentTypeViewModel>> GetDocumentTypes()
         {
+            logger.LogInformation("Operation/GetDocumentTypes action ivnoked.");
             var documentTypeServiceModels = await this.documentTypeService
                  .GetAllAsync();
 
@@ -337,6 +379,7 @@
         /// <returns>Task<IEnumerable<ProductDetailsViewModel>></returns>
         private async Task<IEnumerable<ProductDetailsViewModel>> GetProducts()
         {
+            logger.LogInformation("Operation/GetProducts action ivnoked.");
             var productServiceModels = await this.productService
                  .GetAllAsync();
 

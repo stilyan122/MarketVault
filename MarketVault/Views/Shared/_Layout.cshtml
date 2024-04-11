@@ -2,6 +2,7 @@
 
 @{
     bool isLoggedIn = false;
+    string role = string.Empty;
 
     if (User?.Identity?.IsAuthenticated ?? false)
     {
@@ -9,6 +10,15 @@
         {
             var user = await this.service.FindUserByIdAsync(User.Id());
             await service.AddUserToRoleAsync(user, "User");
+            role = "User";
+        }
+        else if (!await service.IsInRoleAsync(new string[] { "Admin" }, User.Id()))
+        {
+            role = "Admin";
+        }
+        else
+        {
+            role = "Worker";
         }
         isLoggedIn = true;
     }
@@ -43,29 +53,24 @@
                         </li>
                         @if (isLoggedIn)
                         {
-                            if (await service.IsInRoleAsync(new string[] { "Admin" },
-                            User?.Id() ?? "0"))
+                            if (role == "Admin")
                             {
                                 <a asp-area="Admin"
                                    asp-action="Index"
                                    asp-controller="Admin">
                                     Admin Area
                                 </a>
-                            }
-                            <li>
-                                <select id="selectOption">
-                                    <option disabled selected value="">Nomenclatures</option>
-                                    <option value="Option1">Products</option>
-                                    <option value="Option2">Counter Parties</option>
-                                    <option value="Option3">Item Groups</option>
-                                    <option value="Option4">Firms</option>
-                                    <option value="Option5">Banks</option>
-                                    <option value="Option6">Addresses</option>
-                                </select>
-                            </li>
-                            if (await service.IsInRoleAsync(new string[] { "Admin", "Worker" },
-                            User?.Id() ?? "0"))
-                            {
+                                <li>
+                                    <select id="selectOption">
+                                        <option disabled selected value="">Nomenclatures</option>
+                                        <option value="Option1">Products</option>
+                                        <option value="Option2">Counter Parties</option>
+                                        <option value="Option3">Item Groups</option>
+                                        <option value="Option4">Firms</option>
+                                        <option value="Option5">Banks</option>
+                                        <option value="Option6">Addresses</option>
+                                    </select>
+                                </li>
                                 <li>
                                     <select id="selectOption2">
                                         <option disabled selected value="">Add Nomenclature</option>
@@ -82,6 +87,52 @@
                                     <select id="selectOption3">
                                         <option disabled selected value="">Operations</option>
                                         <option value="Option1">Add operation</option>
+                                        <option value="Option2">Your operations</option>
+                                    </select>
+                                </li>
+                            }
+                            else if (role == "Worker")
+                            {
+                                <li>
+                                    <select id="selectOption">
+                                        <option disabled selected value="">Nomenclatures</option>
+                                        <option value="Option1">Products</option>
+                                        <option value="Option2">Counter Parties</option>
+                                        <option value="Option3">Item Groups</option>
+                                        <option value="Option4">Firms</option>
+                                        <option value="Option5">Banks</option>
+                                        <option value="Option6">Addresses</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <select id="selectOption2">
+                                        <option disabled selected value="">Add Nomenclature</option>
+                                        <option value="Option1">Add a product</option>
+                                        <option value="Option2">Add a counter party</option>
+                                        <option value="Option3">Add an item group</option>
+                                        <option value="Option4">Add a firm</option>
+                                        <option value="Option5">Add a bank</option>
+                                        <option value="Option6">Add an address</option>
+                                    </select>
+                                </li>
+
+                                <li>
+                                    <select id="selectOption3">
+                                        <option disabled selected value="">Operations</option>
+                                        <option value="Option1">Add operation</option>
+                                        <option value="Option2">Your operations</option>
+                                    </select>
+                                </li>
+
+                            }
+                            else
+                            {
+                                <li>
+                                    <select id="selectOption">
+                                        <option disabled selected value="">Nomenclatures</option>
+                                        <option value="Option1">Products</option>
+                                        <option value="Option2">Counter Parties</option>
+                                        <option value="Option3">Item Groups</option>
                                     </select>
                                 </li>
                             }
@@ -145,6 +196,8 @@
             var optionValue = this.value;
             if (optionValue === "Option1") {
                 window.location.href = "/Operation/New";
+            } else if (optionValue === "Option2") {
+                window.location.href = "/Operation/GetYourOperations";
             }
         });
     }

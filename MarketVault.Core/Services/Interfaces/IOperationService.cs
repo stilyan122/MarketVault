@@ -1,6 +1,7 @@
 ﻿namespace MarketVault.Core.Services.Interfaces
 {
     using MarketVault.Core.Models;
+    using MarketVault.Infrastructure.Data.Models;
 
     /// <summary>
     /// Interface responsible for operation service
@@ -15,5 +16,12 @@
         /// <returns>(void)</returns>
         Task AddAsync(OperationServiceModel operation, 
             ProductOperationServiceModel model);
+
+        /// <summary>
+        /// Asynchronous method for getting operations for a user
+        /// </summary>
+        /// <param name="userId">User Id</param>
+        /// <returns>Task<IEnumerable<OperationServiceModel>></returns>
+        Task<IEnumerable<OperationServiceModel>> GetUserOperations(string userId);
     }
 }

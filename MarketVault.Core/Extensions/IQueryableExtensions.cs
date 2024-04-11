@@ -101,6 +101,46 @@
         }
 
         /// <summary>
+        /// ProjectToOperationServiceModel method
+        /// </summary>
+        /// <param name="queryble">IQueryable<Operation></param>
+        /// <returns>IQueryable<OperationServiceModel></returns>
+        public static IQueryable<OperationServiceModel>
+            ProjectToOperationServiceModel(this IQueryable<Operation> queryble)
+        {
+            return queryble
+                .UseIncludeOperationStatements()
+                .Select(o => new OperationServiceModel()
+                {
+                    TotalPurchasePriceWithoutVAT = o.TotalPurchasePriceWithoutVAT,
+                    DateMade = o.DateMade,
+                    CounterPartyId = o.CounterPartyId,
+                    DocumentTypeId = o.DocumentTypeId,
+                    CounterParty = o.CounterParty,
+                    DocumentType = o.DocumentType,
+                    ProductsCount = o.ProductsOperations.Count(),
+                    Id = o.Id,
+                    TotalPurchasePriceWithVAT = o.TotalPurchasePriceWithVAT,
+                    TotalSalePriceWithoutVAT = o.TotalSalePriceWithoutVAT,
+                    UserId = o.UserId,
+                    TotalSalePriceWithVAT = o.TotalSalePriceWithVAT
+                });
+        }
+
+        /// <summary>
+        /// UseIncludeOperationStatements method
+        /// </summary>
+        /// <param name="queryble">IQueryable<Operation></param>
+        /// <returns>IQueryable<Operation></returns>
+        public static IQueryable<Operation>
+            UseIncludeOperationStatements(this IQueryable<Operation> queryble)
+        {
+            return queryble
+                .Include(o => o.CounterParty)
+                .Include(o => o.DocumentType);
+        }
+
+        /// <summary>
         /// ProjectToFirmServiceModel method
         /// </summary>
         /// <param name="queryble">IQueryable<Firm></param>
