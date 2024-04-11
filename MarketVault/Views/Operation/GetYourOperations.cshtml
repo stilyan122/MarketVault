@@ -1,0 +1,63 @@
+﻿@model IEnumerable<OperationViewModel>
+
+@{
+    ViewBag.Title = "Your operations";
+}
+
+<div class="yourOperationsContainer">
+    <div class="yourOperationOperationContainer">
+        <p>
+            Operation Date Made
+        </p>
+        <p>
+            Operation Products Count
+        </p>
+        <p>
+            Operation Counter Party
+        </p>
+        <p>
+            Operation Document Type
+        </p>
+        <p>
+            Operation Total Purchase Price Without VAT
+        </p>
+        <p>
+            Operation Total Purchase Price With VAT
+        </p>
+        <p>
+            Operation Total Sale Price Without VAT
+        </p>
+        <p>
+            Operation Total Sale Price With VAT
+        </p>
+    </div>
+    @foreach (OperationViewModel operation in Model)
+    {
+        <div class="yourOperationOperationContainer">
+            <p>
+                @operation.DateMade
+            </p>
+            <p>
+                @operation.ProductsCount
+            </p>
+            <p>
+                @operation.CounterParty
+            </p>
+            <p>
+                @operation.DocumentType
+            </p>
+            <p>
+                @operation.TotalPurchasePriceWithoutVAT
+            </p>
+            <p>
+                @operation.TotalPurchasePriceWithVAT
+            </p>
+            <p>
+                @operation.TotalSalePriceWithoutVAT
+            </p>
+            <p>
+                @operation.TotalSalePriceWithVAT
+            </p>
+        </div>
+    }   
+</div>

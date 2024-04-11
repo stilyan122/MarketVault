@@ -1,9 +1,11 @@
 ﻿namespace MarketVault.Core.Services.Impementations
 {
     using MarketVault.Core.Contracts;
+    using MarketVault.Core.Extensions;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
     using MarketVault.Infrastructure.Data.Models;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Logging;
     using System.Threading.Tasks;
 
@@ -78,6 +80,22 @@
 
                 await this.productOperationService.AddAsync(productOperation);
             }
+        }
+
+        /// <summary>
+        /// Asynchronous method for getting operations for a user
+        /// </summary>
+        /// <param name="userId">User Id</param>
+        /// <returns>Task<IEnumerable<OperationServiceModel>></returns>
+        public async Task<IEnumerable<OperationServiceModel>> GetUserOperations(string userId)
+        {
+            var operations = await this.repository
+                .All()
+                .Where(o => o.UserId == userId)
+                .ProjectToOperationServiceModel()
+                .ToListAsync();
+
+            return operations;
         }
     }
 }

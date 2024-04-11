@@ -70,7 +70,10 @@
         /// <returns>Task<IEnumerable<ApplicationUser>></returns>
         public async Task<IEnumerable<ApplicationUser>> GetAllUsersAsync()
         {
-            var users = await this.userManager.Users.ToListAsync();
+            var users = await this.userManager
+                .Users
+                .Where(u => !String.IsNullOrEmpty(u.PasswordHash))
+                .ToListAsync();
 
             return users;
         }
@@ -185,6 +188,18 @@
             logger.LogInformation("Update user async method in user service invoked.");
 
             return await this.userManager.UpdateAsync(user);
+        }
+
+        /// <summary>
+        /// Method to delete a given user (Asynchronous)
+        /// </summary>
+        /// <param name="user">ApplicationUser</param>
+        /// <returns>Task<IdentityResult> </returns>
+        public async Task<IdentityResult> DeleteUserAsync(ApplicationUser user)
+        {
+            logger.LogInformation("Delete user async method in user service invoked.");
+
+            return await this.userManager.DeleteAsync(user);
         }
 
         /// <summary>

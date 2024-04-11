@@ -59,6 +59,13 @@
         public Task<IdentityResult> UpdateUserAsync(ApplicationUser user);
 
         /// <summary>
+        /// Method to delete a given user (Asynchronous)
+        /// </summary>
+        /// <param name="user">ApplicationUser</param>
+        /// <returns>Task<IdentityResult> </returns>
+        public Task<IdentityResult> DeleteUserAsync(ApplicationUser user);
+
+        /// <summary>
         /// Method to add a user to a role (Asynchronous)
         /// </summary>
         /// <param name="user">ApplicationUser</param>

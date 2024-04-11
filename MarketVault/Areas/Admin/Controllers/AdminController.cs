@@ -106,5 +106,18 @@
 
             return View(data);
         }
+
+        /// <summary>
+        /// Remove user method (Asynchronous)
+        /// </summary>
+        /// <param name="userId">User id to remove</param>
+        /// <returns>Task<IActionResult></returns>
+        public async Task<IActionResult> RemoveUser(string userId)
+        {
+            var user = await this.userService.FindUserByIdAsync(userId);
+            await this.userService.DeleteUserAsync(user);
+
+            return RedirectToAction("GetAllUsers");
+        }
     }
 }
