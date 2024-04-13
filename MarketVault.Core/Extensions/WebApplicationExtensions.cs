@@ -184,7 +184,7 @@
         }
 
         /// <summary>
-        /// Use react components static method
+        /// Use React components static method
         /// </summary>
         /// <param name="app">WebApplication</param>
         public static void UseReactComponents(this WebApplication app)

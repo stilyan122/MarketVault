@@ -233,8 +233,10 @@
                         Id = p.Id,
                         ItemGroupId = p.ItemGroupId,
                         ItemGroup = p.ItemGroup,
-                        Measure = p.ProductsMeasures.Any() ? p.ProductsMeasures.First().Measure : new Measure(),
-                        MeasureId = p.ProductsMeasures.Any() ? p.ProductsMeasures.First().MeasureId : 0,
+                        Measure = p.ProductsMeasures.Any() ? 
+                        p.ProductsMeasures.First().Measure : new Measure(),
+                        MeasureId = p.ProductsMeasures.Any() ? 
+                        p.ProductsMeasures.First().MeasureId : 0,
                         Name = p.Name,
                         NomenclatureNumber = p.NomenclatureNumber,
                         PurchasePrice = p.PurchasePrice,

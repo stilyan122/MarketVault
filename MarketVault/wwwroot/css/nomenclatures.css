@@ -1147,10 +1147,6 @@ body{
             background-color: #963fd9;
         }
 
-#barcodesDivContainer {
-    background-color: red;
-}
-
 /* Firm */
 
 @keyframes addFirmShake {
@@ -2992,11 +2988,25 @@ body{
 }
 
 #barcodesDivContainer {
-    max-width: 20em;
+    max-width: 270px;
+    flex-wrap: wrap;
 }
 
-/* Default page */
+.barcode {
+    border-radius: 4px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    background-color: red;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
+.removeBarcode {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+/* Default page */
 .layoutHeader {
     width: 100%;
     height: 20em;

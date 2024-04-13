@@ -12,13 +12,17 @@
             await service.AddUserToRoleAsync(user, "User");
             role = "User";
         }
-        else if (!await service.IsInRoleAsync(new string[] { "Admin" }, User.Id()))
+        else if (await service.IsInRoleAsync(new string[] { "Admin" }, User.Id()))
         {
             role = "Admin";
         }
-        else
+        else if (await service.IsInRoleAsync(new string[] { "Worker" }, User.Id()))
         {
             role = "Worker";
+        }
+        else
+        {
+            role = "User";
         }
         isLoggedIn = true;
     }
@@ -60,6 +64,7 @@
                                    asp-controller="Admin">
                                     Admin Area
                                 </a>
+
                                 <li>
                                     <select id="selectOption">
                                         <option disabled selected value="">Nomenclatures</option>

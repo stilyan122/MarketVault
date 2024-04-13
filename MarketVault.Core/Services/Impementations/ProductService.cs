@@ -85,31 +85,21 @@
 
             logger.LogWarning("Potential exception to be thrown");
 
-            try
+            entities = sortType switch
             {
-                entities = sortType switch
-                {
-                    "Name" => entities.Where(e => e.Name.ToLower().Contains(value.ToLower())),
-                    "Cash Register Name" => entities.Where(e => e.CashRegisterName.ToLower().Contains(value.ToLower())),
-                    "Article Number" when int.TryParse(value, out var articleNumber) =>
-                        entities.Where(e => e.ArticleNumber == articleNumber),
-                    "Nomenclature Number" when int.TryParse(value, out var nomenclatureNumber) =>
-                        entities.Where(e => e.NomenclatureNumber == nomenclatureNumber),
-                    "Sale Price" when decimal.TryParse(value, out var salePrice) =>
-                        entities.Where(e => e.SalePrice == salePrice),
-                    "Purchase Price" when decimal.TryParse(value, out var purchasePrice) =>
-                        entities.Where(e => e.PurchasePrice == purchasePrice),
-                    "Item Group Name" => entities.Where(e => e.ItemGroup.Name == value),
-                    "Measure Type" => entities.Where(e => e.Measure.Name == value),
-                    _ => entities.Where(e => e.Id == 0)
-                };
-
-                return entities;
-            }
-            catch (Exception)
-            {
-                entities = entities.Where(e => e.Id == 0);
-            }
+                "Name" => entities.Where(e => e.Name.ToLower().Contains(value.ToLower())),
+                "Cash Register Name" => entities.Where(e => e.CashRegisterName.ToLower().Contains(value.ToLower())),
+                "Article Number" when int.TryParse(value, out var articleNumber) =>
+                    entities.Where(e => e.ArticleNumber == articleNumber),
+                "Nomenclature Number" when int.TryParse(value, out var nomenclatureNumber) =>
+                    entities.Where(e => e.NomenclatureNumber == nomenclatureNumber),
+                "Sale Price" when decimal.TryParse(value, out var salePrice) =>
+                    entities.Where(e => e.SalePrice == salePrice),
+                "Purchase Price" when decimal.TryParse(value, out var purchasePrice) =>
+                    entities.Where(e => e.PurchasePrice == purchasePrice),
+                "Item Group Name" => entities.Where(e => e.ItemGroup.Name == value),
+                _ => entities.Where(e => e.Id == 0)
+            };
 
             return entities;
         }
