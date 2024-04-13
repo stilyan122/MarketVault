@@ -95,7 +95,11 @@
 
         <div class="barcodes">
             Barcodes
-            <div id ="barcodesDivContainer"></div>
+            <div>
+                <div id="barcodesDivContainer">
+
+                </div>
+            </div>
         </div>
 
         <button type="button" id="addBarcodeBtn">Add Barcode</button>
@@ -129,18 +133,6 @@
             popUpContainerOverlay.style.display = 'none';
         });
 
-        // $.ajax({
-        //     method: 'GET',
-        //     url: 'myservice/username',
-        //     data: { id: '42' }
-        // })
-        // .done(function success(data) {
-
-        // })
-        // .fail(function fail(data, status) {
-
-        // });
-        
         popUpContainerOverlay.style.display = 'flex';
         popUpContainer.style.display = 'block';
 
@@ -163,17 +155,29 @@
 
             if (inputValue.length <= maxLengthValue && 
                 inputValue.length >= minLengthValue) {
+                var parent = document.getElementById('barcodesDivContainer');
+
                 validation.style.display = 'none';  
                 var divElement = document.createElement('div');
-                divElement.textContent = inputValue;
+                var deleteBarcodeButton = document.createElement('div');
+                deleteBarcodeButton.textContent = '✘';
+                deleteBarcodeButton.classList.add('removeBarcode');
+                deleteBarcodeButton.onclick = function () {
+                    parent.removeChild(divElement);
+                };
+                divElement.classList.add('barcode')
+                divElement.appendChild(deleteBarcodeButton);
+                var barcode = document.createElement('div');
+                barcode.textContent = inputValue;
+                divElement.appendChild(barcode);
+
 
                 var domElement = document.createElement('input');
-                domElement.disabled = true;
-                domElement.hidden = true;
                 domElement.value = inputValue;
+                domElement.type = "hidden";
+                domElement.disabled = true;
                 divElement.appendChild(domElement);
 
-                var parent = document.getElementById('barcodesDivContainer');
                 parent.appendChild(divElement);
                 popUpContainer.style.display = 'none';
                 popUpContainerOverlay.style.display = 'none';

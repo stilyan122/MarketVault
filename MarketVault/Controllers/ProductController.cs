@@ -239,6 +239,8 @@
             {
                 model.ItemGroups = await this.GetItemGroups();
                 model.Measures = await this.GetMeasures();
+                model.BarcodeMaxLength = ValueMaxLength;
+                model.BarcodeMinLength = ValueMinLength;
                 return View(model);
             }
 

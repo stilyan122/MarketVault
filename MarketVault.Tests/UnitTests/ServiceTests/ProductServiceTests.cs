@@ -68,19 +68,35 @@
         {
             var invalidProduct = await this.repository.GetByIdAsync(1);
 
-            var ProductBeforeAdding = this.repository.All().Count();
+            var productBeforeAdding = this.repository.All().Count();
 
             await this.SeedData();
 
-            var ProductsAfterAdding = this.repository.All().Count();
+            var productsAfterAdding = this.repository.All().Count();
 
             var addedProduct1 = await this.repository.GetByIdAsync(1);
             var addedProduct2 = await this.repository.GetByIdAsync(2);
 
+            var newProduct = new ProductServiceModel()
+            {
+                CashRegisterName = "New",
+                Name = "New",
+                ItemGroupId = 1,
+                MeasureId = 1,
+                PurchasePrice = 1,
+                SalePrice = 1,
+                CodeForScales = 1,
+                Description = "New Description For New Product",
+                Quantity = 1
+            };
+
+            await this.service.AddAsync(newProduct);
+            var thirdCount = await this.repository.All().CountAsync();
+
             Assert.Multiple(() =>
             {
-                Assert.That(ProductBeforeAdding,
-                Is.EqualTo(ProductsAfterAdding - 2));
+                Assert.That(productBeforeAdding,
+                Is.EqualTo(productsAfterAdding - 2));
 
                 Assert.That(invalidProduct,
                     Is.EqualTo(null));
@@ -90,6 +106,9 @@
 
                 Assert.That(addedProduct2?.Id,
                     Is.EqualTo(2));
+
+                Assert.That(thirdCount, 
+                    Is.EqualTo(productsAfterAdding + 1));
             });
         }
 
@@ -178,12 +197,150 @@
                 .GetAllByPredicateAsync("Name", "Name")
                 .ToListAsync();
 
+            var all5 = await this.service
+                .GetAllByPredicateAsync("Cash Register Name", "CashRegister")
+                .ToListAsync();
+
+            var all6 = await this.service
+                .GetAllByPredicateAsync("Nomenclature Number", "1")
+                .ToListAsync();
+
+            var all7 = await this.service
+                .GetAllByPredicateAsync("Article Number", "1")
+                .ToListAsync();
+
+            var all8 = await this.service
+                .GetAllByPredicateAsync("Sale Price", "2")
+                .ToListAsync();
+
+            var all9 = await this.service
+                .GetAllByPredicateAsync("Purchase Price", "2")
+                .ToListAsync();
+
+            var all10 = await this.service
+                .GetAllByPredicateAsync("Item Group Name", "ItemGroup1")
+                .ToListAsync();
+
             Assert.Multiple(() =>
             {
                 Assert.That(all1.Count == 1);
                 Assert.That(all2.Count == 0);
                 Assert.That(all3.Count == 0);
                 Assert.That(all4.Count == 2);
+                Assert.That(all5.Count == 2);
+                Assert.That(all6.Count == 1);
+                Assert.That(all7.Count == 1);
+                Assert.That(all8.Count == 1);
+                Assert.That(all9.Count == 1);
+                Assert.That(all10.Count == 1);
+            });
+        }
+
+        /// <summary>
+        /// Get all by predicate paged async test methods
+        /// </summary>
+        /// <returns>(void)</returns>
+        [Test]
+        public async Task GetAllByPredicatePagedAsync_ShouldWorkProperly()
+        {
+            await this.SeedData();
+
+            var all1 = await this.service
+                .GetAllByPredicatePagedAsync("Name", "Name1",
+                10, 1);
+
+            var all2 = await this.service
+                .GetAllByPredicatePagedAsync("Name", "FalseProduct",
+                10, 1);
+
+            var all3 = await this.service
+                .GetAllByPredicatePagedAsync("False False",
+                "some Product name...", 10, 1);
+
+            var all4 = await this.service
+                .GetAllByPredicatePagedAsync("Name", "Name", 10, 1);
+
+            var all5 = await this.service
+                .GetAllByPredicatePagedAsync("Cash Register Name", 
+                "CashRegister", 10, 1);
+
+            var all6 = await this.service
+                .GetAllByPredicatePagedAsync("Nomenclature Number", "1"
+                ,10, 1);
+
+            var all7 = await this.service
+                .GetAllByPredicatePagedAsync("Article Number", "1", 10, 1);
+
+            var all8 = await this.service
+                .GetAllByPredicatePagedAsync("Sale Price", "2", 10, 1);
+
+            var all9 = await this.service
+                .GetAllByPredicatePagedAsync("Purchase Price", "2", 10, 1);
+
+            var all10 = await this.service
+                .GetAllByPredicatePagedAsync("Item Group Name", "ItemGroup1"
+                , 10, 1);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(all1.Count() == 1);
+                Assert.That(all2.Count() == 0);
+                Assert.That(all3.Count() == 0);
+                Assert.That(all4.Count() == 2);
+                Assert.That(all5.Count() == 2);
+                Assert.That(all6.Count() == 1);
+                Assert.That(all7.Count() == 1);
+                Assert.That(all8.Count() == 1);
+                Assert.That(all9.Count() == 1);
+                Assert.That(all10.Count() == 1);
+            });
+        }
+
+        /// <summary>
+        /// Get predicated count async test methods
+        /// </summary>
+        /// <returns>(void)</returns>
+        [Test]
+        public async Task GetPredicatedCountAsync_ShouldWorkProperly()
+        {
+            await this.SeedData();
+
+            var allCount = await this.service
+                .GetPredicatedCountAsync("Name",
+                "Name");
+
+            var invalidCount = await this.service
+                .GetPredicatedCountAsync("Name",
+                "Invalid");
+
+            var all2 = await this.service
+                .GetPredicatedCountAsync("Cash Register Name", "CashRegister");
+
+            var all3 = await this.service
+                .GetPredicatedCountAsync("Nomenclature Number", "1");
+
+            var all4 = await this.service
+                .GetPredicatedCountAsync("Article Number", "1");
+
+            var all5 = await this.service
+                .GetPredicatedCountAsync("Sale Price", "2");
+
+            var all6 = await this.service
+                .GetPredicatedCountAsync("Purchase Price", "2");
+
+            var all7 = await this.service
+                .GetPredicatedCountAsync("Item Group Name", "ItemGroup1");
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(allCount, Is.EqualTo(2));
+                Assert.That(invalidCount, Is.EqualTo(0));
+                Assert.That(all2, Is.EqualTo(2));
+                Assert.That(all3, Is.EqualTo(1));
+                Assert.That(all4, Is.EqualTo(1));
+                Assert.That(all5, Is.EqualTo(1));
+                Assert.That(all6, Is.EqualTo(1));
+                Assert.That(all7, Is.EqualTo(1));
             });
         }
 

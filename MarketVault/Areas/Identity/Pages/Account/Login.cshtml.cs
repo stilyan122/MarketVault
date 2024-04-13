@@ -75,14 +75,14 @@ namespace MarketVault.Areas.Identity.Pages.Account
             /// Input first name
             /// </summary>
             [Required]
-            [Display(Name = "First Name")]
+            [Display(Name = "First name")]
             public string FirstName { get; set; }
 
             /// <summary>
             /// Input last name
             /// </summary>
             [Required]
-            [Display(Name = "Last Name")]
+            [Display(Name = "Last name")]
             public string LastName { get; set; }
         }
 
