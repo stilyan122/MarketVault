@@ -5,6 +5,7 @@
     using MarketVault.Core.Extensions;
     using MarketVault.Core.Models;
     using MarketVault.Core.Services.Interfaces;
+    using MarketVault.Infrastructure.Data.Models;
     using MarketVault.Models.ItemGroup;
     using MarketVault.Models.Measure;
     using MarketVault.Models.Product;
@@ -233,7 +234,7 @@
         /// <returns>Task<IActionResult></returns>
         [HttpPost]
         [Authorize(Roles = WorkerAndAdminRoles)]
-        public async Task<IActionResult> Add(ProductFormModel model)
+        public async Task<IActionResult> Add([FromForm]ProductFormModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -255,9 +256,17 @@
                 PurchasePrice = model.PurchasePrice,
                 SalePrice = model.SalePrice,
                 Quantity = 0,
-                ItemGroupId = model.ItemGroupId,
-                MeasureId = model.MeasureId
+                ItemGroupId = model.ItemGroupId ?? 0,
+                MeasureId = model.MeasureId ?? 0,
             };
+
+            foreach (string barcode in model.Barcodes)
+            {
+                serviceModel.Barcodes.Add(new Barcode()
+                {
+                    Value = barcode
+                });
+            }
 
             await this.service.AddAsync(serviceModel);
 
@@ -349,8 +358,8 @@
                 Id = parsed,
                 DateModified = DateTime.Now,
                 Description = model.Description,
-                ItemGroupId = model.ItemGroupId,
-                MeasureId = model.MeasureId,
+                ItemGroupId = model.ItemGroupId ?? 0,
+                MeasureId = model.MeasureId ?? 0,
                 Name = model.Name,
                 CashRegisterName = model.CashRegisterName,
                 PurchasePrice = model.PurchasePrice,

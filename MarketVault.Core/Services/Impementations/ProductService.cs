@@ -25,23 +25,31 @@
         private readonly IProductMeasureService productMeasureService = null!;
 
         /// <summary>
+        /// Barcode Service
+        /// </summary>
+        private readonly IBarcodeService barcodeService = null!;
+
+        /// <summary>
         /// Logger
         /// </summary>
         private readonly ILogger<ProductService> logger = null!;
 
         /// <summary>
-        /// Default constructor, injection of Product repository and logger (DI)
+        /// Default constructor, injection of Product repository, logger and services (DI)
         /// </summary>
         /// <param name="repository">Product repository</param>
         /// <param name="productMeasureService">IProductMeasureService</param>
         /// <param name="logger">Logger</param>
+        /// <param name="barcodeService">IBarcodeService</param>
         public ProductService(IRepository<Product> repository,
             IProductMeasureService productMeasureService,
-            ILogger<ProductService> logger)
+            ILogger<ProductService> logger,
+            IBarcodeService barcodeService)
         {
             this.repository = repository;
             this.productMeasureService = productMeasureService;
             this.logger = logger;
+            this.barcodeService = barcodeService;
         }
 
         /// <summary>
@@ -165,6 +173,12 @@
             };
 
             await this.productMeasureService.AddAsync(mappingEntity);
+
+            foreach (Barcode barcode in product.Barcodes)
+            {
+                barcode.ProductId = entity.Id;
+                await this.barcodeService.AddAsync(barcode);
+            }
         }
         
         /// <summary>

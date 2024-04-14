@@ -78,7 +78,7 @@
         /// Product item group id
         /// </summary>
         [Required(ErrorMessage = ProductItemGroupRequiredExceptionMessage)]
-        public int ItemGroupId { get; set; }
+        public int? ItemGroupId { get; set; }
 
         /// <summary>
         /// Product item groups
@@ -90,7 +90,7 @@
         /// Product measure id
         /// </summary>
         [Required(ErrorMessage = ProductMeasureRequiredExceptionMessage)]
-        public int MeasureId { get; set; }
+        public int? MeasureId { get; set; }
 
         /// <summary>
         /// Product barcode max length

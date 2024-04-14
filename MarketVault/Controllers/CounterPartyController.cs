@@ -234,8 +234,8 @@
                 Name = model.Name,
                 BankCode = model.BankCode,
                 BankIBAN = model.BankIBAN,
-                BankId = model.BankId,
-                FirmId = model.FirmId,
+                BankId = model.BankId ?? 0,
+                FirmId = model.FirmId ?? 0,
                 ValueAddedTaxLawId = model.ValueAddedTaxLawId,
                 VATNumber= model.VATNumber
             };
@@ -326,10 +326,10 @@
             var serviceModel = new CounterPartyServiceModel()
             {
                 Id = parsed,
-                BankId = model.BankId,
+                BankId = model.BankId ?? 0,
                 BankCode = model.BankCode,
                 BankIBAN = model.BankIBAN,
-                FirmId = model.FirmId,
+                FirmId = model.FirmId ?? 0,
                 Name = model.Name,
                 ValueAddedTaxLawId = model.ValueAddedTaxLawId,
                 VATNumber = model.VATNumber

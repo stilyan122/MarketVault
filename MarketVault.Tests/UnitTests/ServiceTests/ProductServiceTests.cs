@@ -35,6 +35,16 @@
         private IProductMeasureService productMeasureService = null!;
 
         /// <summary>
+        /// Barcode Service
+        /// </summary>
+        private IBarcodeService barcodeService = null!;
+
+        /// <summary>
+        /// Barcodes count - help variable
+        /// </summary>
+        private int barcodesCount = 0;
+
+        /// <summary>
         /// SetUp method
         /// </summary>
         [SetUp]
@@ -54,9 +64,20 @@
             this.productMeasureService = new Mock<IProductMeasureService>()
                 .Object;
 
+            var mockBarcodeService = new Mock<IBarcodeService>();
+
+            mockBarcodeService.Setup(bs => bs.AddAsync(It.IsAny<Barcode>()))
+                .Callback<Barcode>(b =>
+                {
+                    this.barcodesCount++;
+                });
+
+            this.barcodeService = mockBarcodeService.Object;
+
             this.service = new ProductService(repository,
                 productMeasureService,
-                mockServiceLogger.Object);
+                mockServiceLogger.Object,
+                barcodeService);
         }
 
         /// <summary>
@@ -77,6 +98,8 @@
             var addedProduct1 = await this.repository.GetByIdAsync(1);
             var addedProduct2 = await this.repository.GetByIdAsync(2);
 
+            var barcodesBefore = barcodesCount;
+
             var newProduct = new ProductServiceModel()
             {
                 CashRegisterName = "New",
@@ -87,11 +110,20 @@
                 SalePrice = 1,
                 CodeForScales = 1,
                 Description = "New Description For New Product",
-                Quantity = 1
+                Quantity = 1,
+                Barcodes = new List<Barcode>() 
+                { 
+                    new Barcode()
+                    {
+                        Value = "1"
+                    } 
+                }
             };
 
             await this.service.AddAsync(newProduct);
             var thirdCount = await this.repository.All().CountAsync();
+
+            var barcodesAfter = barcodesCount;
 
             Assert.Multiple(() =>
             {
@@ -109,6 +141,9 @@
 
                 Assert.That(thirdCount, 
                     Is.EqualTo(productsAfterAdding + 1));
+
+                Assert.That(barcodesAfter - barcodesBefore,
+                    Is.EqualTo(1));
             });
         }
 

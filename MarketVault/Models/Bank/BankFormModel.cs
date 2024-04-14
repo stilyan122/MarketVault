@@ -26,7 +26,7 @@
         /// Bank address id
         /// </summary>
         [Required(ErrorMessage = BankAddressRequiredExceptionMessage)]
-        public int AddressId { get; set; }
+        public int? AddressId { get; set; }
 
         /// <summary>
         /// Bank addresses
