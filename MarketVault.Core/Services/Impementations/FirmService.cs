@@ -85,28 +85,19 @@
 
             logger.LogWarning("Potential exception to be thrown.");
 
-            try
+            entities = sortType switch
             {
-                entities = sortType switch
-                {
-                    "Name" => entities.Where(e => e.Name.ToLower().Contains(value.ToLower())),
-                    "Phone Number" => entities.Where(e => e.PhoneNumber.ToLower().Contains(value.ToLower())),
-                    "Email" => entities.Where(e => e.Email.ToLower().Contains(value.ToLower())),
-                    "Responsible Person Name" => entities.Where(e => e.ResponsiblePersonName.ToLower().Contains(value.ToLower())),
-                    "Address" => entities.Where(e => e
-                    .Address.TownName.ToLower()
-                    .Contains(value.ToLower()) || e.Address
-                    .StreetName.ToLower().Contains(value.ToLower()) || 
-                    e.Address.StreetNumber.ToLower().Contains(value.ToLower())),
-                    _ => entities.Where(e => e.Id == 0)
-                };
-
-                return entities;
-            }
-            catch (Exception)
-            {
-                entities = entities.Where(e => e.Id == 0);
-            }
+                "Name" => entities.Where(e => e.Name.ToLower().Contains(value.ToLower())),
+                "Phone Number" => entities.Where(e => e.PhoneNumber.ToLower().Contains(value.ToLower())),
+                "Email" => entities.Where(e => e.Email.ToLower().Contains(value.ToLower())),
+                "Responsible Person Name" => entities.Where(e => e.ResponsiblePersonName.ToLower().Contains(value.ToLower())),
+                "Address" => entities.Where(e => e
+                .Address.TownName.ToLower()
+                .Contains(value.ToLower()) || e.Address
+                .StreetName.ToLower().Contains(value.ToLower()) || 
+                e.Address.StreetNumber.ToLower().Contains(value.ToLower())),
+                _ => entities.Where(e => e.Id == 0)
+            };
 
             return entities;
         }
