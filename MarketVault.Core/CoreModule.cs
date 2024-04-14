@@ -45,7 +45,8 @@ namespace MarketVault.Core
             .AddScoped<IOperationService, OperationService>()
             .AddScoped<IDocumentTypeService, DocumentTypeService>()
             .AddScoped<IProductOperationService, ProductOperationService>()
-            .AddScoped<IStatisticService, StatisticService>();
+            .AddScoped<IStatisticService, StatisticService>()
+            .AddScoped<IBarcodeService, BarcodeService>();
 
             services.AddMvc(options =>
                 options

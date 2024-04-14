@@ -97,7 +97,6 @@
             Barcodes
             <div>
                 <div id="barcodesDivContainer">
-
                 </div>
             </div>
         </div>
@@ -171,11 +170,12 @@
                 barcode.textContent = inputValue;
                 divElement.appendChild(barcode);
 
+                var collectionName = "Barcodes";
 
                 var domElement = document.createElement('input');
                 domElement.value = inputValue;
                 domElement.type = "hidden";
-                domElement.disabled = true;
+                domElement.name = collectionName;
                 divElement.appendChild(domElement);
 
                 parent.appendChild(divElement);

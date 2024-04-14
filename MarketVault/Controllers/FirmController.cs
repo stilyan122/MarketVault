@@ -223,7 +223,7 @@
             var serviceModel = new FirmServiceModel()
             {
                 Email = model.Email,
-                AddressId = model.AddressId,
+                AddressId = model.AddressId ?? 0,
                 PhoneNumber = model.PhoneNumber,
                 Name = model.Name,
                 ResponsiblePersonName = model.ResponsiblePersonName
@@ -311,7 +311,7 @@
             var serviceModel = new FirmServiceModel()
             {
                 Id = parsed,
-                AddressId = model.AddressId,
+                AddressId = model.AddressId ?? 0,
                 Email = model.Email,
                 Name = model.Name,
                 PhoneNumber = model.PhoneNumber,

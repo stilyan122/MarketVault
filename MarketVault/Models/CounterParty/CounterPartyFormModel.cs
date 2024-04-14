@@ -47,7 +47,7 @@
         /// Counter party bank id
         /// </summary>
         [Required(ErrorMessage = CounterPartyBankRequiredExceptionMessage)]
-        public int BankId { get; set; }
+        public int? BankId { get; set; }
 
         /// <summary>
         /// Counter party banks
@@ -74,7 +74,7 @@
         public string BankIBAN { get; set; } = string.Empty;
 
         [Required(ErrorMessage = CounterPartyFirmRequiredExceptionMessage)]
-        public int FirmId { get; set; }
+        public int? FirmId { get; set; }
 
         /// <summary>
         /// Counter party firms

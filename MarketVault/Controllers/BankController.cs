@@ -216,7 +216,7 @@
             var serviceModel = new BankServiceModel()
             {
                 Name = model.Name,
-                AddressId = model.AddressId
+                AddressId = model.AddressId ?? 0
             };
 
             await this.service.AddAsync(serviceModel);
@@ -298,7 +298,7 @@
             var serviceModel = new BankServiceModel()
             {
                 Id = parsed,
-                AddressId = model.AddressId,
+                AddressId = model.AddressId ?? 0,
                 Name = model.Name
             };
 

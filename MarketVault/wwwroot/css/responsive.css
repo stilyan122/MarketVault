@@ -1,0 +1,33 @@
+﻿@media (max-width: 1300px){
+    .layoutHeader > nav > div,
+    .layoutHeader > nav > div > div,
+    .layoutHeader > nav > div > div ul {
+        flex-direction: column;
+        align-items: center;
+        overflow: visible;
+    }
+
+    .layoutHeader > nav > div > a{
+        display: none;
+    }
+
+    .layoutHeader nav div div ul:nth-child(2) li,
+    .paginatorList li {
+        margin-top: 1em;
+    }
+
+    .layoutHeader {
+        margin-top: 4em;
+        margin-bottom: 10em;
+    }
+
+    .paginatorList{
+        padding: 2em;
+        flex-wrap: wrap;
+    }
+
+    p{
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    }
+}

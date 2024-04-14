@@ -52,7 +52,7 @@
         /// Firm address id
         /// </summary>
         [Required(ErrorMessage = FirmAddressRequiredExceptionMessage)]
-        public int AddressId { get; set; }
+        public int? AddressId { get; set; }
 
         /// <summary>
         /// Firm addresses
