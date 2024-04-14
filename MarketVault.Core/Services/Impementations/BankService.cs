@@ -82,27 +82,18 @@
 
             logger.LogWarning("Potential exception to be thrown.");
 
-            try
+            entities = sortType switch
             {
-                entities = sortType switch
-                {
-                    "Name" => entities.Where(e => e.Name.ToLower().Contains(value.ToLower())),
-                    "Address" => entities.Where(e => e
-                    .Address.TownName.ToLower()
-                    .Contains(value.ToLower()) || e.Address
-                    .StreetName.ToLower().Contains(value.ToLower()) ||
-                    e.Address.StreetNumber.ToLower().Contains(value.ToLower())),
-                    _ => entities.Where(e => e.Id == 0)
-                };
+                "Name" => entities.Where(e => e.Name.ToLower().Contains(value.ToLower())),
+                "Address" => entities.Where(e => e
+                .Address.TownName.ToLower()
+                .Contains(value.ToLower()) || e.Address
+                .StreetName.ToLower().Contains(value.ToLower()) ||
+                e.Address.StreetNumber.ToLower().Contains(value.ToLower())),
+                _ => entities.Where(e => e.Id == 0)
+            };
 
-                return entities;
-            }
-            catch (Exception)
-            {
-                entities = entities.Where(e => e.Id == 0);
-            }
-
-            return entities;
+            return entities;     
         }
 
         /// <summary>
