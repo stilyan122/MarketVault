@@ -22,6 +22,6 @@
         /// </summary>
         /// <param name="userId">User Id</param>
         /// <returns>Task<IEnumerable<OperationServiceModel>></returns>
-        Task<IEnumerable<OperationServiceModel>> GetUserOperations(string userId);
+        Task<IEnumerable<OperationServiceModel>> GetUserOperationsAsync(string userId);
     }
 }

@@ -87,7 +87,7 @@
         /// </summary>
         /// <param name="userId">User Id</param>
         /// <returns>Task<IEnumerable<OperationServiceModel>></returns>
-        public async Task<IEnumerable<OperationServiceModel>> GetUserOperations(string userId)
+        public async Task<IEnumerable<OperationServiceModel>> GetUserOperationsAsync(string userId)
         {
             var operations = await this.repository
                 .All()

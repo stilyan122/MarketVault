@@ -314,7 +314,7 @@
                 return BadRequest();
             }
 
-            var serviceModels = await this.service.GetUserOperations(User.Id());
+            var serviceModels = await this.service.GetUserOperationsAsync(User.Id());
 
             var viewModels = serviceModels.Select(sm => new OperationViewModel()
             {
