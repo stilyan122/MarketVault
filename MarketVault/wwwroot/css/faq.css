@@ -1,5 +1,11 @@
-﻿.FAQPageContainer{
+﻿@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 
+.FAQPageContainer {
+    font-family: "Merriweather", serif;
+}
+
+.FAQPageContainer .FAQPageTitle{
+    font-size: 2em;
 }
 
 .FAQPageContainer .accordion {
@@ -9,17 +15,18 @@
     padding: 18px;
     margin: 10px 0;
     width: 100%;
-    border: none;
+    border: 2px solid #801818;
     text-align: left;
     outline: none;
-    font-size: 15px;
+    font-size: 1.2em;
     transition: 0.4s;
 }
 
 .FAQPageContainer .active,
 .FAQPageContainer .accordion:hover {
     background-color: white;
-    border: 1px dashed deepskyblue;
+    border: 2px dashed #801818;
+    font-weight: 600;
 }
 
 .FAQPageContainer .accordion:after {
@@ -40,4 +47,17 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
+}
+
+.FAQPageContainer .panel p{
+    line-height: 2em;
+}
+
+.FAQPageContainer .FAQPageFooter{
+    margin: 2em;
+    margin-bottom: 5em;
+    font-size: 1.1em;
+    line-height: 1.5em;
+    text-decoration: underline;
+    text-align: center;
 }
