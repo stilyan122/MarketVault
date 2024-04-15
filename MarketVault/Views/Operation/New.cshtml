@@ -64,6 +64,7 @@
                                value="@JsonSerializer.Serialize(Model.Products[i])" />
 
                         <div class="newOperationCurrentProductContainer">
+                            <input asp-for="Products[i].Id" type="hidden" value="@Model.Products[i].Id" />
                             <input asp-for="Products[i].Name" disabled value="@Model.Products[i].Name" />
                             <span asp-validation-for="Products[i].Name"></span>
                             <input asp-for="Products[i].CashRegisterName" disabled value="@Model.Products[i].CashRegisterName" />

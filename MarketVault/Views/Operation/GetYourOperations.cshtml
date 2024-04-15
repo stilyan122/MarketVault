@@ -35,9 +35,13 @@
             );
         </script>
     </div>
+    @{
+        var counter = 200;
+    }
+
     @foreach (OperationViewModel operation in Model)
     {
-        <div class="yourOperationOperationContainer">
+        <div class="@counter">
             <script>
                 props = {
                     dateMade: '@operation.DateMade',
@@ -52,9 +56,11 @@
 
                 ReactDOM.render(
                     React.createElement(OperationViewComponent, props),
-                    document.getElementsByClassName('yourOperationOperationContainer')[0],
+                    document.getElementsByClassName('@counter')[0],
                 );
             </script>
         </div>
+
+        counter++;
     }   
 </div>

@@ -216,6 +216,19 @@
         }
 
         /// <summary>
+        /// Method to remove a user from a role (Asynchronous)
+        /// </summary>
+        /// <param name="user">ApplicationUser</param>
+        /// <param name="role">Role</param>
+        /// <returns>Task<IdentityResult> </returns>
+        public async Task<IdentityResult> RemoveUserFromRoleAsync(ApplicationUser user, string role)
+        {
+            logger.LogInformation("Remove user from role async method in user service invoked.");
+
+            return await this.userManager.RemoveFromRoleAsync(user, role);
+        }
+
+        /// <summary>
         /// Method to get user full name (Asynchronous)
         /// </summary>
         /// <param name="userId">User id</param>
