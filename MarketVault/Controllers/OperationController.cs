@@ -153,15 +153,15 @@
                         .DeserializeObject<ProductOperationModel>(json) ??
                         new ProductOperationModel();
 
-                var dbProduct = await this.productService.GetByIdAsync(productModel.Id);
+                var dbProduct = await this.productService.GetByIdAsync(productModel.Id ?? 1);
 
                 if (model.DocumentTypeId == 1 || model.DocumentTypeId == 2)
                 {
-                    dbProduct.Quantity += product.Quantity;
+                    dbProduct.Quantity += product.Quantity ?? 0;
                 }
                 else
                 {
-                    dbProduct.Quantity -= product.Quantity;
+                    dbProduct.Quantity -= product.Quantity ?? 0;
                 }
 
                 dbProduct.SalePrice = product.SalePrice;
@@ -171,16 +171,16 @@
             }
 
             serviceModel.TotalPurchasePriceWithoutVAT =
-                model.Products.Sum(p => p.PurchasePrice * p.Quantity);
+                model.Products.Sum(p => p.PurchasePrice * p.Quantity ?? 1);
             serviceModel.TotalPurchasePriceWithVAT =
-                model.Products.Sum(p => p.PurchasePrice * p.Quantity + 0.20M * p.PurchasePrice 
-                * p.Quantity);
+                model.Products.Sum(p => p.PurchasePrice * (p.Quantity ?? 1) + 0.20M * p.PurchasePrice 
+                * p.Quantity ?? 1);
 
             serviceModel.TotalSalePriceWithoutVAT =
-                model.Products.Sum(p => p.SalePrice * p.Quantity);
+                model.Products.Sum(p => p.SalePrice * p.Quantity ?? 1);
             serviceModel.TotalSalePriceWithVAT =
-                model.Products.Sum(p => p.SalePrice * p.Quantity + 0.20M * p.SalePrice
-                 * p.Quantity);
+                model.Products.Sum(p => p.SalePrice * p.Quantity ?? 1 + 0.20M * p.SalePrice
+                 * p.Quantity ?? 1);
 
             var products = new List<ProductOperationModel>();
 
@@ -195,9 +195,9 @@
                 DocumentTypeId = model.DocumentTypeId,
                 CounterPartyId = model.CounterPartyId,
                 Products = products.Select(p => new ProductForOperationServiceModel(){
-                    Id = p.Id,
+                    Id = p.Id ?? 1,
                     PurchasePrice = p.PurchasePrice,
-                    Quantity = p.Quantity,
+                    Quantity = p.Quantity ?? 1,
                     SalePrice = p.SalePrice
                 })
                 .ToList(),

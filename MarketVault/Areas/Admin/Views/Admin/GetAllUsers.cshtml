@@ -39,6 +39,14 @@
                 <td>@user.LastName</td>
                 <td>@user.Email</td>
                 <td>@user.Role</td>
+                @if (user.Role == "Worker")
+                {
+                    <td><a asp-controller="Admin" asp-action="RemoveWorkerRole" asp-route-userId="@user.Id">Remove from role "worker"</a></td>
+                }
+                else if (user.Role == "User")
+                {
+                    <td><a asp-controller="Admin" asp-action="AddWorkerRole" asp-route-userId="@user.Id">Add to role "worker"</a></td>
+                }
                 <td><a asp-controller="Admin" asp-action="RemoveUser" asp-route-userId="@user.Id">Remove</a></td>
             </tr>
         }

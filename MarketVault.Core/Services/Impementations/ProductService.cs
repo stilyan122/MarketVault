@@ -174,7 +174,7 @@
 
             await this.productMeasureService.AddAsync(mappingEntity);
 
-            foreach (Barcode barcode in product.Barcodes)
+            foreach (Barcode barcode in product.Barcodes.DistinctBy(b => b.Value))
             {
                 barcode.ProductId = entity.Id;
                 await this.barcodeService.AddAsync(barcode);

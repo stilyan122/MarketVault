@@ -115,7 +115,47 @@
         public async Task<IActionResult> RemoveUser(string userId)
         {
             var user = await this.userService.FindUserByIdAsync(userId);
+            if (user == null)
+            {
+                return BadRequest();
+            }
             await this.userService.DeleteUserAsync(user);
+
+            return RedirectToAction("GetAllUsers");
+        }
+
+        /// <summary>
+        /// Add user to worker role (Asynchronous)
+        /// </summary>
+        /// <param name="userId">User id</param>
+        /// <returns>Task<IActionResult></returns>
+        public async Task<IActionResult> AddWorkerRole(string userId)
+        {
+            var user = await this.userService.FindUserByIdAsync(userId);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+            await this.userService.RemoveUserFromRoleAsync(user, "User");
+            await this.userService.AddUserToRoleAsync(user, "Worker");
+
+            return RedirectToAction("GetAllUsers");
+        }
+
+        /// <summary>
+        /// Remove user from worker role (Asynchronous)
+        /// </summary>
+        /// <param name="userId">User id</param>
+        /// <returns>Task<IActionResult></returns>
+        public async Task<IActionResult> RemoveWorkerRole(string userId)
+        {
+            var user = await this.userService.FindUserByIdAsync(userId);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+            await this.userService.RemoveUserFromRoleAsync(user, "Worker");
+            await this.userService.AddUserToRoleAsync(user, "User");
 
             return RedirectToAction("GetAllUsers");
         }

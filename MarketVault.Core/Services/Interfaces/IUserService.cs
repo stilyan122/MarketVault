@@ -74,6 +74,14 @@
         public Task<IdentityResult> AddUserToRoleAsync(ApplicationUser user, string role);
 
         /// <summary>
+        /// Method to remove a user from a role (Asynchronous)
+        /// </summary>
+        /// <param name="user">ApplicationUser</param>
+        /// <param name="role">Role</param>
+        /// <returns>Task<IdentityResult> </returns>
+        public Task<IdentityResult> RemoveUserFromRoleAsync(ApplicationUser user, string role);
+
+        /// <summary>
         /// Method to find and return a user by email (Asynchronous)
         /// </summary>
         /// <param name="email">Email to search for</param>

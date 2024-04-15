@@ -41,6 +41,7 @@
     <link rel="stylesheet" href="~/css/searchPanel.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/faq.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/responsive.css" asp-append-version="true" />
+    <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/jquery-ui.min.js"></script>
 </head>
 <body>
     <header class="layoutHeader">
@@ -154,8 +155,6 @@
             @RenderBody()
         </main>
     </div>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

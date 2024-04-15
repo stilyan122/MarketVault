@@ -14,14 +14,14 @@
         /// <summary>
         /// Model id
         /// </summary>
-        [Required]
-        public int Id { get; set; }
+        [Required(ErrorMessage = ProductRequiredExceptionMessage)]
+        public int? Id { get; set; }
 
         /// <summary>
         /// Model quantity
         /// </summary>
-        [Required]
-        public decimal Quantity { get; set; }
+        [Required(ErrorMessage = ProductQuantityExceptionMessage)]
+        public decimal? Quantity { get; set; }
 
         /// <summary>
         /// Model name

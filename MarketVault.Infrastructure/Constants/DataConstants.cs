@@ -149,6 +149,12 @@
         /// </summary>
         public static class ExceptionMessagesConstants
         {
+            public const string ProductRequiredExceptionMessage
+               = "Field for product is required!";
+
+            public const string ProductQuantityExceptionMessage
+              = "Field for product quantity is required!";
+
             public const string ProductNameRequiredExceptionMessage
                 = "Field for name is required!";
             public const string ProductNameLengthExceptionMessage
