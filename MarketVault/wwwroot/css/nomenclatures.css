@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 
 /* Global */
 
@@ -14,6 +15,10 @@ p, h1, h2, h3, h4, h5, h6 {
 
 textarea{
     resize: none;
+}
+
+select, option{
+    background-color: white;
 }
 
 *{
@@ -856,14 +861,16 @@ body{
             width: 20em;
         }
 
-#addProductBtn {
+#addProductBtn,
+#addBarcodeBtn {
     align-self: center;
     padding: 12px 32px;
     border-radius: 8px;
-    margin-top: 50px;
+    margin-top: 1em;
     border: none;
     background-color: #efcc00;
     color: white;
+    font-weight: 700;
 }
 
 #addProductBtn:hover {
@@ -2974,8 +2981,7 @@ body{
 }
 
 #popUpContainer {
-    background: #fff;
-    padding: 20px;
+    background: #e3e3e3;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     text-align: center;
@@ -2984,6 +2990,46 @@ body{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     background-color: #e5dfda;
     flex: 1;
+}
+
+#popUpContainer #barcodeInputField{
+    padding: 1em 2em;
+    width: 25em;
+    margin: auto;
+    margin-top: 10em;
+    font-size: 0.9em;
+    display: block;
+}
+
+#popUpContainer #barcodeValidation{
+    color: red;
+    display: block;
+}
+
+#popUpContainer #xBtnDiv{
+    display: block;
+}
+
+#popUpContainer #addBarcodeSubmitBtn{
+    margin: auto;
+    margin-bottom: 6em;
+    margin-top: 2em;
+    font-size: 1em;
+    padding: 0.5em;
+    background-color: #efcc00;
+    color: white;
+    border-radius: 8px;
+}
+
+#popUpContainer #addBarcodeSubmitBtn:hover{
+    background-color: #c9ad04;
+}
+
+#popUpContainer #xBtn{
+    margin-top: 1em;
+    margin-left: 1em;
+    color: red;
+    display: flex;
 }
 
 .barcodes {
@@ -3001,16 +3047,26 @@ body{
     margin-left: 2px;
     margin-right: 2px;
     margin-bottom: 2px;
-    background-color: red;
+    background-color: white;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding: 0.2em;
+    margin-top: 0.5em;
+    border: 2px solid #801818;
 }
 
 .removeBarcode {
     font-size: 16px;
     margin-bottom: 4px;
+    color: #801818;
 }
+
+.removeBarcode:hover{
+    cursor: pointer;
+}
+
 /* Default page */
+
 .layoutHeader {
     width: 100%;
     height: 20em;
@@ -3205,6 +3261,7 @@ body{
 }
 
 /* Operation */
+
 .chooseOperationContainer {
     background-color: #FAF1A5;
     width: 100%;
@@ -3239,9 +3296,42 @@ body{
     border: none;
 }
 
+#addProductToOperationForm {
+    background-color: #F8AD6C;
+    font-family: "Merriweather", serif;
+    padding: 2em;
+    font-size: 1.5em;
+}
+
+#addProductToOperationForm > div > div{
+    margin: 1em;
+    display: flex;
+}
+
+#addProductToOperationForm select,
+#addProductToOperationForm input {
+    margin-left: auto;
+    width: 20em;
+}
+
+#addProductToOperationSubmitBtn {
+    margin: auto;
+    display: flex;
+    padding: 0.5em 2.4em;
+    border-radius: 5px;
+    font-size: 0.7em;
+    background-color: #cf8240;
+    border: none;
+    color: white;
+}
+
+#addProductToOperationSubmitBtn:hover{
+    background-color: #b87237;
+}
+
 /* Admin Area */
 
-.adminTitle{
+.adminTitle {
     color: red;
     height: 2em;
     margin-top: 2em;
