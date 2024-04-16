@@ -58,7 +58,9 @@
         /// <returns>Task<int></returns>
         public async Task<int> GetCountAsync()
         {
-            return await this.repository.AllAsReadOnly().CountAsync();
+            return await this.repository.AllAsReadOnly()
+                .Where(a => a.IsActive)
+                .CountAsync();
         }
 
         /// <summary>

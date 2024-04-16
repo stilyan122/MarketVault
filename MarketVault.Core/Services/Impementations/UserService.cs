@@ -61,7 +61,8 @@
         /// <returns>Task<int></returns>
         public async Task<int> GetUsersCountAsync()
         {
-            return await this.userManager.Users.CountAsync();
+            return await this.userManager.Users
+                .CountAsync();
         }
 
         /// <summary>

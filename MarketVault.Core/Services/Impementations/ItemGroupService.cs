@@ -68,7 +68,9 @@
         /// <returns>Task<int></returns>
         public async Task<int> GetCountAsync()
         {
-            return await this.repository.AllAsReadOnly().CountAsync();
+            return await this.repository.AllAsReadOnly()
+                .Where(ig => ig.IsActive)
+                .CountAsync();
         }
 
         /// <summary>
@@ -90,8 +92,8 @@
             entities = sortType switch
             {
                 "Name" => entities.Where(e => e.Name.ToLower().Contains(value.ToLower())),
-                "Products Count" when int.TryParse(value, out var productsCount) =>
-                    entities.Where(e => e.Products.Count() == productsCount),
+                "Minimum Number of Products in Item Group" when int.TryParse(value, out var productsCount) =>
+                    entities.Where(e => e.Products.Count() >= productsCount),
                 _ => entities.Where(e => e.Id == 0)
             };
 

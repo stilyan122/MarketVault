@@ -165,7 +165,9 @@
                     BankName = sm.Bank.Name,
                     FirmName = sm.Firm.Name,
                     ValueAddedTaxLawId = sm.ValueAddedTaxLawId,
-                    VATNumber = sm.VATNumber
+                    VATNumber = sm.VATNumber,
+                    Information = sm.Name + "-" + sm.Firm.Name.Substring(0, 3) +
+                    sm.Bank.Name.Substring(0, 2) + sm.VATNumber
                 })
                 .ToList();
 
