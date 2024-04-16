@@ -261,14 +261,12 @@
             if (!ModelState.IsValid || product == null)
             {
                 model.Products = await this.GetProducts();
-                this.TempData["OperationTempDataModel"] = JsonConvert
-                .SerializeObject(model);
+
                 return View("AddProductToOperation", model);
             }
 
             var operationTempDataModel = JsonConvert
-                .DeserializeObject
-                <OperationTempDataModel>(
+                .DeserializeObject<OperationTempDataModel>(
                 TempData.Peek("OperationTempDataModel")?.ToString() ?? "");
 
             if (operationTempDataModel?.DocumentTypeId == 3 ||

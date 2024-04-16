@@ -70,63 +70,64 @@
                                 </li>
 
                                 <li>
-                                    <select id="selectOption">
+                                    <select class="selectOption" onchange="redirect(0)">
                                         <option disabled selected value="">Nomenclatures</option>
-                                        <option value="Option1">Products</option>
-                                        <option value="Option2">Counter Parties</option>
-                                        <option value="Option3">Item Groups</option>
-                                        <option value="Option4">Firms</option>
-                                        <option value="Option5">Banks</option>
-                                        <option value="Option6">Addresses</option>
+                                        <option value="@Url.Action("All", "Product")">Products</option>
+                                        <option value="@Url.Action("All", "CounterParty")">Counter Parties</option>
+                                        <option value="@Url.Action("All", "ItemGroup")">Item Groups</option>
+                                        <option value="@Url.Action("All", "Firm")">Firm</option>
+                                        <option value="@Url.Action("All", "Bank")">Banks</option>
+                                        <option value="@Url.Action("All", "Address")">Addresses</option>
                                     </select>
+
                                 </li>
                                 <li>
-                                    <select id="selectOption2">
-                                        <option disabled selected value="">Add Nomenclature</option>
-                                        <option value="Option1">Add a product</option>
-                                        <option value="Option2">Add a counter party</option>
-                                        <option value="Option3">Add an item group</option>
-                                        <option value="Option4">Add a firm</option>
-                                        <option value="Option5">Add a bank</option>
-                                        <option value="Option6">Add an address</option>
+                                    <select class="selectOption" onchange="redirect(1)">
+                                        <option disabled selected value="">Add a nomenclature</option>
+                                        <option value="@Url.Action("Add", "Product")">Add a product</option>
+                                        <option value="@Url.Action("Add", "CounterParty")">Add a counter party</option>
+                                        <option value="@Url.Action("Add", "ItemGroup")">Add an item group</option>
+                                        <option value="@Url.Action("Add", "Firm")">Add a firm</option>
+                                        <option value="@Url.Action("Add", "Bank")">Add a bank</option>
+                                        <option value="@Url.Action("Add", "Address")">Add an address</option>
                                     </select>
                                 </li>
 
                                 <li>
-                                    <select id="selectOption3">
+                                    <select class="selectOption" onchange="redirect(2)">
                                         <option disabled selected value="">Operations</option>
-                                        <option value="Option1">Add operation</option>
-                                        <option value="Option2">Your operations</option>
+                                        <option value="@Url.Action("New", "Operation")">Add an operation</option>
+                                        <option value="@Url.Action("GetYourOperations", "Operation")">Your operations</option>
                                     </select>
                                 </li>
                             }
                             else if (role == "Worker")
                             {
                                 <li>
-                                    <select id="selectOption">
+                                    <select class="selectOption" onchange="redirect(3)">
                                         <option disabled selected value="">Nomenclatures</option>
-                                        <option value="Option1">Products</option>
-                                        <option value="Option2">Counter Parties</option>
-                                        <option value="Option3">Item Groups</option>
-                                        <option value="Option4">Firms</option>
-                                        <option value="Option5">Banks</option>
-                                        <option value="Option6">Addresses</option>
+                                        <option value="@Url.Action("All", "Product")">Products</option>
+                                        <option value="@Url.Action("All", "CounterParty")">Counter Parties</option>
+                                        <option value="@Url.Action("All", "ItemGroup")">Item Groups</option>
+                                        <option value="@Url.Action("All", "Firm")">Firm</option>
+                                        <option value="@Url.Action("All", "Bank")">Banks</option>
+                                        <option value="@Url.Action("All", "Address")">Addresses</option>
                                     </select>
                                 </li>
                                 <li>
-                                    <select id="selectOption2">
-                                        <option disabled selected value="">Add Nomenclature</option>
-                                        <option value="Option1">Add a product</option>
-                                        <option value="Option2">Add a counter party</option>
-                                        <option value="Option3">Add an item group</option>
-                                        <option value="Option4">Add a firm</option>
-                                        <option value="Option5">Add a bank</option>
-                                        <option value="Option6">Add an address</option>
+                                    <select class="selectOption" onchange="redirect(4)">
+                                        <option disabled selected value="">Add a nomenclature</option>
+                                        <option value="@Url.Action("Add", "Product")">Add a product</option>
+                                        <option value="@Url.Action("Add", "CounterParty")">Add a counter party</option>
+                                        <option value="@Url.Action("Add", "ItemGroup")">Add an item group</option>
+                                        <option value="@Url.Action("Add", "Firm")">Add a firm</option>
+                                        <option value="@Url.Action("Add", "Bank")">Add a bank</option>
+                                        <option value="@Url.Action("Add", "Address")">Add an address</option>
                                     </select>
                                 </li>
 
                                 <li>
-                                    <select id="selectOption3">
+                                    <select class="selectOption3" onchange="redirect(5)">
                                         <option disabled selected value="">Operations</option>
                                         <option value="Option1">Add operation</option>
                                         <option value="Option2">Your operations</option>
@@ -137,11 +138,11 @@
                             else
                             {
                                 <li>
-                                    <select id="selectOption">
+                                    <select class="selectOption" onchange="redirect(6)">
                                         <option disabled selected value="">Nomenclatures</option>
-                                        <option value="Option1">Products</option>
-                                        <option value="Option2">Counter Parties</option>
-                                        <option value="Option3">Item Groups</option>
+                                        <option value="@Url.Action("All", "Product")">Products</option>
+                                        <option value="@Url.Action("All", "CounterParty")">Counter Parties</option>
+                                        <option value="@Url.Action("All", "ItemGroup")">Item Groups</option>
                                     </select>
                                 </li>
                             }
@@ -162,50 +163,11 @@
 </html>
 
 <script>
-    document.getElementById("selectOption").addEventListener("change", function () {
-        var optionValue = this.value;
-        if (optionValue === "Option1") {
-            window.location.href = "/Product/All";
-        } else if (optionValue === "Option2") {
-            window.location.href = "/CounterParty/All";
-        } else if (optionValue === "Option3") {
-            window.location.href = "/ItemGroup/All";
-        } else if (optionValue === "Option4") {
-            window.location.href = "/Firm/All";
-        } else if (optionValue === "Option5") {
-            window.location.href = "/Bank/All";
-        } else if (optionValue === "Option6") {
-            window.location.href = "/Address/All";
+    function redirect(index) {
+        var selectElement = document.getElementsByClassName("selectOption")[index];
+        var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+        if (selectedOption !== "") {
+            window.location.href = selectedOption;
         }
-    });
-
-    if (document.getElementById("selectOption2") != undefined) { 
-        document.getElementById("selectOption2").addEventListener("change", function () {
-            var optionValue = this.value;
-            if (optionValue === "Option1") {
-                window.location.href = "/Product/Add";
-            } else if (optionValue === "Option2") {
-                window.location.href = "/CounterParty/Add";
-            } else if (optionValue === "Option3") {
-                window.location.href = "/ItemGroup/Add";
-            } else if (optionValue === "Option4") {
-                window.location.href = "/Firm/Add";
-            } else if (optionValue === "Option5") {
-                window.location.href = "/Bank/Add";
-            } else if (optionValue === "Option6") {
-                window.location.href = "/Address/Add";
-            }
-        });
-    }
-
-    if (document.getElementById("selectOption3") != undefined) {
-        document.getElementById("selectOption3").addEventListener("change", function () {
-            var optionValue = this.value;
-            if (optionValue === "Option1") {
-                window.location.href = "/Operation/New";
-            } else if (optionValue === "Option2") {
-                window.location.href = "/Operation/GetYourOperations";
-            }
-        });
     }
 </script>

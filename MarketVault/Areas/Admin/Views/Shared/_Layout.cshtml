@@ -32,6 +32,7 @@
     <header class="layoutHeader">
         <nav>
             <div>
+                <a asp-area="" asp-controller="Home" asp-action="Index"></a>
                 @if (isLoggedIn)
                 {
                     <div>
@@ -69,7 +70,7 @@
             </div>
         </nav>
     </header>
-    <h3 class="adminTitle">This area is for administrators! Welcome, admin!</h3>
+
     <div class="container">
         <main role="main">
             @RenderBody()

@@ -5,6 +5,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 /* Global */
 
@@ -36,6 +38,11 @@ html, body {
 
 body{
     background-color: #ffffff;
+}
+
+svg{
+    display: flex;
+    justify-content: center;
 }
 
 .container{
@@ -101,16 +108,15 @@ body{
     }
 
 .counterPartyContainer .counterPartyComponentContainer div {
-    display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto auto;
+    display: flex;
     gap: 20px;
     justify-content: center;
     align-items: center;
 }
 
 .counterPartyContainer .counterPartyComponentContainer div p {
-        width: 100%;
-    }
+    width: 15%;
+}
 
 .counterPartyViewContainer {
     padding: 3em;
@@ -564,6 +570,7 @@ body{
     border: 0.01em solid black;
     border-radius: 0.3em;
     color: white;
+    cursor: pointer;
 }
 
 #searchProductBtn:hover {
@@ -2895,10 +2902,10 @@ body{
     }
 
 .deleteItemGroupContainer {
-    background: hsla(300, 90%, 70%, 1);
-    background: linear-gradient( 270deg, hsla(300, 90%, 70%, 1) 0%, hsla(125, 100%, 79%, 1) 100% );
-    background: -moz-linear-gradient( 270deg, hsla(300, 90%, 70%, 1) 0%, hsla(125, 100%, 79%, 1) 100% );
-    background: -webkit-linear-gradient( 270deg, hsla(300, 90%, 70%, 1) 0%, hsla(125, 100%, 79%, 1) 100% );
+    background: hsla(300, 80%, 76%, 1);
+    background: linear-gradient(270deg, hsla(300, 80%, 76%, 1) 0%, hsla(15, 92%, 65%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(300, 80%, 76%, 1) 0%, hsla(15, 92%, 65%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(300, 80%, 76%, 1) 0%, hsla(15, 92%, 65%, 1) 100%);
     padding: 20px;
     border-radius: 12px;
     -webkit-box-shadow: 1px 5px 39px -1px rgba(0, 0, 0, 0.51);
@@ -2950,7 +2957,7 @@ body{
 
 .submitItemGroupDeleteBtnContainer button {
         font-size: 1.8em;
-        background-color: #f76cf7;
+        background-color: #F391F3;
         color: white;
         border-radius: 8px;
         border: none;
@@ -3263,6 +3270,7 @@ body{
 /* Operation */
 
 .chooseOperationContainer {
+    font-family: "Mulish", sans-serif;
     background-color: #FAF1A5;
     width: 100%;
     height: 100%;
@@ -3275,25 +3283,65 @@ body{
     margin-top: 1em;
 }
 
-.chooseOperationContainer #chooseOperationForm div div{
+.chooseOperationContainer #chooseOperationForm > div > div{
     display: flex;
     justify-content: space-between;
     gap: 1em;
-    margin: 1em 0;
+    margin: 0.5em 0;
+    margin-top: 0;
+}
+
+.chooseOperationContainer #chooseOperationForm div span{
+    color: red;
+    font-size: 0.9em;
+}
+
+.chooseOperationContainer .newOperationProductsContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.chooseOperationContainer .newOperationCurrentProductContainer{
+    display: flex;
+    gap: 0.5em;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    font-size: 0.9em;
+    margin-bottom: 0;
+}
+
+.chooseOperationContainer .newOperationCurrentProductContainer p,
+.chooseOperationContainer .newOperationCurrentProductContainer div{
+    width: 20%;
+}
+
+.chooseOperationContainer input {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    overflow: scroll;
+    padding: 1em;
 }
 
 .addOperationBtns{
     display: flex;
     justify-content: center;
     gap: 1em;
+    margin-top: 2em;
 }
 
-.addOperationBtns button{
+.addOperationBtns button {
     background-color: #911d25;
     color: white;
-    padding: 0.5em;
+    padding: 1.2em;
+    font-size: 0.6em;
     border-radius: 8px;
     border: none;
+}
+
+.addOperationBtns button:hover {
+    background-color: #75171e;
 }
 
 #addProductToOperationForm {
@@ -3306,6 +3354,11 @@ body{
 #addProductToOperationForm > div > div{
     margin: 1em;
     display: flex;
+}
+
+#addProductToOperationForm > div span{
+    color: red;
+    font-size: 0.9em;
 }
 
 #addProductToOperationForm select,
@@ -3329,11 +3382,134 @@ body{
     background-color: #b87237;
 }
 
+.yourOperationsContainer {
+    font-family: "DM Sans", sans-serif;
+}
+
+.yourOperationOperationFirstContainer {
+    background-color: #c40233;
+    border-radius: 8px;
+    color: white;
+    font-weight: 800;
+    padding: 2em;
+    text-align: center;
+}
+
+.yourOperationOperationContainer {
+    padding: 2em;
+    text-align: center;
+    border: 2px solid #c40233;
+    margin-top: 2em;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.yourOperationOperationFirstContainer div,
+.yourOperationOperationContainer div {
+    display: flex;
+    gap: 26px;
+    width: 100%;
+}
+
+.yourOperationOperationFirstContainer div p,
+.yourOperationOperationContainer div p{
+    width: 12.5%;
+}
+
+.successfullyAddedOperationContainer {
+    text-align: center;
+    font-family: "Noto Sans", sans-serif;
+}
+
+.successfullyAddedOperationContainer p{
+    font-size: 3em;
+    color: #32cd32;
+    font-weight: 600;
+}
+
+.successfullyAddedOperationContainer a{
+    font-size: 1.6em;
+    text-decoration: none;
+    background-color: white;
+    padding: 0.5em 1em;
+    border-radius: 8px;
+    color: #32cd32;
+    border: 3px solid #32cd32;
+}
+
+.successfullyAddedOperationContainer a:hover{
+    background-color: #e6e8e6;
+}
+
 /* Admin Area */
 
 .adminTitle {
-    color: red;
+    text-align: center;
+    color: #860111;
     height: 2em;
     margin-top: 2em;
     overflow: visible;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 2em;
+}
+
+/* Statistics */
+
+.statisticsContainer {
+    display: flex;
+    gap: 1em;
+    font-size: 1em;
+    font-family: "Noto Sans", sans-serif;
+    flex-direction: column;
+    align-items: center;
+}
+
+.statisticsContainer div{
+    background-color: white;
+    border: 3px solid #00b7eb;
+    display: flex;
+    gap: 1em;
+    font-size: 1.2em;
+    width: 100%;
+    padding: 1em;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.statisticsContainer div p:nth-child(2){
+    margin-left: auto;
+}
+
+.statisticsContainer div p:nth-child(1){
+    text-decoration: underline;
+}
+
+/* All users page */
+
+.allUsersTable {
+    padding: 3em;
+    margin: auto;
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    width: 100%;
+}
+
+.allUsersTable tr:nth-child(1){
+    background-color: #ff8c00;
+    color: white;
+    font-weight: 800;
+    text-align: center;
+}
+
+.allUsersTable td{
+    padding: 2em;
+    text-align: center;
+}
+
+.allUsersTable .allUsersCell{
+     border: 1px solid #ff8c00;
+}
+
+.allUsersTable a {
+    text-decoration: none;
 }

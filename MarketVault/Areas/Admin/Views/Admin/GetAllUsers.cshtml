@@ -23,31 +23,31 @@
     {
         <partial name="_PagerPartial" model="@pager" />
     }
-    <table>
+    <table class="allUsersTable">
         <tr>
             <td>Id</td>
-            <td>FirstName</td>
-            <td>LastName</td>
+            <td>First Name</td>
+            <td>Last Name</td>
             <td>Email</td>
             <td>Role</td>
         </tr>
         @foreach (UserViewModel user in Model)
         {
             <tr>
-                <td>@user.Id</td>
-                <td>@user.FirstName</td>
-                <td>@user.LastName</td>
-                <td>@user.Email</td>
-                <td>@user.Role</td>
+                <td class="allUsersCell">@user.Id</td>
+                <td class="allUsersCell">@user.FirstName</td>
+                <td class="allUsersCell">@user.LastName</td>
+                <td class="allUsersCell">@user.Email</td>
+                <td class="allUsersCell">@user.Role</td>
                 @if (user.Role == "Worker")
                 {
-                    <td><a asp-controller="Admin" asp-action="RemoveWorkerRole" asp-route-userId="@user.Id">Remove from role "worker"</a></td>
+                    <td class="allUsersBtnCell"><a asp-controller="Admin" asp-action="RemoveWorkerRole" asp-route-userId="@user.Id">Remove from role "worker"</a></td>
                 }
                 else if (user.Role == "User")
                 {
-                    <td><a asp-controller="Admin" asp-action="AddWorkerRole" asp-route-userId="@user.Id">Add to role "worker"</a></td>
+                    <td class="allUsersBtnCell"><a asp-controller="Admin" asp-action="AddWorkerRole" asp-route-userId="@user.Id">Add to role "worker"</a></td>
                 }
-                <td><a asp-controller="Admin" asp-action="RemoveUser" asp-route-userId="@user.Id">Remove</a></td>
+                <td class="allUsersBtnCell"><a asp-controller="Admin" asp-action="RemoveUser" asp-route-userId="@user.Id">Remove</a></td>
             </tr>
         }
     </table>
