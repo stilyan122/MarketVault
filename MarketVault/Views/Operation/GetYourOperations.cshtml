@@ -15,12 +15,12 @@
 <script src="@Url.Content("~/js/marketvault/src/Components/OperationViewComponent.jsx")"></script>
 
 <div class="yourOperationsContainer">
-    <div class="yourOperationOperationContainer">
+    <div class="yourOperationOperationFirstContainer">
 
         <script>
             props = {
                 dateMade: 'Operation Date Made',
-                productsCount: 'Operation Products Count',
+                productsCount: 'Operation Number Of Products',
                 counterParty: 'Operation Counter Party',
                 documentType: 'Operation Document Type',
                 totalPurchasePriceWithoutVAT: 'Operation Total Purchase Price Without VAT',
@@ -31,17 +31,18 @@
 
             ReactDOM.render(
                 React.createElement(OperationViewComponent, props),
-                document.getElementsByClassName('yourOperationOperationContainer')[0],
+                document.getElementsByClassName('yourOperationOperationFirstContainer')[0],
             );
         </script>
     </div>
+
     @{
         var counter = 200;
     }
 
     @foreach (OperationViewModel operation in Model)
     {
-        <div class="@counter">
+        <div class="@counter yourOperationOperationContainer">
             <script>
                 props = {
                     dateMade: '@operation.DateMade',
@@ -51,7 +52,7 @@
                     totalPurchasePriceWithoutVAT: '@operation.TotalPurchasePriceWithoutVAT',
                     totalPurchasePriceWithVAT: '@operation.TotalPurchasePriceWithVAT',
                     totalSalePriceWithoutVAT: '@operation.TotalSalePriceWithoutVAT',
-                    totalSalePriceWithoutVAT: '@operation.TotalSalePriceWithVAT'
+                    totalSalePriceWithVAT: '@operation.TotalSalePriceWithVAT'
                 };
 
                 ReactDOM.render(
