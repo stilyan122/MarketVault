@@ -135,7 +135,8 @@
                 {
                     Id = sm.Id,
                     Name = sm.Name,
-                    ProductsCount = sm.Products.Count()
+                    ProductsCount = sm.Products.Count(),
+                    Information = sm.Name + " " + sm.Products.Count()
                 })
                 .ToList();
 

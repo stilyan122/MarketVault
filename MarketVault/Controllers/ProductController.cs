@@ -12,6 +12,7 @@
     using MarketVault.Models.Search;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.VisualBasic;
     using System;
     using System.Web;
     using static MarketVault.Infrastructure.Constants
@@ -177,7 +178,11 @@
                     Name = sm.Name,
                     PurchasePrice = sm.PurchasePrice,
                     Quantity = sm.Quantity,
-                    SalePrice = sm.SalePrice
+                    SalePrice = sm.SalePrice,
+                    Information = sm.DateAdded.ToString().Substring(0, 4) +
+                    sm.Name.Substring(0, 5) + sm.Measure.Name +
+                    sm.SalePrice.ToString().Substring(0, 1)
+                    + sm.CashRegisterName.Substring(0, 3)
                 })
                 .ToList();
 

@@ -151,7 +151,9 @@
                     AddressId = sm.AddressId,
                     StreetName = sm.Address.StreetName,
                     StreetNumber = sm.Address.StreetNumber,
-                    TownName = sm.Address.TownName
+                    TownName = sm.Address.TownName,
+                    Information = sm.Name + "-" + sm.Address.TownName.Substring(0, 3)
+                    + sm.Address.StreetNumber + sm.Address.StreetName.Substring(0, 5)
                 })
                 .ToList();
 

@@ -158,7 +158,9 @@
                     ResponsiblePersonName = sm.ResponsiblePersonName,
                     StreetName = sm.Address.StreetName,
                     StreetNumber = sm.Address.StreetNumber,
-                    TownName = sm.Address.TownName
+                    TownName = sm.Address.TownName,
+                    Information = sm.Email.Substring(0, 2) + sm.PhoneNumber.Substring(5)
+                    + sm.Address.StreetNumber + sm.Address.StreetName.Substring(0, 5)
                 })
                 .ToList();
 
