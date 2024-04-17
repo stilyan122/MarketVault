@@ -25,7 +25,9 @@ As for the DataBase - MS SQL Server.
 ### Functionalities
 
 => CRUD on products, item groups, firms, banks, addresses
+
 => Operation - creating / looking your own
+
 => Admin Area
 
 ### Distribution
