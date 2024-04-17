@@ -9,11 +9,13 @@
         <input type="text" placeholder="Search firm(s)..."
                asp-for="Query"
                name="searchQuery"
-               id="searcherInput" />
+               id="searcherInput" 
+               onchange="toggleSearchButton()" />
 
         <select asp-for="SortingType"
                 name="searchSortType"
-                id="searcherSelect">
+                id="searcherSelect"
+                onchange="toggleSearchButton()" >
 
             <option disabled selected value="">Search with...</option>
             <option>Name</option>
@@ -32,3 +34,23 @@
         <input id="searchFirmBtn" type="submit" value="Search" />
     </form>
 </div>
+
+<script>
+    const searchBtn = document.getElementById('searchFirmBtn');
+    const searchQuery = document.getElementById('searcherInput');
+    const searchSelect = document.getElementById('searcherSelect');
+
+    if (searchQuery.value != '' && searchSelect.value != '') {
+        searchBtn.disabled = false;
+    } else {
+        searchBtn.disabled = true;
+    }
+
+    function toggleSearchButton() {
+        if (searchQuery.value != '' && searchSelect.value != '') {
+            searchBtn.disabled = false;
+        } else {
+            searchBtn.disabled = true;
+        }
+    }
+</script>

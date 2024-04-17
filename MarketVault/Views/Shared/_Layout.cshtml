@@ -133,8 +133,8 @@
                                 <li>
                                     <select class="selectOption" onchange="redirect(this)">
                                         <option disabled value="">Operations</option>
-                                        <option value="Option1">Add operation</option>
-                                        <option value="Option2">Your operations</option>
+                                        <option value="@Url.Action("New", "Operation")">Add operation</option>
+                                        <option value="@Url.Action("GetYourOperations", "Operation")">Your operations</option>
                                     </select>
                                 </li>
 
@@ -171,7 +171,6 @@
     window.onload = e => {
         const selectElements = document.getElementsByClassName('selectOption');
         const currentUrl = '/' + window.location.href.split('/').slice(-2).join('/');
-        let selectedList = false;
 
         for (var select of selectElements) {
             let selectedOptionExists = false;
@@ -179,17 +178,11 @@
                 if (option.value === currentUrl) {
                     option.selected = 'selected';
                     selectedOptionExists = true;
-                    selectedList = true;
-                    break;
                 }
             }
 
             if (!selectedOptionExists){
                 select[0].selected = 'selected';
-            }
-
-            if (selectedList) {
-                break;
             }
         }
     };

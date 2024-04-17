@@ -48,17 +48,6 @@
         {
             logger.LogInformation("Home/Index action has been invoked.");
 
-            if ((this.User?.Identity?.IsAuthenticated ?? false) && 
-                isAdminForPublicInterface == false)
-            {
-                if (await this.userService
-                .IsInRoleAsync(new string[] { AdminRole },
-                User.Id()))
-                {
-                    return RedirectToAction("Index", AdminRole, new { area = AdminRole });
-                }
-            }
-
             try
             {
                 // Create roles
@@ -137,6 +126,17 @@
             catch (UserNotFoundException exc)
             {
                 logger.LogError(exc, "Home/Index");
+            }
+
+            if ((this.User?.Identity?.IsAuthenticated ?? false) && 
+                isAdminForPublicInterface == false)
+            {
+                if (await this.userService
+                .IsInRoleAsync(new string[] { AdminRole },
+                User.Id()))
+                {
+                    return RedirectToAction("Index", AdminRole, new { area = AdminRole });
+                }
             }
 
             return View();

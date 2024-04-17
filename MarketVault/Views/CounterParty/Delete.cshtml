@@ -43,6 +43,11 @@
             <h4>@Model.FirmAddress</h4>
         </div>
 
+        <p class="areYouSureMessage">
+            Are you sure you want to remove counter party? If no,
+            <a asp-action="All" asp-controller="CounterParty">back to all counter parties</a>
+        </p>
+
         <div class="submitCounterPartyDeleteBtnContainer">
             <button type="submit">Delete Counter party</button>
         </div>

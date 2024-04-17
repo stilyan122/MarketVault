@@ -30,7 +30,9 @@ select, option{
 button,
 a, 
 button:hover,
-a:hover {
+a:hover,
+input,
+input:hover { 
     cursor: pointer;
 }
 
@@ -3518,4 +3520,12 @@ svg{
 
 .allUsersTable a {
     text-decoration: none;
+}
+
+/* Delete nomenclature page */
+
+.areYouSureMessage{
+    font-size: 1.8em;
+    text-align: center;
+    color: red;
 }

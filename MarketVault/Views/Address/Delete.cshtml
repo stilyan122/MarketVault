@@ -23,6 +23,12 @@
             <h4>@Model.StreetNumber</h4>
         </div>
 
+        <p class="areYouSureMessage">
+            Are you sure you want to remove address? Keep in mind that deleting it will
+            also delete related banks, firms and counter parties. If no,
+            <a asp-action="All" asp-controller="Address">back to all addresses</a>
+        </p>
+
         <div class="submitAddressDeleteBtnContainer">
             <button type="submit">Delete Address</button>
         </div>
