@@ -289,6 +289,11 @@
                 return BadRequest();
             }
 
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
             try
             {
                 var entity = await this.service.GetByIdAsync(parsed);
