@@ -317,7 +317,7 @@
             var viewModels = serviceModels.Select(sm => new OperationViewModel()
             {
                 Id = sm.Id,
-                DateMade = DateTime.UtcNow,
+                DateMade = sm.DateMade,
                 DocumentType = sm.DocumentType.Name,
                 CounterParty = sm.CounterParty.Name,
                 ProductsCount = sm.ProductsCount,
@@ -326,7 +326,8 @@
                 TotalSalePriceWithoutVAT = sm.TotalSalePriceWithoutVAT,
                 TotalSalePriceWithVAT = sm.TotalSalePriceWithVAT,
                 UserId = User.Id()
-            });
+            })
+                .OrderByDescending(sm => sm.DateMade);
 
             return View(viewModels);
         }
