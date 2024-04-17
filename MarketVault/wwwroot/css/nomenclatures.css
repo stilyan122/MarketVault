@@ -28,9 +28,12 @@ select, option{
 }
 
 button,
-a {
+a, 
+button:hover,
+a:hover {
     cursor: pointer;
 }
+
 
 html, body {
     height: 100%;
@@ -50,6 +53,8 @@ svg{
     height: 100%;
     margin: 0 20em;
     margin-bottom: 20em;
+    padding-bottom: 10em;
+    overflow: visible;
 }
 
 /* Counter party */
@@ -3384,6 +3389,7 @@ svg{
 
 .yourOperationsContainer {
     font-family: "DM Sans", sans-serif;
+    padding-bottom: 3em;
 }
 
 .yourOperationOperationFirstContainer {

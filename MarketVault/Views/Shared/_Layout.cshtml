@@ -26,6 +26,10 @@
         }
         isLoggedIn = true;
     }
+
+    var pageOptions = ViewContext.RouteData.Values["controller"] + "/" + ViewContext.RouteData.Values["action"];
+
+    Console.WriteLine(pageOptions);
 }
 
 <!DOCTYPE html>
@@ -70,8 +74,8 @@
                                 </li>
 
                                 <li>
-                                    <select class="selectOption" onchange="redirect(0)">
-                                        <option disabled selected value="">Nomenclatures</option>
+                                    <select class="selectOption" onchange="redirect(this)">
+                                        <option disabled value="">Nomenclatures</option>
                                         <option value="@Url.Action("All", "Product")">Products</option>
                                         <option value="@Url.Action("All", "CounterParty")">Counter Parties</option>
                                         <option value="@Url.Action("All", "ItemGroup")">Item Groups</option>
@@ -82,8 +86,8 @@
 
                                 </li>
                                 <li>
-                                    <select class="selectOption" onchange="redirect(1)">
-                                        <option disabled selected value="">Add a nomenclature</option>
+                                    <select class="selectOption" onchange="redirect(this)">
+                                        <option disabled value="">Add a nomenclature</option>
                                         <option value="@Url.Action("Add", "Product")">Add a product</option>
                                         <option value="@Url.Action("Add", "CounterParty")">Add a counter party</option>
                                         <option value="@Url.Action("Add", "ItemGroup")">Add an item group</option>
@@ -94,8 +98,8 @@
                                 </li>
 
                                 <li>
-                                    <select class="selectOption" onchange="redirect(2)">
-                                        <option disabled selected value="">Operations</option>
+                                    <select class="selectOption" onchange="redirect(this)">
+                                        <option disabled value="">Operations</option>
                                         <option value="@Url.Action("New", "Operation")">Add an operation</option>
                                         <option value="@Url.Action("GetYourOperations", "Operation")">Your operations</option>
                                     </select>
@@ -104,8 +108,8 @@
                             else if (role == "Worker")
                             {
                                 <li>
-                                    <select class="selectOption" onchange="redirect(3)">
-                                        <option disabled selected value="">Nomenclatures</option>
+                                    <select class="selectOption" onchange="redirect(this)">
+                                        <option disabled value="">Nomenclatures</option>
                                         <option value="@Url.Action("All", "Product")">Products</option>
                                         <option value="@Url.Action("All", "CounterParty")">Counter Parties</option>
                                         <option value="@Url.Action("All", "ItemGroup")">Item Groups</option>
@@ -115,8 +119,8 @@
                                     </select>
                                 </li>
                                 <li>
-                                    <select class="selectOption" onchange="redirect(4)">
-                                        <option disabled selected value="">Add a nomenclature</option>
+                                    <select class="selectOption" onchange="redirect(this)">
+                                        <option disabled value="">Add a nomenclature</option>
                                         <option value="@Url.Action("Add", "Product")">Add a product</option>
                                         <option value="@Url.Action("Add", "CounterParty")">Add a counter party</option>
                                         <option value="@Url.Action("Add", "ItemGroup")">Add an item group</option>
@@ -127,8 +131,8 @@
                                 </li>
 
                                 <li>
-                                    <select class="selectOption3" onchange="redirect(5)">
-                                        <option disabled selected value="">Operations</option>
+                                    <select class="selectOption" onchange="redirect(this)">
+                                        <option disabled value="">Operations</option>
                                         <option value="Option1">Add operation</option>
                                         <option value="Option2">Your operations</option>
                                     </select>
@@ -138,8 +142,8 @@
                             else
                             {
                                 <li>
-                                    <select class="selectOption" onchange="redirect(6)">
-                                        <option disabled selected value="">Nomenclatures</option>
+                                    <select class="selectOption" onchange="redirect(this)">
+                                        <option disabled value="">Nomenclatures</option>
                                         <option value="@Url.Action("All", "Product")">Products</option>
                                         <option value="@Url.Action("All", "CounterParty")">Counter Parties</option>
                                         <option value="@Url.Action("All", "ItemGroup")">Item Groups</option>
@@ -163,9 +167,35 @@
 </html>
 
 <script>
-    function redirect(index) {
-        var selectElement = document.getElementsByClassName("selectOption")[index];
-        var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+
+    window.onload = e => {
+        const selectElements = document.getElementsByClassName('selectOption');
+        const currentUrl = '/' + window.location.href.split('/').slice(-2).join('/');
+        let selectedList = false;
+
+        for (var select of selectElements) {
+            let selectedOptionExists = false;
+            for (var option of select) {
+                if (option.value === currentUrl) {
+                    option.selected = 'selected';
+                    selectedOptionExists = true;
+                    selectedList = true;
+                    break;
+                }
+            }
+
+            if (!selectedOptionExists){
+                select[0].selected = 'selected';
+            }
+
+            if (selectedList) {
+                break;
+            }
+        }
+    };
+
+    function redirect(selectObject) {
+        var selectedOption = selectObject.value;
         if (selectedOption !== "") {
             window.location.href = selectedOption;
         }
