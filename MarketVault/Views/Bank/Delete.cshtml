@@ -19,6 +19,11 @@
             <h4>@Model.Address</h4>
         </div>
 
+        <p class="areYouSureMessage">
+            Are you sure you want to remove bank? If no,
+            <a asp-action="All" asp-controller="Bank">back to all banks</a>
+        </p>
+
         <div class="submitBankDeleteBtnContainer">
             <button type="submit">Delete Bank</button>
         </div>

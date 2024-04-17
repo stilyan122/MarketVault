@@ -254,7 +254,7 @@
                 .ToListAsync();
 
             var all5 = await this.service
-                .GetAllByPredicateAsync("Products Count", "1")
+                .GetAllByPredicateAsync("Minimum Number of Products in Item Group", "1")
                 .ToListAsync();
 
             Assert.Multiple(() =>

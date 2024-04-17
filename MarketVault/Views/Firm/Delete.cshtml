@@ -31,6 +31,11 @@
             <h4>@Model.Address</h4>
         </div>
 
+        <p class="areYouSureMessage">
+            Are you sure you want to remove firm? If no,
+            <a asp-action="All" asp-controller="Firm">back to all firms</a>
+        </p>
+
         <div class="submitFirmDeleteBtnContainer">
             <button type="submit">Delete Firm</button>
         </div>

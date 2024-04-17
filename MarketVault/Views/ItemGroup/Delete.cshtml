@@ -19,6 +19,12 @@
             <h4>@Model.ProductsCount</h4>
         </div>
 
+        <p class="areYouSureMessage">
+            Are you sure you want to remove item group? Keep in mind that deleting it will
+            also delete related products. If no,
+            <a asp-action="All" asp-controller="ItemGroup">back to all item groups</a>
+        </p>
+
         <div class="submitItemGroupDeleteBtnContainer">
             <button type="submit">Delete item group</button>
         </div>

@@ -68,10 +68,10 @@ namespace MarketVault.Core
         public static IServiceCollection AddDbServices(this IServiceCollection services,
             IConfiguration configuration)
         {
-            //var connectionString = configuration.GetConnectionString("DefaultConnection") ??
-            //    throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            var connectionString = configuration.GetConnectionString("DefaultConnection") ??
+                throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
-            var connectionString = "Server=.;Database=MarketVault;Trusted_Connection=True;MultipleActiveResultSets=true";
+            //var connectionString = "Server=.;Database=MarketVault;Trusted_Connection=True;MultipleActiveResultSets=true";
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {

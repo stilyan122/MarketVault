@@ -33,14 +33,20 @@
 </div>
 
 <script>
-    function toggleSearchButton(){
-        const searchQuery = document.getElementById('searcherInput');
-        const searchSelect = document.getElementById('searcherSelect');
-        const searchBtn = document.getElementById('searchBankBtn');
+    const searchBtn = document.getElementById('searchBankBtn');
+    const searchQuery = document.getElementById('searcherInput');
+    const searchSelect = document.getElementById('searcherSelect');
 
+    if (searchQuery.value != '' && searchSelect.value != '') {
+        searchBtn.disabled = false;
+    } else {
+        searchBtn.disabled = true;
+    }
+
+    function toggleSearchButton() {
         if (searchQuery.value != '' && searchSelect.value != '') {
             searchBtn.disabled = false;
-        }else{
+        } else {
             searchBtn.disabled = true;
         }
     }
