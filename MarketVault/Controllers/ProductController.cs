@@ -348,6 +348,13 @@
                 return BadRequest();
             }
 
+            if (!ModelState.IsValid)
+            {
+                model.ItemGroups = await this.GetItemGroups();
+                model.Measures = await this.GetMeasures();
+                return View(model);
+            }
+
             try
             {
                 var entity = await this.service.GetByIdAsync(parsed);

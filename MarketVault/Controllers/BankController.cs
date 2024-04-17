@@ -287,6 +287,12 @@
                 return BadRequest();
             }
 
+            if (!ModelState.IsValid)
+            {
+                model.Addresses = await this.GetAddresses();
+                return View(model);
+            }
+
             try
             {
                 var entity = await this.service.GetByIdAsync(parsed);

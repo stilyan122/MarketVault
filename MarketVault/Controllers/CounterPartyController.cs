@@ -315,6 +315,13 @@
                 return BadRequest();
             }
 
+            if (!ModelState.IsValid)
+            {
+                model.Banks = await this.GetBanks();
+                model.Firms = await this.GetFirms();
+                return View(model);
+            }
+
             try
             {
                 var entity = await this.service.GetByIdAsync(parsed);
@@ -359,6 +366,7 @@
                     logger.LogError("Bad request - CounterParty/Delete - (GET)");
                     return BadRequest();
                 }
+
 
                 var entity = await this.service.GetByIdAsync(parsed);
 
