@@ -6,7 +6,9 @@
 
     if (User?.Identity?.IsAuthenticated ?? false)
     {
-        if (!await service.IsInRoleAsync(new string[] { "User" }, User.Id()))
+        if (!await service.IsInRoleAsync(new string[] { "Worker" }, User.Id()) &&
+        !await service.IsInRoleAsync(new string[] { "Admin" }, User.Id()) && 
+        !await service.IsInRoleAsync(new string[] { "User" }, User.Id()))
         {
             var user = await this.service.FindUserByIdAsync(User.Id());
             await service.AddUserToRoleAsync(user, "User");
@@ -26,10 +28,6 @@
         }
         isLoggedIn = true;
     }
-
-    var pageOptions = ViewContext.RouteData.Values["controller"] + "/" + ViewContext.RouteData.Values["action"];
-
-    Console.WriteLine(pageOptions);
 }
 
 <!DOCTYPE html>

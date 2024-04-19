@@ -6,7 +6,9 @@
 
     if (User?.Identity?.IsAuthenticated ?? false)
     {
-        if (!await userService.IsInRoleAsync(new string[] { "User" }, User.Id()))
+        if (!await userService.IsInRoleAsync(new string[] { "Worker" }, User.Id()) && 
+        !await userService.IsInRoleAsync(new string[] { "Admin" }, User.Id()) 
+        && !await userService.IsInRoleAsync(new string[] { "User" }, User.Id()))
         {
             var user = await this.userService.FindUserByIdAsync(User.Id());
             await userService.AddUserToRoleAsync(user, "User");
