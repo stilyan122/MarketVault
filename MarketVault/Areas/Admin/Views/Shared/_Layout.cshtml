@@ -5,11 +5,6 @@
 
     if (User?.Identity?.IsAuthenticated ?? false)
     {
-        if (!await service.IsInRoleAsync(new string[] { "User" }, User.Id()))
-        {
-            var user = await this.service.FindUserByIdAsync(User.Id());
-            await service.AddUserToRoleAsync(user, "User");
-        }
         isLoggedIn = true;
     }
 }

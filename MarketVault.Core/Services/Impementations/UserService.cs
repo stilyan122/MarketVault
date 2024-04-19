@@ -244,7 +244,7 @@
             }
 
             var roles = await this.userManager.GetRolesAsync(user);
-            var role = roles.First();
+            var role = roles.Last();
 
             return user.FirstName + " " + user.LastName + $" ({role})";
         }
